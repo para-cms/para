@@ -1,0 +1,6 @@
+= simple_form_for [:admin, :page_category, @page], as: :resource do |form|
+  = form.input :title
+  = form.input :slug
+  = form.input :content, as: :redactor
+  .form-actions
+    = form.button :submit

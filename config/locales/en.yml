@@ -1,0 +1,38 @@
+en:
+  para:
+    flash:
+      shared:
+        create:
+          success: "%{model} created"
+          error: "Could not create %{model}"
+        update:
+          success: "%{model} updated"
+          error: "Could not update %{model}"
+        destroy:
+          success: "%{model} deleted"
+          error: "Could not delete %{model}"
+
+    component:
+      page:
+        name: "Page"
+      page_category:
+        name: "Page category"
+
+    form:
+      shared:
+        new:
+          title: "Create new %{model}"
+
+  activerecord:
+    models:
+      para/component/base:
+        one: "Component"
+        other: "Components"
+      para/page:
+        one: "Page"
+        other: "Pages"
+    attributes:
+      para/page:
+        title: "Title"
+        slug: "URL fragment"
+        content: "Page content"

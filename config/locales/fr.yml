@@ -1,0 +1,43 @@
+fr:
+  para:
+    flash:
+      shared:
+        create:
+          success: "%{model} créé(e)"
+          error: "Impossible de créer le(a) %{model}"
+        update:
+          success: "%{model} mis(e) à jour"
+          error: "Impossible de mettre à jour le(a) %{model}"
+        destroy:
+          success: "%{model} supprimé(e)"
+          error: "Impossible de supprimer le(a) %{model}"
+
+    component:
+      add: "Ajouter une page"
+      none_created: "Aucune page pour le moment ..."
+      page:
+        name: "Page"
+      page_category:
+        name: "Groupe de pages"
+
+    form:
+      shared:
+        new:
+          title: "Créer un(e) %{model}"
+
+  activerecord:
+    models:
+      para/component/base:
+        one: "Composant"
+        other: "Composants"
+      para/page:
+        one: "Page"
+        other: "Pages"
+    attributes:
+      para/page:
+        title: "Titre"
+        slug: "Adresse de la page"
+        content: "Contenu"
+      para/component/base:
+        name: "Titre"
+        type: "Type"

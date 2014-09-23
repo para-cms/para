@@ -1,0 +1,17 @@
+.add-component
+  = link_to '#add-component-form', class: 'btn btn-primary', data: { toggle: 'collapse' } do
+    = t('para.component.add')
+  #add-component-form.collapse
+    = simple_form_for Para::Component::Base.new, as: :component, url: admin_components_path do |form|
+      = form.input :name, input_html: { class: 'form-input' }
+      = form.input :type, collection: registered_components_options, input_html: { class: 'form-input' }
+      = form.button :submit
+
+- components = Para::Component::Base.ordered
+- if components.any?
+  %ul.nav.nav-sidebar
+    - components.each do |component|
+      %li
+        = link_to component.name, component_path(component)
+- else
+  = t('para.component.none_created')

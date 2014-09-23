@@ -1,0 +1,32 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %title Para
+
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ content: 'width=device-width, initial-scale=1', :name => 'viewport' }/
+
+    = stylesheet_link_tag 'para/admin', media: 'all'
+
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js'></script>
+      <script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
+
+    = csrf_meta_tags
+
+  %body
+    = render partial: 'para/admin/shared/header'
+
+    .container-fluid
+      .row
+        .col-sm-3.col-md-2.sidebar
+          = render partial: 'para/admin/shared/navigation'
+
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          = display_flash
+          = yield
+
+    = javascript_include_tag 'para/admin'
