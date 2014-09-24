@@ -33,5 +33,11 @@ module Para
         "require 'para/component/#{@component_name}'\n"
       end
     end
+
+    def create_show_component_view
+      create_file "app/views/admin/#{@component_name}_component/show.html.haml" do
+        "%h1.page-header= @component.name\n"
+      end
+    end
   end
 end
