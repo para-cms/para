@@ -22,7 +22,9 @@ module Para
     end
 
     def generate_model
-      generate 'model', file_name, attributes.map { |attr| "#{attr.name}:#{attr.type}" }.join(' ')
+      generate 'model',
+        file_name,
+        attributes.map { |attr| "#{attr.name}:#{attr.type}" }.insert(-1, 'component:references').join(' ')
     end
 
     def insert_belongs_to_to_resource
