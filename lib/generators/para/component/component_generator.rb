@@ -39,5 +39,11 @@ module Para
         "%h1.page-header= @component.name\n"
       end
     end
+
+    def add_route
+      inject_into_file 'config/routes.rb', after: 'namespace :admin do' do
+        "\n    component :#{component_name}"
+      end
+    end
   end
 end
