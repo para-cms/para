@@ -37,7 +37,7 @@ module Para
           end
 
           @fields_hash[key] = AttributeField.new(
-            model, name: key, type: column.type, field_type: 'file'
+            model, name: key, type: 'file', field_type: 'file'
           )
         end
       end
