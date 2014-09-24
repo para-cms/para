@@ -1,7 +1,7 @@
 module Admin
-  class %{name}ComponentController < Para::Admin::ComponentController
+  class <%= class_name %>ComponentController < Para::Admin::ComponentController
     def show
-      # @%{plural} = @component.resources
+      # @<%= plural_file_name %> = @component.resources
     end
   end
 end

@@ -1,7 +1,7 @@
 module Para
   module Component
-    class %{name} < Para::Component::Base
-      register :%{sym}, self
+    class <%= class_name %> < Para::Component::Base
+      register :<%= file_name %>, self
 
       # ADD HERE RELATED RESOURCE
       # EXAMPLE:
