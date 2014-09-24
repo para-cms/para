@@ -22,12 +22,19 @@ module Para
     end
 
     def generate_model
-      generate 'model', file_name
+      generate 'model', file_name, attributes.map { |attr| "#{attr.name}:#{attr.type}" }.join(' ')
     end
 
-    def insert_belongs_to_to_model
+    def insert_belongs_to_to_resource
       inject_into_file "app/models/#{file_name}.rb", after: "class #{component_name.camelize} < ActiveRecord::Base" do
         "\n  belongs_to :component, class_name: 'Para::Component::Base'"
+      end
+    end
+
+    def insert_has_many_to_component
+      inject_into_file "app/models/para/component/#{component_name.underscore}.rb", after: "register :#{component_name.underscore}, self" do
+        "\n\n      has_many :#{plural_file_name}, class_name: '::#{class_name}', inverse_of: :component,
+          foreign_key: :component_id, dependent: :destroy"
       end
     end
   end
