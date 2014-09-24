@@ -1,14 +1,15 @@
-= simple_form_for [:admin, @component, resource] do |f|
+= simple_form_for [:admin, @component, resource], as: :resource do |f|
   = f.error_notification
 
   .form-inputs
-  <%- attributes.each do |_, field| -%>
-    <%- if field.type -%>
-    = f.<%= field.field_method %> :<%= field.name %>, as: :<%= field.type %>
+  <%- attributes.each do |field| -%>
+    <%- if field.field_type -%>
+    = f.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
     <%- else -%>
     = f.<%= field.field_method %> :<%= field.name %>
     <%- end -%>
   <%- end -%>
 
   .form-actions
-    = f.button :submit
+    = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
+    = form.button :submit, class: 'btn-primary'

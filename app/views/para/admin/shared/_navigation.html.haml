@@ -2,7 +2,7 @@
   = link_to '#add-component-form', class: 'btn btn-primary', data: { toggle: 'collapse' } do
     = t('para.component.add')
   #add-component-form.collapse
-    = simple_form_for Para::Component::Base.new, as: :component, url: admin_components_path do |form|
+    = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
       = form.input :name, input_html: { class: 'form-input' }
       = form.input :type, collection: registered_components_options, input_html: { class: 'form-input' }
       = form.button :submit

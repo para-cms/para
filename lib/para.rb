@@ -9,6 +9,7 @@ require 'bootstrap-sass'
 require 'font-awesome-rails'
 
 require 'core_ext/routing_mapper'
+require 'para/attribute_field_mappings'
 require 'para/engine'
 require 'para/config'
 

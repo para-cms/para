@@ -46,6 +46,10 @@ module Para
 
       private
 
+      def resource
+        raise "Please implement #resource in the child resource controller"
+      end
+
       def resource_params
         @resource_params ||= params.require(:resource).permit!
       end

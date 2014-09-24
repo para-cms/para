@@ -35,7 +35,10 @@ module Para
 
       def registered_components_options
         Para::Component.registered_components.keys.map do |identifier|
-          [t("para.component.#{ identifier }.name"), identifier]
+          [
+            t("para.component.#{ identifier }.name", default: identifier.to_s.humanize),
+            identifier
+          ]
         end
       end
 

@@ -1,6 +1,10 @@
 = simple_form_for [:admin, @component, resource], as: :resource do |form|
-  - editable_attributes_for(form.object).each do |attribute|
-    = form.input attribute
+  - Para::AttributeFieldMappings.new(resource.class).fields.each do |field|
+    - if field.type
+      = form.send(field.field_method, field.name, as: field.field_type)
+    - else
+      = form.send(field.field_method, field.name)
 
   .form-actions
-    = form.button :submit
+    = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
+    = form.button :submit, class: 'btn-primary'

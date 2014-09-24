@@ -25,6 +25,9 @@ fr:
         new:
           title: "Créer un(e) %{model}"
 
+    shared:
+      cancel: "Annuler"
+
   activerecord:
     models:
       para/component/base:
