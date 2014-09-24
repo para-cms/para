@@ -21,6 +21,12 @@ module Para
       end
     end
 
+    def insert_relation_to_show
+      inject_into_file "app/views/admin/#{component_name.underscore}_component/show.html.haml", after: '%h1.page-header= @component.name' do
+        "\n= render partial: 'para/admin/resources/table', locals: { resources: @resources, relation: :#{plural_file_name} }"
+      end
+    end
+
     def generate_model
       generate 'model',
         file_name,
