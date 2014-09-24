@@ -34,7 +34,7 @@ module Para
       end
 
       inject_into_file 'config/routes.rb', after: 'namespace :admin do' do
-        "\n    component :#{file_name}"
+        "\n    component :#{file_name} do\n    end"
       end
     end
   end

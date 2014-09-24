@@ -9,14 +9,16 @@ module Para
 
     def welcome
       say 'Creating resource...'
-      puts file_name
-      puts component_name
-      puts attributes.inspect
-
     end
 
     def copy_resource_controller
       template 'resource_controller.rb', "app/controllers/admin/#{plural_file_name}_controller.rb"
+    end
+
+    def insert_route
+      inject_into_file 'config/routes.rb', after: "component :#{component_name.underscore} do" do
+        "\n      resources :#{plural_file_name}"
+      end
     end
   end
 end
