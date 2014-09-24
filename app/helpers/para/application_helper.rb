@@ -29,7 +29,12 @@ module Para
     end
 
     def attribute_field_mappings_for(component, relation)
-      Para::AttributeFieldMappings.new(component.class.reflections[relation.to_sym].klass).fields
+      model = relation_klass_for(component, relation)
+      Para::AttributeFieldMappings.new(model).fields
+    end
+
+    def relation_klass_for(component, relation)
+      component.class.reflections[relation.to_sym].klass
     end
 
     def display_flash

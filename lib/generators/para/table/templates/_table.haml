@@ -9,7 +9,7 @@
     %thead
       %tr
         <%- attributes.each do |field| -%>
-        %th <%= field.name %>
+        %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
         <%- end -%>
 
     %tbody
