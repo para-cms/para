@@ -1,0 +1,25 @@
+.panel.panel-default
+  .panel-heading
+    .panel-btns
+      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-primary' do
+        Créer un enregistrement
+
+- if resources.any?
+  %table.table.table-hover.table-striped
+    %thead
+      %tr
+
+    %tbody
+      - resources.each do |activity|
+        %tr
+          %td= activity.title
+          %td= "#{ sanitize(activity.description, tags: [])[0..100] }..."
+          %td
+            = link_to component_relation_path(@component, relation, activity, :edit) do
+              Edit
+          %td
+            = link_to component_relation_path(@component, relation, activity, :show), method: :delete do
+              &times;
+- else
+  .well
+    Pas d'enregistrements pour le moment.

@@ -20,6 +20,26 @@ module Para
         end
       end
 
+      def component_relation_path(component, relation, resource = nil, action = :index)
+        if [:index, :show, :create, :update, :destroy].include?(action)
+          action = nil
+        end
+
+        method = [
+          action,
+          'admin',
+          component.class.component_name,
+          relation.to_s.singularize,
+          'path'
+        ].compact.join('_')
+
+        if respond_to?(method)
+          send(method, component, resource)
+        elsif main_app.respond_to?(method)
+          main_app.send(method, component, resource)
+        end
+      end
+
       def editable_attributes_for(resource)
         model = resource.is_a?(Class) ? resource : resource.class
 
