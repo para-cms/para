@@ -20,6 +20,14 @@ module Para
       end
     end
 
+    def find_table_partial_for(relation)
+      if lookup_context.find_all('admin/activities/_table').any?
+        'admin/activities/table'
+      else
+        'para/admin/resources/table'
+      end
+    end
+
     def attribute_field_mappings_for(component, relation)
       Para::AttributeFieldMappings.new(component.class.reflections[relation.to_sym].klass).fields
     end
