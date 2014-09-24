@@ -4,7 +4,6 @@ module Para
   module Admin
     class PageController < Para::Admin::BaseController
       load_and_authorize_resource :component, class: 'Para::Component::Base'
-
       load_and_authorize_resource :page, parent: false, class: 'Para::Page'
 
       def update
