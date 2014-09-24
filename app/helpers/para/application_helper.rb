@@ -21,8 +21,8 @@ module Para
     end
 
     def find_table_partial_for(relation)
-      if lookup_context.find_all('admin/activities/_table').any?
-        'admin/activities/table'
+      if lookup_context.find_all("admin/#{relation}/_table").any?
+        "admin/#{relation}/table"
       else
         'para/admin/resources/table'
       end
