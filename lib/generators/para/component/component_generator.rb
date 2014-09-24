@@ -25,11 +25,13 @@ module Para
 
     def set_component_name_in_component_controller
       gsub_file "app/controllers/admin/#{@component_name}_component_controller.rb", '%{name}', component_name.camelcase
-      gsub_file "app/controllers/admin/#{@component_name}_component_controller.rb", '%{plurale}', component_name.pluralize
+      gsub_file "app/controllers/admin/#{@component_name}_component_controller.rb", '%{plural}', component_name.pluralize
     end
 
     def add_require_to_application_controller
-      prepend_to_file 'controllers/application_controller.rb', "require 'para/component/#{@component_name}'"
+      prepend_to_file 'app/controllers/application_controller.rb' do
+        "require 'para/component/#{@component_name}'\n"
+      end
     end
   end
 end

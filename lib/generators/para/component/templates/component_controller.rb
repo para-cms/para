@@ -1,9 +1,7 @@
-module Para
-  module Component
-    class %{name}Controller < Para::Admin::ComponentController
-      def show
-        @%{plurale} = @component.activities
-      end
+module Admin
+  class %{name}ComponentController < Para::Admin::ComponentController
+    def show
+      @%{plural} = @component.activities
     end
   end
 end
