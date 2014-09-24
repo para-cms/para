@@ -23,9 +23,7 @@ module Para
     end
 
     def create_show_component_view
-      create_file "app/views/admin/#{file_name}_component/show.html.haml" do
-        "%h1.page-header= @component.name\n"
-      end
+      template 'show.html.haml', "app/views/admin/#{file_name}_component/show.html.haml"
     end
 
     def add_route
