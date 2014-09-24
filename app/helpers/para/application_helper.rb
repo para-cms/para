@@ -20,6 +20,10 @@ module Para
       end
     end
 
+    def attribute_field_mappings_for(component, relation)
+      Para::AttributeFieldMappings.new(component.class.reflections[relation.to_sym].klass).fields
+    end
+
     def display_flash
       # Get devise errors if present
       if respond_to?(:devise_error_messages!)

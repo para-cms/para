@@ -8,17 +8,20 @@
   %table.table.table-hover.table-striped
     %thead
       %tr
+        - attribute_field_mappings_for(@component, relation).each do |field|
+          %th= field.name
 
     %tbody
-      - resources.each do |activity|
+      - resources.each do |resource|
         %tr
-          %td= activity.title
-          %td= "#{ sanitize(activity.description, tags: [])[0..100] }..."
+          - attribute_field_mappings_for(@component, relation).each do |field|
+            %td= resource.send field.name
+
           %td
-            = link_to component_relation_path(@component, relation, activity, :edit) do
+            = link_to component_relation_path(@component, relation, resource, :edit) do
               Edit
           %td
-            = link_to component_relation_path(@component, relation, activity, :show), method: :delete do
+            = link_to component_relation_path(@component, relation, resource, :show), method: :delete do
               &times;
 - else
   .well

@@ -1,6 +1,6 @@
 module Para
   class AttributeFieldMappings
-    UNEDITABLE_ATTRIBUTES = %w(id component_id created_at updated_at)
+    UNEDITABLE_ATTRIBUTES = %w(id component_id created_at updated_at type)
     PAPERCLIP_SUFFIXES = %w(file_name content_type file_size updated_at)
 
     attr_reader :model, :fields_hash
