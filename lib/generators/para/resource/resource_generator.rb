@@ -27,9 +27,13 @@ module Para
         attributes.map { |attr| "#{attr.name}:#{attr.type}" }.insert(-1, 'component:references').join(' ')
     end
 
+    def migrate
+      rake 'db:migrate'
+    end
+
     def insert_belongs_to_to_resource
-      inject_into_file "app/models/#{file_name}.rb", after: "class #{component_name.camelize} < ActiveRecord::Base" do
-        "\n  belongs_to :component, class_name: 'Para::Component::Base'"
+      inject_into_file "app/models/#{file_name}.rb", after: "belongs_to :component" do
+        ", class_name: 'Para::Component::Base'"
       end
     end
 
