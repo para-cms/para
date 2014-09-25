@@ -17,7 +17,7 @@ module Para
 
     def add_resource_to_component_controller
       gsub_file "app/controllers/admin/#{component_name.singularize}_component_controller.rb", /# You can access @component here/ do
-        "@resources = @component.#{plural_file_name}"
+        "@resources = @component.#{plural_file_name}.page(params[:page]).per(10)"
       end
     end
 

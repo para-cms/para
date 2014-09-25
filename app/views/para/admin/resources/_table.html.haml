@@ -1,12 +1,12 @@
 .panel.panel-default
   .panel-heading
     .panel-btns
-      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-default' do
+      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-sm btn-default' do
         %i.fa.fa-plus
         Créer un enregistrement
       %span.pull-right
         - confirmation_message = 'Souhaitez-vous supprimer ce composant ?'
-        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
+        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
           %i.fa.fa-trash
           Supprimer ce composant
 
@@ -26,17 +26,18 @@
               %td= resource.send field.name
 
             %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-warning btn-block' do
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning btn-block' do
                 %i.fa.fa-pencil
                 Editer
 
             %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger btn-block' do
+              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger btn-block' do
                 %i.fa.fa-trash
                 Supprimer
   - else
-    .well
-      Pas d'enregistrements pour le moment.
+    .panel-body
+      .alert.alert-warning.no-margin-bottom
+        Pas d'enregistrements pour le moment.
 
   .panel-footer
     = paginate @resources, theme: 'twitter-bootstrap-3'
