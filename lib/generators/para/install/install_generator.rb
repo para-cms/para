@@ -27,10 +27,13 @@ module Para
         ['simple_form_extension'],
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
-        ['friendly_id', '~> 5.0']
+        ['friendly_id', '~> 5.0'],
+        ['kaminari', '>= 0.16.1'],
+        ['ransak', '>= 1.4.1']
       ].each do |name, version|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
-          gem(name, version)
+          gem name unless version
+          gem(name, version) if version
         end
       end
     end
