@@ -20,6 +20,12 @@ module Para
       end
     end
 
+    def searchable_attributes(attributes)
+      attributes.select do |attr|
+        [:string, :text].include?(attr.type.to_sym)
+      end.map(&:name).join('_or_')
+    end
+
     def find_table_partial_for(relation)
       if lookup_context.find_all("admin/#{relation}/_table").any?
         "admin/#{relation}/table"

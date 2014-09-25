@@ -1,3 +1,13 @@
+- attributes = attribute_field_mappings_for(@component, relation)
+
+.panel.panel-default
+  .panel-heading
+    Filtres
+  .panel-body
+    = search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
+      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true
+      = form.submit 'Rechercher', class: 'btn btn-default btn-sm'
+
 .panel.panel-default
   .panel-heading
     .panel-btns
@@ -14,15 +24,16 @@
     %table.table.table-hover.table-striped.table-bordered
       %thead
         %tr
-          - attribute_field_mappings_for(@component, relation).each do |field|
+          - attributes.each do |field|
             %th= field.name
           %th
           %th
+
       %tbody
         - confirmation_message = 'Souhaitez-vous supprimer cette ligne ?'
         - resources.each do |resource|
           %tr
-            - attribute_field_mappings_for(@component, relation).each do |field|
+            - attributes.each do |field|
               %td= resource.send field.name
 
             %td.col-lg-1

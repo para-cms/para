@@ -1,3 +1,14 @@
+- attributes = attribute_field_mappings_for(@component, relation)
+
+.panel.panel-default
+  .panel-heading
+    Filtres
+  .panel-body
+    = search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
+      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true
+      = form.submit 'Rechercher', class: 'btn btn-default btn-sm'
+
+
 .panel.panel-default
   .panel-heading
     .panel-btns
