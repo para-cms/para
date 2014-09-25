@@ -3,6 +3,8 @@
     .panel-btns
       = link_to component_relation_path(@component, relation, :new), class: 'btn btn-primary' do
         Créer un enregistrement
+      %span.pull-right
+        = link_to 'Supprimer ce composant', component_path(@component), method: :delete, class: 'btn btn-danger'
 
 - if resources.any?
   %table.table.table-hover.table-striped

@@ -8,6 +8,7 @@ module ActionDispatch::Routing
       endpoint = "#{ path }/:component_id"
 
       get endpoint => "#{ controller }#show", as: as
+      delete endpoint => "#{ controller }#destroy", as: "destroy_#{as}"
 
       scope(endpoint, as: component_name, &block) if block
     end
