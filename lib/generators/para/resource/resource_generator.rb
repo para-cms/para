@@ -17,10 +17,12 @@ module Para
 
     def add_resource_to_component_controller
       gsub_file "app/controllers/admin/#{component_name.singularize}_component_controller.rb", /# You can access @component here/ do
-        "@resources = @component.#{plural_file_name}.page(params[:page]).per(10)"
+        <<-RUBY
+          @q = @component.#{plural_file_name}.search params[:q]
+          @resources = @q.result.page(params[:page]).per(10)
+        RUBY
       end
     end
-
     def insert_route
       inject_into_file 'config/routes.rb', after: "component :#{component_name.underscore} do" do
         "\n      resources :#{plural_file_name}"
