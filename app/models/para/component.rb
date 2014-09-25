@@ -15,7 +15,7 @@ module Para
       end
 
       extend FriendlyId
-      friendly_id :name, use: [:slugged, :finders]
+      friendly_id :name, use: [:slugged, :finders, :history]
 
       validates :name, :type, presence: true
 
