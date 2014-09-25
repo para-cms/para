@@ -14,7 +14,7 @@ module Para
     end
 
     def copy_migrations
-      say "Installing migrations, don't forget to `rake db:migrate`"
+      say 'Installing migrations'
       rake 'para:install:migrations'
     end
 
@@ -45,11 +45,6 @@ module Para
       generate 'devise', 'AdminUser'
     end
 
-    def simple_form_install
-      generate 'simple_form:install', '--bootstrap'
-      generate 'simple_form_extension:install'
-    end
-
     def cancan_install
       generate 'cancan:ability'
     end
@@ -62,15 +57,13 @@ module Para
       rake 'db:migrate'
     end
 
+    def simple_form_install
+      generate 'simple_form:install', '--bootstrap'
+      generate 'simple_form_extension:install'
+    end
+
     def create_default_admin
-      puts 'Creating default admin ...'
-
-      email =    ask('Email    [admin@example.com] : ').presence || 'admin@example.com'
-      password = ask('Password [adminexample]      : ').presence || 'adminexample'
-
-      AdminUser.create!(email: email, password: password)
-
-      puts 'Created'
+      generate 'para:admin_user'
     end
 
     def mount_engine

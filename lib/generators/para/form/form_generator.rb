@@ -1,5 +1,5 @@
 module Para
-  class AdminFormGenerator < Rails::Generators::NamedBase
+  class FormGenerator < Rails::Generators::NamedBase
     include Para::Admin::BaseHelper
 
     source_root File.expand_path("../templates", __FILE__)
