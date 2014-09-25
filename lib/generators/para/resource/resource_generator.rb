@@ -16,8 +16,8 @@ module Para
     end
 
     def add_resource_to_component_controller
-      inject_into_file "app/controllers/admin/#{component_name.singularize}_component_controller.rb", after: '# You can access @component here' do
-        "\n      @resources = @component.#{plural_file_name}"
+      gsub_file "app/controllers/admin/#{component_name.singularize}_component_controller.rb", /# You can access @component here/ do
+        "@resources = @component.#{plural_file_name}"
       end
     end
 
