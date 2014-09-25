@@ -62,4 +62,4 @@ Components and resources work out of the box with CRUD. If you need to overide t
 
 And in case you want to change the way the form works, this generator can be helpful
     
-    rails g para:admin_form ResourceName
+    rails g para:form ResourceName
