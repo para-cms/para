@@ -29,7 +29,8 @@ module Para
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],
         ['kaminari', '>= 0.16.1'],
-        ['ransack', '>= 1.4.1']
+        ['ransack', '>= 1.4.1'],
+        ['bootstrap-kaminari-views', '>= 0.0.5']
       ].each do |name, version|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
           gem name unless version
