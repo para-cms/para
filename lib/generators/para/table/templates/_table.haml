@@ -1,32 +1,45 @@
 .panel.panel-default
   .panel-heading
     .panel-btns
-      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-primary' do
+      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-sm btn-default' do
+        %i.fa.fa-plus
         Créer un enregistrement
       %span.pull-right
-        = link_to 'Supprimer ce composant', component_path(@component), method: :delete, class: 'btn btn-danger'
+        - confirmation_message = 'Souhaitez-vous supprimer ce composant ?'
+        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
+          %i.fa.fa-trash
+          Supprimer ce composant
 
-- if resources.any?
-  %table.table.table-hover.table-striped
-    %thead
-      %tr
-        <%- attributes.each do |field| -%>
-        %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
-        <%- end -%>
-
-    %tbody
-      - resources.each do |resource|
+  - if resources.any?
+    %table.table.table-hover.table-striped.table-bordered
+      %thead
         %tr
           <%- attributes.each do |field| -%>
-          %td= resource.send :<%= field.name %>
+          %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
           <%- end -%>
+          %th
+          %th
 
-          %td
-            = link_to component_relation_path(@component, relation, resource, :edit) do
-              Edit
-          %td
-            = link_to component_relation_path(@component, relation, resource, :show), method: :delete do
-              &times;
-- else
-  .well
-    Pas d'enregistrements pour le moment.
+      %tbody
+        - resources.each do |resource|
+          %tr
+            <%- attributes.each do |field| -%>
+            %td= resource.send :<%= field.name %>
+            <%- end -%>
+
+            %td.col-lg-1
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning btn-block' do
+                %i.fa.fa-pencil
+                Editer
+            %td.col-lg-1
+              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, class: 'btn btn-sm btn-danger btn-block' do
+                %i.fa.fa-trash
+                Supprimer
+
+  - else
+    .panel-body
+      .alert.alert-warning.no-margin-bottom
+        Pas d'enregistrements pour le moment.
+
+  .panel-footer
+    = paginate resources, theme: 'twitter-bootstrap-3'

@@ -34,6 +34,7 @@
               = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger btn-block' do
                 %i.fa.fa-trash
                 Supprimer
+
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
