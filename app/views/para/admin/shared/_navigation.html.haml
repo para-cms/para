@@ -9,6 +9,7 @@
         = form.input :type, collection: registered_components_options, input_html: { class: 'form-input' }, include_blank: false
         = form.button :submit
 
+%br/
 - components = Para::Component::Base.ordered
 - if components.any?
   %ul.nav.nav-sidebar
