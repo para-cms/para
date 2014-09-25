@@ -22,8 +22,9 @@ This will do the following
    
   * Create `config/initializers/para.rb`
   * Copy the needed migrations
-    * Components
-    * Pages
+    * `20140925085452_create_para_components.para.rb`
+    * `20140925085453_create_para_pages.para.rb`
+    * `20140925085454_add_slug_to_para_components.para.rb`
   * Add the following gems if they're not already in the Gemfile
     * `devise`
     * `simple_form`
