@@ -44,3 +44,22 @@ At the end, you will end up with a model `AdminUser` already configured to work 
 Also, `para` adds the following line to `routes.rb` to mount the engine:
     
     mount Para::Engine, at: '/', as: 'para'
+
+## Components
+
+Para works with components. To generate one, use the following command
+    
+    rails g para:component ComponentName
+
+## Resources
+Once you created a component, run this generator should you need to associate that component with a resource
+    
+    rails g para:resource ResourceName ComponentName title:string description:text
+
+Components and resources work out of the box with CRUD. If you need to overide the show page, here is how
+    
+    rails g para:table ResourceName
+
+And in case you want to change the way the form works, this generator can be helpful
+    
+    rails g para:admin_form ResourceName
