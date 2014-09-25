@@ -10,6 +10,9 @@ module Para
         @page = @component.page
 
         if @page.update_attributes(page_params)
+          @component.update! name: @page.title
+          @component.update! slug: @page.slug
+
           flash_message(:success, @page)
           redirect_to component_path(@component)
         else

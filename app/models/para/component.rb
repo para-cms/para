@@ -24,6 +24,10 @@ module Para
       def self.model_name
         @model_name ||= CustomName.new(self)
       end
+
+      def should_generate_new_friendly_id?
+        slug.blank? || name_changed?
+      end
     end
   end
 end
