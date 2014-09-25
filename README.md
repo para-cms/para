@@ -25,18 +25,18 @@ This will do the following
     * Components
     * Pages
   * Add the following gems if they're not already in the Gemfile
-    * devise
-    * simple_form
-    * simple_form_extension
-    * paperclip
-    * cancancan
-    * friendly_id
+    * `devise`
+    * `simple_form`
+    * `simple_form_extension`
+    * `paperclip`
+    * `cancancan`
+    * `friendly_id`
   * Run the generators of the gems above
-      * `devise:install` generator
-      * `simple_form:install` generator
-      * `simple_form_extension:install` generator
-      * `cancan:ability` generator
-      * `friendly_id` generator
+      * `devise:install`
+      * `simple_form:install`
+      * `simple_form_extension:install`
+      * `cancan:ability`
+      * `friendly_id`
 
 At the end, you will end up with a model `AdminUser` already configured to work with devise and also migrated.
 
