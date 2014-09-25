@@ -29,7 +29,7 @@ module Para
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],
         ['kaminari', '>= 0.16.1'],
-        ['ransak', '>= 1.4.1']
+        ['ransack', '>= 1.4.1']
       ].each do |name, version|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
           gem name unless version
