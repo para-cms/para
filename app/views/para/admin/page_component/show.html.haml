@@ -1,8 +1,8 @@
 %h1.page-header= @page.title
 
 = simple_form_for [:admin, @component, @page] do |form|
-  = form.input :title, input_html: { class: 'form-control' }
-  = form.input :slug, input_html: { class: 'form-control' }
-  = form.input :content, as: :redactor, input_html: { class: 'form-control' }
+  = form.input :title
+  = form.input :slug
+  = form.input :content, as: :redactor
   .form-actions
     = form.button :submit

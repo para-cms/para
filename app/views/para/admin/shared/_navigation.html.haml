@@ -5,8 +5,8 @@
     %br/
     .well
       = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
-        = form.input :name, input_html: { class: 'form-input' }
-        = form.input :type, collection: registered_components_options, input_html: { class: 'form-input' }, include_blank: false
+        = form.input :name
+        = form.input :type, collection: registered_components_options, include_blank: false
         = form.button :submit
 
 %br/
