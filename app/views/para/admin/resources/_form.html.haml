@@ -1,10 +1,16 @@
-= simple_form_for [:admin, @component, resource], as: :resource do |form|
-  - Para::AttributeFieldMappings.new(resource.class).fields.each do |field|
-    - if field.type
-      = form.send(field.field_method, field.name, as: field.field_type)
-    - else
-      = form.send(field.field_method, field.name)
+.panel.panel-default
+  .panel-heading
+    Edition de
+    = resource.name
+  = simple_form_for [:admin, @component, resource], as: :resource do |form|
+    .panel-body
+      - Para::AttributeFieldMappings.new(resource.class).fields.each do |field|
+        - if field.type
+          = form.send(field.field_method, field.name, as: field.field_type)
+        - else
+          = form.send(field.field_method, field.name)
 
-  .form-actions
-    = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
-    = form.button :submit, class: 'btn-primary'
+    .panel-footer
+      .form-actions
+        = form.button :submit, class: 'btn-primary'
+        = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
