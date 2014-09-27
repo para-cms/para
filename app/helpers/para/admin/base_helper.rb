@@ -15,11 +15,14 @@ module Para
 
         begin
           send(method, component)
+          puts 'send(method, component)'
         rescue
           begin
             main_app.send(method, component)
+            puts 'main_app.send(method, component)'
           rescue
             para.send(method, component)
+            puts 'para.send(method, component)'
           end
         end
       end
@@ -39,11 +42,14 @@ module Para
 
         begin
           send(method, component, resource)
+          puts 'send(method, component, resource)'
         rescue
           begin
             main_app.send(method, component, resource)
+            puts 'main_app.send(method, component, resource)'
           rescue
             para.send(method, component, resource)
+            puts 'para.send(method, component, resource)'
           end
         end
       end
