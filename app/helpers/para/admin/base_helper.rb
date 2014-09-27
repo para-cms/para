@@ -13,14 +13,14 @@ module Para
           'path'
         ].compact.join('_')
 
-        if para.respond_to?(method)
+        begin
+          send(method, component)
+        rescue
           begin
-            para.send(method, component)
-          rescue
             main_app.send(method, component)
+          rescue
+            para.send(method, component)
           end
-        elsif main_app.respond_to?(method)
-          main_app.send(method, component)
         end
       end
 
@@ -37,14 +37,14 @@ module Para
           'path'
         ].compact.join('_')
 
-        if para.respond_to?(method)
+        begin
+          send(method, component, resource)
+        rescue
           begin
-            para.send(method, component, resource)
-          rescue
             main_app.send(method, component, resource)
+          rescue
+            para.send(method, component, resource)
           end
-        elsif main_app.respond_to?(method)
-          main_app.send(method, component, resource)
         end
       end
 
