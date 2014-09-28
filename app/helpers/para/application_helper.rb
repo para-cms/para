@@ -20,29 +20,6 @@ module Para
       end
     end
 
-    def searchable_attributes(attributes)
-      attributes.select do |attr|
-        [:string, :text].include?(attr.type.to_sym)
-      end.map(&:name).join('_or_')
-    end
-
-    def find_table_partial_for(relation)
-      if lookup_context.find_all("admin/#{relation}/_table").any?
-        "admin/#{relation}/table"
-      else
-        'para/admin/resources/table'
-      end
-    end
-
-    def attribute_field_mappings_for(component, relation)
-      model = relation_klass_for(component, relation)
-      Para::AttributeFieldMappings.new(model).fields
-    end
-
-    def relation_klass_for(component, relation)
-      component.class.reflections[relation.to_sym].klass
-    end
-
     def display_flash
       # Get devise errors if present
       if respond_to?(:devise_error_messages!)
