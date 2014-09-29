@@ -6,8 +6,15 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{ href: para.admin_path } Admin
+      %a.navbar-brand{ href: para.admin_path }
+        Admin
     .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to root_path do
+            %i.fa.fa-long-arrow-left
+            Retour à l'application
+
       %ul.nav.navbar-nav.navbar-right
         %li
           = link_to main_app.destroy_admin_user_session_path, method: 'delete' do
