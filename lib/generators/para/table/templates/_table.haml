@@ -5,19 +5,18 @@
     Filtres
   .panel-body
     = search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
-      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true
+      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true, label: t('para.tables.search')
       = form.submit 'Rechercher', class: 'btn btn-default btn-sm'
-
 
 .panel.panel-default
   .panel-heading
     .panel-btns
-      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-sm btn-default' do
+      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
         %i.fa.fa-plus
         Créer un enregistrement
       %span.pull-right
         - confirmation_message = 'Souhaitez-vous supprimer ce composant ?'
-        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
+        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
           %i.fa.fa-trash
           Supprimer ce composant
 
@@ -39,11 +38,11 @@
             <%- end -%>
 
             %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning btn-block' do
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-warning btn-block' do
                 %i.fa.fa-pencil
                 Editer
             %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, class: 'btn btn-sm btn-danger btn-block' do
+              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, class: 'btn btn-danger btn-block' do
                 %i.fa.fa-trash
                 Supprimer
 
