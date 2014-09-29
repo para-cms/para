@@ -7,6 +7,7 @@ class CreateParaComponents < ActiveRecord::Migration
       t.string :name
       t.hstore :configuration, default: {}
       t.integer :position, default: 0
+      t.integer :component_section_id
 
       t.timestamps
     end

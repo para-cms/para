@@ -19,6 +19,8 @@ module Para
 
       validates :name, :type, presence: true
 
+      belongs_to :component_section, class_name: 'Para::ComponentSection'
+
       scope :ordered, -> { order('position ASC') }
 
       def self.model_name

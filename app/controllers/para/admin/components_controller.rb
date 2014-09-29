@@ -39,7 +39,7 @@ module Para
       private
 
       def component_params
-        @component_params ||= params.require(:component).permit(:name)
+        @component_params ||= params.require(:component).permit(:name, :component_section_id)
       end
     end
   end
