@@ -1,8 +1,11 @@
-%h1.page-header= @page.title
+.panel.panel-default
+  .panel-heading
+    = @page.title
 
-= simple_form_for [:admin, @component, @page] do |form|
-  = form.input :title
-  = form.input :slug
-  = form.input :content, as: :redactor
-  .form-actions
-    = form.button :submit
+  = simple_form_for [:admin, @component, @page], as: :resource do |form|
+    .panel-body
+      = form.input :title
+      = form.input :slug
+      = form.input :content, as: :redactor
+    .panel-footer
+      = form.button :submit, t('para.shared.save'), class: 'btn btn-success'
