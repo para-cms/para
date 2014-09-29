@@ -12,7 +12,7 @@
 .panel.panel-default
   .panel-heading
     .panel-btns
-      = link_to component_relation_path(@component, relation, :new), class: 'btn btn-sm btn-default' do
+      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-sm btn-default' do
         %i.fa.fa-plus
         Créer un enregistrement
       %span.pull-right
