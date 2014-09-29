@@ -15,5 +15,5 @@
 
     .panel-footer
       .form-actions
-        = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
-        = form.button :submit, class: 'btn-primary'
+        = form.button :submit, t('para.shared.save'), class: 'btn-success'
+        = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-default'

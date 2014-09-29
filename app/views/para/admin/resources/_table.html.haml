@@ -11,12 +11,11 @@
 .panel.panel-default
   .panel-heading
     .panel-btns
-      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-sm btn-default' do
-        %i.fa.fa-plus
+      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
         Créer un enregistrement
       %span.pull-right
         - confirmation_message = 'Souhaitez-vous supprimer ce composant ?'
-        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
+        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
           %i.fa.fa-trash
           Supprimer ce composant
 
