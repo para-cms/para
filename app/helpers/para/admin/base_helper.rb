@@ -29,11 +29,17 @@ module Para
           action = nil
         end
 
+        if resource.present? && resource.new_record?
+          relation_path = relation.to_s.underscore.pluralize
+        else
+          relation_path = relation.to_s.underscore.singularize
+        end
+
         method = [
           action,
           'admin',
           component.class.component_name,
-          relation.to_s.singularize,
+          relation_path,
           'path'
         ].compact.join('_')
 
