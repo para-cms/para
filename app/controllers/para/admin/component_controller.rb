@@ -1,4 +1,4 @@
-require_dependency "para/application_controller"
+require_dependency 'para/application_controller'
 
 module Para
   module Admin
@@ -8,7 +8,11 @@ module Para
 
       def destroy
         if @component.destroy
+          flash_message :success, @component
           redirect_to admin_path
+        else
+          flash_message :error, @component
+          redirect_to component_path(@component)
         end
       end
     end
