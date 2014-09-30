@@ -1,16 +1,17 @@
-.add-component
-  = link_to '#add-component-form', class: 'btn btn-default btn-block', data: { toggle: 'collapse' } do
-    = t('para.component.add_a_component')
-  #add-component-form.collapse
-    %br/
-    .well
-      = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
-        = form.input :name
-        = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
-        = form.input :type, collection: registered_components_options, include_blank: false
-        = form.button :submit
+- if can? :manage, Para::Component::Base
+  .add-component
+    = link_to '#add-component-form', class: 'btn btn-default btn-block', data: { toggle: 'collapse' } do
+      = t('para.component.add_a_component')
+    #add-component-form.collapse
+      %br/
+      .well
+        = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
+          = form.input :name
+          = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
+          = form.input :type, collection: registered_components_options, include_blank: false
+          = form.button :submit
 
-%br/
+  %br/
 - if (component_sections = Para::ComponentSection).any?
   - component_sections.all.each do |component_section|
     .panel.panel-default
