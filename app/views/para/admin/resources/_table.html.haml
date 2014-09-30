@@ -10,14 +10,8 @@
 
 .panel.panel-default
   .panel-heading
-    = @component.name
-    %span.pull-right
-      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
-        %i.fa.fa-plus
-      &nbsp;
-      - confirmation_message = t('para.confirmation.shared.destroy', model: @component.name)
-      = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
-        %i.fa.fa-trash
+    = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
+      %i.fa.fa-plus
     .clearfix
 
   - if resources.any?
