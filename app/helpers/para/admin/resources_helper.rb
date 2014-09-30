@@ -22,11 +22,6 @@ module Para
 
         ["", "admin", component_path, route_key, id, action].compact.join('/')
       end
-
-      def resource_title_for(resource)
-        resource.try(:title) || resource.try(:name) ||
-        t('para.form.shared.edit.title', model: resource.class.model_name.human)
-      end
     end
   end
 end
