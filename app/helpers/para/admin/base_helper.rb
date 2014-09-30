@@ -13,15 +13,7 @@ module Para
           'path'
         ].compact.join('_')
 
-        begin
-          send(method, component)
-        rescue
-          begin
-            main_app.send(method, component)
-          rescue
-            para.send(method, component)
-          end
-        end
+        component_path_for(method, component)
       end
 
       def component_relation_path(component, relation, resource = nil, action = :index)
@@ -43,15 +35,19 @@ module Para
           'path'
         ].compact.join('_')
 
-        begin
-          send(method, component, resource)
-        rescue
-          begin
-            main_app.send(method, component, resource)
-          rescue
-            para.send(method, component, resource)
-          end
+        component_path_for(method, component, resource)
+      end
+
+      def component_path_for(method, *args)
+        [self, main_app, para].each do |context|
+          if context.respond_to?(method) && (path = context.send(method, *args))
+            return path
+          # Rescue nil because of a Rails bug where respond_to? returns true
+          # but method is undefined
+          end rescue nil
         end
+        # No route found in any context, return `nil`
+        nil
       end
 
       def searchable_attributes(attributes)
