@@ -1,5 +1,3 @@
-- attributes = attribute_field_mappings_for(@component, relation)
-
 .panel.panel-default
   .panel-heading
     Filtres
@@ -28,7 +26,6 @@
           %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
           <%- end -%>
           %th
-          %th
 
       %tbody
         - resources.each do |resource|
@@ -37,14 +34,13 @@
             %td= resource.send :<%= field.name %>
             <%- end -%>
 
-            %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-warning btn-block' do
-                %i.fa.fa-pencil
-                Editer
-            %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, class: 'btn btn-danger btn-block' do
-                %i.fa.fa-trash
-                Supprimer
+            %span.pull-right
+              %td
+                = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-warning' do
+                  %i.fa.fa-pencil
+              %td
+                = link_to component_relation_path(@component, relation, resource, :show), method: :delete, class: 'btn btn-danger' do
+                  %i.fa.fa-trash
 
   - else
     .panel-body

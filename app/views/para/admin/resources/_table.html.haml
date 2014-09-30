@@ -27,7 +27,6 @@
           - attributes.each do |field|
             %th= relation.to_s.classify.constantize.human_attribute_name field.name
           %th
-          %th
 
       %tbody
         - confirmation_message = 'Souhaitez-vous supprimer cette ligne ?'
@@ -36,15 +35,13 @@
             - attributes.each do |field|
               %td= resource.send field.name
 
-            %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning btn-block' do
-                %i.fa.fa-pencil
-                Editer
-
-            %td.col-lg-1
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger btn-block' do
-                %i.fa.fa-trash
-                Supprimer
+            %span.pull-right
+              %td
+                = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning' do
+                  %i.fa.fa-pencil
+              %td
+                = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
+                  %i.fa.fa-trash
 
   - else
     .panel-body
