@@ -39,7 +39,7 @@ module Para
           buffer += content_tag(:div, class: "alert-icon-container pull-left") do
             content_tag(:i, "", class: "fa #{ icon_class_for(type) }")
           end
-          buffer += content_tag(:p, message.html_safe)
+          buffer += content_tag(:p, ('&nbsp;' + message).html_safe)
         end
       end
 
