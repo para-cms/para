@@ -28,6 +28,7 @@ module Para
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],
+        ['rolify', '~> 3.4'],
         ['kaminari', '>= 0.16.1'],
         ['ransack', '>= 1.4.1'],
         ['bootstrap-kaminari-views', '>= 0.0.5']
@@ -60,6 +61,10 @@ module Para
     def devise_install
       generate 'devise:install'
       generate 'devise', 'AdminUser'
+    end
+
+    def rolify_install
+      generate 'rolify Role AdminUser'
     end
 
     def migrate
