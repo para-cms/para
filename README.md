@@ -25,6 +25,8 @@ This will do the following
     * `20140925085452_create_para_components.para.rb`
     * `20140925085453_create_para_pages.para.rb`
     * `20140925085454_add_slug_to_para_components.para.rb`
+    * `20140925085455_create_para_component_sections.para.rb`
+    * `20140925085456_add_identifier_to_para_component_sections.para.rb`
   * Add the following gems if they're not already in the Gemfile
     * `devise`
     * `simple_form`
