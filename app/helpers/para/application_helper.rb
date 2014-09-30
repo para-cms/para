@@ -4,7 +4,7 @@ module Para
     # twitter bootstrap can handle
     #
     def homogenize_flash_type type
-      case type
+      case type.to_sym
       when :notice then :success
       when :alert then :warning
       when :error then :danger
