@@ -12,7 +12,7 @@
           = form.button :submit
 
   %br/
-- if (component_sections = Para::ComponentSection).any?
+- if (component_sections = Para::ComponentSection.ordered).any?
   - component_sections.all.each do |component_section|
     .panel.panel-default
       .panel-heading= component_section.name
