@@ -12,6 +12,10 @@ fr:
           success: "%{model} supprimé(e)"
           error: "Impossible de supprimer le(a) %{model}"
 
+    confirmation:
+      shared:
+        destroy: 'Etes-vous sure de vouloir supprimer %{model} ?'
+
     component:
       add: "Ajouter une page"
       none_created: "Aucune page pour le moment ..."

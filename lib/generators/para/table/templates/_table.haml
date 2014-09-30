@@ -10,15 +10,14 @@
 
 .panel.panel-default
   .panel-heading
-    .panel-btns
+    = @component.name
+    %span.pull-right
       = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
         %i.fa.fa-plus
-        Créer un enregistrement
-      %span.pull-right
-        - confirmation_message = 'Souhaitez-vous supprimer ce composant ?'
-        = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
-          %i.fa.fa-trash
-          Supprimer ce composant
+      - confirmation_message = t('para.confirmation.shared.destroy', model: @component.name)
+      = link_to component_path(@component), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-danger' do
+        %i.fa.fa-trash
+    .clearfix
 
   - if resources.any?
     %table.table.table-hover.table-striped.table-bordered
@@ -52,4 +51,4 @@
         Pas d'enregistrements pour le moment.
 
   .panel-footer
-    = paginate resources, theme: <%= Para.config.pagination_theme %>
+    = paginate resources, theme: '<%= Para.config.pagination_theme %>'
