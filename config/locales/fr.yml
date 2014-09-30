@@ -6,7 +6,7 @@ fr:
           success: "%{model} créé(e)"
           error: "Impossible de créer le(a) %{model}"
         update:
-          success: "%{model} mis(e) à jour"
+          success: "%{model} mis(e) à jour avec succès."
           error: "Impossible de mettre à jour le(a) %{model}"
         destroy:
           success: "%{model} supprimé(e)"
