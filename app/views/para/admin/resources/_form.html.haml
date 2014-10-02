@@ -1,11 +1,4 @@
 .panel.panel-default
-  .panel-heading
-    - if resource.new_record?
-      Nouvel enregistrement
-    - else
-      Edition de
-      = resource.name
-
   - url = component_relation_path(@component, resource.class.name, resource)
   = simple_form_for [:admin, @component, resource], url: url, as: :resource do |form|
     .panel-body

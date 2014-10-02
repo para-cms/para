@@ -69,6 +69,11 @@ module Para
         Para::AttributeFieldMappings.new(model).fields
       end
 
+      def resource_title_for(resource)
+        resource.try(:title) || resource.try(:name) ||
+        t('para.form.shared.edit.title', model: resource.class.model_name.human)
+      end
+
       def relation_klass_for(component, relation)
         component.class.reflections[relation.to_sym].klass
       end
