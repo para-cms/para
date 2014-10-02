@@ -1,0 +1,20 @@
+.nested-many-control
+  %table.table
+    %thead
+      %tr
+        - if reorderable
+          %th{ width: '10%' }
+
+        %th
+          = t('para.form.nested.name')
+
+        - if allow_destroy
+          %th{ width: '10%' }
+    %tbody
+
+      = form.fields_for attribute_name do |nested_form|
+        = render partial: 'para/admin/resources/fields', locals: { form: nested_form, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length }
+
+  %hr
+
+  = link_to_add_association t('para.form.nested.add'), form, :publication_images, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', render_options: { locals: { reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length } }

@@ -1,0 +1,19 @@
+%tr.form-header
+  - if reorderable
+    %td \=
+
+  %td
+    = form.object.try(:name) || form.object.try(:title) || "#{ form.object.class.model_name.human }#{ (id = form.object.id) ? id : "(#{ t('para.form.nested.new') })" }"
+
+  - if allow_destroy
+    %td
+      = link_to_remove_association t('para.form.nested.remove'), form, wrapper_class: 'form-inputs', class: 'btn btn-danger'
+
+%tr.form-inputs.collapse
+  %td{ colspan: columns_length }
+    - Para::AttributeFieldMappings.new(form.object.class).fields.each do |field|
+      - if field.field_type
+        = form.send(field.field_method, field.name, as: field.field_type)
+      - else
+        = form.send(field.field_method, field.name)
+

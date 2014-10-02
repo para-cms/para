@@ -26,6 +26,7 @@ module Para
       end.with_indifferent_access
 
       handle_paperclip_fields!
+      handle_relations!
     end
 
     def handle_paperclip_fields!
@@ -39,6 +40,22 @@ module Para
           @fields_hash[key] = AttributeField.new(
             model, name: key, type: 'file', field_type: 'file'
           )
+        end
+      end
+    end
+
+    def handle_relations!
+      model.reflections.each do |name, reflection|
+        next if name == :component
+
+        if Publication.nested_attributes_options[name]
+          if reflection.collection?
+            @fields_hash[name] = AttributeField.new(
+              model, name: name, type: 'has_many', field_type: 'nested_many'
+            )
+          end
+        else
+
         end
       end
     end

@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-rails', '>= 4.0.0'
   s.add_dependency 'simple_form', '3.1.0.rc2'
   s.add_dependency 'simple_form_extension'
+  s.add_dependency 'cocoon'
   s.add_dependency 'friendly_id', '~> 5.0'
   s.add_dependency 'paperclip', '~> 4.2'
   s.add_dependency 'cancancan', '~> 1.9'

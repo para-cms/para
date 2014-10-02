@@ -28,6 +28,12 @@ fr:
       shared:
         new:
           title: "Créer un(e) %{model}"
+      nested:
+        name: "Nom"
+        add: "Ajouter"
+        remove: "Supprimer"
+        new: "Nouveau"
+
 
     shared:
       cancel: "Annuler"
@@ -40,6 +46,9 @@ fr:
       para/page:
         one: "Page"
         other: "Pages"
+      publication_image:
+        one: "Page de publication"
+        other: "Pages de publication"
     attributes:
       para/page:
         title: "Titre"
