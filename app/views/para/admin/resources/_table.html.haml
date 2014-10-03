@@ -1,12 +1,6 @@
 - attributes = attribute_field_mappings_for(@component, relation)
 
-.panel.panel-default
-  .panel-heading
-    Filtres
-  .panel-body
-    = search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
-      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true, label: t('para.shared.search')
-      = form.submit t('para.shared.search'), class: 'btn btn-default btn-sm'
+= render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
 .panel.panel-default
   .panel-heading
@@ -16,20 +10,19 @@
     .clearfix
 
   - if resources.length > 0
-    %table.table.table-hover
+    %table.table.table-hover.para-component-relation-table
       %thead
         %tr
           - attributes.each do |field|
             %th= relation.to_s.classify.constantize.human_attribute_name field.name
 
-          %th{ colspan: 2, width: '5%' }
+          %th.actions{ colspan: 2 }
 
       %tbody
-        - confirmation_message = 'Souhaitez-vous supprimer cette ligne ?'
         - resources.each do |resource|
           %tr
             - attributes.each do |field|
-              %td= resource.send field.name
+              %td= field_value_for(resource, field.name)
 
             %td
               = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning' do

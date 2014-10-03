@@ -35,8 +35,10 @@ fr:
         new: "Nouveau"
 
     list:
-      empty: "Aucune entrée créée pour le moment"
+      search_title: "Recherche"
       delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
+      empty: "Aucune entrée créée pour le moment"
+
 
     shared:
       save: "Enregistrer"
@@ -52,9 +54,6 @@ fr:
       para/page:
         one: "Page"
         other: "Pages"
-      publication_image:
-        one: "Page de publication"
-        other: "Pages de publication"
     attributes:
       para/page:
         title: "Titre"

@@ -1,94 +1,17 @@
 module Para
   module Admin
     module BaseHelper
-      def component_path(component, action = :index)
-        if [:index, :show, :create, :update, :destroy].include?(action)
-          action = nil
-        end
-
-        method = [
-          action,
-          'admin',
-          component.class.component_name,
-          'path'
-        ].compact.join('_')
-
-        component_path_for(method, component)
-      end
-
-      def component_relation_path(component, relation, resource = nil, action = :index)
-        if [:index, :show, :create, :update, :destroy].include?(action)
-          action = nil
-        end
-
-        if resource.present? && resource.new_record?
-          relation_path = relation.to_s.underscore.pluralize
+      def find_partial_for(relation, partial)
+        if lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
+          "admin/#{ relation }/#{ partial }"
         else
-          relation_path = relation.to_s.underscore.singularize
+          "para/admin/resources/#{ partial }"
         end
-
-        method = [
-          action,
-          'admin',
-          component.class.component_name,
-          relation_path,
-          'path'
-        ].compact.join('_')
-
-        component_path_for(method, component, resource)
-      end
-
-      def component_path_for(method, *args)
-        [self, main_app, para].each do |context|
-          if context.respond_to?(method) && (path = context.send(method, *args))
-            return path
-          # Rescue nil because of a Rails bug where respond_to? returns true
-          # but method is undefined
-          end rescue nil
-        end
-        # No route found in any context, return `nil`
-        nil
-      end
-
-      def searchable_attributes(attributes)
-        attributes.select do |attr|
-          [:string, :text].include?(attr.type.to_sym)
-        end.map(&:name).join('_or_')
-      end
-
-      def find_table_partial_for(relation)
-        if lookup_context.find_all("admin/#{relation}/_table").any?
-          "admin/#{relation}/table"
-        else
-          'para/admin/resources/table'
-        end
-      end
-
-      def attribute_field_mappings_for(component, relation)
-        model = relation_klass_for(component, relation)
-        Para::AttributeFieldMappings.new(model).fields
       end
 
       def resource_title_for(resource)
         resource.try(:title) || resource.try(:name) ||
         t('para.form.shared.edit.title', model: resource.class.model_name.human)
-      end
-
-      def relation_klass_for(component, relation)
-        component.class.reflections[relation.to_sym].klass
-      end
-
-      def editable_attributes_for(resource)
-        model = resource.is_a?(Class) ? resource : resource.class
-
-        uneditable_attributes = [
-          "id", "component_id", "created_at", "updated_at"
-        ]
-
-        model.columns.each_with_object([]) do |column, attributes|
-          name = column.name
-          attributes << name unless uneditable_attributes.include?(name)
-        end
       end
 
       def registered_components_options

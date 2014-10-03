@@ -5,6 +5,7 @@ require 'simple_form_extension'
 require 'cocoon'
 require 'devise'
 require 'cancan'
+require 'request_store'
 require 'friendly_id'
 require 'bootstrap-sass'
 require 'font-awesome-rails'
@@ -29,5 +30,9 @@ module Para
     else
       Para::Config
     end
+  end
+
+  def self.store
+    RequestStore.store
   end
 end

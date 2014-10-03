@@ -37,7 +37,7 @@ module Para
             @fields_hash.delete(field_name)
           end
 
-          @fields_hash[key] = AttributeField.new(
+          @fields_hash[key] = ImageField.new(
             model, name: key, type: 'file', field_type: 'file'
           )
         end
@@ -50,7 +50,7 @@ module Para
 
         if Publication.nested_attributes_options[name]
           if reflection.collection?
-            @fields_hash[name] = AttributeField.new(
+            @fields_hash[name] = NestedManyField.new(
               model, name: name, type: 'has_many', field_type: 'nested_many'
             )
           end
@@ -87,5 +87,50 @@ module Para
         @field_method = :input
       end
     end
+
+    def value_for(instance)
+      instance.send(name)
+    end
+  end
+
+  class ImageField < AttributeField
+    include ActionView::Helpers::AssetTagHelper
+
+    def value_for(instance)
+      style = attachment_thumb_style_for(instance)
+      image_tag(instance.send(name).url(style))
+    end
+
+    private
+
+    def attachment_thumb_style_for(instance)
+      styles = instance.send(name).styles.map(&:first)
+      # Check if there's a :thumb or :thumbnail style in attachment definition
+      thumb = styles.find { |s| %w(thumb thumbnail).include?(s.to_s) }
+      # Return the potentially smallest size !
+      thumb || styles.first || :original
+    end
+  end
+
+  class HasManyField < AttributeField
+    def value_for(instance)
+      instance.send(name).map do |resource|
+        resource_name(resource)
+      end.join(', ')
+    end
+
+    private
+
+    def resource_name(resource)
+      [:name, :title].each do |method|
+        return resource.send(method) if resource.respond_to?(method)
+      end
+
+      model_name = resource.class.model_name.human
+      "#{ model_name } - #{ resource.id }"
+    end
+  end
+
+  class NestedManyField < HasManyField
   end
 end
