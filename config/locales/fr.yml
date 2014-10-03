@@ -28,9 +28,20 @@ fr:
       shared:
         new:
           title: "Créer un(e) %{model}"
+      nested:
+        name: "Nom"
+        add: "Ajouter"
+        remove: "Supprimer"
+        new: "Nouveau"
+
+    list:
+      empty: "Aucune entrée créée pour le moment"
+      delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
 
     shared:
       cancel: "Annuler"
+      add: "Créer"
+      search: "Rechercher"
 
   activerecord:
     models:

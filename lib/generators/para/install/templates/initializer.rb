@@ -4,4 +4,7 @@ Para.config do |config|
 
   # Configure the method to retrieve current admin user from
   # config.current_admin_method = :current_admin_user
+
+  # Configure the default Kaminari pagination theme to use
+  # config.pagination_theme = 'twitter-bootstrap-3'
 end
