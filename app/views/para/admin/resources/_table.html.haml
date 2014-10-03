@@ -5,22 +5,24 @@
     Filtres
   .panel-body
     = search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
-      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true, label: t('para.tables.search')
-      = form.submit 'Rechercher', class: 'btn btn-default btn-sm'
+      = form.input "#{searchable_attributes(attributes)}_cont", autofocus: true, label: t('para.shared.search')
+      = form.submit t('para.shared.search'), class: 'btn btn-default btn-sm'
 
 .panel.panel-default
   .panel-heading
     = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
       %i.fa.fa-plus
+      = t('para.shared.add')
     .clearfix
 
-  - if resources.any?
-    %table.table.table-hover.table-striped.table-bordered
+  - if resources.length > 0
+    %table.table.table-hover
       %thead
         %tr
           - attributes.each do |field|
             %th= relation.to_s.classify.constantize.human_attribute_name field.name
-          %th
+
+          %th{ colspan: 2, width: '5%' }
 
       %tbody
         - confirmation_message = 'Souhaitez-vous supprimer cette ligne ?'
@@ -29,18 +31,17 @@
             - attributes.each do |field|
               %td= resource.send field.name
 
-            %span.pull-right
-              %td
-                = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning' do
-                  %i.fa.fa-pencil
-              %td
-                = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: confirmation_message }, class: 'btn btn-sm btn-danger' do
-                  %i.fa.fa-trash
+            %td
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning' do
+                %i.fa.fa-pencil
+            %td
+              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-sm btn-danger' do
+                %i.fa.fa-trash
 
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
-        Pas d'enregistrements pour le moment.
+        = t('para.list.empty')
 
   .panel-footer
     = paginate @resources, theme: Para.config.pagination_theme

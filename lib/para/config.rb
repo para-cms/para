@@ -7,6 +7,6 @@ module Para
     @@current_admin_method = :current_admin_user
 
     mattr_accessor :pagination_theme
-    @@pagination_theme = :pagination_theme
+    @@pagination_theme = 'twitter-bootstrap-3'
   end
 end

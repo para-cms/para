@@ -34,10 +34,15 @@ fr:
         remove: "Supprimer"
         new: "Nouveau"
 
+    list:
+      empty: "Aucune entrée créée pour le moment"
+      delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
 
     shared:
       save: "Enregistrer"
       cancel: "Annuler"
+      add: "Créer"
+      search: "Rechercher"
 
   activerecord:
     models:
