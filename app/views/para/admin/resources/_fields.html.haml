@@ -3,17 +3,19 @@
     %td \=
 
   %td
-    = form.object.try(:name) || form.object.try(:title) || "#{ form.object.class.model_name.human }#{ (id = form.object.id) ? id : "(#{ t('para.form.nested.new') })" }"
+    - name = form.object.try(:name) || form.object.try(:title) || "#{ form.object.class.model_name.human }#{ (id = form.object.id) ? id : "(#{ t('para.form.nested.new') })" }"
+    - uid = "#{ (Time.now.to_f * 1000).to_i }-#{ (rand * 1000).to_i }"
+
+    = link_to name, "#fields-#{ uid }", data: { toggle: 'collapse' }
 
   - if allow_destroy
     %td
-      = link_to_remove_association t('para.form.nested.remove'), form, wrapper_class: 'form-inputs', class: 'btn btn-danger'
+      = link_to_remove_association t('para.form.nested.remove'), form, wrapper_class: 'form-header', class: 'btn btn-danger', data: { :'remove-also' => "#fields-#{ uid }" }
 
-%tr.form-inputs.collapse
+%tr.form-inputs.collapse{ id: "fields-#{ uid }" }
   %td{ colspan: columns_length }
     - Para::AttributeFieldMappings.new(form.object.class).fields.each do |field|
       - if field.field_type
         = form.send(field.field_method, field.name, as: field.field_type)
       - else
         = form.send(field.field_method, field.name)
-

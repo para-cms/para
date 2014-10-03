@@ -21,9 +21,19 @@ module Para
             attribute_name: attribute_name,
             allow_destroy: allow_destroy,
             reorderable: reorderable,
-            columns_length: columns_length
+            columns_length: columns_length,
+            dom_identifier: dom_identifier
           }
         )
+      end
+
+      def dom_identifier
+        @dom_identifier ||= begin
+          name = attribute_name
+          time = (Time.now.to_f * 1000).to_i
+          random = (rand * 1000).to_i
+          [name, time, random].join('-')
+        end
       end
     end
   end

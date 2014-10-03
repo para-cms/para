@@ -36,6 +36,7 @@ fr:
 
 
     shared:
+      save: "Enregistrer"
       cancel: "Annuler"
 
   activerecord:
