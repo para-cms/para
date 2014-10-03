@@ -1,3 +1,5 @@
+- attributes = [<%= attributes.join(', ') %>]
+
 = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
 .panel.panel-default
@@ -24,7 +26,7 @@
             <%- end -%>
 
             %td
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-warning' do
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-primary' do
                 %i.fa.fa-pencil
             %td
               = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
@@ -33,7 +35,11 @@
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
-        = t('para.list.empty')
+        - if filtered?(attributes)
+          = t('para.list.no_results')
+        - else
+          = t('para.list.empty')
 
-  .panel-footer
-    = paginate resources, theme: '<%= Para.config.pagination_theme %>'
+  - if resources.total_count > 1
+    .panel-footer
+      = paginate resources, theme: '<%= Para.config.pagination_theme %>'

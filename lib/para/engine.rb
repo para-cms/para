@@ -8,5 +8,11 @@ module Para
         para/admin.css
       )
     end
+
+    initializer 'Para Orderable Mixin' do
+      ActiveSupport.on_load :active_record do
+        include Para::ActiveRecordOrderableMixin
+      end
+    end
   end
 end

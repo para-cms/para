@@ -37,14 +37,19 @@ fr:
     list:
       search_title: "Recherche"
       delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
+      no_results: "Aucun résultat pour cette recherche, merci d'essayer avec d'autres critères"
       empty: "Aucune entrée créée pour le moment"
-
 
     shared:
       save: "Enregistrer"
       cancel: "Annuler"
       add: "Créer"
       search: "Rechercher"
+
+    types:
+      boolean:
+        "true": "Oui"
+        "false": "Non"
 
   activerecord:
     models:

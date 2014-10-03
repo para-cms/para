@@ -25,16 +25,20 @@
               %td= field_value_for(resource, field.name)
 
             %td
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-sm btn-warning' do
+              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-primary' do
                 %i.fa.fa-pencil
             %td
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-sm btn-danger' do
+              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
                 %i.fa.fa-trash
 
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
-        = t('para.list.empty')
+        - if filtered?(attributes)
+          = t('para.list.no_results')
+        - else
+          = t('para.list.empty')
 
-  .panel-footer
-    = paginate @resources, theme: Para.config.pagination_theme
+  - if resources.total_count > 1
+    .panel-footer
+      = paginate @resources, theme: Para.config.pagination_theme

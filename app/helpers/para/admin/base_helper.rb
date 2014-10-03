@@ -1,6 +1,8 @@
 module Para
   module Admin
     module BaseHelper
+      include Para::ApplicationHelper
+
       def find_partial_for(relation, partial)
         if lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
           "admin/#{ relation }/#{ partial }"

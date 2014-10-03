@@ -15,6 +15,7 @@ require 'para/attribute_field_mappings'
 require 'para/engine'
 require 'para/config'
 require 'para/inputs'
+require 'para/orderable'
 
 module Para
   extend ActiveSupport::Autoload

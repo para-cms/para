@@ -9,5 +9,9 @@ module Para
     def fulltext_search_param_for(attributes)
       "#{ searchable_attributes(attributes) }_cont"
     end
+
+    def filtered?(attributes)
+      params[:q] && params[:q][fulltext_search_param_for(attributes)].present?
+    end
   end
 end

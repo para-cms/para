@@ -1,3 +1,9 @@
+require 'para/attribute_field/base'
+require 'para/attribute_field/boolean'
+require 'para/attribute_field/image'
+require 'para/attribute_field/has_many'
+require 'para/attribute_field/nested_many'
+
 module Para
   class AttributeFieldMappings
     UNEDITABLE_ATTRIBUTES = %w(id component_id created_at updated_at type)
@@ -19,7 +25,12 @@ module Para
       @fields_hash = model.columns.each_with_object({}) do |column, fields|
         # Reject uneditable attributes
         unless UNEDITABLE_ATTRIBUTES.include?(column.name)
-          fields[column.name] = AttributeField.new(
+          field_class = case column.type
+          when :boolean then AttributeField::BooleanField
+          else AttributeField::Base
+          end
+
+          fields[column.name] = field_class.new(
             model, name: column.name, type: column.type
           )
         end
@@ -27,6 +38,7 @@ module Para
 
       handle_paperclip_fields!
       handle_relations!
+      handle_oderable!
     end
 
     def handle_paperclip_fields!
@@ -37,10 +49,16 @@ module Para
             @fields_hash.delete(field_name)
           end
 
-          @fields_hash[key] = ImageField.new(
+          @fields_hash[key] = AttributeField::ImageField.new(
             model, name: key, type: 'file', field_type: 'file'
           )
         end
+      end
+    end
+
+    def handle_oderable!
+      if model.orderable?
+        fields_hash.delete(:position)
       end
     end
 
@@ -50,87 +68,12 @@ module Para
 
         if Publication.nested_attributes_options[name]
           if reflection.collection?
-            @fields_hash[name] = NestedManyField.new(
+            @fields_hash[name] = AttributeField::NestedManyField.new(
               model, name: name, type: 'has_many', field_type: 'nested_many'
             )
           end
-        else
-
         end
       end
     end
-  end
-
-  class AttributeField
-    attr_reader :model, :name, :type, :field_type, :field_method
-
-    def initialize(model, options = {})
-      @model = model
-      @name = options[:name]
-      @type = options[:type]
-      @field_type = options[:field_type]
-      determine_name_and_field_method!
-    end
-
-    def determine_name_and_field_method!
-      name = @name
-
-      reference = model.reflect_on_all_associations.find do |association|
-        association.foreign_key == name
-      end
-
-      if reference
-        @name = reference.name
-        @field_method = :association
-      else
-        @name = name
-        @field_method = :input
-      end
-    end
-
-    def value_for(instance)
-      instance.send(name)
-    end
-  end
-
-  class ImageField < AttributeField
-    include ActionView::Helpers::AssetTagHelper
-
-    def value_for(instance)
-      style = attachment_thumb_style_for(instance)
-      image_tag(instance.send(name).url(style))
-    end
-
-    private
-
-    def attachment_thumb_style_for(instance)
-      styles = instance.send(name).styles.map(&:first)
-      # Check if there's a :thumb or :thumbnail style in attachment definition
-      thumb = styles.find { |s| %w(thumb thumbnail).include?(s.to_s) }
-      # Return the potentially smallest size !
-      thumb || styles.first || :original
-    end
-  end
-
-  class HasManyField < AttributeField
-    def value_for(instance)
-      instance.send(name).map do |resource|
-        resource_name(resource)
-      end.join(', ')
-    end
-
-    private
-
-    def resource_name(resource)
-      [:name, :title].each do |method|
-        return resource.send(method) if resource.respond_to?(method)
-      end
-
-      model_name = resource.class.model_name.human
-      "#{ model_name } - #{ resource.id }"
-    end
-  end
-
-  class NestedManyField < HasManyField
   end
 end
