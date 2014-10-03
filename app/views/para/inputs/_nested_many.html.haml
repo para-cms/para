@@ -13,8 +13,8 @@
     %tbody{ id: dom_identifier }
 
       = form.fields_for attribute_name do |nested_form|
-        = render partial: 'para/admin/resources/fields', locals: { form: nested_form, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length }
+        = render partial: 'para/admin/resources/fields', locals: { form: nested_form, parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length }
 
   %hr
 
-  = link_to_add_association t('para.form.nested.add'), form, :publication_images, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { locals: { reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length } }
+  = link_to_add_association t('para.form.nested.add'), form, attribute_name, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { locals: { parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length } }

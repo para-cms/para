@@ -8,5 +8,8 @@ module Para
 
     mattr_accessor :pagination_theme
     @@pagination_theme = 'twitter-bootstrap-3'
+
+    mattr_accessor :admin_title
+    @@admin_title = nil
   end
 end

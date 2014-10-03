@@ -12,6 +12,9 @@ fr:
           success: "%{model} supprimé(e)"
           error: "Impossible de supprimer le(a) %{model}"
 
+    admin:
+      title: "Administration"
+
     confirmation:
       shared:
         destroy: 'Etes-vous sure de vouloir supprimer %{model} ?'

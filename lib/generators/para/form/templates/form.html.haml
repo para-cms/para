@@ -1,5 +1,4 @@
-- url = component_relation_path(@component, resource.class.name, resource)
-= simple_form_for [:admin, @component, resource], url: url, as: :resource do |f|
+= simple_form_for [:admin, @component, resource], url: component_relation_path(@component, resource.class.name, resource), as: :resource, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
   = f.error_notification
 
   .form-inputs
@@ -12,5 +11,5 @@
   <%- end -%>
 
   .form-actions
-    = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-danger'
-    = f.button :submit, class: 'btn-primary'
+    = form.button :submit, t('para.shared.save'), class: 'btn-success'
+    = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-default'

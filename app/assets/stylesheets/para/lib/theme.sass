@@ -1,0 +1,565 @@
+//***************************************************************
+//    Imports
+//***************************************************************
+// --- Importing Bootstrap variables for colors and orther --- //
+@import "variables"
+
+// ---------------------- All bootstrap  --------------------- //
+@import "bootstrap"
+
+// ------------------------ Compass  ------------------------- //
+@import "compass/css3/text-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/transition"
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+@import "compass/css3/transform"
+
+//***************************************************************
+//    Bootstrap Overriding by Glyph (flat design)
+//***************************************************************
+// // ------------------------ Components  -------------------- //
+
+// // ------------------------ Alert  ------------------------- //
+.alert
+  > i
+    margin-right: 10px
+    margin-top: 2px
+  #error_explanation
+    margin-left: 30px
+    margin-top: -3px
+    h2
+      margin-top: 0
+      font-size: 20px
+    ul
+      padding-left: 20px
+// // ------------------------ Navbar  ------------------------ //
+
+// // ------------------------ Popover  ------------------------ //
+.popover
+  +border-radius($border-radius-base)
+
+// // ------------------------ Buttons  ----------------------- //
+
+@mixin tab-focus()
+  outline: none
+  outline-offset: 0
+
+@mixin button-hover-focus-active($color-border, $color-bg)
+  +box-shadow(0px -2px $color-border inset)
+  &:hover
+    +box-shadow(0px -2px darken($color-border, 12%) inset)
+    background-color: darken($color-bg, 2%)
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    background-color: darken($color-bg, 2%)
+    +box-shadow(0px -1px 5px $color-border inset)
+
+@mixin button-variant-inverse($color-border, $color-bg)
+  color: $color-border
+  background-color: transparent
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    color: #fff
+    background-color: $color-bg
+    outline: none
+    outline: 0
+
+
+.btn,
+input,
+textarea,
+select,
+button
+  +single-transition(all, .1s, linear)
+  &,
+  &:active,
+  &.active
+    &:focus
+      +tab-focus()
+  &:hover,
+  &:focus
+    +tab-focus()
+
+
+.btn-default
+  +button-hover-focus-active($btn-default-border, $btn-default-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-default-border, $btn-default-bg)
+    color: darken($btn-default-border, 15%)
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open &.dropdown-toggle
+      color: darken($btn-default-border, 15%)
+
+.btn-primary
+  +button-hover-focus-active($btn-primary-border, $btn-primary-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-primary-border, $btn-primary-bg)
+
+.btn-warning
+  +button-hover-focus-active($btn-warning-border, $btn-warning-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-warning-border, $btn-warning-bg)
+
+.btn-success
+  +button-hover-focus-active($btn-success-border, $btn-success-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-success-border, $btn-success-bg)
+
+.btn-danger
+  +button-hover-focus-active($btn-danger-border, $btn-danger-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-danger-border, $btn-danger-bg)
+
+.btn-info
+  +button-hover-focus-active($btn-info-border, $btn-info-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-info-border, $btn-info-bg)
+
+// // ------------------------ Well  -------------------- //
+.well p:last-child
+  margin-bottom: 0
+
+// // ------------------------ Badge  ------------------- //
+@mixin badge-variant($color, $background)
+  background-color: $background
+  color: $color
+
+.badge-default
+  border: 1px solid darken($btn-default-border, 5%)
+  +badge-variant($btn-default-color, $btn-default-bg)
+
+.badge-primary
+  +badge-variant($btn-primary-color, $btn-primary-bg)
+
+.badge-warning
+  +badge-variant($btn-warning-color, $btn-warning-bg)
+
+.badge-success
+  +badge-variant($btn-success-color, $btn-success-bg)
+
+.badge-danger
+  +badge-variant($btn-danger-color, $btn-danger-bg)
+
+.badge-info
+  +badge-variant($btn-info-color, $btn-info-bg)
+
+.badge-inverse
+  background-color: transparent !important
+  &.badge-info
+    border: 1px solid $btn-info-border
+    color: $btn-info-bg
+  &.badge-default
+    border: 1px solid $btn-default-border
+    color: $btn-default-color
+  &.badge-primary
+    border: 1px solid $btn-primary-border
+    color: $btn-primary-bg
+  &.badge-warning
+    border: 1px solid $btn-warning-border
+    color: $btn-warning-bg
+  &.badge-success
+    border: 1px solid $btn-success-border
+    color: $btn-success-bg
+  &.badge-danger
+    border: 1px solid $btn-danger-border
+    color: $btn-danger-bg
+
+
+// // ------------------------ Label  --------------------- //
+.label
+  &.label-default
+    color: $btn-default-color
+
+.label-inverse
+  background-color: transparent !important
+  &.label-default
+    border: 1px solid $btn-default-border
+    color: $btn-default-color
+  &.label-success
+    border: 1px solid $btn-success-border
+    color: $btn-success-bg
+  &.label-primary
+    border: 1px solid $btn-primary-border
+    color: $btn-primary-bg
+  &.label-warning
+    border: 1px solid $btn-warning-border
+    color: $btn-warning-bg
+  &.label-danger
+    border: 1px solid $btn-danger-border
+    color: $btn-danger-bg
+  &.label-info
+    border: 1px solid $btn-info-border
+    color: $btn-info-bg
+
+// // ------------------------ Tabs  ------------------------- //
+
+
+// // ------------------------ Form  ------------------------- //
+.radio-inline,
+.checkbox-inline
+  margin-right: 15px
+
+
+.form-actions
+  padding-top: 10px
+  border-top: 1px solid $gray-light
+
+
+
+.form-control,
+.selectize-input.focus
+  +box-shadow(none)
+  &:focus
+    +tab-focus()
+    +box-shadow(none)
+
+.form-icon-wrapper
+  position: relative
+  .form-control:last-child
+    padding-left: 40px
+  .form-icon
+    position: absolute
+    top: 2px
+    left: 8.5px
+    width: 30px
+    line-height: 30px
+    text-align: center
+    font-size: 17px
+    color: $gray-light
+    z-index: 20
+
+.has-error,
+.has-warning,
+.has-success
+  .form-control
+    +box-shadow(none)
+    &:focus
+      +box-shadow(none)
+
+.has-warning
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline
+    color: $brand-warning
+  .form-control
+    border-color: $brand-warning
+    &:focus
+      border-color: darken($brand-warning, 10%)
+  .form-control-feedback
+    color: $brand-warning
+
+.has-success
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline
+    color: $brand-success
+  .form-control
+    border-color: $brand-success
+    &:focus
+      border-color: darken($brand-success, 10%)
+  .form-control-feedback
+    color: $brand-success
+
+// // ------------------------ DropDown  ------------------------- //
+
+.btn-dropdown
+  .dropdown-toggle .caret
+    margin-left: 6px
+
+// TO DO !!!
+.dropdown-submenu
+  position: relative
+  &:hover .dropdown-menu
+    display: block
+  .dropdown-menu
+    top: 0
+    left: 100%
+    margin-top: -6px
+    margin-left: -1px
+
+.dropup .dropdown-submenu .dropdown-menu
+  top: auto
+  bottom: 0
+  margin-top: 0
+  margin-bottom: -2px
+
+.dropdown-submenu > a:after
+  display: block
+  content: " "
+  float: right
+  width: 0
+  height: 0
+  border-color: transparent
+  border-style: solid
+  border-width: 5px 0 5px 5px
+  border-left-color: #000
+  margin-top: 5px
+  margin-right: -10px
+
+.dropdown-default .dropdown-submenu
+  a:after
+    border-left-color: #434a54
+
+.dropdown-submenu:hover
+  a:after
+    border-left-color: #000
+
+.dropdown-submenu.pull-left
+  float: none
+
+.dropdown-submenu.pull-left .dropdown-menu
+  left: -100%
+  margin-left: 10px
+// TO DO !!!
+
+// ------------------------ Progress Bars  ---------------------- //
+
+// ------------------------ Breadcrumb  ---------------------- //
+.breadcrumb-arrow
+  padding: 0
+  list-style: none
+  background-color: $gray-lighter
+  height: 36px
+  line-height: 36px
+
+  li:first-child a
+    +border-left-radius($border-radius-base)
+
+  li,
+  li a,
+  li span
+    display: inline-block
+    vertical-align: top
+
+  li:not(:first-child)
+    margin-left: -5px
+
+  li + li:before
+    padding: 0
+    content: " "
+
+  li span
+    padding: 0 10px
+
+  li a,
+  li:not(:first-child) span
+    padding: 0 10px 0 25px
+    height: 36px
+    line-height: 36px
+
+  li:first-child a
+    padding: 0 10px
+
+  li a
+    position: relative
+    border: 1px solid $gray-lighter
+    color: $gray
+    background-color: $gray-lighter
+    text-decoration: none
+
+  li:first-child a
+    padding-left: 10px
+
+  li a:before,
+  li a:after
+    position: absolute
+    top: -1px
+    content: ''
+    width: 0
+    height: 0
+    border-top: 18px solid transparent
+    border-bottom: 18px solid transparent
+
+  li a:before
+    right: -10px
+    border-left-width: 11px
+    border-left-style: solid
+    border-left-color: $gray-lighter
+    z-index: 3
+
+  li a:after
+    right: -11px
+    border-left: 11px solid darken($gray-lighter, 10%)
+    z-index: 2
+
+  li a:hover,
+  li a:focus
+    background-color: darken($gray-lighter, 5%)
+    border: 1px solid darken($gray-lighter, 5%)
+
+  li a:hover:before,
+  li a:focus:before
+    border-left-color: darken($gray-lighter, 5%)
+
+  li a:active
+    background-color: darken($gray-lighter, 10%)
+    border: 1px solid darken($gray-lighter, 10%)
+
+  li a:active:before,
+  li a:active:after
+    border-left-color: darken($gray-lighter, 10%)
+
+  li span
+    color: $gray
+
+// ------------------------ Ribbon  ---------------------- //
+
+.with-ribbon
+  position: relative
+  overflow: visible
+
+.ribbon-wrapper
+  width: 85px
+  height: 88px
+  overflow: hidden
+  position: absolute
+  top: -3px
+  right: -3px
+
+.ribbon
+  position: relative
+  padding: 7px 0
+  left: -5px
+  top: 15px
+  width: 120px
+  font-weight: bold
+  font-size: 12px
+  color: $gray
+  text-align: center
+  z-index: 100
+  +rotate(45deg)
+  &:before
+    left: 0
+  &:after
+    right: 0
+  &:before,
+  &:after
+    position: absolute
+    bottom: -2px
+    content: ""
+    border-left:  3px solid transparent
+    border-right: 3px solid transparent
+
+.ribbon-success
+  background-color: $brand-success
+  color: darken($brand-success, 30%)
+  &:before,
+  &:after
+    border-top: 3px solid darken($brand-success, 15%)
+
+.ribbon-primary
+  background-color: $brand-primary
+  color: darken($brand-primary, 30%)
+  &:before,
+  &:after
+    border-top: 3px solid darken($brand-primary, 15%)
+
+.ribbon-info
+  background-color: $brand-info
+  color: darken($brand-info, 30%)
+  &:before,
+  &:after
+    border-top: 3px solid darken($brand-info, 15%)
+
+.ribbon-danger
+  background-color: $brand-danger
+  color: darken($brand-danger, 30%)
+  &:before,
+  &:after
+    border-top: 3px solid darken($brand-danger, 15%)
+
+.ribbon-warning
+  background-color: $brand-warning
+  color: darken($brand-warning, 30%)
+  &:before,
+  &:after
+    border-top: 3px solid darken($brand-warning, 15%)
+
+
+// ------------------------ Panel  ---------------------- //
+.panel
+  &.panel-default
+    +box-shadow(0 1px 0px $panel-default-border)
+  &.panel-primary
+    +box-shadow(0 1px 0px $panel-primary-border)
+  &.panel-succes
+    +box-shadow(0 1px 0px $panel-success-border)
+  &.panel-danger
+    +box-shadow(0 1px 0px $panel-danger-border)
+  &.panel-warning
+    +box-shadow(0 1px 0px $panel-warning-border)
+  &.panel-info
+    +box-shadow(0 1px 0px $panel-info-border)
+
+
+// ------------------------ Footer  ---------------------- //
+// Variables
+//------------------------------------------------------
+$footer-background-color:            $gray-darker !default
+$footer-menu-title-color:            $gray-lighter !default
+$footer-menu-item-color:             $gray-light !default
+$footer-menu-item-color-hover:       $gray !default
+$footer-logo-color:                  #fff !default
+
+.footer
+  padding: 40px 0
+  background-color: $footer-background-color
+
+  .footer-logo,
+  .footer-nav
+    float: left
+    padding: 0 20px
+    width: 20%
+
+  @media (max-width: 768px)
+    .footer-logo
+      margin-bottom: 20px
+
+    .footer-logo,
+    .footer-nav
+      float: none
+      display: block
+      width: 100%
+
+  .footer-logo
+    margin-top: -5px
+    height: 32px
+    line-height: 32px
+    img
+      margin-right: 10px
+    a
+      font-size: 20px
+      font-weight: bold
+      color: $footer-logo-color
+      &:hover,
+      &:active
+        text-decoration: none
+  .footer-nav .nav-title
+    margin-bottom: 15px
+    color: $footer-menu-title-color
+  .footer-nav .nav-item
+    line-height: 28px
+    a
+      color: $footer-menu-item-color
+      &:hover,
+      &:active
+        color: $footer-menu-item-color-hover
+        text-decoration: none
+  .footer-copyright
+    color: $footer-menu-item-color
+

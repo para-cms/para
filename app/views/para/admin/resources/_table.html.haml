@@ -1,13 +1,16 @@
 - attributes = attribute_field_mappings_for(@component, relation)
 
-= render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
-
 .panel.panel-default
   .panel-heading
-    = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
-      %i.fa.fa-plus
-      = t('para.shared.add')
+    %h3.panel-title
+      = relation_klass_for(@component, relation).model_name.human.pluralize
+    .panel-btns.pull-right
+      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
+        %i.fa.fa-plus
+        = t('para.shared.add')
     .clearfix
+
+  = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
   - if resources.length > 0
     %table.table.table-hover.para-component-relation-table

@@ -1,0 +1,97 @@
+@import "variables"
+@import "compass/css3/inline-block"
+
+@mixin fontAwesome
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  /* sprites.less reset */
+  +inline-block
+  width: auto
+  height: auto
+  line-height: normal
+  vertical-align: baseline
+  background-image: none
+  background-position: 0% 0%
+  background-repeat: repeat
+  margin-top: 0
+
+// ------------------------ Radio & Checkbox  ------------------------- //
+
+input[type=checkbox].check_boxes,
+input[type=radio].radio_buttons
+  position: absolute
+  overflow: hidden
+  clip: rect(0 0 0 0)
+  height: 1px
+  width: 1px
+  margin: -1px
+  padding: 0
+  border: 0
+
+input[type=checkbox].check_boxes:checked + label.check_boxes:before,
+input[type=checkbox].check_boxes:checked + .checkbox-icon:before
+  content: "\f046"
+
+input[type=checkbox].check_boxes:focus + label.check_boxes:before,
+input[type=checkbox].check_boxes:focus + .checkbox-icon:before
+  color: lighten($input-border-focus, 10%)
+
+.form-group.boolean
+  padding-left: 20px
+
+.boolean .checkbox-icon,
+.checkbox-inline label.check_boxes,
+.checkbox .checkbox-icon
+  &:hover
+    &:before
+      color: lighten($input-border-focus, 10%)
+  &:before
+    +fontAwesome
+    content: "\f096"
+    color: $input-color
+    width: 13px
+
+input[type=radio].radio_buttons:checked + label.radio_buttons:before,
+input[type=radio].radio_buttons:checked + .radio-icon:before
+  content: "\f192"
+
+input[type=radio].radio_buttons:focus + label.radio_buttons:before,
+input[type=radio].radio_buttons:focus + .radio-icon:before
+  color: lighten($input-border-focus, 10%)
+
+.radio-inline label.radio_buttons,
+.radio .radio-icon
+  &:hover
+    &:before
+      color: lighten($input-border-focus, 10%)
+  &:before
+    +fontAwesome
+    content: "\f10c"
+    color: $input-color
+
+.radio,
+.checkbox
+  padding-left: 0
+
+// INLINE OVERRIDE //
+.radio-inline,
+.checkbox-inline
+  padding-left: 0
+  label.form-control
+    height: auto
+    margin-bottom: 5px
+    padding: 0
+    color: black
+    font-weight: normal
+    border: none
+    background-color: transparent
+    background: none
+    +inline-block
+    &:hover
+      cursor: pointer
+    &:before
+      display: inline-block
+      width: 20px

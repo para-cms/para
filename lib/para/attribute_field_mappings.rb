@@ -50,7 +50,7 @@ module Para
           end
 
           @fields_hash[key] = AttributeField::ImageField.new(
-            model, name: key, type: 'file', field_type: 'file'
+            model, name: key, type: 'image', field_type: 'image'
           )
         end
       end

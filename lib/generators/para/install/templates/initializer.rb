@@ -7,4 +7,7 @@ Para.config do |config|
 
   # Configure the default Kaminari pagination theme to use
   # config.pagination_theme = 'twitter-bootstrap-3'
+
+  # Configure the default admin HTML page <title>
+  # config.admin_title = I18n.t('para.admin.title')
 end
