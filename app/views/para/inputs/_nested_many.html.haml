@@ -1,20 +1,8 @@
-.nested-many-control
-  %table.table
-    %thead
-      %tr
-        - if reorderable
-          %th{ width: '10%' }
+.nested-many-field{ class: ('orderable' if reorderable) }
+  .fields-list{ id: dom_identifier }
+    = form.simple_fields_for attribute_name do |nested_form|
+      = render partial: 'para/admin/resources/fields', locals: { form: nested_form, parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy }
 
-        %th
-          = t('para.form.nested.name')
-
-        - if allow_destroy
-          %th{ width: '10%' }
-    %tbody{ id: dom_identifier }
-
-      = form.fields_for attribute_name do |nested_form|
-        = render partial: 'para/admin/resources/fields', locals: { form: nested_form, parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length }
-
-  %hr
-
-  = link_to_add_association t('para.form.nested.add'), form, attribute_name, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { locals: { parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy, columns_length: columns_length } }
+  = link_to_add_association form, attribute_name, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { locals: { parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy } } do
+    %i.fa.fa-plus
+    = t('para.form.nested.add')

@@ -1,19 +1,27 @@
-%tr.form-header
-  - if reorderable
-    %td \=
+.panel.panel-default.form-fields
+  - name = form.object.try(:name) || form.object.try(:title) || "#{ form.object.class.model_name.human } - #{ (id = form.object.id) ? id : "(#{ t('para.form.nested.new') })" }"
+  - uid = "fields-#{ (Time.now.to_f * 1000).to_i }-#{ form.object.id || "_new_#{ attribute_name }_id"}"
 
-  %td
-    - name = form.object.try(:name) || form.object.try(:title) || "#{ form.object.class.model_name.human } - #{ (id = form.object.id) ? id : "(#{ t('para.form.nested.new') })" }"
-    - uid = "fields-#{ (Time.now.to_f * 1000).to_i }-#{ form.object.id || "_new_#{ attribute_name }_id"}"
+  .panel-heading
+    - if reorderable
+      %span.panel-order-anchor
+        %i.fa.fa-bars
+        = form.hidden_field :position, class: 'resource-position-field'
 
-    = link_to name, "##{ uid }", data: { toggle: 'collapse', :'open-on-insert' => true }
+    %h3.panel-title
+      = link_to "##{ uid }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
+        = name
+        %span.caret
 
-  - if allow_destroy
-    %td
-      = link_to_remove_association t('para.form.nested.remove'), form, wrapper_class: 'form-header', class: 'btn btn-danger', data: { :'remove-also' => "##{ uid }" }
+    - if allow_destroy
+      .panel-btns.pull-right
+        = link_to_remove_association form, wrapper_class: 'form-fields', class: 'btn btn-danger' do
+          %i.fa.fa-remove
+          = t('para.form.nested.remove')
 
-%tr.form-inputs.collapse{ id: uid }
-  %td{ colspan: columns_length }
+    .clearfix
+
+  .panel-body.form-inputs.collapse{ id: uid }
     - model_field_mappings(form.object.class).fields.each do |field|
       -# Do not display inverse relation when nested
       - next if (reflection = parent.class.reflections[attribute_name]) && reflection.options[:inverse_of] == field.name

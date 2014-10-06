@@ -7,11 +7,7 @@ module Para
         model = @builder.object.class
         nested = model && model.nested_attributes_options[attribute_name]
         allow_destroy = nested && nested[:allow_destroy]
-        reorderable = false
-
-        columns_length = 1
-        columns_length += 1 if allow_destroy
-        columns_length += 1 if reorderable
+        reorderable = model.reflections[attribute_name].klass.orderable?
 
         template.render(
           partial: 'para/inputs/nested_many',
@@ -21,7 +17,6 @@ module Para
             attribute_name: attribute_name,
             allow_destroy: allow_destroy,
             reorderable: reorderable,
-            columns_length: columns_length,
             dom_identifier: dom_identifier
           }
         )

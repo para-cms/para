@@ -1,11 +1,43 @@
-$(document).on 'page:change', ->
-  $('form').on 'cocoon:before-remove', (e, $element) ->
-    removeAlso = $element.find('[data-remove-also]').data('remove-also')
-    $(removeAlso).hide() if removeAlso
+class Para.NestedManyField
+  constructor: (@$field) ->
+    @$fieldsList = @$field.find('.fields-list')
 
-  $('form').on 'cocoon:after-insert', (e, $element) ->
+    @initializeOrderable()
+    @initializeCocoon()
+
+  initializeOrderable: ->
+    @orderable = @$field.hasClass('orderable')
+    return unless @orderable
+
+    @$fieldsList.sortable
+      handle: '.panel-order-anchor'
+      items: '.form-fields'
+      forcePlaceholderSize: true
+
+    @$fieldsList.on('sortupdate', $.proxy(@sortUpdate, this))
+
+  sortUpdate: (e, ui) ->
+    @$fieldsList.find('.form-fields').each (i, el) ->
+      $(el).find('.resource-position-field').val(i)
+
+  initializeCocoon: ->
+    @$fieldsList.on 'cocoon:after-insert', $.proxy(@afterInsertField, this)
+
+  afterInsertField: (e, $element) ->
     if ($collapsible = $element.find('[data-open-on-insert="true"]')).length
-      $target = $($collapsible.attr('href'))
-      $target.collapse('show')
+      @openInsertedField($collapsible)
+
+    if @orderable
+      @$fieldsList.sortable('reload')
+
+  openInsertedField: ($field) ->
+    $target = $($field.attr('href'))
+    $target.collapse('show').on 'shown.bs.collapse', ->
       $.scrollTo($target, 200)
       $target.find('input, select').eq('0').focus()
+
+
+
+
+$(document).on 'page:change', ->
+  $('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))
