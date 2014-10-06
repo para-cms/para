@@ -44,6 +44,23 @@ module Para
         redirect_to component_path(@component)
       end
 
+      def order
+        ids = params[:resources].map { |_, resource| resource[:id] }
+
+        resources = resource_model.where(id: ids)
+        resources_hash = resources.each_with_object({}) do |resource, hash|
+          hash[resource.id.to_s] = resource
+        end
+
+        ActiveRecord::Base.transaction do
+          params[:resources].each do |resource|
+            resource = resources_hash[resource[:id]]
+            resource.position = resource[:position]
+            resource.save(validate: false)
+          end
+        end
+      end
+
       private
 
       def resource

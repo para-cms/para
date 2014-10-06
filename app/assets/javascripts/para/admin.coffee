@@ -9,6 +9,7 @@
 #= require cocoon
 #= require_self
 #= require_tree ./inputs
+#= require_tree ./admin
 
 # Initialize scope
 window.Para = {}

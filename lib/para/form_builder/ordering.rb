@@ -7,14 +7,8 @@ module Para
 
       def reorder_anchor(options = {})
         return "" unless orderable?
-
-        options[:class] ||= ''
-        options[:class] = [options[:class], 'panel-order-anchor'].join(' ')
-
-        template.content_tag(:span, class: options[:class]) do
-          template.content_tag(:i, '', class: 'fa fa-bars') +
-          hidden_field(:position, class: 'resource-position-field')
-        end
+        options[:form] = self
+        template.reorder_anchor(options)
       end
     end
   end

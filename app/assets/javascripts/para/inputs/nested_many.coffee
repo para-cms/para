@@ -10,8 +10,7 @@ class Para.NestedManyField
     return unless @orderable
 
     @$fieldsList.sortable
-      handle: '.panel-order-anchor'
-      items: '.form-fields'
+      handle: '.order-anchor'
       forcePlaceholderSize: true
 
     @$fieldsList.on('sortupdate', $.proxy(@sortUpdate, this))
