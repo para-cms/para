@@ -12,8 +12,10 @@
     .clearfix
 
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
-    - form.nested_fields.each do |field|
-      - if field.field_type
-        = form.send(field.field_method, field.name, as: field.field_type)
-      - else
-        = form.send(field.field_method, field.name)
+  <%- attributes.each do |field| -%>
+    <%- if field.field_type -%>
+    = form.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
+    <%- else -%>
+    = form.<%= field.field_method %> :<%= field.name %>
+    <%- end -%>
+  <%- end -%>

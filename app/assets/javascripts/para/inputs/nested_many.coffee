@@ -37,7 +37,5 @@ class Para.NestedManyField
       $target.find('input, select').eq('0').focus()
 
 
-
-
 $(document).on 'page:change', ->
   $('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))

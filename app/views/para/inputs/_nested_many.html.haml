@@ -1,8 +1,8 @@
-.nested-many-field{ class: ('orderable' if reorderable) }
+.nested-many-field{ class: ('orderable' if orderable) }
   .fields-list{ id: dom_identifier }
-    = form.simple_fields_for attribute_name do |nested_form|
-      = render partial: 'para/admin/resources/fields', locals: { form: nested_form, parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy }
+    = form.simple_fields_for attribute_name, nested_attribute_name: attribute_name, orderable: orderable do |nested_form|
+      = render partial: find_partial_for(model.model_name.plural, :fields), locals: { form: nested_form, parent: form.object }
 
-  = link_to_add_association form, attribute_name, partial: 'para/admin/resources/fields', form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { locals: { parent: form.object, attribute_name: attribute_name, reorderable: reorderable, allow_destroy: allow_destroy } } do
+  = link_to_add_association form, attribute_name, partial: find_partial_for(model.model_name.plural, :fields), form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { parent: form.object } } do
     %i.fa.fa-plus
     = t('para.form.nested.add')

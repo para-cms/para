@@ -72,4 +72,13 @@ Add `acts_as_orderable` to your model and a `position:integer{ default: 0 }` fie
 
 `position` fields are not shown by default when a model is orderable
 
+### Nested form fields
+
+When you have a nested model, using `accept_nested_attributes_for`, Para will automatically
+allow you to add / edit and delete thos nested resources withing the parent form
+
+If you want to override the nested form behavior, you can generate the fields
+with (where `ResourceName` is the name of the child model) :
+
+    rails g para:nested_fields ResourceName
 

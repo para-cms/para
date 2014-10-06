@@ -4,19 +4,17 @@ module Para
       def input(wrapper_options = nil)
         input_html_options[:class] << "nested-many"
 
-        model = @builder.object.class
-        nested = model && model.nested_attributes_options[attribute_name]
-        allow_destroy = nested && nested[:allow_destroy]
-        reorderable = model.reflections[attribute_name].klass.orderable?
+        parent_model = @builder.object.class
+        model = parent_model.reflections[attribute_name].klass
+        orderable = options.fetch(:orderable, model.orderable?)
 
         template.render(
           partial: 'para/inputs/nested_many',
           locals: {
             form: @builder,
-            input_html_options: input_html_options,
+            model: model,
             attribute_name: attribute_name,
-            allow_destroy: allow_destroy,
-            reorderable: reorderable,
+            orderable: orderable,
             dom_identifier: dom_identifier
           }
         )

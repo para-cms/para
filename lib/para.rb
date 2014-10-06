@@ -16,6 +16,7 @@ require 'para/engine'
 require 'para/config'
 require 'para/inputs'
 require 'para/orderable'
+require 'para/form_builder'
 
 module Para
   extend ActiveSupport::Autoload
