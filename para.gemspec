@@ -32,6 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'ransack'
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'request_store'
-
+  s.add_dependency 'rspec-core'
   s.add_development_dependency 'sqlite3'
 end
