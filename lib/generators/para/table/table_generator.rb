@@ -2,10 +2,13 @@ module Para
   class TableGenerator < Rails::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
-    desc 'Para table generator'
+    desc 'Para resources table generator'
 
-    def generate_form
-      template "_table.haml", "app/views/admin/#{ plural_name }/_table.haml"
+    def generate_table
+      template(
+        "_table.html.haml",
+        "app/views/admin/#{ plural_name }/_table.haml"
+      )
     end
 
     private
@@ -15,6 +18,12 @@ module Para
         model = Para.const_get(class_name)
         AttributeFieldMappings.new(model).fields
       end
+    end
+
+    def attributes_list
+      @attributes_list ||= attributes.map do |field|
+        field.name.to_sym.inspect
+      end.join(', ')
     end
   end
 end

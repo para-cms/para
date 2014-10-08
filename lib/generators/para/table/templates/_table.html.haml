@@ -1,26 +1,39 @@
-- attributes = [<%= attributes.join(', ') %>]
-
-= render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
+/ You can change
+- attributes = model_field_mappings(<%= class_name %>, [<%= attributes_list %>])
 
 .panel.panel-default
   .panel-heading
-    = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
-      %i.fa.fa-plus
-      = t('para.shared.add')
+    %h3.panel-title
+      = <%= class_name %>.model_name.human
+
+    .panel-btns.pull-right
+      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
+        %i.fa.fa-plus
+        = t('para.shared.add')
+
     .clearfix
 
+  = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes.fields }
+
   - if resources.length > 0
-    %table.table.table-hover.para-component-relation-table
+    %table.table.table-hover.para-component-relation-table{ class: ('orderable' if <%= class_name %>.orderable?), data: { :'order-url' => (component_relation_path(@component, relation, model.new, :order) if <%= class_name %>.orderable?) } }
       %thead
         %tr
+          - if <%= class_name %>.orderable?
+            %th
+
           <%- attributes.each do |field| -%>
           %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
           <%- end -%>
+
           %th.actions{ colspan: 2 }
 
       %tbody
         - resources.each do |resource|
           %tr
+            - if <%= class_name %>.orderable?
+              %td= reorder_anchor(value: resource.position, data: { id: resource.id })
+
             <%- attributes.each do |field| -%>
             %td= field_value_for(resource, :<%= field.name %>)
             <%- end -%>
@@ -35,7 +48,7 @@
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
-        - if filtered?(attributes)
+        - if filtered?(attributes.fields)
           = t('para.list.no_results')
         - else
           = t('para.list.empty')

@@ -9,10 +9,11 @@ module Para
     UNEDITABLE_ATTRIBUTES = %w(id component_id created_at updated_at type)
     PAPERCLIP_SUFFIXES = %w(file_name content_type file_size updated_at)
 
-    attr_reader :model, :fields_hash
+    attr_reader :model, :fields_hash, :whitelist_attributes
 
-    def initialize(model)
+    def initialize(model, whitelist_attributes: nil)
       @model = model
+      @whitelist_attributes = whitelist_attributes
 
       process_fields!
     end
@@ -21,8 +22,16 @@ module Para
       @fields_hash.values
     end
 
+    private
+
+    def whitelisted?(attribute_name)
+      !whitelist_attributes || whitelist_attributes.include?(attribute_name)
+    end
+
     def process_fields!
       @fields_hash = model.columns.each_with_object({}) do |column, fields|
+        next unless whitelisted?(column.name)
+
         # Reject uneditable attributes
         unless UNEDITABLE_ATTRIBUTES.include?(column.name)
           field_class = case column.type

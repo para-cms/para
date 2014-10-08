@@ -25,7 +25,7 @@ class Para.ResourceTable
   updateOrder: ->
     console.log 'buildOrderedData', @buildOrderedData()
 
-    $.ajax(
+    Para.ajax(
       url: @orderUrl
       method: 'patch'
       data:

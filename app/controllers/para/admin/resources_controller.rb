@@ -3,6 +3,8 @@ require_dependency "para/application_controller"
 module Para
   module Admin
     class ResourcesController < Para::Admin::BaseController
+      class_attribute :resource_name, :resource_class
+
       load_and_authorize_resource :component, class: 'Para::Component::Base',
                                   find_by: :slug
 
@@ -45,7 +47,9 @@ module Para
       end
 
       def order
-        ids = params[:resources].map { |_, resource| resource[:id] }
+        resources_params = params[:resources].values
+
+        ids = resources_params.map { |resource| resource[:id] }
 
         resources = resource_model.where(id: ids)
         resources_hash = resources.each_with_object({}) do |resource, hash|
@@ -53,22 +57,60 @@ module Para
         end
 
         ActiveRecord::Base.transaction do
-          params[:resources].each do |resource|
-            resource = resources_hash[resource[:id]]
-            resource.position = resource[:position]
+          resources_params.each do |resource_params|
+            resource = resources_hash[resource_params[:id]]
+            resource.position = resource_params[:position].to_i
             resource.save(validate: false)
           end
         end
+
+        head 200
       end
 
       private
 
+      def self.resource(name, options = {})
+        default_options = {
+          class: name.to_s.camelize,
+          through: :component,
+          parent: false
+        }
+
+        default_options.each do |key, value|
+          options[key] = value unless options.key?(key)
+        end
+
+        self.resource_name = name
+        self.resource_class = options[:class]
+
+        load_and_authorize_resource(name, options)
+      end
+
+      def resource_model
+        @resource_model ||= begin
+          ensure_resource_name_defined!
+          Para.const_get(self.class.resource_class)
+        end
+      end
+
       def resource
-        raise "Please implement #resource in the child resource controller"
+        @resource ||= begin
+          ensure_resource_name_defined!
+          instance_variable_get(:"@#{ self.class.resource_name }")
+        end
       end
 
       def resource_params
         @resource_params ||= params.require(:resource).permit!
+      end
+
+      def ensure_resource_name_defined!
+        unless self.class.resource_name
+          raise "Resource not defined in your controller. " \
+                "You can define the resource of your controller with the " \
+                "`resource :resource_name` macro when subclassing " \
+                "Para::Admin::ResourcesController"
+        end
       end
     end
   end

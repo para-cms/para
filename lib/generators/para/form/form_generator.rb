@@ -5,7 +5,10 @@ module Para
     source_root File.expand_path("../templates", __FILE__)
 
     def generate_form
-      template "form.html.haml", "app/views/admin/#{ plural_name }/_form.html.haml"
+      template(
+        "_form.html.haml",
+        "app/views/admin/#{ plural_name }/_form.html.haml"
+      )
     end
 
     private

@@ -1,22 +1,28 @@
 # Para Ain't Rails Admin
 
-This project rocks and uses MIT-LICENSE.
+Admin / CMS Framework for rails. WIP
 
 ## Installation
 
 First, add the following line to the Gemfile
 
-    gem 'para', github: 'glyph-fr/para'
+```ruby
+gem 'para', github: 'glyph-fr/para'
+```
 
 And run
 
-    bundle install
+```bash
+bundle install
+```
 
 ## Setup
 
 Setting up Para is easy. Run this command to generate all needed files
 
-    rails g para:install
+```bash
+rails g para:install
+```
 
 This will do the following
 
@@ -45,26 +51,54 @@ At the end, you will end up with a model `AdminUser` already configured to work 
 
 Also, `para` adds the following line to `routes.rb` to mount the engine:
 
-    mount Para::Engine, at: '/', as: 'para'
+```ruby
+mount Para::Engine, at: '/', as: 'para'
+```
 
 ## Components
 
 Para works with components. To generate one, use the following command
 
-    rails g para:component ComponentName
+```bash
+rails g para:component ComponentName
+```
 
 ## Resources
-Once you created a component, run this generator should you need to associate that component with a resource
 
-    rails g para:resource ResourceName ComponentName title:string description:text
+Once you created a component, run this generator should you need to associate
+that component with a resource
 
-Components and resources work out of the box with CRUD. If you need to overide the show page, here is how
+```bash
+rails g para:resource ResourceName ComponentName title:string description:text
+```
 
-    rails g para:table ResourceName
+In the generated resource controller, the resource name is already assigned.
+It automatically uses CanCan under the hood to load and authorize the resource.
+You can pass the same parameters to the macro as the
+`load_and_authorize_resource` CanCan macro.
+
+Here is the default behavior, the options hash being the default one and not
+written directly in the generated controller.
+
+```ruby
+class YourResourcesController < Para::Admin::ResourcesController
+  resource :your_resource, through: :component, class: 'YourResource',
+                           parent: false
+end
+```
+
+Components and resources work out of the box with CRUD. If you need to overide
+the show page, here is how
+
+```bash
+rails g para:table ResourceName
+```
 
 And in case you want to change the way the form works, this generator can be helpful
 
-    rails g para:form ResourceName
+```bash
+rails g para:form ResourceName
+```
 
 ### Orderable resources
 
@@ -80,5 +114,10 @@ allow you to add / edit and delete thos nested resources withing the parent form
 If you want to override the nested form behavior, you can generate the fields
 with (where `ResourceName` is the name of the child model) :
 
-    rails g para:nested_fields ResourceName
+```bash
+rails g para:nested_fields ResourceName
+```
 
+## Licence
+
+Para is released under the MIT-Licence

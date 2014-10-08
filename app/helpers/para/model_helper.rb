@@ -5,9 +5,12 @@ module Para
       model_field_mappings(model).fields
     end
 
-    def model_field_mappings(model)
+    def model_field_mappings(model, attributes = nil)
       store_key = ['model', 'mappings', model.name.underscore].join(':')
-      Para.store[store_key] ||= Para::AttributeFieldMappings.new(model)
+
+      Para.store[store_key] ||= Para::AttributeFieldMappings.new(
+        model, whitelist_attributes: attributes
+      )
     end
 
     def relation_klass_for(component, relation)

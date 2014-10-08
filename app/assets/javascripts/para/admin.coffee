@@ -8,6 +8,7 @@
 #= require html5-sortable
 #= require cocoon
 #= require_self
+#= require_tree ./lib
 #= require_tree ./inputs
 #= require_tree ./admin
 
