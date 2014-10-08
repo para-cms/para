@@ -120,4 +120,4 @@ rails g para:nested_fields ResourceName
 
 ## Licence
 
-Para is released under the MIT-Licence
+Para is released under the MIT-Licence.
