@@ -11,6 +11,12 @@ module Para
         end
       end
 
+      def template_path_lookup(*paths)
+        paths.find do |path|
+          lookup_context.find_all(path).any?
+        end
+      end
+
       def resource_title_for(resource)
         resource.try(:title) || resource.try(:name) ||
         t('para.form.shared.edit.title', model: resource.class.model_name.human)
