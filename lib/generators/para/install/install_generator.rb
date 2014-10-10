@@ -72,8 +72,17 @@ module Para
     end
 
     def add_admin_user_to_ability
-      inject_into_file 'app/models/ability.rb', after: '# Define abilities for the passed in user here. For example:' do
-        "\n\n    if user.is_a?(AdminUser)\n      can :manage, :all\n    end\n"
+      comment = '# Define abilities for the passed in user here. For example:'
+      inject_into_file 'app/models/ability.rb', comment do
+<<-RUBY
+    if user.is_a?(AdminUser)
+      can :manage, :all
+
+      unless user.has_role?(:super_admin) do
+        cannot :create, Para::Component::Base
+      end
+    end
+RUBY
       end
     end
 
