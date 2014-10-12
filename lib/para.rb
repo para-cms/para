@@ -8,6 +8,7 @@ require 'cancan'
 require 'request_store'
 require 'friendly_id'
 require 'bootstrap-sass'
+require 'compass-rails'
 require 'font-awesome-rails'
 
 require 'rails/routing_mapper'
