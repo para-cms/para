@@ -1,5 +1,4 @@
-/ You can change
-- attributes = model_field_mappings(<%= class_name %>, [<%= attributes_list %>])
+- attributes = attribute_field_mappings_for(@component, relation)
 
 .panel.panel-default
   .panel-heading
@@ -13,7 +12,7 @@
 
     .clearfix
 
-  = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes.fields }
+  = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
   - if resources.length > 0
     %table.table.table-hover.para-component-relation-table{ class: ('orderable' if <%= class_name %>.orderable?), data: { :'order-url' => (component_relation_path(@component, relation, model.new, :order) if <%= class_name %>.orderable?) } }
@@ -48,7 +47,7 @@
   - else
     .panel-body
       .alert.alert-warning.no-margin-bottom
-        - if filtered?(attributes.fields)
+        - if filtered?(attributes)
           = t('para.list.no_results')
         - else
           = t('para.list.empty')
