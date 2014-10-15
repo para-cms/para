@@ -18,8 +18,8 @@ module Para
     end
 
     def field_value_for(model, field_name)
-      model_mappings = model_field_mappings(model.class)
-      model_mappings.fields_hash[field_name.to_sym].value_for(model)
+      fields = model_field_mappings(model.class).fields_hash
+      fields[field_name.to_sym].value_for(model)
     end
   end
 end
