@@ -23,8 +23,6 @@ class Para.ResourceTable
     @updateOrder()
 
   updateOrder: ->
-    console.log 'buildOrderedData', @buildOrderedData()
-
     Para.ajax(
       url: @orderUrl
       method: 'patch'
@@ -39,7 +37,7 @@ class Para.ResourceTable
       { id: $field.closest('.order-anchor').data('id'), position: $field.val() }
 
   orderUpdated: ->
-    console.log 'ORDER UDATED'
+    # TODO: Add flash message to display ordering success
 
 $(document).on 'page:change', ->
   $('.para-component-relation-table').each (i, el) ->

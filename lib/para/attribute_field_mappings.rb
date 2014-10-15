@@ -75,7 +75,7 @@ module Para
       model.reflections.each do |name, reflection|
         next if name == :component
 
-        if Publication.nested_attributes_options[name]
+        if model.nested_attributes_options[name]
           if reflection.collection?
             @fields_hash[name] = AttributeField::NestedManyField.new(
               model, name: name, type: 'has_many', field_type: 'nested_many'

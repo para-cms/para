@@ -55,6 +55,9 @@ fr:
         "false": "Non"
 
   activerecord:
+    errors:
+      relation_length_is_smaller: "doit contenir au moins %{minimum} éléments"
+      relation_length_is_greater: "doit contenir au maximum %{minimum} éléments"
     models:
       para/component/base:
         one: "Composant"
