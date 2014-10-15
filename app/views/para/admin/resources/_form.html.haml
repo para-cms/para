@@ -1,4 +1,6 @@
 = simple_form_for [:admin, @component, resource], url: component_relation_path(@component, resource.class.name, resource), as: :resource, wrapper: :horizontal_form, html: { class: 'form-horizontal' }  do |form|
+  = form.error_notification
+
   .form-inputs
     - model_field_mappings(resource.class).fields.each do |field|
       - if field.field_type

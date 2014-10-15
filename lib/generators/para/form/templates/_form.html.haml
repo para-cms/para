@@ -1,15 +1,15 @@
-= simple_form_for [:admin, @component, resource], url: component_relation_path(@component, resource.class.name, resource), as: :resource, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
-  = f.error_notification
+= simple_form_for [:admin, @component, resource], url: component_relation_path(@component, resource.class.name, resource), as: :resource, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |form|
+  = form.error_notification
 
   .form-inputs
   <%- attributes.each do |field| -%>
     <%- if field.field_type -%>
-    = f.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
+    = form.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
     <%- else -%>
-    = f.<%= field.field_method %> :<%= field.name %>
+    = form.<%= field.field_method %> :<%= field.name %>
     <%- end -%>
   <%- end -%>
 
   .form-actions
-    = f.button :submit, t('para.shared.save'), class: 'btn-success'
+    = form.button :submit, t('para.shared.save'), class: 'btn-success'
     = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-default'
