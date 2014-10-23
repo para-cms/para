@@ -15,7 +15,12 @@ module Para
 
     def attributes
       @attributes ||= begin
-        model = Para.const_get(class_name)
+        model =
+          begin
+            Para.const_get(class_name)
+          rescue
+            class_name.classify.constantize
+          end
         AttributeFieldMappings.new(model).fields
       end
     end
