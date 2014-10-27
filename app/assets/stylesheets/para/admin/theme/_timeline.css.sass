@@ -1,0 +1,190 @@
+
+.timeline
+  float: left
+  width: 100%
+  position: relative
+  padding: 0
+  margin: 0 0 20px
+  &:before
+    content: " "
+    position: absolute
+    width: 6px
+    background: #FFF
+    height: 100%
+    left: 50%
+    margin-left: -3px
+    border: 1px solid rgba(0, 0, 0, 0.1)
+  .timeline-item
+    width: 50%
+    float: left
+    position: relative
+    clear: both
+    margin-bottom: 20px
+    z-index: 2
+    &.timeline-main
+      height: 40px
+      width: 50%
+    .timeline-date
+      padding: 7px 10px
+      line-height: 20px
+      font-size: 14px
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
+      position: absolute
+      right: -50px
+      top: 0
+      font-weight: 600
+      color: $brand-primary
+      background: #F5F5F5
+      text-align: center
+      border: 3px solid #FFF
+      width: 100px
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2)
+      a
+        color: $brand-primary
+    .timeline-item-content
+      float: left
+      background: #F5F5F5
+      border: 3px solid #FFF
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+      border-radius: 5px
+      width: 95%
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2)
+      &:after
+        left: 95%
+        top: 20px
+        border: solid transparent
+        content: " "
+        height: 0
+        width: 0
+        position: absolute
+        pointer-events: none
+      &:before
+        left: 95%
+        top: 20px
+        border: solid transparent
+        content: " "
+        height: 0
+        width: 0
+        position: absolute
+        pointer-events: none
+        border-color: transparent transparent transparent #FFF
+        border-width: 3px
+        margin-top: -3px
+      &:after
+        border-color: transparent transparent transparent #FFF
+        border-width: 7px
+        margin-top: -7px
+      .timeline-heading
+        width: 100%
+        float: left
+        padding: 10px 10px 5px
+        line-height: 30px
+        img
+          width: 30px
+          height: 30px
+          margin-right: 5px
+          border: 2px solid #FFF
+          -moz-border-radius: 50%
+          -webkit-border-radius: 50%
+          border-radius: 50%
+        a
+          color: $brand-primary
+          font-weight: 600
+      .timeline-body
+        width: 100%
+        float: left
+        padding: 10px
+        &.comments
+          padding: 0
+      .timeline-footer
+        width: 100%
+        float: left
+        padding: 5px 10px
+        line-height: 20px
+        background: #FFF
+        a
+          color: $brand-primary
+          font-size: 12px
+          margin-right: 10px
+          text-decoration: none
+          &:hover
+            color: #29343f
+        .pull-right > a:last-child
+          margin-right: 0
+    .timeline-item-info
+      position: absolute
+      left: 105%
+      font-size: 12px
+      padding: 7px 15px
+      line-height: 20px
+      width: 110px
+      text-align: center
+      background: #F5F5F5
+      border: 3px solid #FFF
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+      border-radius: 5px
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2)
+      font-weight: 600
+    .timeline-item-icon
+      position: absolute
+      right: -20px
+      width: 40px
+      height: 40px
+      -moz-border-radius: 50%
+      -webkit-border-radius: 50%
+      border-radius: 50%
+      font-size: 20px
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2)
+      line-height: 34px
+      text-align: center
+      border: 3px solid #FFF
+      background: #F5F5F5
+      color: #BBB
+    &:last-child
+      margin-bottom: 0
+    &.timeline-item-right
+      float: right
+      .timeline-item-info
+        left: auto
+        right: 105%
+        &:before
+          right: auto
+          left: 100%
+      .timeline-item-content
+        float: right
+        &:after, &:before
+          left: auto
+          right: 95%
+          border-right-color: #FFF
+          border-left-color: transparent
+      .timeline-item-icon
+        right: auto
+        left: -20px
+  &.timeline-right
+    &:before
+      left: 160px
+    .timeline-item
+      width: 100%
+      padding-left: 210px
+      &.timeline-main
+        width: 160px
+        padding-left: 0
+      .timeline-item-content
+        width: 100%
+        &:after
+          right: auto
+          left: 196px
+        &:before
+          right: auto
+          left: 196px
+          border-width: 0
+      .timeline-item-info
+        left: 0
+        right: auto
+      .timeline-item-icon
+        left: 140px
+

@@ -1,26 +1,39 @@
-- if can? :create, Para::Component::Base
-  .add-component
-    = link_to '#add-component-form', class: 'btn btn-default btn-block', data: { toggle: 'collapse' } do
-      = t('para.component.add_a_component')
-    #add-component-form.collapse
-      %br/
-      .well
-        = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
-          = form.input :name
-          = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
-          = form.input :type, collection: registered_components_options, include_blank: false
-          = form.button :submit
+%ul.x-navigation
+  %li.xn-logo
+    = link_to para.admin_path do
+      A
+      %span.xn-text
+        dministration
+    %a.x-navigation-control{:href => "#"}
 
-  %br/
-- if (component_sections = Para::ComponentSection.ordered).any?
-  - component_sections.all.each do |component_section|
-    .panel.panel-default
-      .panel-heading= component_section.name
-      .panel-body{style: 'padding-top: 0px; padding-bottom: 0px;'}
-        %ul.nav.nav-sidebar{style: 'margin-bottom: 0px; margin-right: -15px; margin-left: -15px;'}
-          - component_section.components.each do |component|
-            - active = request.url.split('/').pop == component.slug
-            %li{class: active && 'active'}
-              = link_to component.name, component_path(component)
-- else
-  = t('para.component.none_created')
+  - if can? :create, Para::Component::Base  
+    %li.xn-title Component
+    %li.xn-openable
+      = link_to '#', class: '' do
+        %i.fa.fa-plus
+        %span.xn-text
+          = t('para.component.add_a_component')  
+      %ul
+        %li.xn-form
+          = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
+            = form.input :name
+            = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
+            = form.input :type, collection: registered_components_options, include_blank: false
+            = form.button :submit
+  
+  %li.xn-title Navigation
+  - if (component_sections = Para::ComponentSection.ordered).any?
+    %li        
+      - component_sections.all.each do |component_section|
+        .panel.panel-default
+          .panel-heading= component_section.name
+          .panel-body{style: 'padding-top: 0px; padding-bottom: 0px;'}
+            %ul.nav.nav-sidebar{style: 'margin-bottom: 0px; margin-right: -15px; margin-left: -15px;'}
+              - component_section.components.each do |component|
+                - active = request.url.split('/').pop == component.slug
+                %li{class: active && 'active'}
+                  = link_to component.name, component_path(component)
+  - else
+    %li.xn-title.text-info
+      %span.xn-text
+        = t('para.component.none_created')

@@ -1,0 +1,92 @@
+
+.messages
+  width: 100%
+  float: left
+  .item
+    width: 100%
+    float: left
+    margin-bottom: 10px
+    opacity: 0
+    filter: alpha(opacity = 0)
+    -webkit-transition: all 200ms ease
+    -moz-transition: all 200ms ease
+    -ms-transition: all 200ms ease
+    -o-transition: all 200ms ease
+    transition: all 200ms ease
+    .text
+      background: #FFF
+      padding: 10px
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
+      border: 1px solid $gray-lighter
+      .heading
+        width: 100%
+        margin-bottom: 5px
+        a
+          text-decoration: none
+          font-size: 12px
+          color: $brand-primary
+          font-weight: 600
+          line-height: 20px
+        .date
+          float: right
+          line-height: 20px
+          font-size: 11px
+          color: #CCC
+          font-weight: 600
+      &:hover
+        border-color: #BBB
+    &:nth-child(2n) .text
+      background: #F6F6F6
+    &.item-visible
+      opacity: 1
+      filter: alpha(opacity = 100)
+  &.messages-img .item
+    .image
+      float: left
+      width: 40px
+      img
+        border: 2px solid #F5F5F5
+        border-radius: 50%
+        width: 40px
+    .text
+      margin-left: 50px
+      position: relative
+      &:after, &:before
+        right: 100%
+        top: 20px
+        border: solid transparent
+        content: " "
+        height: 0
+        width: 0
+        position: absolute
+        pointer-events: none
+      &:after
+        border-color: transparent #FFF transparent transparent
+        border-width: 5px
+        margin-top: -5px
+      &:before
+        border-color: transparent $gray-lighter transparent transparent
+        border-width: 6px
+        margin-top: -6px
+      &:hover:before
+        border-right-color: #BBB
+    &.in
+      .image
+        float: right
+      .text
+        margin-left: 0
+        margin-right: 50px
+        &:after, &:before
+          right: auto
+          left: 100%
+        &:after
+          border-right-color: transparent
+          border-left-color: #FFF
+        &:before
+          border-right-color: transparent
+          border-left-color: $gray-lighter
+        &:hover:before
+          border-left-color: #BBB
+

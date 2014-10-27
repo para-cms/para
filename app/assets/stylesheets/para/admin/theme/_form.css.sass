@@ -1,0 +1,100 @@
+
+.form-control
+  +box-shadow(none)
+  -webkit-appearance: none
+  &:focus
+    +box-shadow(none)
+    border-color: #C1C1C1
+    background: #FFF
+  &[disabled], &[readonly]
+    color: #CCC
+  &[disabled]:focus, &[readonly]:focus
+    background: #EEE
+    color: #CCC
+    border-color: $gray-lighter
+
+
+.input-group-addon
+  border-color: $brand-primary
+  background-color: $brand-primary
+  font-size: 13px
+  padding: 0 10px
+  line-height: 28px
+  color: #FFF
+  vertical-align: bottom
+
+.input-group-btn
+  vertical-align: bottom
+
+.form-group:last-child
+  margin-bottom: 0
+
+.help-block
+  color: #AAB2BD
+
+.input-group-btn:first-child >
+  .btn, .btn-group
+    margin-right: -2px
+
+.input-group-lg >
+  .form-control, .input-group-addon, .input-group-btn > .btn
+    font-size: 16px
+
+.input-group-sm >
+  .form-control, .input-group-addon, .input-group-btn > .btn
+    font-size: 11px
+
+.input-group-btn > .btn
+  &:active, &:focus, &:hover
+    z-index: 0
+
+.form-control-feedback
+  top: 20px
+
+.has-success
+  .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
+    color: $brand-success
+  .form-control
+    border-color: $brand-success
+
+.has-warning
+  .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
+    color: $brand-warning
+  .form-control
+    border-color: $brand-warning
+
+.has-error
+  .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
+    color: $brand-danger
+
+.bootstrap-select.error > button, .form-control.error, .has-error .form-control
+  border-color: $brand-danger
+
+label
+  font-weight: 600
+  &.error, &.valid
+    color: $brand-danger
+    margin-bottom: 0
+    margin-top: 3px
+    font-size: 11px
+    font-weight: 400
+    width: 100%
+
+.bootstrap-select.valid > button, .form-control.valid
+  border-color: $brand-success
+
+label.valid
+  color: $brand-success
+
+.control-label.text-left
+  text-align: left
+
+.label
+  font-weight: 500
+
+// Override redactor
+// -------------------------
+.redactor_box,
+.redactor_box textarea
+  z-index: 2 !important
+

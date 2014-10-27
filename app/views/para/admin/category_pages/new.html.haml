@@ -1,3 +1,4 @@
-%h1.page-header= t('para.form.shared.new.title', model: @page.class.model_name.human)
+.page-title
+  %h1= t('para.form.shared.new.title', model: @page.class.model_name.human)
 
 = render partial: 'form'

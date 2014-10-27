@@ -1,0 +1,154 @@
+
+.tabs
+  float: left
+  width: 100%
+  position: relative
+  margin-top: 40px
+
+.nav-tabs
+  border-bottom: 0
+  margin-bottom: 0
+  margin-top: -40px
+  padding: 0 5px
+  &.nav-justified
+    border-bottom: 0
+    margin-bottom: 0
+    margin-top: -40px
+    padding: 0 5px
+
+.block-head .nav-tabs
+  border-bottom: 0
+
+.nav-tabs
+  >
+    li
+      margin-bottom: 0
+      > a
+        margin-right: 5px
+        border: 0
+        font-size: 14px
+        border-top: 2px solid transparent
+        -moz-border-radius: 0
+        -webkit-border-radius: 0
+        border-radius: 0
+        color: #333
+        -webkit-transition: all 200ms ease
+        -moz-transition: all 200ms ease
+        -ms-transition: all 200ms ease
+        -o-transition: all 200ms ease
+        transition: all 200ms ease
+        background: #F5F5F5
+        padding: 9px 15px
+      &:first-child > a
+        -moz-border-radius: 5px 0 0
+        -webkit-border-radius: 5px 0 0
+        border-radius: 5px 0 0
+      > a:hover
+        border-color: transparent
+        background: #FFF
+    .dropdown.active.open > a:hover
+      border: 0
+      border-top: 2px solid $brand-primary
+      background: #FFF
+      -moz-border-radius: 3px 3px 0 0
+      -webkit-border-radius: 3px 3px 0 0
+      border-radius: 3px 3px 0 0
+    li.active > a
+      border: 0
+      border-top: 2px solid $brand-primary
+      background: #FFF
+      -moz-border-radius: 3px 3px 0 0
+      -webkit-border-radius: 3px 3px 0 0
+      border-radius: 3px 3px 0 0
+      &:focus, &:hover
+        border: 0
+        border-top: 2px solid $brand-primary
+        background: #FFF
+        -moz-border-radius: 3px 3px 0 0
+        -webkit-border-radius: 3px 3px 0 0
+        border-radius: 3px 3px 0 0
+  &.nav-justified >
+    li > a
+      border: 0
+      border-top: 2px solid transparent
+      -moz-border-radius: 0
+      -webkit-border-radius: 0
+      border-radius: 0
+      color: #333
+      -webkit-transition: all 200ms ease
+      -moz-transition: all 200ms ease
+      -ms-transition: all 200ms ease
+      -o-transition: all 200ms ease
+      transition: all 200ms ease
+      &:hover
+        border-color: $brand-primary
+        background: 0 0
+    .active > a
+      border: 0
+      border-top: 2px solid $brand-primary
+      background: #FFF
+      -moz-border-radius: 3px 3px 0 0
+      -webkit-border-radius: 3px 3px 0 0
+      border-radius: 3px 3px 0 0
+      &:focus, &:hover
+        border: 0
+        border-top: 2px solid $brand-primary
+        background: #FFF
+        -moz-border-radius: 3px 3px 0 0
+        -webkit-border-radius: 3px 3px 0 0
+        border-radius: 3px 3px 0 0
+  a
+    .caret, &:hover .caret
+      color: $brand-primary
+
+.nav-tabs-vertical
+  .tabs
+    margin-top: 0
+  .nav-tabs
+    margin-top: 0
+    float: left
+    width: 150px
+    position: absolute
+    left: 0
+    border-bottom: 0
+    padding: 0
+    >
+      li
+        width: 100%
+        > a
+          width: 100%
+          -moz-border-radius: 0
+          -webkit-border-radius: 0
+          border-radius: 0
+          border-top: 0
+          border-left: 2px solid transparent
+          background: #FFF
+          &:hover
+            border-left-color: $brand-primary
+            background: 0 0
+      .dropdown.active.open > a:hover
+        border-top: 0
+        border-left: 2px solid $brand-primary
+        background: #F5F5F5
+      li
+        &.active > a
+          border-top: 0
+          border-left: 2px solid $brand-primary
+          background: #F5F5F5
+          &:focus, &:hover
+            border-top: 0
+            border-left: 2px solid $brand-primary
+            background: #F5F5F5
+        &:first-child > a
+          -moz-border-top-left-radius: 3px
+          -webkit-border-top-left-radius: 3px
+          border-top-left-radius: 3px
+        &:last-child > a
+          -moz-border-bottom-left-radius: 3px
+          -webkit-border-bottom-left-radius: 3px
+          border-bottom-left-radius: 3px
+  .tab-content
+    width: auto
+    margin-left: 150px
+  .panel-body
+    padding-top: 10px

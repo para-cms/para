@@ -1,0 +1,179 @@
+.progress-list
+  float: left
+  width: 100%
+  padding: 0 5px
+  font-size: 11px
+  .progress
+    clear: both
+    margin-top: 20px
+
+.list-tags
+  float: left
+  width: 100%
+  list-style: none
+  padding: 0
+  margin: 0
+  li
+    float: left
+    display: block
+    position: relative
+    a
+      display: block
+      float: left
+      background: #F5F5F5
+      border: 1px solid $gray-lighter
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
+      line-height: 23px
+      font-size: 11px
+      margin: 0 5px 5px 0
+      padding: 0 8px
+      color: #656d78
+      &:hover
+        text-decoration: none
+        background: #F0F0F0
+
+.list-group
+  margin: 0
+  .list-group-item
+    line-height: 20px
+    .fa
+      margin-right: 10px
+    .btn .fa
+      margin-right: 0
+    .progress
+      margin: 5px 0
+    &.active .badge
+      color: #656d78
+    &:last-child
+      border-bottom: 0
+  &.list-group-simple
+    border: 0
+    background: 0 0
+    .list-group-item
+      border: 0
+      background: 0 0
+      padding: 5px 10px
+  &.border-bottom .list-group-item:last-child
+    border-bottom: 1px solid #E5E5E5
+  &.list-group-navigation
+    border: 0
+    float: left
+    width: 100%
+    .list-group-item
+      border-left: 0
+      border-right: 0
+      -moz-border-radius: 0
+      -webkit-border-radius: 0
+      border-radius: 0
+
+.padding-0 .list-group
+  border: 0
+  .list-group-item
+    border-width: 1px 0 0
+    -moz-border-radius: 0
+    -webkit-border-radius: 0
+    border-radius: 0
+    &:first-child
+      border-top: 0
+
+.list-group-item
+  &.active
+    background: $brand-primary
+    border-color: $brand-primary
+    &:focus, &:hover
+      background: $brand-primary
+      border-color: $brand-primary
+  border-color: #E5E5E5
+
+a.list-group-item
+  &:focus, &:hover
+    background: #F9F9F9
+
+.list-group-contacts .list-group-item
+  padding: 10px
+  img
+    border: 2px solid #F5F5F5
+    -moz-border-radius: 50%
+    -webkit-border-radius: 50%
+    border-radius: 50%
+    width: 40px
+    margin-right: 10px
+  .contacts-title
+    font-size: 13px
+    font-weight: 600
+    line-height: 20px
+  p
+    margin-bottom: 0
+    line-height: 20px
+  &.active
+    background: #F5F5F5
+    border-color: #E5E5E5
+    color: #656d78
+
+.list-group-controls
+  position: absolute
+  right: 10px
+  top: 15px
+
+.list-group-status
+  float: left
+  margin-right: 10px
+  height: 40px
+  width: 10px
+  position: relative
+  &:after
+    position: absolute
+    left: 0
+    top: 15px
+    width: 10px
+    height: 10px
+    -moz-border-radius: 50%
+    -webkit-border-radius: 50%
+    border-radius: 50%
+    content: " "
+  &.status-online:after
+    background: $brand-success
+  &.status-away:after
+    background: $brand-warning
+  &.status-offline:after
+    background: #CCC
+
+
+.icons-list
+  list-style: none
+  padding: 0
+  margin: 0 0 20px
+  display: block
+  float: left
+  width: 100%
+  li
+    float: left
+    display: block
+    width: 25%
+    height: 30px
+    padding: 5px
+    line-height: 20px
+    font-size: 11px
+    border: 1px solid #FFF
+    &:hover
+      color: #333
+      cursor: pointer
+      background: #F5F5F5
+      border: 1px solid #E5E5E5
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
+    i, span:first-child
+      font-size: 18px
+      float: left
+      margin-right: 10px
+      color: #222
+      line-height: 20px
+
+.icon-preview
+  font-size: 88px
+  color: #222
+  text-align: center
+

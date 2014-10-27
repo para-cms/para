@@ -16,32 +16,34 @@
   = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
   - if resources.length > 0
-    %table.table.table-hover.para-component-relation-table{ class: ('orderable' if model.orderable?), data: { :'order-url' => (component_relation_path(@component, relation, model.new, :order) if model.orderable?) } }
-      %thead
-        %tr
-          - if model.orderable?
-            %th
+    .panel-body.panel-body-table
+      .table-responsive
+        %table.table.table-hover.para-component-relation-table{ class: ('orderable' if model.orderable?), data: { :'order-url' => (component_relation_path(@component, relation, model.new, :order) if model.orderable?) } }
+          %thead
+            %tr
+              - if model.orderable?
+                %th
 
-          - attributes.each do |field|
-            %th= model.name.constantize.human_attribute_name field.name
+              - attributes.each do |field|
+                %th= model.name.constantize.human_attribute_name field.name
 
-          %th.actions{ colspan: 2 }
+              %th.actions
 
-      %tbody
-        - resources.each do |resource|
-          %tr
-            - if resource.class.orderable?
-              %td= reorder_anchor(value: resource.position, data: { id: resource.id })
+          %tbody
+            - resources.each do |resource|
+              %tr
+                - if resource.class.orderable?
+                  %td= reorder_anchor(value: resource.position, data: { id: resource.id })
 
-            - attributes.each do |field|
-              %td= field_value_for(resource, field.name)
+                - attributes.each do |field|
+                  %td= field_value_for(resource, field.name)
 
-            %td
-              = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-primary' do
-                %i.fa.fa-pencil
-            %td
-              = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
-                %i.fa.fa-trash
+                %td
+                  .pull-right.btn-group
+                    = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-primary' do
+                      %i.fa.fa-pencil
+                    = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
+                      %i.fa.fa-trash
 
   - else
     .panel-body

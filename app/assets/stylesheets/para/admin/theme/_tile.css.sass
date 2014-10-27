@@ -1,0 +1,94 @@
+
+.tile
+  width: 100%
+  float: left
+  margin: 0 0 20px
+  list-style: none
+  text-decoration: none
+  font-size: 38px
+  font-weight: 300
+  color: #FFF
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  border-radius: 5px
+  padding: 10px
+  min-height: 100px
+  position: relative
+  border: 1px solid $gray-lighter
+  text-align: center
+  &.tile-valign
+    line-height: 75px
+  &.tile-default
+    background: #FFF
+    color: #656d78
+    &:hover
+      background: #FAFAFA
+  &.tile-primary
+    background: $brand-primary
+    border-color: $brand-primary
+    &:hover
+      background: #2f3c48
+  &.tile-success
+    background: $brand-success
+    border-color: $brand-success
+    &:hover
+      background: #90b456
+  &.tile-warning
+    background: $brand-warning
+    border-color: $brand-warning
+    &:hover
+      background: #fe9e19
+  &.tile-danger
+    background: $brand-danger
+    border-color: $brand-danger
+    &:hover
+      background: #af4342
+  &.tile-info
+    background: $brand-info
+    border-color: $brand-info
+    &:hover
+      background: #36b7e3
+  &:hover
+    text-decoration: none
+    color: #FFF
+  &.tile-default:hover
+    color: #656d78
+  .fa
+    font-size: 52px
+    line-height: 74px
+  p
+    font-size: 14px
+    margin: 0
+  .informer
+    position: absolute
+    left: 5px
+    top: 5px
+    font-size: 12px
+    color: #FFF
+    line-height: 14px
+    &.informer-default
+      color: #FFF
+    &.informer-primary
+      color: $brand-primary
+    &.informer-success
+      color: $brand-success
+    &.informer-info
+      color: $brand-info
+    &.informer-warning
+      color: $brand-warning
+    &.informer-danger
+      color: $brand-danger
+    .fa
+      font-size: 14px
+      line-height: 16px
+    &.dir-tr
+      left: auto
+      right: 5px
+    &.dir-bl
+      top: auto
+      bottom: 5px
+    &.dir-br
+      left: auto
+      top: auto
+      right: 5px
+      bottom: 5px

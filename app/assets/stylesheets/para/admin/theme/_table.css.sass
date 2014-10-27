@@ -1,0 +1,164 @@
+
+.table >
+  tbody > tr >
+    td, th
+      border-color: #E5E5E5
+      border-width: 1px
+      vertical-align: middle
+  tfoot > tr >
+    td, th
+      border-color: #E5E5E5
+      border-width: 1px
+  thead > tr >
+    td, th
+      border-color: #E5E5E5
+      border-width: 1px
+
+.table-striped > tbody > tr:nth-child(odd) >
+  td, th
+    background: #F8FAFC
+
+.table > thead > tr > th
+  background: #f1f5f9
+  color: #56688A
+  font-size: 12px
+
+.panel-body.panel-body-table
+  padding: 0
+  h1, h2, h3, h4, h5, h6
+    padding-left: 10px
+    margin-bottom: 10px
+  .table
+    margin-bottom: 0
+    border: 0
+    tr >
+      td:first-child, th:first-child
+        border-left: 0
+      td:last-child, th:last-child
+        border-right: 0
+    > tbody > tr:last-child > td
+      border-bottom: 0
+  td, th
+    padding: 8px 10px
+
+.table
+  &.table-actions td
+    line-height: 28px
+  .progress-small
+    margin: 7px 0 8px
+
+.dataTable
+  float: left
+  border-bottom: 1px solid #E5E5E5!important
+  margin-bottom: 5px
+  div
+    &.checker, &.radio
+      display: inherit
+
+.dataTables_wrapper
+  float: left
+  width: 100%
+
+.dataTables_length
+  width: 50%
+  float: left
+  padding: 0 0 5px
+  border-bottom: 1px solid #E5E5E5
+  font-size: 12px
+
+.dataTables_filter label
+  padding: 0
+  line-height: 26px
+  height: auto
+  margin: 0
+  font-weight: 400
+
+.dataTables_length
+  label
+    padding: 0
+    line-height: 26px
+    height: auto
+    margin: 0
+    font-weight: 400
+  select
+    width: 70px
+    display: inline
+    margin: 0 5px
+
+.dataTables_filter
+  width: 50%
+  float: right
+  padding: 0 0 5px
+  border-bottom: 1px solid #E5E5E5
+  font-size: 12px
+  label
+    float: right
+    input
+      width: 150px
+      display: inline
+      margin-left: 5px
+
+td.dataTables_empty
+  font-size: 11px
+  text-align: center
+  color: #333
+
+.dataTables_info
+  float: left
+  font-size: 12px
+  padding: 0
+  line-height: 30px
+
+.dataTables_paginate
+  padding: 0
+  text-align: right
+  float: right
+  a
+    &.paginate_button, &.paginate_disabled_next, &.paginate_disabled_previous
+      padding: 5px 10px
+      font-size: 12px
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
+      float: left
+      text-decoration: none
+      background-color: #fff
+      border: 1px solid #ddd
+      color: #656d78
+      margin-left: 3px
+      cursor: pointer
+
+.paginate_active, .paginate_enabled_next, .paginate_enabled_previous
+  padding: 5px 10px
+  font-size: 12px
+  -moz-border-radius: 3px
+  -webkit-border-radius: 3px
+  border-radius: 3px
+  float: left
+  text-decoration: none
+  background-color: #fff
+  border: 1px solid #ddd
+  color: #656d78
+  margin-left: 3px
+  cursor: pointer
+
+.dataTables_paginate
+  .paginate_enabled_next:hover, .paginate_enabled_previous:hover, a.paginate_button:hover
+    background-color: #eee
+    border-color: #ddd
+    color: #222
+  .paginate_button.current
+    background: $brand-primary
+    color: #FFF
+    border-color: $brand-primary
+    &:hover
+      background: $brand-primary
+      color: #FFF
+      border-color: $brand-primary
+  a
+    &.paginate_button_disabled, &.paginate_disabled_next, &.paginate_disabled_previous
+      cursor: default
+      color: #ccc
+    &.paginate_button_disabled:hover
+      box-shadow: none
+      color: #ccc

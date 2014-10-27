@@ -1,5 +1,5 @@
 !!!
-%html{ lang: 'en' }
+%html.body-full-height{ lang: 'en' }
   %head
     %title= Para.config.admin_title || I18n.t('para.admin.title')
 
@@ -18,15 +18,16 @@
     = csrf_meta_tags
 
   %body
-    = render partial: 'para/admin/shared/header'
+    .page-container.page-navigation-top-fixed
 
-    .container-fluid
-      .row
-        .col-sm-3.col-md-2.sidebar
-          = render partial: 'para/admin/shared/navigation'
+      .page-sidebar.page-sidebar-fixed.scroll
+        = render partial: 'para/admin/shared/navigation'
 
-        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-          = display_flash
-          = yield
+      .page-content        
+        = render partial: 'para/admin/shared/header'
+        = render partial: 'para/admin/shared/breadcrumb' 
+        = display_flash
+        
+        = yield
 
     = javascript_include_tag 'para/admin', :'data-turbolinks-eval' => false

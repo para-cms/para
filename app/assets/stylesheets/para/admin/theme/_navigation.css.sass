@@ -1,0 +1,718 @@
+
+
+.x-navigation
+  width: 100%
+  padding: 0
+  margin: 0
+  float: left
+  list-style: none
+  display: block
+  z-index: 3
+  ul
+    width: 100%
+    padding: 0
+    margin: 0
+    float: left
+    list-style: none
+    display: block
+    z-index: 3
+  background: $brand-primary
+  li
+    float: left
+    display: block
+    width: 100%
+    padding: 0
+    margin: 0
+    position: relative
+    >
+      a
+        display: block
+        float: left
+        width: 100%
+        line-height: 19px
+        color: #fff
+        font-size: 13px
+        font-weight: 400
+        padding: 15px 10px 15px 15px
+        text-decoration: none
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2)
+        border-bottom: 1px solid #2f3c48
+        vertical-align: text-bottom
+        .fa, .glyphicon
+          color: #fff
+          text-align: center
+          width: 20px
+          font-size: 14px
+          margin-right: 10px
+          vertical-align: baseline
+          -webkit-transition: color 200ms ease
+          -moz-transition: color 200ms ease
+          -ms-transition: color 200ms ease
+          -o-transition: color 200ms ease
+          transition: color 200ms ease
+        &:hover
+          background: #3d4e5d
+          -webkit-transition: all 200ms ease
+          -moz-transition: all 200ms ease
+          -ms-transition: all 200ms ease
+          -o-transition: all 200ms ease
+          transition: all 200ms ease
+          .fa, .glyphicon
+            color: #ffd559
+      ul
+        background: #273541
+        max-height: 0
+        -webkit-transition: all 200ms ease
+        -moz-transition: all 200ms ease
+        -ms-transition: all 200ms ease
+        -o-transition: all 200ms ease
+        transition: all 200ms ease
+        overflow: hidden
+        li
+          > a
+            color: #ccc
+            font-size: 12px
+            line-height: 19px
+            font-weight: 400
+            padding: 12px 10px
+            border-bottom-color: #23303b
+          &.active > a, > a:hover
+            background: #23303b
+            color: #fff
+    &.xn-openable:before
+      position: absolute
+      font-family: FontAwesome
+      content: "\f107"
+      font-size: 14px
+      width: 20px
+      height: 20px
+      color: #FFF
+      right: 0
+      top: 12px
+      cursor: pointer
+    &.active
+      &.xn-openable:before
+        content: "\f106"
+      >
+        a
+          background: #3d4e5d
+          -webkit-transition: all 200ms ease
+          -moz-transition: all 200ms ease
+          -ms-transition: all 200ms ease
+          -o-transition: all 200ms ease
+          transition: all 200ms ease
+          .fa, .glyphicon
+            color: #ffd559
+        ul
+          max-height: 1200px
+    &.xn-title
+      padding: 20px 10px 10px
+      line-height: 20px
+      font-weight: 300
+      font-size: 13px
+      color: #999
+      border-bottom: 1px solid #2f3c48
+  > li
+    &.xn-openable:before
+      top: 15px
+    > ul > li
+      > a
+        padding-left: 25px
+      &.active > a
+        padding-left: 30px
+      >
+        a:hover
+          padding-left: 30px
+        ul > li
+          > a
+            padding-left: 40px
+          &.active > a
+            padding-left: 45px
+          >
+            a:hover
+              padding-left: 45px
+            ul > li
+              > a
+                padding-left: 50px
+              &.active > a
+                padding-left: 55px
+              >
+                a:hover
+                  padding-left: 55px
+                ul > li
+                  > a
+                    padding-left: 60px
+                  &.active > a, > a:hover
+                    padding-left: 65px
+    &:last-child > a
+      -moz-border-radius: 0 0 0 5px
+      -webkit-border-radius: 0 0 0 5px
+      border-radius: 0 0 0 5px
+      border-bottom: 0
+  &.x-navigation-horizontal
+    height: 50px
+    background: $brand-primary
+    .xn-logo a
+      border-bottom: 0
+      width: 200px
+    > li
+      &.xn-openable:before
+        display: none
+      > a
+        padding: 15px
+        border-bottom: 0
+        line-height: 20px
+        color: #fff
+        text-shadow: none
+        &:hover
+          background: #3d4e5d
+          .fa, .glyphicon
+            color: #ffd559
+        .fa, .glyphicon
+          color: #fff
+      &.active > a
+        background: #3d4e5d
+        .fa, .glyphicon
+          color: #ffd559
+      ul
+        width: 220px
+        position: absolute
+        overflow: visible
+        display: none
+        -moz-border-radius: 3px
+        -webkit-border-radius: 3px
+        border-radius: 3px
+        -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        z-index: 3
+        ul.xn-drop-white:after
+          border-right-color: #FFF
+      > ul
+        top: 60px
+        left: 0
+        &.xn-drop-white:after
+          border-bottom-color: #FFF
+        &.xn-drop-left
+          left: auto
+          right: 0
+          &.xn-drop-white ul:after
+            border-left-color: #FFF
+        &:after
+          bottom: 100%
+          left: 27px
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          border-color: transparent transparent $brand-primary
+          border-width: 5px
+          margin-left: -5px
+        &.xn-drop-left:after
+          right: 20px
+          left: auto
+          ul
+            left: auto
+            right: 230px
+            &:after
+              right: auto
+              left: 100%
+              border: solid transparent
+              border-left-color: $brand-primary
+              border-width: 5px
+              margin-right: -5px
+        ul
+          top: 0
+          right: -230px
+          &:after
+            right: 100%
+            top: 23px
+            border: solid transparent
+            content: " "
+            height: 0
+            width: 0
+            position: absolute
+            pointer-events: none
+            border-color: transparent $brand-primary transparent transparent
+            border-width: 5px
+            margin-top: -5px
+        li
+          > a
+            padding-left: 10px
+          &.active > a, > a:hover
+            padding-left: 15px
+      li
+        width: 100%
+        &:first-child a
+          -moz-border-radius: 3px 3px 0 0
+          -webkit-border-radius: 3px 3px 0 0
+          border-radius: 3px 3px 0 0
+        &:last-child a
+          -moz-border-radius: 0 0 3px 3px
+          -webkit-border-radius: 0 0 3px 3px
+          border-radius: 0 0 3px 3px
+          border-bottom-color: transparent
+        &.xn-openable:before
+          content: "\f105"
+        &.active.xn-openable:before
+          content: "\f104"
+      &:last-child > a
+        -moz-border-radius: 0
+        -webkit-border-radius: 0
+        border-radius: 0
+      &.last > a
+        -moz-border-radius: 0 5px 0 0
+        -webkit-border-radius: 0 5px 0 0
+        border-radius: 0 5px 0 0
+    li
+      width: auto
+      position: relative
+      &.active > ul
+        display: block
+      &.xn-openable > a
+        padding-right: 20px
+    ul.xn-drop-white
+      background: #FFF
+      ul
+        background: #FFF
+        &:after
+          border-right-color: #FFF
+      li
+        > a
+          color: #333
+          text-shadow: none
+          border-bottom: 1px solid #E9E9E9
+          &:hover
+            background: #F5F5F5
+            color: #333
+          .fa, .glyphicon
+            color: $brand-primary
+        &.active
+          > a
+            color: #333
+            text-shadow: none
+            border-bottom: 1px solid #E9E9E9
+          &.xn-openable:before
+            color: #333
+    .xn-icon-button > a
+      padding: 15px 10px
+      text-align: center
+      width: 50px
+      .fa, .glyphicon
+        margin: 0
+    .xn-search
+      padding: 10px 5px
+      input
+        width: 100px
+        &:focus
+          width: 200px
+      &:before
+        left: 5px
+  &.x-navigation-minimized
+    width: 50px
+    .xn-text
+      display: none
+    .xn-visible
+      display: block
+    li
+      width: auto
+      position: relative
+      &.xn-profile
+        .profile-mini
+          display: block
+        .profile:after
+          right: 100%
+          top: 23px
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          border-color: transparent $brand-primary transparent transparent
+          border-width: 5px
+          margin-top: -5px
+      &.xn-title
+        display: none
+      &.active > ul
+        display: block
+      ul
+        top: 0
+        right: -230px
+        -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        &:after
+          right: 100%
+          top: 23px
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          border-color: transparent $brand-primary transparent transparent
+          border-width: 5px
+          margin-top: -5px
+        li
+          > a
+            padding-left: 15px!important
+          &.active > a, > a:hover
+            padding-left: 20px!important
+          &:first-child > a
+            -moz-border-radius: 3px 3px 0 0
+            -webkit-border-radius: 3px 3px 0 0
+            border-radius: 3px 3px 0 0
+          &:last-child > a
+            border-bottom: 0
+            -moz-border-radius: 0 0 3px 3px
+            -webkit-border-radius: 0 0 3px 3px
+            border-radius: 0 0 3px 3px
+    > li
+      width: 100%
+      > a
+        padding: 15px 10px
+        text-align: center
+        .fa, .glyphicon
+          margin: 0
+      ul
+        width: 220px
+        position: absolute
+        overflow: visible
+        display: none
+        -moz-border-radius: 3px
+        -webkit-border-radius: 3px
+        border-radius: 3px
+      li
+        width: 100%
+        &.xn-openable:before
+          content: "\f105"
+        &.active.xn-openable:before
+          content: "\f104"
+      &.active:before, &.xn-openable:before
+        display: none
+      &.xn-logo > a:first-child
+        padding: 0
+        width: 50px
+    .xn-search input
+      width: 30px
+      padding: 0 2px 0 28px
+      &:focus
+        width: 200px
+        padding: 0 8px 0 28px
+  &.x-navigation-custom
+    li
+      ul
+        background: #2d3945
+      > a
+        border-bottom: 0
+        &:hover
+          background: #2b3742
+          .fa, .glyphicon
+            color: #ffd559
+        .fa, .glyphicon
+          color: #DDD
+      &.active > a
+        background: #2b3742
+        .fa, .glyphicon
+          color: #ffd559
+    > li
+      > a
+        padding: 12px 10px 12px 12px
+        border-bottom: 0
+        font-size: 13px
+        color: #CCC
+        border-left: 3px solid transparent
+        &:hover
+          color: #FFF
+          background: #374654
+      &.active > a
+        color: #FFF
+        background: #374654
+        border-left: 3px solid #ffd559
+      &.xn-openable:before
+        color: #CCC
+        top: 12px
+      &.xn-title
+        border-bottom: 0
+      &.xn-logo > a
+        border-left: 0
+        &:hover
+          background-color: #e0401d
+    &.x-navigation-minimized > li
+      > a
+        padding: 15px 10px 15px 7px
+      &.xn-profile > a
+        border-left: 0
+        padding: 7px
+  .xn-padding      
+    padding: 10px 10px 0 9px
+  .xn-form
+    padding: 10px 10px 0 9px
+    position: relative
+    label
+      color: #fff      
+  .xn-search
+    padding: 10px 10px 0 9px
+    position: relative
+    input
+      width: 200px
+      height: 30px
+      padding: 0 8px 0 28px
+      line-height: 25px
+      border: 1px solid #29343f
+      background: #2d3945
+      color: #AAA
+      -webkit-transition: all 200ms ease
+      -moz-transition: all 200ms ease
+      -ms-transition: all 200ms ease
+      -o-transition: all 200ms ease
+      transition: all 200ms ease
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+      border-radius: 5px
+    &:before
+      content: "\f002"
+      font-family: FontAwesome
+      position: absolute
+      width: 30px
+      height: 30px
+      text-align: center
+      font-size: 17px
+      line-height: 28px
+      color: #AAA
+      left: 10px
+      top: 10px
+      z-index: 2
+      cursor: pointer
+  .xn-visible
+    display: none
+  .x-navigation-control
+    position: absolute
+    right: 0
+    width: 50px
+    height: 50px
+    cursor: pointer
+    display: none
+    &:hover
+      background: #e0401d
+      border-bottom: 0
+    &:before
+      position: absolute
+      font-family: FontAwesome
+      content: "\f0c9"
+      font-size: 14px
+      top: 14px
+      left: 20px
+      color: #FFF
+      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3)
+  > li
+    &.xn-logo > a
+      border-bottom: 0
+      &:first-child
+        font-size: 1.4em
+        text-align: center
+        font-weight: 300
+        line-height: 45px
+        background-color: #e34724
+        padding: 0
+        border-bottom: 0
+        color: #FFF
+        height: 50px
+        .xn-text
+          margin-left: -3px
+        &:hover
+          background-color: #e0401d
+    &.xn-profile
+      padding: 0
+      border-bottom: 1px solid #273541
+      .profile-mini
+        display: none
+        width: 50px
+        padding: 7px
+        img
+          width: 36px
+          border: 2px solid #FFF
+          -moz-border-radius: 50%
+          -webkit-border-radius: 50%
+          border-radius: 50%
+  .informer
+    font-size: 11px
+    position: absolute
+    line-height: 20px
+    text-align: center
+    padding: 0 5px
+    background: #BBB
+    right: 10px
+    top: 15px
+    color: #FFF
+    -moz-border-radius: 3px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+    &.pulsate
+      -webkit-animation: pulsate 1s ease-out
+      -webkit-animation-iteration-count: infinite
+      -moz-animation: pulsate 1s ease-out
+      -moz-animation-iteration-count: infinite
+      animation: pulsate 1s ease-out
+      animation-iteration-count: infinite
+    &.informer-primary
+      background: $brand-primary
+    &.informer-success
+      background: $brand-success
+    &.informer-info
+      background: $brand-info
+    &.informer-warning
+      background: $brand-warning
+    &.informer-danger
+      background: $brand-danger
+  li li .informer
+    top: 12px
+  .xn-icon-button .informer
+    left: auto
+    bottom: auto
+    right: 1px
+    top: 5px
+
+.x-navigation li
+  > .panel
+    display: none
+    position: absolute
+    left: 0
+    top: 56px
+    width: 400px
+    z-index: 3
+    border-top-width: 1px
+    -moz-border-radius: 3px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+    &.xn-drop-left
+      left: auto
+      right: 0
+    .panel-heading
+      padding: 5px 10px
+      .panel-title
+        font-size: 14px
+    .panel-footer
+      line-height: 30px
+      padding: 3px 10px
+  &.active > .panel
+    display: block
+  > .panel
+    &:after
+      top: -11px
+      left: 20px
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+      border-color: transparent transparent #E5E5E5
+      border-width: 5px
+      margin-left: -5px
+    &.xn-drop-left:after
+      right: 20px
+      left: auto
+    &.dragged:after
+      display: none
+    &.panel-primary:after
+      border-bottom-color: $brand-primary
+    &.panel-info:after
+      border-bottom-color: $brand-info
+    &.panel-warning:after
+      border-bottom-color: $brand-warning
+    &.panel-danger:after
+      border-bottom-color: $brand-danger
+    &.panel-success:after
+      border-bottom-color: $brand-success
+
+
+/*
+ * Profile
+
+.profile
+  width: 100%
+  float: left
+  padding: 15px 10px
+  position: relative
+  background: #2d3945
+  .profile-image
+    float: left
+    width: 100%
+    margin: 0 0 10px
+    text-align: center
+    img
+      width: 100px
+      border: 3px solid #FFF
+      -moz-border-radius: 50%
+      -webkit-border-radius: 50%
+      border-radius: 50%
+  .profile-data
+    width: 100%
+    float: left
+    text-align: center
+    .profile-data-name
+      width: 100%
+      float: left
+      font-size: 14px
+      font-weight: 500
+      color: #FFF
+    .profile-data-title
+      width: 100%
+      float: left
+      font-size: 11px
+      font-weight: 400
+      color: #999
+  .profile-controls a
+    width: 30px
+    height: 30px
+    font-size: 14px
+    color: #DDD
+    border: 2px solid #DDD
+    line-height: 25px
+    position: absolute
+    -moz-border-radius: 50%
+    -webkit-border-radius: 50%
+    border-radius: 50%
+    padding: 0
+    -webkit-transition: all 200ms ease
+    -moz-transition: all 200ms ease
+    -ms-transition: all 200ms ease
+    -o-transition: all 200ms ease
+    transition: all 200ms ease
+    &.profile-control-left
+      left: 15px
+      top: 53px
+      text-align: center
+    &.profile-control-right
+      right: 15px
+      top: 53px
+      text-align: center
+    .fa, .glyphicon
+      width: auto
+      margin-right: auto
+    &:hover
+      border-color: #FFF
+      color: #FFF
+
+/*
+ * Override profile with x-navigation-minimized
+.x-navigation.x-navigation-minimized
+  .profile
+    width: 220px
+    background: $brand-primary
+    position: absolute
+    top: 4px
+    right: -230px
+    display: none
+    -moz-border-radius: 3px
+    -webkit-border-radius: 3px
+    border-radius: 3px
+  li.active .profile
+    display: block
+  .profile-mini
+    display: block
+    border-bottom: 0    
