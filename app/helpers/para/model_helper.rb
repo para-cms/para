@@ -19,7 +19,7 @@ module Para
 
     def field_value_for(model, field_name)
       string = model_field_mappings(model.class).fields_hash[field_name.to_sym].value_for(model)
-      truncate_html string
+      string.kind_of?(String) ? truncate_html(string) : string
     end
   end
 end
