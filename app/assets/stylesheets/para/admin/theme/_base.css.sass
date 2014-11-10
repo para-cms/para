@@ -2,26 +2,12 @@
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,500,600,700&subset=latin,cyrillic-ext)
 
-
-.background-colorful
-  background: linear-gradient(left, $brand-danger 0, $brand-warning 50%, $brand-success 100%)
-  background: -o-linear-gradient(left, $brand-danger 0, $brand-warning 50%, $brand-success 100%)
-  background: -moz-linear-gradient(left, $brand-danger 0, $brand-warning 50%, $brand-success 100%)
-  background: -webkit-linear-gradient(left, $brand-danger 0, $brand-warning 50%, $brand-success 100%)
-  background: -ms-linear-gradient(left, $brand-danger 0, $brand-warning 50%, $brand-success 100%)
-  background: -webkit-gradient(linear, left top, right top, color-stop(0, $brand-danger), color-stop(0.5, $brand-warning), color-stop(1, $brand-success))
-
 html *
   outline: 0!important
 
 body, html
   min-height: 100%
-  padding: 0
-  margin: 0
-  background-image: image_url('para/admin/bg.png')
-  background-color: whitesmoke
   position: relative
-  color: #656d78
   overflow-x: hidden
 
 .body-full-height
@@ -43,7 +29,9 @@ body, html
   float: left
   width: 100%
   padding: 5px 10px
-  h2
+  padding-left: 40px
+  padding-right: 40px
+  h2, h1, h3
     float: left
     line-height: 30px
 
@@ -65,8 +53,7 @@ body, html
   .page-content
     min-height: 100%
     margin-left: 220px
-    background-image: image_url('para/admin/bg.png') 
-    background-color: whitesmoke
+    background-color: $body-bg
     position: relative
     zoom: 1
     &:after, &:before
@@ -78,8 +65,7 @@ body, html
       float: left
       width: 100%
       position: relative
-      background-image: image_url('para/admin/bg.png') 
-      background-color: whitesmoke
+      background-color: $body-bg
       .content-frame-top
         float: left
         width: 100%
@@ -140,6 +126,8 @@ body, html
     .page-content-wrap
       float: left
       width: 100%
+      padding-left: 25px
+      padding-right: 25px
   &.page-container-wide .page-content
     margin-left: 50px
     +transition(all, .2ms ease)
