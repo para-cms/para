@@ -20,3 +20,4 @@ window.Para = {}
 
 $(document).on 'page:change', ->
   $('.selectize').selectize()
+  init_papercrop()
