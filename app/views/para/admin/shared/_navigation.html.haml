@@ -20,19 +20,23 @@
             = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
             = form.input :type, collection: registered_components_options, include_blank: false
             = form.button :submit
-  
+            
   %li.xn-title Navigation
   - if (component_sections = Para::ComponentSection.ordered).any?
-    %li        
-      - component_sections.all.each do |component_section|
-        .panel.panel-default
-          .panel-heading= component_section.name
-          .panel-body{style: 'padding-top: 0px; padding-bottom: 0px;'}
-            %ul.nav.nav-sidebar{style: 'margin-bottom: 0px; margin-right: -15px; margin-left: -15px;'}
-              - component_section.components.each do |component|
-                - active = request.url.split('/').pop == component.slug
-                %li{class: active && 'active'}
-                  = link_to component.name, component_path(component)
+    - component_sections.all.each do |component_section|
+      // TODO 
+      // Il faudrais pouvoir faire la différence entre un component_section qui contient un seul 
+      // component et un component_section qui contien plusieur de component.
+      // Ici il faut ajouter un 'active' si l'un des component enfant est active.
+      %li.xn-openable
+        = link_to "#", class: '' do
+          = component_section.name
+        %ul  
+          - component_section.components.each do |component|
+            - active = request.url.split('/').pop == component.slug
+            %li{ class: active && 'active' }
+              = link_to component.name, component_path(component)   
+             
   - else
     %li.xn-title.text-info
       %span.xn-text
