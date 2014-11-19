@@ -11,7 +11,7 @@
   position: relative
   +box-shadow(0 1px 1px 0 rgba(0, 0, 0, 0.2))
   &.panel-default
-    border-top-color: #F5F5F5
+    border-top-color: $panel-default-border
     border-top-width: 1px
   &.panel-primary
     border-top-color: $brand-primary
@@ -25,7 +25,6 @@
     border-top-color: $brand-danger
 
   .panel-heading
-    padding: 10px
     .panel-title-image
       float: left
       width: 30px
@@ -57,7 +56,6 @@
     float: left
     width: 100%
   .panel-body
-    padding: 15px
     position: relative
     &.scroll
       padding-right: 0
@@ -306,3 +304,4 @@ ul.panel-controls > li
 .panel-toggled
   .panel-body, .panel-footer
     display: none
+    

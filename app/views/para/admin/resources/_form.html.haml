@@ -10,6 +10,7 @@
             - else
               = form.send(field.field_method, field.name)
     .row
-      .col-md-12.form-actions  
-        = form.button :submit, t('para.shared.save'), class: 'btn-success'
-        = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-default'
+      .col-md-12
+        .form-actions  
+          = form.button :submit, t('para.shared.save'), class: 'btn-success'
+          = link_to t('para.shared.cancel'), component_path(@component), class: 'btn btn-default'

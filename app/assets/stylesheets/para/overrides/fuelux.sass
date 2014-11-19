@@ -2,6 +2,8 @@
 
 @import "para/lib/variables"
 
+@import "compass/css3/box-shadow"
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button
   -webkit-appearance: none
@@ -18,6 +20,11 @@ input[type=number]::-webkit-outer-spin-button
     top: 0px
     margin-left: -1px !important
     border-color: $input-border
+    +box-shadow(none)
+    .fa
+      font-size: 1em
+      margin-right: 0
+      line-height: 9px
     &.disabled
       cursor: not-allowed
   .spinner-up

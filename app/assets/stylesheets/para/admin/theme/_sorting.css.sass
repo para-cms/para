@@ -27,3 +27,26 @@
   opacity: .1
   filter: alpha(opacity = 10)
 
+// Sortable positioning
+.table
+  .sortable-placeholder-container
+    display: table-row
+
+.panel
+  .collapsed
+    .caret
+      +rotate(270deg)
+
+.nested-many-field
+  &.orderable
+    .sortable-placeholder
+      margin-bottom: 20px
+    .form-fields
+      +clearfix
+      float: none
+    
+.sortable-placeholder
+  border: 2px dotted $gray-lighter
+  width: 100%
+  background-color: #f2f2f2
+

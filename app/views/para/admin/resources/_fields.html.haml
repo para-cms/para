@@ -1,11 +1,11 @@
-.panel.panel-default.form-fields.push-down-5
+.panel.panel-default.form-fields
   .panel-heading
-    .pull-left
-      = form.reorder_anchor
+    = form.reorder_anchor
+
     %h3.panel-title
       = link_to "##{ form.nested_resource_dom_id }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
-        %i.fa.fa-angle-up
         = form.nested_resource_name
+        %span.caret
 
     %ul.panel-controls    
       %li
@@ -19,3 +19,4 @@
         = form.send(field.field_method, field.name, as: field.field_type)
       - else
         = form.send(field.field_method, field.name)
+.clearfix
