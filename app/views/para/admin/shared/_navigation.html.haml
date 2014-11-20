@@ -19,7 +19,8 @@
             = form.input :name
             = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
             = form.input :type, collection: registered_components_options, include_blank: false
-            = form.button :submit
+            %button.btn.btn-default.btn-block{ type: "submit" }
+              = t('para.component.create')
             
   %li.xn-title Navigation
   - if (component_sections = Para::ComponentSection.ordered).any?
