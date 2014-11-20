@@ -1,3 +1,13 @@
+@import 'para/lib/variables'
+@import "compass/css3/transform"
+
+@mixin clearfix()
+  &:before,
+  &:after 
+    content: " "
+    display: table
+  &:after
+    clear: both
 
 .sorting, .sorting_asc, .sorting_desc
   position: relative
