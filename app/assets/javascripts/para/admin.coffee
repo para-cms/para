@@ -10,6 +10,7 @@
 #= require simple_form_extension
 #= require jquery.scrollto
 #= require html5-sortable
+#= require s3_direct_upload
 #= require cocoon
 #= require_self
 #= require_tree ./lib
@@ -22,3 +23,6 @@ window.Para = {}
 $(document).on 'page:change', ->
   $('.selectize').selectize()
   init_papercrop()
+
+$(document).on 'page:change', ->
+  $("#s3-uploader").S3Uploader()
