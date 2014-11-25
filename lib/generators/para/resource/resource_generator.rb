@@ -6,6 +6,7 @@ module Para
     argument :attributes, type: :array
 
     class_option :migrate, type: :boolean, default: false, :aliases => "-m"
+    class_option :orderable, type: :boolean, default: false, :aliases => "-o"
 
     desc 'Para resource generator'
 
@@ -43,6 +44,10 @@ module Para
         attributes.map { |attr|
           "#{ attr.name }:#{ attr.type }"
         }.insert(-1, 'component:references').join(' ')
+    end
+
+    def orderable
+      generate 'para:orderable', file_name if options[:orderable]
     end
 
     def migrate
