@@ -5,6 +5,8 @@ module Para
     argument :component_name, type: :string
     argument :attributes, type: :array
 
+    class_option :migrate, type: :boolean, default: false, :aliases => "-m"
+
     desc 'Para resource generator'
 
     def welcome
@@ -44,7 +46,7 @@ module Para
     end
 
     def migrate
-      rake 'db:migrate'
+      rake 'db:migrate' if options[:migrate]
     end
 
     def insert_belongs_to_to_resource
