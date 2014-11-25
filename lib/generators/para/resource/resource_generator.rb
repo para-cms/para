@@ -5,6 +5,9 @@ module Para
     argument :component_name, type: :string
     argument :attributes, type: :array
 
+    class_option :migrate, type: :boolean, default: false, :aliases => "-m"
+    class_option :orderable, type: :boolean, default: false, :aliases => "-o"
+
     desc 'Para resource generator'
 
     def welcome
@@ -43,8 +46,12 @@ module Para
         }.insert(-1, 'component:references').join(' ')
     end
 
+    def orderable
+      generate 'para:orderable', file_name if options[:orderable]
+    end
+
     def migrate
-      rake 'db:migrate'
+      rake 'db:migrate' if options[:migrate]
     end
 
     def insert_belongs_to_to_resource
@@ -54,7 +61,7 @@ module Para
     end
 
     def insert_has_many_to_component
-      inject_into_file "app/models/para/component/#{ component_name.underscore }.rb", after: "register :#{ component_name.underscore }, self" do
+      inject_into_file "app/components/#{ component_name.underscore }_component.rb", after: "register :#{ component_name.underscore }, self" do
         "\n\n      has_many :#{ plural_file_name }, class_name: '::#{ class_name }', inverse_of: :component,
           foreign_key: :component_id, dependent: :destroy"
       end

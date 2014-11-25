@@ -4,8 +4,6 @@
 #= require bootstrap
 #= require jquery.mCustomScrollbar.min
 #= require selectize
-#= require jquery.jcrop
-#= require papercrop
 #= require jasny.bootstrap.min
 #= require simple_form_extension
 #= require jquery.scrollto
@@ -19,10 +17,6 @@
 
 # Initialize scope
 window.Para = {}
-
-$(document).on 'page:change', ->
-  $('.selectize').selectize()
-  init_papercrop()
 
 $(document).on 'page:change', ->
   $("#s3-uploader").S3Uploader()

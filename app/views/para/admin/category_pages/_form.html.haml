@@ -2,11 +2,11 @@
   = simple_form_for [:admin, :page_category, @page], as: :resource, wrapper: :vertical_form, html: { class: 'form-vertical' } do |form|
     .row
       .col-md-12.col-lg-8
-        .block.form-inputs          
+        .block.form-inputs
           = form.input :title
           = form.input :slug
           = form.input :content, as: :redactor
     .row
       .col-md-12
-        .form-actions  
+        .form-actions
           = form.button :submit

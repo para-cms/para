@@ -24,7 +24,7 @@ module Para
       private
 
       def page_params
-        @page_params ||= params.require(:page).permit(:title, :slug, :content)
+        @page_params ||= params.require(:resource).permit(:title, :slug, :content)
       end
 
       def resource

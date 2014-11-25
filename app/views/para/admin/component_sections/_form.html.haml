@@ -1,0 +1,12 @@
+.page-content-wrap
+  = simple_form_for [:admin, @component_section], as: :component_section do |form|
+    .row
+      .col-md-12.col-lg-8
+        .block.form-inputs
+          = form.input :name
+
+    .row
+      .col-md-12
+        .form-actions
+          = form.button :submit, class: 'btn-success'
+          = link_to t('para.shared.cancel'), admin_path, class: 'btn btn-default'

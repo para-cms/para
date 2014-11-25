@@ -1,4 +1,3 @@
-
 uiScroller = ->
   if $(".scroll").length > 0
     $(".scroll").mCustomScrollbar
@@ -8,6 +7,5 @@ uiScroller = ->
       advanced:
         autoScrollOnFocus: false
 
-
-$(document).on 'page:change', ->   
+$(document).on 'page:change', ->
   uiScroller()
