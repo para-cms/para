@@ -20,14 +20,19 @@ fr:
         destroy: 'Etes-vous sure de vouloir supprimer %{model} ?'
 
     component:
-      add_a_component: "Ajouter un composant"
       create: "Créer un(e) Composant"
-      add: "Ajouter une page"
+      add: "Ajouter un composant"
       none_created: "Aucune page pour le moment ..."
       page:
         name: "Page"
       page_category:
         name: "Groupe de pages"
+
+    component_section:
+      add: "Ajouter une section de composants"
+      edit: 'Modifier la section'
+      destroy: 'Supprimer la section'
+      actions: "Actions"
 
     form:
       shared:

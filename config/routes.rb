@@ -2,7 +2,9 @@ Para::Engine.routes.draw do
   namespace :admin do
     get '/' => 'main#index'
 
-    resources :components, only: [:create]
+    resources :component_sections, only: [:new, :create, :edit, :update, :destroy] do
+      resources :components, only: [:new, :create]
+    end
 
     component :page do
       resource :page, controller: 'page'

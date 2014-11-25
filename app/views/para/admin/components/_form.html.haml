@@ -1,0 +1,12 @@
+.page-content-wrap
+  = simple_form_for @component, as: :component, url: admin_component_section_components_path(@component_section) do |form|
+    .row
+      .col-md-12.col-lg-8
+        .block.form-inputs
+          = form.input :name
+          = form.input :type, collection: registered_components_options, include_blank: false
+
+    .row
+      .col-md-12
+        .form-actions
+          = form.button :submit

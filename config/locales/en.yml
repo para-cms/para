@@ -20,12 +20,19 @@ en:
         destroy: 'Are you sure that you want to delete %{model} ?'
 
     component:
+      create: "Create a component"
       add: "Add a component"
       none_created: "No components created for now ..."
       page:
         name: "Page"
       page_category:
         name: "Page category"
+
+    component_section:
+      add: "Add a component section"
+      edit: 'Edit section'
+      destroy: 'Delete section'
+      actions: "Actions"
 
     form:
       shared:

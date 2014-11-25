@@ -6,38 +6,45 @@
         dministration
     %a.x-navigation-control{:href => "#"}
 
-  - if can? :create, Para::Component::Base  
-    %li.xn-title Component
-    %li.xn-openable
-      = link_to '#', class: '' do
+  - if can?(:create, Para::ComponentSection)
+    %li
+      = link_to new_admin_component_section_path do
         %i.fa.fa-plus
         %span.xn-text
-          = t('para.component.add_a_component')  
-      %ul
-        %li.xn-form
-          = simple_form_for Para::Component::Base.new, as: :component, url: para.admin_components_path do |form|
-            = form.input :name
-            = form.input :component_section_id, collection: Para::ComponentSection.all, include_blank: false
-            = form.input :type, collection: registered_components_options, include_blank: false
-            %button.btn.btn-default.btn-block{ type: "submit" }
-              = t('para.component.create')
-            
+          = t('para.component_section.add')
+
   %li.xn-title Navigation
   - if (component_sections = Para::ComponentSection.ordered).any?
     - component_sections.all.each do |component_section|
-      // TODO 
-      // Il faudrais pouvoir faire la différence entre un component_section qui contient un seul 
-      // component et un component_section qui contien plusieur de component.
-      // Ici il faut ajouter un 'active' si l'un des component enfant est active.
-      %li.xn-openable
-        = link_to "#", class: '' do
+      %li.xn-openable{ class: ('active' if component_section_active?(component_section)) }
+        = link_to "#" do
           = component_section.name
-        %ul  
+
+        %ul
           - component_section.components.each do |component|
             - active = request.url.split('/').pop == component.slug
             %li{ class: active && 'active' }
-              = link_to component.name, component_path(component)   
-             
+              = link_to component.name, component_path(component)
+
+          %li.xn-openable.section-actions
+            = link_to '#' do
+              %i.fa.fa-bars
+              = t('para.component_section.actions')
+            - if can?(:create, Para::Component::Base)
+              %ul
+                %li
+                  = link_to new_admin_component_section_component_path(component_section) do
+                    %i.fa.fa-plus
+                    %span.xn-text
+                      = t('para.component.add')
+                  - if can?(:update, component_section)
+                    = link_to edit_admin_component_section_path(component_section) do
+                      %i.fa.fa-pencil
+                      = t('para.component_section.edit')
+                    = link_to admin_component_section_path(component_section), method: 'delete', data: { confirm: t('para.confirmation.shared.destroy', model: component_section.name) } do
+                      %i.fa.fa-remove
+                      = t('para.component_section.destroy')
+
   - else
     %li.xn-title.text-info
       %span.xn-text

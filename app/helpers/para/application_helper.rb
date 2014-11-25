@@ -4,6 +4,7 @@ module Para
     include Para::SearchHelper
     include Para::ModelHelper
     include Para::OrderingHelper
+    include Para::NavigationHelper
 
     # Converts flash types to :success or :error to conform to what
     # twitter bootstrap can handle

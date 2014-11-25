@@ -1,4 +1,3 @@
-
 onload = ->
   x_navigation_onresize()
   page_content_onresize()
@@ -13,6 +12,7 @@ page_content_onresize = ->
   sidebar = $(".page-sidebar")
   content.height $(document).height() - content_minus  if content.height() < $(document).height() - content_minus
   content.height sidebar.height()  if sidebar.height() > content.height()
+
   if $(window).width() > 1024
     if $(".page-sidebar").hasClass("scroll")
       if $("body").hasClass("page-container-boxed")
@@ -35,7 +35,7 @@ page_content_onresize = ->
     $("body").addClass("page-container-boxed").data "boxed", ""  if $("body").data("boxed") is "1"
   return
 
-# PANEL FUNCTIONS 
+# PANEL FUNCTIONS
 panel_collapse = (panel, action, callback) ->
   if panel.hasClass("panel-toggled")
     panel.removeClass "panel-toggled"
@@ -61,7 +61,7 @@ panel_refresh = (panel, action, callback) ->
     callback()  if action and action is "hidden" and typeof callback is "function"
   onload()
   return
-  
+
 panel_remove = (panel, action, callback) ->
   callback()  if action and action is "before" and typeof callback is "function"
   panel.animate
@@ -74,9 +74,9 @@ panel_remove = (panel, action, callback) ->
 
   return
 
-# EOF PANEL FUNCTIONS 
+# EOF PANEL FUNCTIONS
 
-# X-NAVIGATION CONTROL FUNCTIONS 
+# X-NAVIGATION CONTROL FUNCTIONS
 x_navigation_onresize = ->
   inner_port = window.innerWidth or $(document).width()
   if inner_port < 1025
@@ -91,6 +91,7 @@ x_navigation_onresize = ->
     x_navigation_minimize "close"  if $(".page-navigation-toggled").length > 0
     $(".x-navigation-h-holder").addClass("x-navigation-horizontal").removeClass "x-navigation-h-holder"
   return
+
 x_navigation_minimize = (action) ->
   if action is "open"
     $(".page-container").removeClass "page-container-wide"
@@ -129,33 +130,37 @@ x_navigation = ->
     return
 
   $(".x-navigation li").click (event) ->
-    event.stopPropagation()
-    li = $(this)
-    if li.children("ul").length > 0 or li.children(".panel").length > 0 or $(this).hasClass("xn-profile") > 0
+    li = $(event.target).closest('li')
+
+    console.log li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
+
+    if li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
+      event.stopPropagation()
+
       if li.hasClass("active")
         li.removeClass "active"
         li.find("li.active").removeClass "active"
       else
         li.addClass "active"
       onresize()
-      if $(this).hasClass("xn-profile") > 0
+      if li.hasClass("xn-profile") > 0
         true
       else
         false
 
-  
-  # XN-SEARCH 
+
+  # XN-SEARCH
   $(".xn-search").on "click", ->
     $(this).find("input").focus()
     return
 
   return
 
-# END XN-SEARCH 
+# END XN-SEARCH
 
-# EOF X-NAVIGATION CONTROL FUNCTIONS 
+# EOF X-NAVIGATION CONTROL FUNCTIONS
 
-# PAGE ON RESIZE WITH TIMEOUT 
+# PAGE ON RESIZE WITH TIMEOUT
 onresize = (timeout) ->
   timeout = (if timeout then timeout else 200)
   setTimeout (->
@@ -164,8 +169,8 @@ onresize = (timeout) ->
   ), timeout
   return
 
-# EOF PAGE ON RESIZE WITH TIMEOUT 
-$(document).on 'page:change', -> 
+# EOF PAGE ON RESIZE WITH TIMEOUT
+$(document).on 'page:change', ->
 
   onload()
   x_navigation()
@@ -239,7 +244,7 @@ $(window).resize ->
   x_navigation_onresize()
   page_content_onresize()
 
-# NEW OBJECT(GET SIZE OF ARRAY) 
+# NEW OBJECT(GET SIZE OF ARRAY)
 Object.size = (obj) ->
   size = 0
   key = undefined
@@ -247,4 +252,4 @@ Object.size = (obj) ->
     size++  if obj.hasOwnProperty(key)
   size
 
-# EOF NEW OBJECT(GET SIZE OF ARRAY) 
+# EOF NEW OBJECT(GET SIZE OF ARRAY)
