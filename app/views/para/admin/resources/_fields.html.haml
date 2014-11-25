@@ -7,7 +7,9 @@
         = form.nested_resource_name
         %span.caret
 
-    = form.remove_association_button
+    %ul.panel-controls    
+      %li
+        = form.remove_association_button
 
     .clearfix
 
@@ -17,3 +19,4 @@
         = form.send(field.field_method, field.name, as: field.field_type)
       - else
         = form.send(field.field_method, field.name)
+.clearfix

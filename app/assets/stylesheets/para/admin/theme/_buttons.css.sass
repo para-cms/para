@@ -1,0 +1,60 @@
+@import 'para/lib/variables'
+@import "compass/css3/border-radius"
+
+.btn
+  .fa, .glyphicon
+    font-size: 14px
+    margin-right: 3px 
+  &.btn-rounded
+    background: 0 0
+    color: #656d78
+    +border-radius(12px)
+    border-width: 2px
+    padding: 2px 10px
+    font-weight: 600
+    &.btn-default
+      &.active, &:active, &:focus, &:hover
+        border-color: #CCC
+        color: #333
+    &.btn-success
+      color: $brand-success
+      &.active, &:active, &:focus, &:hover
+        border-color: #89ad4d
+        color: #89ad4d
+    &.btn-warning
+      color: $brand-warning
+      &.active, &:active, &:focus, &:hover
+        border-color: #fe970a
+        color: #fe970a
+    &.btn-info
+      color: $brand-info
+      &.active, &:active, &:focus, &:hover
+        border-color: #29b2e1
+        color: #29b2e1
+    &.btn-danger
+      color: $brand-danger
+      &.active, &:active, &:focus, &:hover
+        border-color: #a43f3e
+        color: #a43f3e
+    &.btn-primary
+      color: $brand-primary
+      &.active, &:active, &:focus, &:hover
+        border-color: #29343f
+        color: #29343f
+
+
+  &.btn-twitter
+    background: #1AB2E8
+    border-color: #1AB2E8
+    &.active, &:active, &:focus, &:hover
+      background: #15a1d3
+  &.btn-facebook
+    background: #3C599B
+    border-color: #3C599B
+    &.active, &:active, &:focus, &:hover
+      background: #354e89
+  &.btn-google
+    background: #E04A39
+    border-color: #E04A39
+    &.active, &:active, &:focus, &:hover
+      background: #dd3623

@@ -1,0 +1,46 @@
+@import 'para/lib/variables'
+
+.table >
+  tbody > tr >
+    td, th
+      border-width: 1px
+      vertical-align: middle
+  tfoot > tr >
+    td, th
+      border-width: 1px
+  thead > tr >
+    td, th
+      border-width: 1px
+
+.table > thead > tr > th
+  background: #f1f5f9
+  color: #56688A
+  font-size: 12px
+
+.panel-body.panel-body-table
+  padding: 0
+  h1, h2, h3, h4, h5, h6
+    padding-left: 10px
+    margin-bottom: 10px
+  .table
+    margin-bottom: 0
+    border: 0
+    tr >
+      td:first-child, th:first-child
+        border-left: 0
+      td:last-child, th:last-child
+        border-right: 0
+    > tbody > tr:last-child > td
+      border-bottom: 0
+  td, th
+    padding: 8px 10px
+
+.table
+  &.table-actions td
+    line-height: 28px
+  .progress-small
+    margin: 7px 0 8px
+
+.para-component-relation-table
+  td > img
+    height: 50px  

@@ -13,6 +13,8 @@ class Para.ResourceTable
     @$tbody.sortable
       handle: '.order-anchor'
       forcePlaceholderSize: true
+      items: 'tr'
+      placeholder: "<tr><td colspan=\"100%\" class=\"sortable-placeholder\"></td></tr>"
 
     @$tbody.on('sortupdate', $.proxy(@sortUpdate, this))
 

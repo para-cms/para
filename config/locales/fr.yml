@@ -20,6 +20,8 @@ fr:
         destroy: 'Etes-vous sure de vouloir supprimer %{model} ?'
 
     component:
+      add_a_component: "Ajouter un composant"
+      create: "Créer un(e) Composant"
       add: "Ajouter une page"
       none_created: "Aucune page pour le moment ..."
       page:
