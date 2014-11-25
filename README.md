@@ -55,6 +55,17 @@ Also, `para` adds the following line to `routes.rb` to mount the engine:
 mount Para::Engine, at: '/', as: 'para'
 ```
 
+### Ensuring root_path is defined
+
+Please note that you should add a `root` path to your routes.rb, in the form
+of :
+
+```ruby
+root to: 'home#index'
+```
+
+If you don't, you'll get errors when trying to access the admin panel.
+
 ## Components
 
 Para works with components. To generate one, use the following command

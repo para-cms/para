@@ -86,5 +86,22 @@ module Para
       gsub_file 'config/routes.rb', /mount Para::Engine.*\'/, ''
       route "mount Para::Engine, at: '#{mount_path.match(/^\//) ? mount_path : "/#{mount_path}"}', as: 'para'"
     end
+
+    def final_message
+      say <<-MESSAGE
+
+*******************************************************************************
+
+Para was successfully installed in your app.
+
+Please not that your should define your root path in your application routes.rb
+for the Para admin panel to work :
+
+  e.g.: root to: 'home#index'
+
+*******************************************************************************
+
+      MESSAGE
+    end
   end
 end
