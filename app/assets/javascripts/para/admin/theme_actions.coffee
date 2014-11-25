@@ -132,8 +132,6 @@ x_navigation = ->
   $(".x-navigation li").click (event) ->
     li = $(event.target).closest('li')
 
-    console.log li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
-
     if li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
       event.stopPropagation()
 
