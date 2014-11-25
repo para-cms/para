@@ -29,11 +29,11 @@ module Para
     def add_route
       route_file = File.read(Rails.root.join('config/routes.rb'))
 
-      unless route_file.match /namespace :admin do/
+      unless route_file.match /^\s+namespace :admin do/
         route "namespace :admin do\n  end\n"
       end
 
-      inject_into_file 'config/routes.rb', after: 'namespace :admin do' do
+      inject_into_file 'config/routes.rb', after: '  namespace :admin do' do
         "\n    component :#{ file_name } do\n    end"
       end
     end
