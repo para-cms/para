@@ -54,7 +54,7 @@ module Para
     end
 
     def insert_has_many_to_component
-      inject_into_file "app/models/para/component/#{ component_name.underscore }.rb", after: "register :#{ component_name.underscore }, self" do
+      inject_into_file "app/components/#{ component_name.underscore }_component.rb", after: "register :#{ component_name.underscore }, self" do
         "\n\n      has_many :#{ plural_file_name }, class_name: '::#{ class_name }', inverse_of: :component,
           foreign_key: :component_id, dependent: :destroy"
       end
