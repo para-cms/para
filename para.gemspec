@@ -17,11 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
   s.add_dependency 'rails', '~> 4.0'
-  s.add_dependency 'haml-rails'
-  s.add_dependency 'sass-rails'
   s.add_dependency 'devise', '~> 3.0'
-  s.add_dependency 'bootstrap-sass', '~> 3.2.0'
-  s.add_dependency 'font-awesome-rails', '>= 4.0.0'
   s.add_dependency 'simple_form', '3.1.0.rc2'
   s.add_dependency 'simple_form_extension'
   s.add_dependency 'cocoon'
@@ -31,11 +27,19 @@ Gem::Specification.new do |s|
   s.add_dependency 'rolify', '~> 3.4'
   s.add_dependency 'kaminari'
   s.add_dependency 'ransack'
+  s.add_dependency 'request_store'
+  s.add_dependency 'truncate_html'
+
+  s.add_dependency 'bootstrap-sass', '~> 3.2.0'
+  s.add_dependency 'font-awesome-rails', '>= 4.0.0'
+  s.add_dependency 'selectize-rails'
+  s.add_dependency 'haml-rails'
+  s.add_dependency 'sass-rails'
+  s.add_dependency 'compass'
   s.add_dependency 'compass-rails'
   s.add_dependency 'font-awesome-sass'
-  s.add_dependency 'request_store'
+
   s.add_dependency 'rspec-core'
-  s.add_dependency 'truncate_html'
-  s.add_dependency 'papercrop'
+
   s.add_development_dependency 'sqlite3'
 end
