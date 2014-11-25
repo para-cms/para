@@ -33,7 +33,7 @@ module Para
           template.link_to_remove_association(
             self, wrapper_class: 'form-fields', class: 'btn btn-danger'
           ) do
-            template.content_tag(:i, '', class: 'fa fa-remove') +
+            template.content_tag(:i, '', class: 'fa fa-trash') +
             I18n.t('para.form.nested.remove')
           end
         end

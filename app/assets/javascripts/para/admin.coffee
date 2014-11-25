@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
+#= require jquery.mCustomScrollbar.min
 #= require selectize
 #= require jasny.bootstrap.min
 #= require simple_form_extension

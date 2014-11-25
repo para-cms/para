@@ -1,4 +1,4 @@
-@import "variables"
+@import 'para/lib/variables'
 @import "compass/css3/inline-block"
 
 @mixin fontAwesome
@@ -19,9 +19,18 @@
   margin-top: 0
 
 // ------------------------ Radio & Checkbox  ------------------------- //
+.radio label,
+.checkbox label
+  padding-left: 0
+  font-weight: 600
+  i
+    font-size: 20px
+    margin-left: 20px
+    float: right
+    line-height: 1
 
-input[type=checkbox].check_boxes,
-input[type=radio].radio_buttons
+.checkbox input[type=checkbox],
+.radio input[type=radio]
   position: absolute
   overflow: hidden
   clip: rect(0 0 0 0)
@@ -31,20 +40,15 @@ input[type=radio].radio_buttons
   padding: 0
   border: 0
 
-input[type=checkbox].check_boxes:checked + label.check_boxes:before,
-input[type=checkbox].check_boxes:checked + .checkbox-icon:before
+input[type=checkbox]:checked + label.check_boxes:before,
+input[type=checkbox]:checked + .checkbox-icon:before
   content: "\f046"
 
-input[type=checkbox].check_boxes:focus + label.check_boxes:before,
-input[type=checkbox].check_boxes:focus + .checkbox-icon:before
+input[type=checkbox]:focus + label.check_boxes:before,
+input[type=checkbox]:focus + .checkbox-icon:before
   color: lighten($input-border-focus, 10%)
 
-.form-group.boolean .col-sm-9 label
-  margin-bottom: 0
-  margin-top: 7px
-
 .boolean .checkbox-icon,
-.checkbox-inline label.check_boxes,
 .checkbox .checkbox-icon
   &:hover
     &:before
@@ -53,17 +57,16 @@ input[type=checkbox].check_boxes:focus + .checkbox-icon:before
     +fontAwesome
     content: "\f096"
     color: $input-color
-    width: 13px
 
-input[type=radio].radio_buttons:checked + label.radio_buttons:before,
-input[type=radio].radio_buttons:checked + .radio-icon:before
+input[type=radio]:checked + label.radio_buttons:before,
+input[type=radio]:checked + .radio-icon:before
   content: "\f192"
 
-input[type=radio].radio_buttons:focus + label.radio_buttons:before,
-input[type=radio].radio_buttons:focus + .radio-icon:before
+input[type=radio]:focus + label.radio_buttons:before,
+input[type=radio]:focus + .radio-icon:before
   color: lighten($input-border-focus, 10%)
 
-.radio-inline label.radio_buttons,
+.boolean .radio-icon,
 .radio .radio-icon
   &:hover
     &:before
@@ -73,9 +76,9 @@ input[type=radio].radio_buttons:focus + .radio-icon:before
     content: "\f10c"
     color: $input-color
 
-.radio,
-.checkbox
-  padding-left: 0
+.form-group.boolean .col-sm-9 label
+  margin-bottom: 0
+  margin-top: 7px
 
 // INLINE OVERRIDE //
 .radio-inline,
