@@ -1,19 +1,20 @@
 .page-content-wrap
-  = panel do |p|
-    = p.header do
+  = panel do |panel|
+    = panel.header do
       = icon_link_to t('para.shared.add'), component_relation_path(component, relation, nil, :new), icon: 'plus', class: 'btn btn-primary'
 
-    = p.body do
+    = panel.body do
       = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
-    = p.body class: 'panel-body-table' do
-      - if resources.length > 0
+    - if resources.length > 0
+      = panel.body class: 'panel-body-table' do
         = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
-      - else
-        .alert.alert-warning.no-margin-bottom
+    - else
+      = panel.body do
+        = alert class: 'no-margin-bottom', dismissable: false do
           = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
 
     - if resources.total_count > resources.length
-      = p.footer do
+      = panel.footer do
         = paginate resources, theme: Para.config.pagination_theme
