@@ -7,7 +7,7 @@ module Para
       component_path_for(method, component)
     end
 
-    def component_relation_path(component, relation, resource = nil, action = :index)
+    def component_relation_path(component, relation, resource = nil, action = :index, options = {})
       action = action_path_name_for(action)
 
       relation_path = relation.to_s.camelize.demodulize.underscore
@@ -20,7 +20,7 @@ module Para
 
       method = build_route_method_from(component, action, relation_path)
 
-      component_path_for(method, component, resource)
+      component_path_for(method, component, resource, options)
     end
 
     private

@@ -103,7 +103,10 @@ module Para
 
       def edit_button(resource)
         view.link_to(
-          view.component_relation_path(component, model.name, resource, :edit),
+          view.component_relation_path(
+            component, model.name, resource, :edit,
+            return_to: view.request.fullpath
+          ),
           class: 'btn btn-primary'
         ) do
           content_tag(:i, '', class: 'fa fa-pencil')
