@@ -10,7 +10,7 @@ module Para
     def component_relation_path(component, relation, resource = nil, action = :index)
       action = action_path_name_for(action)
 
-      relation_path = relation.to_s.demodulize.underscore
+      relation_path = relation.to_s.camelize.demodulize.underscore
 
       relation_path = if resource.present? && resource.new_record?
         relation_path.pluralize
@@ -19,6 +19,7 @@ module Para
       end
 
       method = build_route_method_from(component, action, relation_path)
+
       component_path_for(method, component, resource)
     end
 
