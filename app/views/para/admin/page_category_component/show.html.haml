@@ -1,33 +1,4 @@
 .page-title
   %h1= @component.name
 
-.panel.panel-default
-  .panel-heading
-    .panel-btns
-      = link_to new_admin_page_category_page_path(@component), class: 'btn btn-primary' do
-        Add page
-
-- if @pages.any?
-  .panel-body.panel-body-table
-    .table-responsive
-      %table.table.table-hover.table-striped
-        %thead
-          %tr
-            %th= Para::Page.human_attribute_name(:title)
-            %th= Para::Page.human_attribute_name(:content)
-            %th
-            %th
-        %tbody
-          - @pages.each do |page|
-            %tr
-              %td= page.title
-              %td= "#{ sanitize(page.content, tags: [])[0..100] }..."
-              %td
-                = link_to edit_admin_page_category_page_path(@component, page) do
-                  Edit
-              %td
-                = link_to admin_page_category_page_path(@component, page), method: :delete do
-                  &times;
-- else
-  .block
-    No pages added for now
+= listing_for(@pages)

@@ -6,7 +6,8 @@ module Para
       load_and_authorize_resource :component, class: 'Para::Component::Base'
 
       def show
-        @pages = @component.pages
+        @q = @component.pages.search(params[:q])
+        @pages = @q.result.page(params[:page]).per(10)
       end
     end
   end

@@ -8,7 +8,7 @@
 
   - if can?(:create, Para::ComponentSection)
     %li
-      = link_to new_admin_component_section_path do
+      = link_to para.new_admin_component_section_path do
         %i.fa.fa-plus
         %span.xn-text
           = t('para.component_section.add')
@@ -33,15 +33,15 @@
             - if can?(:create, Para::Component::Base)
               %ul
                 %li
-                  = link_to new_admin_component_section_component_path(component_section) do
+                  = link_to para.new_admin_component_section_component_path(component_section) do
                     %i.fa.fa-plus
                     %span.xn-text
                       = t('para.component.add')
                   - if can?(:update, component_section)
-                    = link_to edit_admin_component_section_path(component_section) do
+                    = link_to para.edit_admin_component_section_path(component_section) do
                       %i.fa.fa-pencil
                       = t('para.component_section.edit')
-                    = link_to admin_component_section_path(component_section), method: 'delete', data: { confirm: t('para.confirmation.shared.destroy', model: component_section.name) } do
+                    = link_to para.admin_component_section_path(component_section), method: 'delete', data: { confirm: t('para.confirmation.shared.destroy', model: component_section.name) } do
                       %i.fa.fa-remove
                       = t('para.component_section.destroy')
 
