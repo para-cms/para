@@ -1,5 +1,6 @@
 require 'para/attribute_field/base'
 require 'para/attribute_field/boolean'
+require 'para/attribute_field/datetime'
 require 'para/attribute_field/image'
 require 'para/attribute_field/has_many'
 require 'para/attribute_field/nested_many'
@@ -36,6 +37,7 @@ module Para
         unless UNEDITABLE_ATTRIBUTES.include?(column.name)
           field_class = case column.type
           when :boolean then AttributeField::BooleanField
+          when :date, :datetime then AttributeField::DatetimeField
           else AttributeField::Base
           end
 

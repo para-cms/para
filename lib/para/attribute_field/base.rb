@@ -8,6 +8,7 @@ module Para
         @name = options[:name]
         @type = options[:type]
         @field_type = options[:field_type]
+
         determine_name_and_field_method!
       end
 

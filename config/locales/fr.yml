@@ -29,7 +29,7 @@ fr:
         name: "Groupe de pages"
 
     component_section:
-      add: "Ajouter une section de composants"
+      add: "Ajouter une section"
       edit: 'Modifier la section'
       destroy: 'Supprimer la section'
       actions: "Actions"

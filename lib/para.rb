@@ -23,6 +23,7 @@ require 'para/config'
 require 'para/inputs'
 require 'para/orderable'
 require 'para/form_builder'
+require 'para/markup'
 
 module Para
   extend ActiveSupport::Autoload
