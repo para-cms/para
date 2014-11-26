@@ -1,18 +1,19 @@
-= panel do |p|
-  = p.header do
-    = icon_link_to t('para.shared.add'), component_relation_path(component, relation, nil, :new), icon: 'plus', class: 'btn btn-primary'
+.page-content-wrap
+  = panel do |p|
+    = p.header do
+      = icon_link_to t('para.shared.add'), component_relation_path(component, relation, nil, :new), icon: 'plus', class: 'btn btn-primary'
 
-  = p.body do
-    = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
+    = p.body do
+      = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
-  = p.body class: 'panel-body-table' do
-    - if resources.length > 0
-      = table_for(resources: resources, model: model, component: component, attributes: attributes)
+    = p.body class: 'panel-body-table' do
+      - if resources.length > 0
+        = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
-    - else
-      .alert.alert-warning.no-margin-bottom
-        = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
+      - else
+        .alert.alert-warning.no-margin-bottom
+          = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
 
-  - if resources.total_count > resources.length
-    = p.footer do
-      = paginate resources, theme: Para.config.pagination_theme
+    - if resources.total_count > resources.length
+      = p.footer do
+        = paginate resources, theme: Para.config.pagination_theme
