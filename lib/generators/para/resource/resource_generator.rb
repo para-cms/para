@@ -35,7 +35,7 @@ module Para
 
     def insert_relation_to_show
       append_to_file "app/views/admin/#{ component_name.underscore }_component/show.html.haml" do
-        "\n\n= render partial: find_partial_for(:#{ plural_file_name }, :table), locals: { resources: @resources, relation: :#{ plural_file_name } }"
+        "\n\n= listing_for(@resources)"
       end
     end
 
