@@ -1,11 +1,10 @@
 @import 'para/lib/variables'
+@import "compass/css3/box-shadow"
 
 .dropdown-menu
   font-size: 12px
-  -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-  -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-  border: 1px solid #E5E5E5
+  +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
+  border: 1px solid $dropdown-border
   padding: 0
   margin: 8px 0 0
   > li
@@ -25,11 +24,11 @@
     position: absolute
     pointer-events: none
   &:after
-    border-color: transparent transparent #FFF
+    border-color: transparent transparent $dropdown-bg
     border-width: 5px
     margin-left: -5px
   &:before
-    border-color: transparent transparent #E5E5E5
+    border-color: transparent transparent $dropdown-border
     border-width: 6px
     margin-left: -6px
 
@@ -39,16 +38,16 @@
 
 .dropdown-header
   padding: 10px 15px
-  border-bottom: 1px solid #E5E5E5
-  color: #777
+  border-bottom: 1px solid $dropdown-border
+  color: $dropdown-header-color
 
 .dropdown-menu
   .fa
     margin-right: 5px
   .divider
-    background: #F5F5F5
+    background: $dropdown-divider-bg
     margin: 0
     padding: 15px 0 0
-    border-bottom: 1px solid #E5E5E5
+    border-bottom: 1px solid $dropdown-border
 
 

@@ -121,29 +121,29 @@ $table-border-color:                 #E5E5E5 !default; // table and cell border
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #59595a !default;
+$btn-default-color:              #333 !default;
 $btn-default-bg:                 #f5f5f5 !default;
-$btn-default-border:             #ddd !default;
+$btn-default-border:             #ccc !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 10%) !default;
+$btn-primary-border:             #29343f !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 10%) !default;
+$btn-success-border:             #89ad4d !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 10%) !default;
+$btn-warning-border:             #fe970a !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 10%) !default;
+$btn-danger-border:              #a43f3e !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 10%) !default;
+$btn-info-border:                #29b2e1 !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
@@ -176,7 +176,7 @@ $input-group-addon-border-color: $input-border !default;
 // -------------------------
 
 $dropdown-bg:                    #fff !default;
-$dropdown-border:                rgba(0,0,0,.15) !default;
+$dropdown-border:                #e5e5e5 !default;
 $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
@@ -189,7 +189,7 @@ $dropdown-link-active-bg:        $component-active-bg !default;
 
 $dropdown-link-disabled-color:   $gray-light !default;
 
-$dropdown-header-color:          $gray-light !default;
+$dropdown-header-color:          #777 !default;
 
 
 // COMPONENT VARIABLES
@@ -570,9 +570,9 @@ $badge-border-radius:         10px !default;
 
 // Breadcrumbs
 // -------------------------
-$breadcrumb-bg:               #f5f5f5 !default;
-$breadcrumb-color:            #ccc !default;
-$breadcrumb-active-color:     $gray-light !default;
+$breadcrumb-bg:               #e8e8e8 !default;
+$breadcrumb-color:            #99a0aa !default;
+$breadcrumb-active-color:     #656d78 !default;
 $breadcrumb-separator:        "/" !default;
 
 

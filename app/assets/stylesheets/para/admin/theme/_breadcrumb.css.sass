@@ -4,27 +4,27 @@
 .breadcrumb
   float: left
   width: 100%
-  background: #e8e8e8
+  background: $breadcrumb-bg
   margin-bottom: 10px
   padding: 6px 15px 7px
   +border-radius(0)
   li
     font-size: 11px
     line-height: 12px
-    color: #99a0aa
+    color: $breadcrumb-color
     text-decoration: none
     a
       font-size: 11px
       line-height: 12px
-      color: #99a0aa
+      color: $breadcrumb-color
       text-decoration: none
       &:hover
-        color: #656d78
+        color: $breadcrumb-active-color
     &:hover, &:last-child
-      color: #656d78
+      color: $breadcrumb-active-color
   > li + li:before
     font-family: FontAwesome
     content: "\f105"
-    color: #99a0aa
+    color: $breadcrumb-color
     padding: 0 8px
 

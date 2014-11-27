@@ -1,4 +1,7 @@
 @import 'para/lib/variables'
+@import "compass/css3/text-shadow"
+@import "compass/css3/transition"
+@import "compass/css3/border-radius"
 
 .x-navigation
   width: 100%
@@ -35,7 +38,7 @@
         font-weight: 400
         padding: 15px 10px 15px 15px
         text-decoration: none
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2)
+        +text-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
         border-bottom: 1px solid #2f3c48
         vertical-align: text-bottom
         .fa, .glyphicon
@@ -45,28 +48,16 @@
           font-size: 14px
           margin-right: 10px
           vertical-align: baseline
-          -webkit-transition: color 200ms ease
-          -moz-transition: color 200ms ease
-          -ms-transition: color 200ms ease
-          -o-transition: color 200ms ease
-          transition: color 200ms ease
+          +transition(color 200ms ease)
         &:hover
           background: #3d4e5d
-          -webkit-transition: all 200ms ease
-          -moz-transition: all 200ms ease
-          -ms-transition: all 200ms ease
-          -o-transition: all 200ms ease
-          transition: all 200ms ease
+          +transition(all 200ms ease)
           .fa, .glyphicon
             color: #ffd559
       ul
         background: #273541
         max-height: 0
-        -webkit-transition: all 200ms ease
-        -moz-transition: all 200ms ease
-        -ms-transition: all 200ms ease
-        -o-transition: all 200ms ease
-        transition: all 200ms ease
+        +transition(all 200ms ease)
         overflow: hidden
         li
           > a
@@ -96,11 +87,7 @@
       >
         a
           background: #3d4e5d
-          -webkit-transition: all 200ms ease
-          -moz-transition: all 200ms ease
-          -ms-transition: all 200ms ease
-          -o-transition: all 200ms ease
-          transition: all 200ms ease
+          +transition(all 200ms ease)
           .fa, .glyphicon
             color: #ffd559
         ul
@@ -145,9 +132,7 @@
                   &.active > a, > a:hover
                     padding-left: 65px
     &:last-child > a
-      -moz-border-radius: 0 0 0 5px
-      -webkit-border-radius: 0 0 0 5px
-      border-radius: 0 0 0 5px
+      +border-radius(0 0 0 5px)
       border-bottom: 0
   &.x-navigation-horizontal
     height: 50px
@@ -179,12 +164,8 @@
         position: absolute
         overflow: visible
         display: none
-        -moz-border-radius: 3px
-        -webkit-border-radius: 3px
-        border-radius: 3px
-        -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-        -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        +border-radius(3px)
+        +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
         z-index: 3
         ul.xn-drop-white:after
           border-right-color: #FFF
@@ -246,26 +227,18 @@
       li
         width: 100%
         &:first-child a
-          -moz-border-radius: 3px 3px 0 0
-          -webkit-border-radius: 3px 3px 0 0
-          border-radius: 3px 3px 0 0
+          +border-radius(3px 3px 0 0)
         &:last-child a
-          -moz-border-radius: 0 0 3px 3px
-          -webkit-border-radius: 0 0 3px 3px
-          border-radius: 0 0 3px 3px
+          +border-radius(0 0 3px 3px)
           border-bottom-color: transparent
         &.xn-openable:before
           content: "\f105"
         &.active.xn-openable:before
           content: "\f104"
       &:last-child > a
-        -moz-border-radius: 0
-        -webkit-border-radius: 0
-        border-radius: 0
+        +border-radius(0)
       &.last > a
-        -moz-border-radius: 0 5px 0 0
-        -webkit-border-radius: 0 5px 0 0
-        border-radius: 0 5px 0 0
+        +border-radius(0 5px 0 0)
     li
       width: auto
       position: relative
@@ -282,7 +255,7 @@
       li
         > a
           color: #333
-          text-shadow: none
+          +text-shadow(none)
           border-bottom: 1px solid #E9E9E9
           &:hover
             background: #F5F5F5
