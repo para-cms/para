@@ -23,7 +23,7 @@ module Para
 
       [
         ['devise', '~> 3.0'],
-        ['simple_form', '3.1.0.rc2'],
+        ['simple_form'],
         ['simple_form_extension'],
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
