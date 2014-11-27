@@ -7,7 +7,7 @@ module Para
         parent_model = @builder.object.class
         model = parent_model.reflections[attribute_name].klass
         orderable = options.fetch(:orderable, model.orderable?)
-        add_button = options.fetch(:add_button)
+        add_button = options.fetch(:add_button, true)
 
         template.render(
           partial: 'para/inputs/nested_many',
