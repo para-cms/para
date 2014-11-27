@@ -5,8 +5,10 @@ module Para
 
       def find_partial_for(relation, partial)
         if relation.kind_of? ActiveRecord::Base
-          relation = relation.class.to_s.underscore.pluralize
+          relation = relation.class
         end
+
+        relation = relation.to_s.underscore.pluralize
 
         if lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
           "admin/#{ relation }/#{ partial }"
