@@ -15,3 +15,6 @@
 
 # Initialize scope
 window.Para = {}
+
+$ ->
+  $('select').selectize()
