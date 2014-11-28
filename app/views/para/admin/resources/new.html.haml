@@ -3,4 +3,4 @@
     = t('para.form.shared.new.title', model: resource.class.model_name.human)
 
 .page-content-wrap
-  = render partial: 'form'
+  = render find_partial_for(resource, :form)

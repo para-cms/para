@@ -18,23 +18,46 @@ module Para
               if block
                 template.capture(&block)
               else
-                para_submit_button + para_cancel_button
+                [
+                  return_to_hidden_field,
+                  para_submit_button,
+                  para_submit_and_edit_button,
+                  para_submit_and_add_another_button,
+                  para_cancel_button
+                ].join("\n").html_safe
               end
             end
           end
         end
       end
 
-      def para_submit_button
-        button(:submit, I18n.t('para.shared.save'), class: 'btn-success')
+      def return_to_hidden_field
+        template.hidden_field_tag(:return_to, return_to_path)
+      end
+
+      def para_submit_button(options = {})
+        button(:submit, I18n.t('para.shared.save'), name: '_save', class: 'btn-success')
+      end
+
+      def para_submit_and_edit_button
+        button(:submit, I18n.t('para.shared.save_and_edit'), name: '_save_and_edit', class: 'btn-primary')
+      end
+
+      def para_submit_and_add_another_button
+        button(:submit, I18n.t('para.shared.save_and_add_another_button'), name: '_save_and_add_another', class: 'btn-primary')
       end
 
       def para_cancel_button
         template.link_to(
           I18n.t('para.shared.cancel'),
-          template.component_path(template.instance_variable_get(:@component)),
-          class: 'btn btn-default'
+          return_to_path,
+          class: 'btn btn-danger'
         )
+      end
+
+      def return_to_path
+        template.params[:return_to].presence ||
+          template.component_path(template.instance_variable_get(:@component))
       end
     end
   end

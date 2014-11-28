@@ -55,6 +55,8 @@ fr:
       cancel: "Annuler"
       add: "Créer"
       search: "Rechercher"
+      save_and_edit: "Enregistrer et éditer"
+      save_and_add_another_button: "Enregistrer et créer un(e) autre"
 
     types:
       boolean:
