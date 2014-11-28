@@ -16,5 +16,5 @@
 # Initialize scope
 window.Para = {}
 
-$ ->
+$(document).on 'ready page:change', ->
   $('select').selectize()
