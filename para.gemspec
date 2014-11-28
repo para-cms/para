@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 4.0'
   s.add_dependency 'devise', '~> 3.0'
-  s.add_dependency 'simple_form', '3.1.0.rc2'
+  s.add_dependency 'simple_form', '~> 3.1'
   s.add_dependency 'simple_form_extension'
   s.add_dependency 'cocoon'
   s.add_dependency 'friendly_id', '~> 5.0'

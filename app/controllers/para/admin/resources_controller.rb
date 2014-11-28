@@ -19,7 +19,7 @@ module Para
 
         if resource.save
           flash_message(:success, resource)
-          redirect_to component_path(@component)
+          redirect_to after_form_submit_path
         else
           flash_message(:error, resource)
           render 'new'
@@ -33,7 +33,7 @@ module Para
       def update
         if resource.update_attributes(resource_params)
           flash_message(:success, resource)
-          redirect_to component_path(@component)
+          redirect_to after_form_submit_path
         else
           flash_message(:error, resource)
           render 'edit'
@@ -68,6 +68,16 @@ module Para
       end
 
       private
+
+      def after_form_submit_path
+        if params[:_save_and_edit]
+          { action: 'edit', id: resource.to_param }
+        elsif params[:_save_and_add_another]
+          { action: 'new' }
+        else
+          params[:return_to].presence || component_path(@component)
+        end
+      end
 
       def self.resource(name, options = {})
         default_options = {

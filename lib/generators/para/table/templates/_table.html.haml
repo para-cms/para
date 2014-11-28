@@ -1,60 +1,10 @@
-- attributes = attribute_field_mappings_for(@component, relation)
-- model = relation_klass_for(@component, relation)
+= resources_table(model: model, component: component) do |table|
+  = table.header do
+    <%- attributes.each do |field| -%>
+    = table.header_for(:<%= field.name %>)
+    <%- end -%>
 
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title
-      = <%= class_name %>.model_name.human
-
-    .panel-btns.pull-right
-      = link_to component_relation_path(@component, relation, nil, :new), class: 'btn btn-default' do
-        %i.fa.fa-plus
-        = t('para.shared.add')
-
-    .clearfix
-
-  = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
-
-  - if resources.length > 0
-    .panel-body.panel-body-table
-      .table-responsive
-        %table.table.table-hover.para-component-relation-table{ class: ('orderable' if <%= class_name %>.orderable?), data: { :'order-url' => (component_relation_path(@component, relation, model.new, :order) if <%= class_name %>.orderable?) } }
-          %thead
-            %tr
-              - if <%= class_name %>.orderable?
-                %th
-
-              <%- attributes.each do |field| -%>
-              %th= <%= class_name %>.human_attribute_name(:<%= field.name %>)
-              <%- end -%>
-
-              %th.actions
-
-          %tbody
-            - resources.each do |resource|
-              %tr
-                - if <%= class_name %>.orderable?
-                  %td= reorder_anchor(value: resource.position, data: { id: resource.id })
-
-                <%- attributes.each do |field| -%>
-                %td= field_value_for(resource, :<%= field.name %>)
-                <%- end -%>
-
-                %td
-                  .pull-right.btn-group
-                    = link_to component_relation_path(@component, relation, resource, :edit), class: 'btn btn-primary' do
-                      %i.fa.fa-pencil
-                    = link_to component_relation_path(@component, relation, resource, :show), method: :delete, data: { confirm: t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
-                      %i.fa.fa-trash
-
-  - else
-    .panel-body
-      .alert.alert-warning.no-margin-bottom
-        - if filtered?(attributes)
-          = t('para.list.no_results')
-        - else
-          = t('para.list.empty')
-
-  - if resources.total_count > 1
-    .panel-footer
-      = paginate resources, theme: '<%= Para.config.pagination_theme %>'
+  = table.rows(resources) do |resource|
+    <%- attributes.each do |field| -%>
+    = table.data_for(resource, :<%= field.name %>)
+    <%- end -%>

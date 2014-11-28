@@ -2,4 +2,5 @@
   %h1
     = resource_title_for(resource)
 
-= render partial: 'form'
+.page-content-wrap
+  = render find_partial_for(resource, :form)

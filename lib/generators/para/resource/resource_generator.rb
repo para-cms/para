@@ -26,6 +26,7 @@ module Para
         RUBY
       end
     end
+
     def insert_route
       inject_into_file 'config/routes.rb', after: "component :#{ component_name.underscore } do" do
         "\n      resources :#{ plural_file_name }"
@@ -33,8 +34,8 @@ module Para
     end
 
     def insert_relation_to_show
-      inject_into_file "app/views/admin/#{ component_name.underscore }_component/show.html.haml", after: '%h1.page-header= @component.name' do
-        "\n\n= render partial: find_partial_for(:#{ plural_file_name }, :table), locals: { resources: @resources, relation: :#{ plural_file_name } }"
+      append_to_file "app/views/admin/#{ component_name.underscore }_component/show.html.haml" do
+        "\n\n= listing_for(@resources)"
       end
     end
 

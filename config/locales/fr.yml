@@ -29,7 +29,7 @@ fr:
         name: "Groupe de pages"
 
     component_section:
-      add: "Ajouter une section de composants"
+      add: "Ajouter une section"
       edit: 'Modifier la section'
       destroy: 'Supprimer la section'
       actions: "Actions"
@@ -55,6 +55,8 @@ fr:
       cancel: "Annuler"
       add: "Créer"
       search: "Rechercher"
+      save_and_edit: "Enregistrer et éditer"
+      save_and_add_another_button: "Enregistrer et créer un(e) autre"
 
     types:
       boolean:
