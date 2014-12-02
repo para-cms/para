@@ -6,6 +6,10 @@
           = form.input :name
           = form.input :type, collection: registered_components_options, include_blank: false
 
+          - if form.object.class.configurable?
+            - form.object.class.configurable_attributes.each do |key, options|
+              = form.input key, options
+
     .row
       .col-md-12
         .form-actions

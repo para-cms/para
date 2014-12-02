@@ -3,7 +3,7 @@
     %span.input-group-addon
       %i.fa.fa-search
 
-    = form.input_field fulltext_search_param_for(attributes), autofocus: true, label: t('para.shared.search'), class: 'form-control'
+    = form.input_field fulltext_search_param_for(attributes), as: :string, autofocus: true, label: t('para.shared.search'), class: 'form-control'
 
     %span.input-group-btn
       = form.submit t('para.shared.search'), class: 'btn btn-default'

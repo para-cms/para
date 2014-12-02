@@ -13,5 +13,11 @@ Para::Engine.routes.draw do
     component :page_category, path: 'category' do
       resources :pages
     end
+
+    component :crud do
+      scope ':model' do
+        resources :resources, path: '/'
+      end
+    end
   end
 end
