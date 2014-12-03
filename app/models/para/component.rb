@@ -4,6 +4,12 @@ module Para
       @registered_components ||= {}
     end
 
+    def self.registered_component?(model)
+      registered_components.any? do |name, component|
+        component.name == model
+      end
+    end
+
     class Base < ActiveRecord::Base
       self.table_name = 'para_components'
 

@@ -9,12 +9,13 @@ module Para
       load_and_authorize_resource class: 'Para::Component::Base', except: [:create]
 
       def new
-        @component = Para::Component::Crud.new
+        model = extract_model_from(params)
+        @component = model.new
       end
 
       def create
-        type = params[:component].delete(:type)
-        model = Para::Component.registered_components[type.to_sym]
+        model = extract_model_from(params[:component])
+
         @component = model.new(component_params_for(model))
         @component.component_section = @component_section
 
@@ -36,6 +37,17 @@ module Para
         permitted_attributes += model.configurable_attributes.keys
 
         params.require(:component).permit(permitted_attributes)
+      end
+
+      def extract_model_from(hash)
+        type = hash.delete(:type)
+        if (model = Para::Component.registered_components[type.to_sym])
+          model
+        elsif Para::Component.registered_component?(type)
+          type.constantize
+        else
+          raise "Component not found"
+        end
       end
     end
   end

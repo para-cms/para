@@ -3,7 +3,11 @@ Para::Engine.routes.draw do
     get '/' => 'main#index'
 
     resources :component_sections, only: [:new, :create, :edit, :update, :destroy] do
-      resources :components, only: [:new, :create]
+      resources :components, only: [:create] do
+        collection do
+          get ':type/new', action: 'new', as: 'new'
+        end
+      end
     end
 
     component :page do
