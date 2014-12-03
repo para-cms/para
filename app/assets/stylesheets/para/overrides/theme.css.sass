@@ -1,0 +1,123 @@
+@import 'para/lib/variables'
+@import "compass/css3/text-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/transition"
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+@import "compass/css3/transform"
+
+// More button style
+
+@mixin tab-focus()
+  outline: none
+  outline-offset: 0
+
+@mixin button-hover-focus-active($color-border, $color-bg)
+  +box-shadow(0px -2px $color-border inset)
+  &:hover
+    +box-shadow(0px -2px darken($color-border, 12%) inset)
+    background-color: darken($color-bg, 2%)
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    background-color: darken($color-bg, 2%)
+    +box-shadow(0px -1px 5px $color-border inset)
+
+@mixin button-variant-inverse($color-border, $color-bg)
+  color: $color-border
+  background-color: transparent
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    color: #fff
+    background-color: $color-bg
+    outline: none
+    outline: 0
+
+.btn,
+input,
+textarea,
+select,
+button
+  +single-transition(all, .1s, linear)
+  &,
+  &:active,
+  &.active
+    &:focus
+      +tab-focus()
+  &:hover,
+  &:focus
+    +tab-focus()
+
+
+.btn-default
+  +button-hover-focus-active($btn-default-border, $btn-default-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-default-border, $btn-default-bg)
+    color: darken($btn-default-border, 15%)
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open &.dropdown-toggle
+      color: darken($btn-default-border, 15%)
+
+.btn-primary
+  +button-hover-focus-active($btn-primary-border, $btn-primary-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-primary-border, $btn-primary-bg)
+
+.btn-warning
+  +button-hover-focus-active($btn-warning-border, $btn-warning-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-warning-border, $btn-warning-bg)
+
+.btn-success
+  +button-hover-focus-active($btn-success-border, $btn-success-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-success-border, $btn-success-bg)
+
+.btn-danger
+  +button-hover-focus-active($btn-danger-border, $btn-danger-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-danger-border, $btn-danger-bg)
+
+.btn-info
+  +button-hover-focus-active($btn-info-border, $btn-info-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-info-border, $btn-info-bg)
+
+// Left menu
+.x-navigation li.section-actions
+  &.active:before,
+  &:before,
+    content: none
+  a
+    font-size: 0.9em
+    padding: 8px 10px
+    background: lighten(#23303b, 10%)
+    &:hover
+      padding-left: 15px
+
+  &.active
+    > a
+      padding-left: 15px
+  .fa
+    font-size: 0.9em
+    margin-right: 0px
+
+// Table
+.para-component-relation-table
+  td > img
+    height: 50px  
+
+// Form actions
+.form-actions
+  padding-top: 20px
+  padding-bottom: 30px
+  padding-left: 10px
+  padding-right: 10px
+  border-top: 1px solid $gray-light

@@ -47,15 +47,15 @@ $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !def
 $font-family-base:        $font-family-sans-serif !default;
 
 $font-size-base:          12px !default;
-$font-size-large:         ceil($font-size-base * 1.25) !default; // ~18px
-$font-size-small:         ceil($font-size-base * 0.85) !default; // ~12px
+$font-size-large:         ceil($font-size-base * 1.25) !default;
+$font-size-small:         ceil($font-size-base * 0.85) !default;
 
-$font-size-h1:            floor($font-size-base * 2.6) !default; // ~36px
-$font-size-h2:            floor($font-size-base * 2.15) !default; // ~30px
-$font-size-h3:            ceil($font-size-base * 1.7) !default; // ~24px
-$font-size-h4:            ceil($font-size-base * 1.25) !default; // ~18px
-$font-size-h5:            $font-size-base !default;
-$font-size-h6:            ceil($font-size-base * 0.85) !default; // ~12px
+$font-size-h1:            23px !default;
+$font-size-h2:            26px !default;
+$font-size-h3:            18px !default;
+$font-size-h4:            16px !default;
+$font-size-h5:            15px !default;
+$font-size-h6:            13px !default;
 
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
@@ -494,7 +494,7 @@ $progress-bar-info-bg:        $brand-info !default;
 // List group
 // -------------------------
 $list-group-bg:               #fff !default;
-$list-group-border:           #ddd !default;
+$list-group-border:           #E5E5E5 !default;
 $list-group-border-radius:    $border-radius-base !default;
 
 $list-group-hover-bg:         #f5f5f5 !default;
@@ -511,11 +511,11 @@ $list-group-link-heading-color:  #333 !default;
 $panel-bg:                    #fff !default;
 $panel-inner-border:          transparent !default;
 $panel-border-radius:         $border-radius-base !default;
-$panel-footer-bg:             #fff !default;
+$panel-footer-bg:             #F5F5F5 !default;
 
 $panel-default-text:          $text-color !default;
-$panel-default-border:        #ddd !default;
-$panel-default-heading-bg:    transparent !default;
+$panel-default-border:        #E5E5E5 !default;
+$panel-default-heading-bg:    #F5F5F5 !default;
 
 $panel-primary-text:          darken($brand-primary, 15%) !default;
 $panel-primary-border:        lighten($btn-primary-border, 15%) !default;
@@ -523,19 +523,19 @@ $panel-primary-heading-bg:    lighten($btn-primary-bg, 15%) !default;
 
 $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;
-$panel-success-heading-bg:    $state-success-bg !default;
+$panel-success-heading-bg:    $panel-default-heading-bg !default;
 
 $panel-warning-text:          $state-warning-text !default;
 $panel-warning-border:        $state-warning-border !default;
-$panel-warning-heading-bg:    $state-warning-bg !default;
+$panel-warning-heading-bg:    $panel-default-heading-bg !default;
 
 $panel-danger-text:           $state-danger-text !default;
 $panel-danger-border:         $state-danger-border !default;
-$panel-danger-heading-bg:     $state-danger-bg !default;
+$panel-danger-heading-bg:     $panel-default-heading-bg !default;
 
 $panel-info-text:             $state-info-text !default;
 $panel-info-border:           $state-info-border !default;
-$panel-info-heading-bg:       $state-info-bg !default;
+$panel-info-heading-bg:       $panel-default-heading-bg !default;
 
 
 // Thumbnails

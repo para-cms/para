@@ -1,6 +1,7 @@
 @import 'para/lib/variables'
 @import "compass/css3/text-shadow"
 @import "compass/css3/transition"
+@import "compass/css3/box-shadow"
 @import "compass/css3/border-radius"
 
 .x-navigation
@@ -134,6 +135,8 @@
     &:last-child > a
       +border-radius(0 0 0 5px)
       border-bottom: 0
+
+  // Horizontal Navbar    
   &.x-navigation-horizontal
     height: 50px
     background: $brand-primary
@@ -283,8 +286,10 @@
           width: 200px
       &:before
         left: 5px
+
+  // Lef Menu small   
   &.x-navigation-minimized
-    width: 50px
+    width: $left-menu-width-close
     .xn-text
       display: none
     .xn-visible
@@ -313,10 +318,8 @@
         display: block
       ul
         top: 0
-        right: -230px
-        -moz-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-        -webkit-box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
-        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
+        right: -$left-menu-width-open + 10px
+        +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
         &:after
           right: 100%
           top: 23px
@@ -335,14 +338,10 @@
           &.active > a, > a:hover
             padding-left: 20px!important
           &:first-child > a
-            -moz-border-radius: 3px 3px 0 0
-            -webkit-border-radius: 3px 3px 0 0
-            border-radius: 3px 3px 0 0
+            +border-radius(3px 3px 0 0)
           &:last-child > a
             border-bottom: 0
-            -moz-border-radius: 0 0 3px 3px
-            -webkit-border-radius: 0 0 3px 3px
-            border-radius: 0 0 3px 3px
+            +border-radius(0 0 3px 3px)
     > li
       width: 100%
       > a
@@ -355,9 +354,7 @@
         position: absolute
         overflow: visible
         display: none
-        -moz-border-radius: 3px
-        -webkit-border-radius: 3px
-        border-radius: 3px
+        +border-radius(3px)
       li
         width: 100%
         &.xn-openable:before
@@ -438,14 +435,8 @@
       border: 1px solid #29343f
       background: #2d3945
       color: #AAA
-      -webkit-transition: all 200ms ease
-      -moz-transition: all 200ms ease
-      -ms-transition: all 200ms ease
-      -o-transition: all 200ms ease
-      transition: all 200ms ease
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
-      border-radius: 5px
+      +transition(all 200ms ease)
+      +border-radius(5px)
     &:before
       content: "\f002"
       font-family: FontAwesome
@@ -480,7 +471,7 @@
       top: 14px
       left: 20px
       color: #FFF
-      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3)
+      +text-shadow(1px 2px 2px rgba(0, 0, 0, 0.3))
   > li
     &.xn-logo > a
       border-bottom: 0
@@ -508,9 +499,7 @@
         img
           width: 36px
           border: 2px solid #FFF
-          -moz-border-radius: 50%
-          -webkit-border-radius: 50%
-          border-radius: 50%
+          +border-radius(50%)
   .informer
     font-size: 11px
     position: absolute
@@ -521,9 +510,7 @@
     right: 10px
     top: 15px
     color: #FFF
-    -moz-border-radius: 3px
-    -webkit-border-radius: 3px
-    border-radius: 3px
+    +border-radius(3px)
     &.pulsate
       -webkit-animation: pulsate 1s ease-out
       -webkit-animation-iteration-count: infinite
@@ -558,9 +545,7 @@
     width: 400px
     z-index: 3
     border-top-width: 1px
-    -moz-border-radius: 3px
-    -webkit-border-radius: 3px
-    border-radius: 3px
+    +border-radius(3px)
     &.xn-drop-left
       left: auto
       right: 0
@@ -620,9 +605,7 @@
     img
       width: 100px
       border: 3px solid #FFF
-      -moz-border-radius: 50%
-      -webkit-border-radius: 50%
-      border-radius: 50%
+      +border-radius(50%)
   .profile-data
     width: 100%
     float: left
@@ -647,15 +630,9 @@
     border: 2px solid #DDD
     line-height: 25px
     position: absolute
-    -moz-border-radius: 50%
-    -webkit-border-radius: 50%
-    border-radius: 50%
+    +border-radius(50%)
     padding: 0
-    -webkit-transition: all 200ms ease
-    -moz-transition: all 200ms ease
-    -ms-transition: all 200ms ease
-    -o-transition: all 200ms ease
-    transition: all 200ms ease
+    +transition(all 200ms ease)
     &.profile-control-left
       left: 15px
       top: 53px
@@ -675,17 +652,16 @@
  * Override profile with x-navigation-minimized
 .x-navigation.x-navigation-minimized
   .profile
-    width: 220px
+    width: $left-menu-width-open
     background: $brand-primary
     position: absolute
     top: 4px
-    right: -230px
+    right: -$left-menu-width-open + 10
     display: none
-    -moz-border-radius: 3px
-    -webkit-border-radius: 3px
-    border-radius: 3px
+    +border-radius(3px)
   li.active .profile
     display: block
   .profile-mini
     display: block
-    border-bottom: 0    
+    border-bottom: 0   
+     

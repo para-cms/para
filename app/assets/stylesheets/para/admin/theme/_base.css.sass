@@ -11,6 +11,8 @@ body, html
   min-height: 100%
   position: relative
   overflow-x: hidden
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 .body-full-height
   height: 100%
@@ -27,15 +29,9 @@ body, html
       padding-left: 0
       padding-right: 0
 
-.page-title
-  float: left
-  width: 100%
-  padding: 5px 10px
-  padding-left: 40px
-  padding-right: 40px
-  h2, h1, h3
-    float: left
-    line-height: 30px
+
+// Main container 
+// -------------------------
 
 .page-container
   width: 100%
@@ -43,18 +39,22 @@ body, html
   min-height: 100%
   position: relative
   background: $brand-primary
+
+  // Left Menu system close or open
   .page-sidebar
-    width: 220px
+    width: $left-menu-width-open
     float: left
     position: relative
     z-index: 3
     &.page-sidebar-fixed
       position: fixed
   &.page-container-wide .page-sidebar
-    width: 50px
+    width: $left-menu-width-close
+
+  // Right side Content
   .page-content
     min-height: 100%
-    margin-left: 220px
+    margin-left: $left-menu-width-open
     background-color: $body-bg
     position: relative
     zoom: 1
@@ -63,11 +63,14 @@ body, html
       display: table
     &:after
       clear: both
+
+    // Frame system (no border, with right or left sidebar)
     .content-frame
       float: left
       width: 100%
       position: relative
       background-color: $body-bg
+
       .content-frame-top
         float: left
         width: 100%
@@ -82,6 +85,7 @@ body, html
           h2
             margin-bottom: 0
             font-size: 22px
+           
       .content-frame-left
         float: left
         width: 300px
@@ -98,6 +102,7 @@ body, html
           margin-top: 10px
         > .form-group
           margin-bottom: 20px
+
       .content-frame-right
         float: right
         width: 300px
@@ -116,34 +121,41 @@ body, html
           margin-bottom: 20px
         > .form-group
           margin-bottom: 20px
+
       .content-frame-body
         padding: 70px 10px 10px
         margin-left: 300px
         &.content-frame-body-left
           margin-left: 0
           margin-right: 300px
+
       .content-frame-left-toggle, .content-frame-right-toggle
         display: none
         margin-left: 5px
+
+    // Basic content frame    
     .page-content-wrap
       float: left
       width: 100%
       padding-left: 25px
       padding-right: 25px
+
+  // Left menu close or open
   &.page-container-wide .page-content
-    margin-left: 50px
+    margin-left: $left-menu-width-close
     +transition(all, .2ms ease)
   &.page-navigation-toggled .page-content
-    margin-left: 50px
+    margin-left: $left-menu-width-close
   &.page-navigation-top .page-content
     margin-left: 0
+
+  // Top navigation fixed  
   &.page-navigation-top-fixed
     .x-navigation.x-navigation-horizontal
       position: fixed
-      padding-right: 220px
+      padding-right: $left-menu-width-open
       top: 0
     .page-content
       padding-top: 50px
     &.page-navigation-toggled .x-navigation.x-navigation-horizontal
       padding-right: 50px
-

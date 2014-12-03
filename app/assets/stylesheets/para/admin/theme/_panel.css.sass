@@ -10,9 +10,9 @@
   float: left
   width: 100%
   +border-radius($panel-border-radius)
-  border-right: 1px solid #E5E5E5
-  border-left: 1px solid #E5E5E5
-  border-top: 2px solid #E5E5E5
+  border-right: 1px solid $panel-default-border
+  border-left: 1px solid $panel-default-border
+  border-top: 2px solid $panel-default-border
   margin-bottom: 20px
   position: relative
   +box-shadow(0 1px 1px 0 rgba(0, 0, 0, 0.2))
@@ -45,7 +45,7 @@
         font-size: 14px
         font-weight: 600
         line-height: 18px
-        color: #434a54
+        color: $title-color
         padding: 0
         margin: 0
       span
@@ -59,12 +59,30 @@
   .panel-body, .panel-footer, .panel-heading
     float: left
     width: 100%
+
   .panel-body
     position: relative
     &.scroll
       padding-right: 0
     &.panel-body-map
       padding: 5px
+    &.panel-body.panel-body-table
+      padding: 0
+      h1, h2, h3, h4, h5, h6
+        padding-left: 10px
+        margin-bottom: 10px
+      .table
+        margin-bottom: 0
+        border: 0
+        tr >
+          td:first-child, th:first-child
+            border-left: 0
+          td:last-child, th:last-child
+            border-right: 0
+        > tbody > tr:last-child > td
+          border-bottom: 0
+      td, th
+        padding: 8px 10px
     &.panel-body-image
       padding: 0
       margin-bottom: 10px
@@ -119,23 +137,29 @@
           top: 50%
           margin-left: 0
           margin-top: -15px
+
   .panel-title
-    font-size: 16px
+    font-size: $font-size-h4
     font-weight: 400
     line-height: 30px
     display: block
     float: left
-    color: #434a54
+    color: $title-color
+
   .panel-footer
-    background: #F5F5F5
+    background: $panel-footer-bg
     border: 0
     border-top: 1px solid #E3E3E3
     line-height: 30px
     padding: 10px
 
-.panel-danger .panel-heading, .panel-default .panel-heading, .panel-info .panel-heading, .panel-primary .panel-heading, .panel-success .panel-heading, .panel-warning .panel-heading
-  background: #F5F5F5
-  border-color: #E5E5E5
+.panel-danger .panel-heading,
+.panel-default .panel-heading,
+.panel-info .panel-heading,
+.panel-primary .panel-heading,
+.panel-success .panel-heading,
+.panel-warning .panel-heading
+  border-color: $panel-default-border
 
 .panel-group
   float: left
@@ -145,11 +169,6 @@
 
 .panel-title > a
   text-decoration: none
-
-.panel-group.accordion .panel-body
-  display: none
-  &.panel-body-open
-    display: block
 
 ul.panel-controls
   float: right
@@ -188,15 +207,7 @@ ul.panel-controls
         border-color: $brand-danger
       &:hover
         border-color: #999
-        color: #434a54
-
-.panel-hidden-controls
-  ul.panel-controls > li > a
-    +opacity(0)
-  &:hover ul.panel-controls > li > a
-    +opacity(.8)
-    &:hover
-      +opacity(1)
+        color: $title-color
 
 .label-form
   +inline-block
@@ -240,34 +251,7 @@ ul.panel-controls > li
     animation: pulsate 1s ease-out
     animation-iteration-count: infinite
 
-.panel
-  &.panel-primary .panel-body-pricing small
-    color: $brand-primary
-  &.panel-success .panel-body-pricing small
-    color: $brand-success
-  &.panel-info .panel-body-pricing small
-    color: $brand-info
-  &.panel-warning .panel-body-pricing small
-    color: $brand-warning
-  &.panel-danger .panel-body-pricing small
-    color: $brand-danger
-
-.panel-body.panel-body-pricing
-  h2
-    font-size: 26px
-    font-weight: 400
-    small
-      text-transform: uppercase
-  p
-    font-size: 13px
-    color: #666
-    margin-bottom: 15px
-    &.text-muted
-      color: #AAA
-      font-size: 11px
-  .fa
-    color: #EEE
-
+// Refresh layer system
 .panel-refresh-layer
   position: absolute
   left: 0
@@ -283,6 +267,21 @@ ul.panel-controls > li
     margin-left: -16px
     margin-top: -16px
 
+// Panel hidden system
+.panel-group.accordion .panel-body
+  display: none
+  &.panel-body-open
+    display: block
+
+.panel-hidden-controls
+  ul.panel-controls > li > a
+    +opacity(0)
+  &:hover ul.panel-controls > li > a
+    +opacity(.8)
+    &:hover
+      +opacity(1)
+
+// Toggle panel
 .panel-toggled
   .panel-body, .panel-footer
     display: none
