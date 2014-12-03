@@ -47,9 +47,7 @@ module Para
         elsif Para::Component.registered_component?(type)
           type.constantize
         else
-          raise Para::ComponentNotFound.new(
-            "Component not found for type : #{ type }"
-          )
+          raise Para::ComponentNotFound.new(type)
         end
       end
     end
