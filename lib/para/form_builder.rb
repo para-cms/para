@@ -16,3 +16,5 @@ SimpleForm::FormBuilder.class_eval do
   include Para::FormBuilder::NestedForm
   include Para::FormBuilder::Ordering
 end
+
+SimpleForm::FormBuilder.map_type(:inet, to: SimpleForm::Inputs::StringInput)

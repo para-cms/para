@@ -27,6 +27,8 @@ fr:
         name: "Page"
       page_category:
         name: "Groupe de pages"
+      crud:
+        name: "Listing de ressources"
 
     component_section:
       add: "Ajouter une section"

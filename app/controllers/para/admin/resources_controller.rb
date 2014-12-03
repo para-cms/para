@@ -3,6 +3,8 @@ require_dependency "para/application_controller"
 module Para
   module Admin
     class ResourcesController < Para::Admin::BaseController
+      include Para::ModelHelper
+
       class_attribute :resource_name, :resource_class
 
       load_and_authorize_resource :component, class: 'Para::Component::Base',
@@ -15,7 +17,8 @@ module Para
       end
 
       def create
-        resource.component = @component
+        # Assign component the resource belongs to it
+        resource.component = @component if resource.respond_to?(:component=)
 
         if resource.save
           flash_message(:success, resource)
@@ -75,7 +78,7 @@ module Para
         elsif params[:_save_and_add_another]
           { action: 'new' }
         else
-          params[:return_to].presence || component_path(@component)
+          params.delete(:return_to).presence || component_path(@component)
         end
       end
 
@@ -110,10 +113,6 @@ module Para
         end
       end
 
-      def resource_params
-        @resource_params ||= params.require(:resource).permit!
-      end
-
       def ensure_resource_name_defined!
         unless self.class.resource_name
           raise "Resource not defined in your controller. " \
@@ -121,6 +120,20 @@ module Para
                 "`resource :resource_name` macro when subclassing " \
                 "Para::Admin::ResourcesController"
         end
+      end
+
+      def resource_params
+        @resource_params ||= parse_resource_params(
+          params.require(:resource).permit!
+        )
+      end
+
+      def parse_resource_params(hash)
+        model_field_mappings(self.class.resource_model).fields.each do |field|
+          field.parse_input(hash) if hash.key?(field.name)
+        end
+
+        hash
       end
     end
   end

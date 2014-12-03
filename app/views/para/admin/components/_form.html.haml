@@ -4,7 +4,13 @@
       .col-md-12.col-lg-8
         .block.form-inputs
           = form.input :name
-          = form.input :type, collection: registered_components_options, include_blank: false
+
+          / Configurable attributes
+          - if form.object.class.configurable?
+            - form.object.class.configurable_attributes.each do |key, options|
+              = form.input key, options
+
+          = form.hidden_field :type, value: params[:type] || form.object.type
 
     .row
       .col-md-12
