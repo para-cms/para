@@ -25,6 +25,7 @@ module Para
         ['devise', '~> 3.0'],
         ['simple_form', '3.1.0.rc2'],
         ['simple_form_extension'],
+        ['active_decorator', github: 'glyph-fr/active_decorator', branch: 'single-table-inheritance'],
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],
@@ -32,10 +33,9 @@ module Para
         ['kaminari', '>= 0.16.1'],
         ['ransack', '>= 1.4.1'],
         ['bootstrap-kaminari-views', '>= 0.0.5']
-      ].each do |name, version|
+      ].each do |*args|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
-          gem name unless version
-          gem(name, version) if version
+          gem *args
         end
       end
     end

@@ -51,6 +51,7 @@ module Para
         # but method is undefined
         end rescue nil
       end
+
       # No route found in any context, raise
       raise NoMethodError.new "No route found for #{ method } with args : " \
         "\n - #{ args.map(&:inspect).join("\n - ") }"

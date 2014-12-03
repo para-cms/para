@@ -4,14 +4,15 @@ module Para
       @registered_components ||= {}
     end
 
-    def self.registered_component?(model)
+    def self.registered_component?(model_name)
       registered_components.any? do |name, component|
-        component.name == model
+        component.name == model_name
       end
     end
   end
 end
 
+# Require models
 require 'para/component/base'
 require 'para/component/page'
 require 'para/component/page_category'

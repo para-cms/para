@@ -20,7 +20,11 @@ Para::Engine.routes.draw do
 
     component :crud do
       scope ':model' do
-        resources :resources, path: '/'
+        resources :crud_resources, path: '/' do
+          collection do
+            patch 'order'
+          end
+        end
       end
     end
   end
