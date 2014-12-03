@@ -41,12 +41,15 @@ module Para
 
       def extract_model_from(hash)
         type = hash.delete(:type)
+
         if (model = Para::Component.registered_components[type.to_sym])
           model
         elsif Para::Component.registered_component?(type)
           type.constantize
         else
-          raise "Component not found"
+          raise Para::ComponentNotFound.new(
+            "Component not found for type : #{ type }"
+          )
         end
       end
     end

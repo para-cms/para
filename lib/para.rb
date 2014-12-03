@@ -15,6 +15,7 @@ require 'bootstrap-sass'
 require 'compass-rails'
 require 'font-awesome-rails'
 
+require 'para/errors'
 require 'rails/routing_mapper'
 require 'rails/relation_length_validator'
 require 'para/attribute_field_mappings'
