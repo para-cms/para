@@ -9,12 +9,12 @@ module Para
       load_and_authorize_resource class: 'Para::Component::Base', except: [:create]
 
       def new
-        model = extract_model_from(params)
+        model = extract_model_from!(params)
         @component = model.new
       end
 
       def create
-        model = extract_model_from(params[:component])
+        model = extract_model_from!(params[:component])
 
         @component = model.new(component_params_for(model))
         @component.component_section = @component_section
@@ -39,7 +39,7 @@ module Para
         params.require(:component).permit(permitted_attributes)
       end
 
-      def extract_model_from(hash)
+      def extract_model_from!(hash)
         type = hash.delete(:type)
 
         if (model = Para::Component.registered_components[type.to_sym])
