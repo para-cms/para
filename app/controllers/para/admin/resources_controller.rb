@@ -7,7 +7,7 @@ module Para
 
       class_attribute :resource_name, :resource_class
 
-      before_filter :load_and_authorize_component
+      load_and_authorize_component
 
       helper_method :resource
 
@@ -70,16 +70,6 @@ module Para
       end
 
       private
-
-      def load_and_authorize_component
-        loader = self.class.cancan_resource_class.new(
-          self, :component, class:  'Para::Component::Base', find_by: :slug
-        )
-
-        loader.load_and_authorize_resource
-
-        ActiveDecorator::Decorator.instance.decorate(@component) if @component
-      end
 
       def after_form_submit_path
         if params[:_save_and_edit]

@@ -6,7 +6,7 @@ module Para
       include Para::Admin::BaseHelper
 
       load_and_authorize_resource :component_section, class: 'Para::ComponentSection'
-      load_and_authorize_resource class: 'Para::Component::Base', except: [:create]
+      load_and_authorize_resource class: 'Para::Component::Base'
 
       def new
         model = extract_model_from!(params)
@@ -18,6 +18,7 @@ module Para
 
         @component = model.new(component_params_for(model))
         @component.component_section = @component_section
+        ActiveDecorator::Decorator.instance.decorate(@component)
 
         authorize! :create, @component
 
@@ -38,6 +39,8 @@ module Para
 
         params.require(:component).permit(permitted_attributes)
       end
+
+      def resource_params; end
 
       def extract_model_from!(hash)
         type = hash.delete(:type)
