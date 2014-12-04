@@ -7,6 +7,8 @@ module Para
         before_filter Para.config.authenticate_admin_method
       end
 
+      before_filter :load_component_sections
+
       layout 'para/admin'
 
       def current_admin
@@ -17,6 +19,10 @@ module Para
 
       def current_ability
         Ability.new(current_admin)
+      end
+
+      def load_component_sections
+        @component_sections = Para::ComponentSection.ordered.includes(:components)
       end
     end
   end

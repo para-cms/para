@@ -12,7 +12,7 @@ module Para
           redirect_to admin_path
         else
           flash_message :error, @component
-          redirect_to component_path(@component)
+          redirect_to @component.path
         end
       end
     end

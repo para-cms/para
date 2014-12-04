@@ -23,7 +23,7 @@ module Para
 
         if @component.save
           flash_message(:success, @component)
-          redirect_to component_path(@component)
+          redirect_to @component.path
         else
           flash_message(:error, @component)
           render 'new'

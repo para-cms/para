@@ -1,4 +1,4 @@
-= search_form_for @q, builder: SimpleForm::FormBuilder, url: component_path(@component) do |form|
+= search_form_for @q, builder: SimpleForm::FormBuilder, url: @component.path do |form|
   .input-group
     %span.input-group-addon
       %i.fa.fa-search

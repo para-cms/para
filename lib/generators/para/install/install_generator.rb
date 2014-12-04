@@ -25,7 +25,9 @@ module Para
         ['devise', '~> 3.0'],
         ['simple_form'],
         ['simple_form_extension'],
-        ['active_decorator', github: 'glyph-fr/active_decorator', branch: 'single-table-inheritance'],
+        # Pull requests are pending, and I don't want to release the gem
+        # under another name to be able to depend on it
+        ['active_decorator', github: 'glyph-fr/active_decorator', branch: 'dev'],
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],

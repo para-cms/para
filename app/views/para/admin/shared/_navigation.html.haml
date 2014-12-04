@@ -14,8 +14,8 @@
           = t('para.component_section.add')
 
   %li.xn-title Navigation
-  - if (component_sections = Para::ComponentSection.ordered).any?
-    - component_sections.all.each do |component_section|
+  - if @component_sections.any?
+    - @component_sections.each do |component_section|
       %li.xn-openable{ class: ('active' if component_section_active?(component_section)) }
         = link_to "#" do
           = component_section.name
@@ -24,7 +24,7 @@
           - component_section.components.each do |component|
             - active = request.url.split('/').pop == component.slug
             %li{ class: active && 'active' }
-              = link_to component.name, component_path(component)
+              = link_to component.name, component.path
 
           %li.xn-openable.section-actions
             = link_to '#' do

@@ -43,11 +43,11 @@ module Para
 
     class ModelName < ActiveModel::Name
       def route_key
-        super.gsub(/(para_|component_)/, '')
+        super.gsub(/(para_|component_|_component$)/, '')
       end
 
       def singular_route_key
-        super.gsub(/(para_|component_)/, '')
+        super.gsub(/(para_|component_|_component$)/, '')
       end
     end
   end

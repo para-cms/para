@@ -14,7 +14,7 @@ module Para
           @component.update! slug: @page.slug
 
           flash_message(:success, @page)
-          redirect_to component_path(@component)
+          redirect_to @component.path
         else
           flash_message(:error, @page)
           render 'edit'

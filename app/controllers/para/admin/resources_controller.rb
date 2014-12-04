@@ -7,8 +7,7 @@ module Para
 
       class_attribute :resource_name, :resource_class
 
-      load_and_authorize_resource :component, class: 'Para::Component::Base',
-                                  find_by: :slug
+      before_filter :load_and_authorize_component
 
       helper_method :resource
 
@@ -46,7 +45,7 @@ module Para
       def destroy
         resource.destroy
         flash_message(:success, resource)
-        redirect_to component_path(@component)
+        redirect_to @component.path
       end
 
       def order
@@ -54,7 +53,7 @@ module Para
 
         ids = resources_params.map { |resource| resource[:id] }
 
-        resources = resource_model.where(id: ids)
+        resources = self.class.resource_model.where(id: ids)
         resources_hash = resources.each_with_object({}) do |resource, hash|
           hash[resource.id.to_s] = resource
         end
@@ -72,13 +71,23 @@ module Para
 
       private
 
+      def load_and_authorize_component
+        loader = self.class.cancan_resource_class.new(
+          self, :component, class:  'Para::Component::Base', find_by: :slug
+        )
+
+        loader.load_and_authorize_resource
+
+        ActiveDecorator::Decorator.instance.decorate(@component) if @component
+      end
+
       def after_form_submit_path
         if params[:_save_and_edit]
           { action: 'edit', id: resource.to_param }
         elsif params[:_save_and_add_another]
           { action: 'new' }
         else
-          params.delete(:return_to).presence || component_path(@component)
+          params.delete(:return_to).presence || @component.path
         end
       end
 
@@ -99,22 +108,22 @@ module Para
         load_and_authorize_resource(name, options)
       end
 
-      def resource_model
+      def self.resource_model
         @resource_model ||= begin
           ensure_resource_name_defined!
-          Para.const_get(self.class.resource_class)
+          Para.const_get(resource_class)
         end
       end
 
       def resource
         @resource ||= begin
-          ensure_resource_name_defined!
+          self.class.ensure_resource_name_defined!
           instance_variable_get(:"@#{ self.class.resource_name }")
         end
       end
 
-      def ensure_resource_name_defined!
-        unless self.class.resource_name
+      def self.ensure_resource_name_defined!
+        unless resource_name.presence
           raise "Resource not defined in your controller. " \
                 "You can define the resource of your controller with the " \
                 "`resource :resource_name` macro when subclassing " \
