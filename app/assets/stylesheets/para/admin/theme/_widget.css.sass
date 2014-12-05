@@ -1,0 +1,545 @@
+@import 'para/lib/variables'
+@import "compass/css3/border-radius"
+@import "compass/css3/transition"
+@import "compass/css3/opacity"
+@import "compass/css3/box-shadow"
+
+// User
+.user 
+  float: left
+  width: 100%
+  line-height: 50px
+
+.user img 
+  float: left
+  width: 50px
+  height: 50%
+  border: 3px solid #F5F5F5
+  +border-radius(50%)
+  margin-right: 10px
+
+.user a 
+  display: block
+  float: left
+  text-decoration: none
+  font-size: 14px
+  font-weight: 600
+  color: $brand-primary
+
+.user .btn 
+  margin-top: 10px
+
+// Messages
+.messages 
+  width: 100%
+  float: left
+
+.messages .item 
+  width: 100%
+  float: left
+  margin-bottom: 10px
+  +opacity(0)
+  +transition(all 200ms ease)
+
+.messages .item .text 
+  background: #FFF
+  padding: 10px
+  +border-radius(3px)
+  border: 1px solid #D5D5D5
+
+.messages .item .text .heading 
+  width: 100%
+  margin-bottom: 5px
+
+.messages .item .text .heading a 
+  text-decoration: none
+  font-size: 12px
+  color: $brand-primary
+  font-weight: 600
+  line-height: 20px
+
+.messages .item .text .heading .date 
+  float: right
+  line-height: 20px
+  font-size: 11px
+  color: #CCC
+  font-weight: 600
+
+.messages .item .text:hover 
+  border-color: #BBB
+
+.messages .item:nth-child(2n) .text 
+  background: #F6F6F6
+
+.messages .item.item-visible 
+  +opacity(1)
+
+.messages.messages-img .item .image 
+  float: left
+  width: 40px
+
+.messages.messages-img .item .image img 
+  border: 2px solid #F5F5F5
+  border-radius: 50%
+  width: 40px
+
+.messages.messages-img .item .text 
+  margin-left: 50px
+  position: relative
+
+.messages.messages-img .item .text:after,
+.messages.messages-img .item .text:before 
+  right: 100%
+  top: 20px
+  border: solid transparent
+  content: " "
+  height: 0
+  width: 0
+  position: absolute
+  pointer-events: none
+
+.messages.messages-img .item .text:after 
+  border-color: rgba(255, 255, 255, 0)
+  border-right-color: #FFF
+  border-width: 5px
+  margin-top: -5px
+
+.messages.messages-img .item .text:before 
+  border-color: rgba(213, 213, 213, 0)
+  border-right-color: #D5D5D5
+  border-width: 6px
+  margin-top: -6px
+
+.messages.messages-img .item .text:hover:before 
+  border-right-color: #BBB
+
+.messages.messages-img .item.in .image 
+  float: right
+
+.messages.messages-img .item.in .text 
+  margin-left: 0px
+  margin-right: 50px
+
+.messages.messages-img .item.in .text:after,
+.messages.messages-img .item.in .text:before 
+  right: auto
+  left: 100%
+
+.messages.messages-img .item.in .text:after 
+  border-right-color: transparent
+  border-left-color: #FFF
+
+.messages.messages-img .item.in .text:before 
+  border-right-color: transparent
+  border-left-color: #D5D5D5
+
+.messages.messages-img .item.in .text:hover:before 
+  border-left-color: #BBB
+
+
+.widget 
+  width: 100%
+  float: left
+  margin: 0px
+  list-style: none
+  text-decoration: none
+  +box-shadow(0px 1px 1px 0px rgba(0, 0, 0, 0.2))
+  color: #FFF
+  +border-radius(5px)
+  padding: 15px 10px
+  margin-bottom: 20px
+  min-height: 120px
+  position: relative
+
+.widget.widget-padding-sm,
+.widget.widget-item-icon 
+  padding: 10px 0px 5px
+
+.widget.widget-np 
+  padding: 0px
+
+.widget.widget-no-subtitle 
+  padding-top: 25px
+
+.widget.widget-carousel 
+  padding-bottom: 0px
+  padding-top: 10px
+
+.widget.widget-default 
+  background: #ffffff
+  background: -moz-linear-gradient(top, #ffffff 0%, #f5f5f5 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5))
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f5f5f5 100%)
+  background: -o-linear-gradient(top, #ffffff 0%, #f5f5f5 100%)
+  background: -ms-linear-gradient(top, #ffffff 0%, #f5f5f5 100%)
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#f5f5f5, GradientType=0)
+
+.widget.widget-primary 
+  background: $brand-primary
+  background: -moz-linear-gradient(top, $brand-primary 0%, #29343f 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand-primary), color-stop(100%, #29343f))
+  background: -webkit-linear-gradient(top, $brand-primary 0%, #29343f 100%)
+  background: -o-linear-gradient(top, $brand-primary 0%, #29343f 100%)
+  background: -ms-linear-gradient(top, $brand-primary 0%, #29343f 100%)
+  background: linear-gradient(to bottom, $brand-primary 0%, #29343f 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand-primary, endColorstr=#29343f, GradientType=0)
+
+.widget.widget-success 
+  background: $brand-success
+  background: -moz-linear-gradient(top, $brand-success 0%, #89ad4d 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand-success), color-stop(100%, #89ad4d))
+  background: -webkit-linear-gradient(top, $brand-success 0%, #89ad4d 100%)
+  background: -o-linear-gradient(top, $brand-success 0%, #89ad4d 100%)
+  background: -ms-linear-gradient(top, $brand-success 0%, #89ad4d 100%)
+  background: linear-gradient(to bottom, $brand-success 0%, #89ad4d 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand-success, endColorstr=#89ad4d, GradientType=0)
+
+.widget.widget-info 
+  background: $brand-info
+  background: -moz-linear-gradient(top, $brand-info 0%, #29b2e1 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand-info), color-stop(100%, #29b2e1))
+  background: -webkit-linear-gradient(top, $brand-info 0%, #29b2e1 100%)
+  background: -o-linear-gradient(top, $brand-info 0%, #29b2e1 100%)
+  background: -ms-linear-gradient(top, $brand-info 0%, #29b2e1 100%)
+  background: linear-gradient(to bottom, $brand-info 0%, #29b2e1 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand-info, endColorstr=#29b2e1, GradientType=0)
+
+.widget.widget-warning 
+  background: $brand-warning
+  background: -moz-linear-gradient(top, $brand-warning 0%, #fe970a 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand-warning), color-stop(100%, #fe970a))
+  background: -webkit-linear-gradient(top, $brand-warning 0%, #fe970a 100%)
+  background: -o-linear-gradient(top, $brand-warning 0%, #fe970a 100%)
+  background: -ms-linear-gradient(top, $brand-warning 0%, #fe970a 100%)
+  background: linear-gradient(to bottom, $brand-warning 0%, #fe970a 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand-warning, endColorstr=#fe970a, GradientType=0)
+
+.widget.widget-danger 
+  background: $brand-danger
+  background: -moz-linear-gradient(top, $brand-danger 0%, #a43f3e 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand-danger), color-stop(100%, #a43f3e))
+  background: -webkit-linear-gradient(top, $brand-danger 0%, #a43f3e 100%)
+  background: -o-linear-gradient(top, $brand-danger 0%, #a43f3e 100%)
+  background: -ms-linear-gradient(top, $brand-danger 0%, #a43f3e 100%)
+  background: linear-gradient(to bottom, $brand-danger 0%, #a43f3e 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$brand-danger, endColorstr=#a43f3e, GradientType=0)
+
+.widget .widget-title,
+.widget .widget-subtitle,
+.widget .widget-int,
+.widget .widget-big-int 
+  width: 100%
+  float: left
+  text-align: center
+
+.widget .widget-title 
+  font-size: 16px
+  font-weight: 600
+  margin-bottom: 5px
+  line-height: 20px
+  text-transform: uppercase
+
+.widget .widget-subtitle 
+  font-size: 12px
+  font-weight: 400
+  margin-bottom: 5px
+  line-height: 15px
+  color: #EEE
+
+.widget .widget-int 
+  font-size: 32px
+  line-height: 40px
+  font-weight: bold
+  font-family: arial
+
+.widget .widget-big-int 
+  font-size: 42px
+  line-height: 45px
+  font-weight: 300
+
+.widget .widget-item-left 
+  margin-left: 10px
+  float: left
+  width: 100px
+
+.widget .widget-item-right 
+  margin-right: 10px
+  float: right
+  width: 100px
+
+.widget.widget-item-icon .widget-item-left,
+.widget.widget-item-icon .widget-item-right 
+  width: 70px
+  padding: 20px 0px
+  text-align: center
+
+.widget.widget-item-icon .widget-item-left 
+  border-right: 1px solid rgba(0, 0, 0, 0.1)
+  margin-right: 10px
+  padding-right: 10px
+
+.widget.widget-item-icon .widget-item-right 
+  border-left: 1px solid rgba(0, 0, 0, 0.1)
+  margin-left: 10px
+  padding-left: 10px
+
+.widget .widget-item-left .fa,
+.widget .widget-item-right .fa,
+.widget .widget-item-left .glyphicon,
+.widget .widget-item-right .glyphicon 
+  font-size: 60px
+
+.widget .widget-data 
+  padding-left: 120px
+
+.widget .widget-data-left 
+  padding-right: 120px
+
+.widget.widget-item-icon .widget-data 
+  padding-left: 90px
+
+.widget.widget-item-icon .widget-data-left 
+  padding-right: 90px
+  padding-left: 10px
+
+.widget .widget-data .widget-title,
+.widget .widget-data-left .widget-title,
+.widget .widget-data .widget-subtitle,
+.widget .widget-data-left .widget-subtitle,
+.widget .widget-data .widget-int,
+.widget .widget-data-left .widget-int,
+.widget .widget-data .widget-big-int,
+.widget .widget-data-left .widget-big-int 
+  text-align: left
+
+.widget .widget-controls a 
+  position: absolute
+  width: 30px
+  height: 30px
+  text-align: center
+  line-height: 27px
+  color: #FFF
+  border: 1px solid #FFF
+  +border-radius(50%)
+  +transition(all 200ms ease)
+  +opacity(0.4)
+
+.widget .widget-controls a.widget-control-left 
+  left: 10px
+  top: 10px
+
+.widget .widget-controls a.widget-control-right 
+  right: 10px
+  top: 10px
+
+.widget .widget-controls a:hover 
+  +opacity(1)
+
+.widget .widget-buttons 
+  float: left
+  width: 100%
+  text-align: center
+  padding-top: 3px
+  margin-top: 5px
+  border-top: 1px solid rgba(0, 0, 0, 0.1)
+
+.widget .widget-buttons a 
+  position: relative
+  display: inline-block
+  line-height: 30px
+  font-size: 21px
+
+.widget .widget-buttons .col 
+  width: 100%
+  float: left
+
+.widget .widget-buttons.widget-c2 .col 
+  width: 50%
+
+.widget .widget-buttons.widget-c3 .col 
+  width: 33.333333%
+
+.widget .widget-buttons.widget-c4 .col 
+  width: 25%
+
+.widget .widget-buttons.widget-c5 .col 
+  width: 20%
+
+.widget.widget-primary .widget-buttons a 
+  color: #010101
+  border-color: #010101
+
+.widget.widget-primary .widget-buttons a:hover 
+  color: #000000
+
+.widget.widget-success .widget-buttons a 
+  color: #51672e
+  border-color: #51672e
+
+.widge.widget-success .widget-buttons a:hover 
+  color: #435526
+
+.widget.widget-info .widget-buttons a 
+  color: #14708f
+  border-color: #14708f
+
+.widget.widget-info .widget-buttons a:hover 
+  color: #115f79
+
+.widget.widget-warning .widget-buttons a 
+  color: #a15e01
+  border-color: #a15e01
+
+.widget.widget-warning .widget-buttons a:hover 
+  color: #874f01
+
+.widget.widget-danger .widget-buttons a 
+  color: #5a2222
+  border-color: #5a2222
+
+.widget.widget-danger .widget-buttons a:hover 
+  color: #471b1b
+
+.plugin-clock span 
+  -webkit-animation: pulsate 1s ease-out
+  -webkit-animation-iteration-count: infinite
+  -moz-animation: pulsate 1s ease-out
+  -moz-animation-iteration-count: infinite
+  animation: pulsate 1s ease-out
+  animation-iteration-count: infinite
+  +opacity(0)
+  margin-right: 2px
+
+.widget.widget-default 
+  color: #434a54
+
+.widget.widget-default .widget-subtitle 
+  color: #434a54
+
+.widget.widget-default .widget-controls a 
+  color: #434a54
+  border-color: #434a54
+
+
+// Tile
+.tile 
+  width: 100%
+  float: left
+  margin: 0px
+  list-style: none
+  text-decoration: none
+  font-size: 38px
+  font-weight: 300
+  color: #FFF
+  +border-radius(5px)
+  padding: 10px
+  margin-bottom: 20px
+  min-height: 100px
+  position: relative
+  border: 1px solid #D5D5D5
+  text-align: center
+
+.tile.tile-valign 
+  line-height: 75px
+
+.tile.tile-default 
+  background: #FFF
+  color: #656d78
+
+.tile.tile-default:hover 
+  background: #FAFAFA
+
+.tile.tile-primary 
+  background: $brand-primary
+  border-color: $brand-primary
+
+.tile.tile-primary:hover 
+  background: #2f3c48
+
+.tile.tile-success 
+  background: $brand-success
+  border-color: $brand-success
+
+.tile.tile-success:hover 
+  background: #90b456
+
+.tile.tile-warning 
+  background: $brand-warning
+  border-color: $brand-warning
+
+.tile.tile-warning:hover 
+  background: #fe9e19
+
+.tile.tile-danger 
+  background: $brand-danger
+  border-color: $brand-danger
+
+.tile.tile-danger:hover 
+  background: #af4342
+
+.tile.tile-info 
+  background: $brand-info
+  border-color: $brand-info
+
+.tile.tile-info:hover 
+  background: #36b7e3
+
+.tile:hover 
+  text-decoration: none
+  color: #FFF
+
+.tile.tile-default:hover 
+  color: #656d78
+
+.tile .fa 
+  font-size: 52px
+  line-height: 74px
+
+.tile p 
+  font-size: 14px
+  margin: 0px
+
+.tile .informer 
+  position: absolute
+  left: 5px
+  top: 5px
+  font-size: 12px
+  color: #FFF
+  line-height: 14px
+
+.tile .informer.informer-default 
+  color: #FFF
+
+.tile .informer.informer-primary 
+  color: $brand-primary
+
+.tile .informer.informer-success 
+  color: $brand-success
+
+.tile .informer.informer-info 
+  color: $brand-info
+
+.tile .informer.informer-warning 
+  color: $brand-warning
+
+.tile .informer.informer-danger 
+  color: $brand-danger
+
+.tile .informer .fa 
+  font-size: 14px
+  line-height: 16px
+
+.tile .informer.dir-tr 
+  left: auto
+  right: 5px
+
+.tile .informer.dir-bl 
+  top: auto
+  bottom: 5px
+
+.tile .informer.dir-br 
+  left: auto
+  top: auto
+  right: 5px
+  bottom: 5px

@@ -13,5 +13,13 @@ Para::Engine.routes.draw do
     component :page_category, path: 'category' do
       resources :pages
     end
+
+    #Theme routes
+    get 'iframe_left_column' => 'theme#iframe_left_column'
+    get 'iframe_right_column' => 'theme#iframe_right_column'
+    get 'gallery' => 'theme#gallery'
+    get 'calendar' => 'theme#calendar'
+    get 'faq' => 'theme#faq'
+    get 'ui_kits' => 'theme#ui_kits'
   end
 end

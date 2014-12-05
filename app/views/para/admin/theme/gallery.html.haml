@@ -1,0 +1,301 @@
+/ START CONTENT FRAME
+.content-frame
+  / START CONTENT FRAME TOP
+  .content-frame-top
+    .page-title
+      %h2
+        %span.fa.fa-image
+        Gallery
+    .pull-right
+      %button.btn.btn-primary
+        %span.fa.fa-upload
+        Upload
+      %button.btn.btn-default.content-frame-right-toggle
+        %span.fa.fa-bars
+  / START CONTENT FRAME RIGHT
+  .content-frame-right
+    %h4 Groups:
+    .list-group.border-bottom.push-down-20
+      %a.list-group-item.active{:href => "#"}
+        All
+        %span.badge.badge-primary 12
+      %a.list-group-item{:href => "#"}
+        Nature
+        %span.badge.badge-success 7
+      %a.list-group-item{:href => "#"}
+        Music
+        %span.badge.badge-danger 3
+      %a.list-group-item{:href => "#"}
+        Space
+        %span.badge.badge-info 2
+      %a.list-group-item{:href => "#"}
+        Girls
+        %span.badge.badge-warning 3
+    %h4 Tags:
+    %ul.list-tags
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          amet
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          rutrum
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          nunc
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          tempor
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          eros
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          suspendisse
+      %li
+        %a{:href => "#"}
+          %span.fa.fa-tag
+          dolor
+  / END CONTENT FRAME RIGHT
+  / START CONTENT FRAME BODY
+  .content-frame-body.content-frame-body-left
+    .block
+      .pull-left.push-up-10
+        %button#gallery-toggle-items.btn.btn-primary Toggle All
+      .pull-right.push-up-10
+        .btn-group
+          %button.btn.btn-primary
+            %span.fa.fa-pencil
+            Edit
+          %button.btn.btn-primary
+            %span.fa.fa-trash-o
+            Delete
+    #links.gallery
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 1"}
+        .image
+          %img{:alt => "Nature Image 1", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 1
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Music picture 1"}
+        .image
+          %img{:alt => "Music picture 1", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Music picture 1
+          %span Other description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Girls Image 1"}
+        .image
+          %img{:alt => "Girls Image 1", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Girls image 1
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 2"}
+        .image
+          %img{:alt => "Nature Image 2", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 2
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Space picture 1"}
+        .image
+          %img{:alt => "Space picture 1", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Space picture 1
+          %span Other description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Music picture 2"}
+        .image
+          %img{:alt => "Music picture 2", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Music picture 2
+          %span Other description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 3"}
+        .image
+          %img{:alt => "Nature Image 3", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 3
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Girls Image 2"}
+        .image
+          %img{:alt => "Girls Image 2", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Girls image 2
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Space picture 2"}
+        .image
+          %img{:alt => "Space picture 2", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Space picture 2
+          %span Other description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 4"}
+        .image
+          %img{:alt => "Nature Image 4", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 4
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Music picture 3"}
+        .image
+          %img{:alt => "Music picture 3", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Music picture 3
+          %span Other description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 5"}
+        .image
+          %img{:alt => "Nature Image 5", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 5
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 6"}
+        .image
+          %img{:alt => "Nature Image 6", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 6
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Girls Image 3"}
+        .image
+          %img{:alt => "Girls Image 3", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Girls image 3
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Nature Image 7"}
+        .image
+          %img{:alt => "Nature Image 7", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Nature image 7
+          %span Description
+      %a.gallery-item{"data-gallery" => "", :href => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg", :title => "Music picture 5"}
+        .image
+          %img{:alt => "Music picture 5", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/nature-1.jpg"}/
+          %ul.gallery-item-controls
+            %li
+              %label.check
+                %input.icheckbox{:type => "checkbox"}/
+            %li
+              %span.gallery-item-remove
+                %i.fa.fa-times
+        .meta
+          %strong Music picture 5
+          %span Other description
+    %ul.pagination.pagination-sm.pull-right.push-down-20.push-up-20
+      %li.disabled
+        %a{:href => "#"} «
+      %li.active
+        %a{:href => "#"} 1
+      %li
+        %a{:href => "#"} 2
+      %li
+        %a{:href => "#"} 3
+      %li
+        %a{:href => "#"} 4
+      %li
+        %a{:href => "#"} »
+  / END CONTENT FRAME BODY
+/ END CONTENT FRAME

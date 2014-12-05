@@ -1,0 +1,46 @@
+/ START CONTENT FRAME
+.content-frame
+  / START CONTENT FRAME TOP
+  .content-frame-top
+    .page-title
+      %h2
+        %span.fa.fa-calendar
+        Calendar
+    .pull-right
+      %button.btn.btn-default.content-frame-left-toggle
+        %span.fa.fa-bars
+  / END CONTENT FRAME TOP
+  / START CONTENT FRAME LEFT
+  .content-frame-left
+    %h4 New Event
+    .form-group
+      .input-group
+        %input#new-event-text.form-control{:placeholder => "Event text...", :type => "text"}/
+        .input-group-btn
+          %button#new-event.btn.btn-primary Add
+    %h4 External Events
+    #external-events.list-group.border-bottom
+      %a.list-group-item.external-event Lorem ipsum dolor
+      %a.list-group-item.external-event Nam a nisi et nisi
+      %a.list-group-item.external-event Donec tristique eu
+      %a.list-group-item.external-event Vestibulum cursus
+      %a.list-group-item.external-event Etiam euismod
+      %a.list-group-item.external-event Sed pharetra dolor
+    .push-up-10
+      %label.check
+        %input#drop-remove.icheckbox{:type => "checkbox"}/
+        Remove after drop
+    .panel.panel-default.push-up-10
+      .panel-body.padding-top-0
+        %h4 Fullcalendar
+        %p FullCalendar is a jQuery plugin that provides a full-sized, drag  drop event calendar like the one below. It uses AJAX to fetch events on-the-fly and is easily configured to use your own feed format. It is visually customizable with a rich API.
+  / END CONTENT FRAME LEFT
+  / START CONTENT FRAME BODY
+  .content-frame-body.padding-bottom-0
+    .row
+      .col-md-12
+        #alert_holder
+        .calendar
+          #calendar
+  / END CONTENT FRAME BODY
+/ END CONTENT FRAME

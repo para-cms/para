@@ -154,7 +154,7 @@ $btn-link-disabled-color:        $gray-light !default;
 $input-bg:                       #F9F9F9 !default;
 $input-bg-disabled:              $gray-lighter !default;
 
-$input-color:                    $gray-light !default;
+$input-color:                    $gray-darker !default;
 $input-border:                   $gray-lighter !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #66afe9 !default;
@@ -519,7 +519,7 @@ $panel-default-heading-bg:    #F5F5F5 !default;
 
 $panel-primary-text:          darken($brand-primary, 15%) !default;
 $panel-primary-border:        lighten($btn-primary-border, 15%) !default;
-$panel-primary-heading-bg:    lighten($btn-primary-bg, 15%) !default;
+$panel-primary-heading-bg:    $panel-default-heading-bg !default;
 
 $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;

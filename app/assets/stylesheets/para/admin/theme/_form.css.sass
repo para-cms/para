@@ -31,8 +31,32 @@
 .form-group:last-child
   margin-bottom: 0
 
+.form-group-separated 
+  border-top: 1px dashed #D5D5D5
+
+.form-group-separated .form-group 
+  border-bottom: 1px dashed #D5D5D5
+  margin-bottom: 0px
+
+.form-group-separated .form-group [class^="col-md-"],
+.form-group-separated .form-group [class^="col-sm-"],
+.form-group-separated .form-group .control-label 
+  border-left: 1px dashed #D5D5D5
+  padding: 12px 10px
+
+.form-group-separated .form-group [class^="col-md-"]:first-child,
+.form-group-separated .form-group [class^="col-sm-"]:first-child  
+  border-left: 0px
+
+.form-group-separated .form-group:last-child 
+  border-bottom: 0px
+
+.form-group-separated.panel-body 
+  padding: 0px
+
 .help-block
   color: #AAB2BD
+  margin-bottom: 0
 
 .input-group-btn:first-child >
   .btn, .btn-group

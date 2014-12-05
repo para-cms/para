@@ -138,8 +138,6 @@ body, html
     .page-content-wrap
       float: left
       width: 100%
-      padding-left: 25px
-      padding-right: 25px
 
   // Left menu close or open
   &.page-container-wide .page-content
@@ -160,3 +158,35 @@ body, html
       padding-top: 50px
     &.page-navigation-toggled .x-navigation.x-navigation-horizontal
       padding-right: 50px
+
+/* Animations */
+@-webkit-keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+  
+@-moz-keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+
+@keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+  

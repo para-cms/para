@@ -1,0 +1,501 @@
+.page-title
+  %h2
+    %span.fa.fa-cogs
+    UI Kits
+
+/ PAGE CONTENT WRAPPER
+.page-content-wrap
+  / TILES
+  .row
+    .col-md-2
+      %a.tile.tile-danger.tile-valign{:href => "#"}
+        %span.fa.fa-laptop
+    .col-md-2
+      %a.tile.tile-success.tile-valign{:href => "#"}
+        %span.fa.fa-calendar
+    .col-md-2
+      %a.tile.tile-warning.tile-valign{:href => "#"}
+        New
+        .informer.informer-default.dir-bl
+          %span.fa.fa-globe
+          Lates Somethink
+    .col-md-2
+      %a.tile.tile-info{:href => "#"}
+        15
+        %p September
+        .informer.informer-default.dir-tr
+          %span.fa.fa-calendar
+    .col-md-2
+      %a.tile.tile-default{:href => "#"}
+        57%
+        %p New Visitors
+        .informer.informer-danger.dir-tr
+          %span.fa.fa-caret-down
+    .col-md-2
+      %a.tile.tile-primary{:href => "#"}
+        $25
+        %p Buy It
+        .informer.informer-default
+          %span.fa.fa-shopping-cart
+  .row
+    .col-md-3
+      %a.tile.tile-default{:href => "#"}
+        254
+        %p Sales today
+        .informer.informer-primary 08.09.14
+        .informer.informer-success.dir-tr
+          %span.fa.fa-caret-up
+    .col-md-3
+      %a.tile.tile-primary{:href => "#"}
+        6,432
+        %p Visitors Today
+        .informer.informer-warning
+          %span.fa.fa-caret-down
+        .informer.informer-default.dir-tr 10.09.14
+    .col-md-3
+      %a.tile.tile-success.tile-valign{:href => "#"}
+        9.5gb
+        .informer.informer-default.dir-tr
+          %span.fa.fa-cloud
+        .informer.informer-default.dir-bl Free Disk Space
+    .col-md-3
+      %a.tile.tile-info.tile-valign{:href => "#"}
+        1,153
+        .informer.informer-default Registred Users
+        .informer.informer-default.dir-br
+          %span.fa.fa-users
+  / END TILES
+  / WIDGETS
+  .row
+    .col-md-3
+      .widget.widget-primary
+        .widget-title TOTAL
+        .widget-subtitle 26/08/2014
+        .widget-int
+          $
+          %span{"data-to" => "1564", "data-toggle" => "counter"} 1,564
+        .widget-controls
+          %a.widget-control-left{:href => "#"}
+            %span.fa.fa-upload
+          %a.widget-control-right{:href => "#"}
+            %span.fa.fa-times
+    .col-md-3
+      .widget.widget-success.widget-no-subtitle
+        .widget-big-int
+          $
+          %span.num-count 4,381
+        .widget-subtitle Latest transaction
+        .widget-controls
+          %a.widget-control-left{:href => "#"}
+            %span.fa.fa-cloud
+          %a.widget-control-right{:href => "#"}
+            %span.fa.fa-times
+    .col-md-3
+      .widget.widget-danger.widget-padding-sm
+        .widget-big-int.plugin-clock 00:00
+        .widget-subtitle.plugin-date Loading...
+        .widget-controls
+          %a.widget-control-right{:href => "#"}
+            %span.fa.fa-times
+        .widget-buttons.widget-c3
+          .col
+            %a{:href => "#"}
+              %span.fa.fa-clock-o
+          .col
+            %a{:href => "#"}
+              %span.fa.fa-bell
+          .col
+            %a{:href => "#"}
+              %span.fa.fa-calendar
+    .col-md-3
+      .widget.widget-primary.widget-item-icon
+        .widget-item-left
+          %span.fa.fa-user
+        .widget-data
+          .widget-int.num-count 599
+          .widget-title Registred users
+          .widget-subtitle On our website and app
+        .widget-controls
+          %a.widget-control-right{:href => "#"}
+            %span.fa.fa-times
+        
+  .row
+    .col-md-3.col-md-offset-3
+      .widget.widget-success.widget-item-icon
+        .widget-item-left
+          %span.fa.fa-globe
+        .widget-data
+          .widget-int.num-count 6,953
+          .widget-title Total visitors
+          .widget-subtitle That visited our site today
+        .widget-controls
+          %a.widget-control-right{:href => "#"}
+            %span.fa.fa-times
+    .col-md-3
+      .widget.widget-warning.widget-item-icon
+        .widget-item-right
+          %span.fa.fa-envelope
+        .widget-data-left
+          .widget-int.num-count 48
+          .widget-title New messages
+          .widget-subtitle In your mailbox
+  
+  / TABS
+  .page-title
+    %h2
+      %span.fa.fa-arrow-circle-o-left
+      Tabs 
+  .row
+    .col-md-4
+      / BASIC TABS
+      .panel.panel-default.tabs
+        %ul.nav.nav-tabs{:role => "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab-first", :role => "tab"} First
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab-second", :role => "tab"} Second
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab-third", :role => "tab"} Third
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab-fourth", :role => "tab"} Fourth
+        .panel-body.tab-content
+          #tab-first.tab-pane.active
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+          #tab-second.tab-pane
+            %p Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.
+          #tab-third.tab-pane
+            %p Vestibulum cursus augue sed leo tempor, at aliquam orci dictum. Sed mattis metus id velit aliquet, et interdum nulla porta. Etiam euismod pellentesque purus, in fermentum eros venenatis ut. Praesent vitae nibh ac augue gravida lacinia non a ipsum. Aenean vestibulum eu turpis eu posuere. Sed eget lacus lacinia, mollis urna et, interdum dui. Donec sed diam ut metus imperdiet malesuada. Maecenas tincidunt ultricies ipsum, lobortis pretium dolor sodales ut. Donec nec fringilla nulla. In mattis sapien lorem, nec tincidunt elit scelerisque tempus.
+          #tab-fourth.tab-pane
+            %p In mattis sapien lorem, nec tincidunt elit scelerisque tempus. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.
+          / END TABS
+
+      / TABS JUSTIFIED
+      .panel.panel-default.tabs
+        %ul.nav.nav-tabs.nav-justified
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab1"} HTML
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab2"} CSS
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab3"} Javascript
+        .panel-body.tab-content
+          #tab1.tab-pane.active
+            %p
+              Curabitur porttitor, lacus et mattis consequat,
+              %strong lectus augue
+              molestie enim, nec dignissim felis eros at nibh.
+            %p
+              Nulla vitae sodales est, eu imperdiet mauris
+              = succeed "." do
+                %a{:href => "#"} click here
+            %p Sed augue risus, tempor vitae metus ac, bibendum elementum erat. Mauris volutpat at nulla sit amet ullamcorper.
+          #tab2.tab-pane
+            %p
+              %strong Etiam eu augue
+              \— ac augue bibendum finibus.
+              = succeed "." do
+                %i Quisque aliquam mi eget consectetur finibus
+            %p Nulla laoreet viverra nisi.
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at finibus risus. Fusce suscipit, neque vel sodales suscipit.
+          #tab3.tab-pane
+            %p Integer fringilla, augue in eleifend vehicula, sapien sem hendrerit sapien,
+            %p Praesent a tincidunt nisi, eget placerat eros. Sed ullamcorper metus quis dui malesuada, vitae rutrum nibh feugiat.
+            %p Vivamus lacinia, leo eu cursus commodo, diam nunc suscipit tellus, in viverra nulla magna ut enim.
+      / END TABS JUSTIFIED    
+
+    .col-md-4
+      / START VERTICAL TABS
+      .panel.panel-default.tabs.nav-tabs-vertical
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#tab22"} First
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab23"} Second
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab24"} Third
+        .panel-body.tab-content
+          #tab22.tab-pane.active
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+            %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+          #tab23.tab-pane
+            %p Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.
+            %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+          #tab24.tab-pane
+            %p Vestibulum cursus augue sed leo tempor, at aliquam orci dictum. Sed mattis metus id velit aliquet, et interdum nulla porta. Etiam euismod pellentesque purus, in fermentum eros venenatis ut. Praesent vitae nibh ac augue gravida lacinia non a ipsum. Aenean vestibulum eu turpis eu posuere. Sed eget lacus lacinia, mollis urna et, interdum dui. Donec sed diam ut metus imperdiet malesuada. Maecenas tincidunt ultricies ipsum, lobortis pretium dolor sodales ut. Donec nec fringilla nulla. In mattis sapien lorem, nec tincidunt elit scelerisque tempus.
+            %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+      / END VERTICAL TABS$
+
+    .col-md-4  
+      / START VERTICAL TABS WITH HEADING
+      .panel.panel-default.nav-tabs-vertical
+        .panel-heading
+          %h3.panel-title Tabs with heading
+        .tabs
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#tab19"} First
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab20"} Second
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab21"} Third
+          .panel-body.tab-content
+            #tab19.tab-pane.active
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum dolor sem, quis pharetra dui ultricies vel. Cras non pulvinar tellus, vel bibendum magna. Morbi tellus nulla, cursus non nisi sed, porttitor dignissim erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis commodo lectus. Vivamus vel tincidunt enim, non vulputate ipsum. Ut pellentesque consectetur arcu sit amet scelerisque. Fusce commodo leo eros, ut eleifend massa congue at.
+              %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+            #tab20.tab-pane
+              %p Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.
+              %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+            #tab21.tab-pane
+              %p Vestibulum cursus augue sed leo tempor, at aliquam orci dictum. Sed mattis metus id velit aliquet, et interdum nulla porta. Etiam euismod pellentesque purus, in fermentum eros venenatis ut. Praesent vitae nibh ac augue gravida lacinia non a ipsum. Aenean vestibulum eu turpis eu posuere. Sed eget lacus lacinia, mollis urna et, interdum dui. Donec sed diam ut metus imperdiet malesuada. Maecenas tincidunt ultricies ipsum, lobortis pretium dolor sodales ut. Donec nec fringilla nulla. In mattis sapien lorem, nec tincidunt elit scelerisque tempus.
+              %p Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.
+      / END VERTICAL TABS WITH HEADING
+
+  / ACCORDION
+  .page-title
+    %h2
+      %span.fa.fa-arrow-circle-o-left
+      ACCORDION
+  .row
+    .col-md-6
+      / START ACCORDION
+      .panel-group.accordion
+        .panel.panel-primary
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accOneColOne"}
+                Collapsible Group Item #1
+          #accOneColOne.panel-body.panel-body-open
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-info
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accOneColTwo"}
+                Collapsible Group Item #2
+          #accOneColTwo.panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-warning
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accOneColThree"}
+                Collapsible Group Item #3
+          #accOneColThree.panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      / END ACCORDION
+
+    .col-md-6
+      / START ACCORDION
+      .panel-group.accordion.accordion-dc
+        .panel.panel-primary
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accTwoColOne"}
+                Collapsible Group Item #1
+          #accTwoColOne.panel-body.panel-body-open
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-info
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accTwoColTwo"}
+                Collapsible Group Item #2
+          #accTwoColTwo.panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        .panel.panel-warning
+          .panel-heading
+            %h4.panel-title
+              %a{:href => "#accTwoColThree"}
+                Collapsible Group Item #3
+          #accTwoColThree.panel-body
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      / END ACCORDION    
+
+
+  / Lastest thinks & Messages
+  .page-title
+    %h2
+      %span.fa.fa-arrow-circle-o-left
+      Lastest thinks & Messages
+  .row
+    .col-md-4
+      / NEWS WIDGET
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Latest News
+          %ul.panel-controls
+            %li
+              %a.control-danger{:href => "#"}
+                %span.fa.fa-pencil
+        .panel-body.scroll{:style => "height: 230px;"}
+          %h6 Lorem ipsum dolor
+          %p
+            Quisque ultricies turpis pulvinar lectus semper, eget fringilla purus tincidunt.
+            %span.text-muted
+              %i.fa.fa-clock-o
+              14:15 Today
+          %h6 Integer finibus orci vel
+          %p
+            Nam luctus nulla molestie nisi fermentum, ac maximus elit bibendum.
+            %span.text-muted
+              %i.fa.fa-clock-o
+              10:22 Today
+          %h6 Morbi iaculis quam at eros
+          %p
+            Fusce dictum mauris quis velit cursus, consectetur tempor justo volutpat.
+            %span.text-muted
+              %i.fa.fa-clock-o
+              09:58 Today
+          %h6 Nam iaculis urna
+          %p
+            Ut a est in est vulputate varius ac vitae quam, consectetur, eget fringilla purus tincidunt.
+            %span.text-muted
+              %i.fa.fa-clock-o
+              06:33 Today
+      / END NEWS WIDGET
+
+    / TWITTER
+    .col-md-4
+      .panel.panel-default
+        .panel-body
+          %h2
+            %span.fa.fa-twitter
+            Latest Tweets
+          .user
+            %img{:alt => "Nadia Ali", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+            %a.name{:href => "#"} @NadiaAli
+            .pull-right{:style => "width: 100px;"}
+              %button.btn.btn-info.btn-block
+                %span.fa.fa-twitter
+                Follow
+        .panel-body.list-group
+          .list-group-item
+            Quisque lacinia sem ligula, eget
+            %a{:href => "#"} #varius
+            massa vulputate at. Sed imperdiet congue enim.
+            %br/
+            %span.text-muted 1h ago
+          .list-group-item
+            Nam faucibus vulputate justo, id viverra orci porta vel.
+            %br/
+            %span.text-muted 1h ago
+          .list-group-item
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            %a{:href => "#"} @Donec
+            at tellus sed mauris.
+            %br/
+            %span.text-muted 1h ago
+          .list-group-item
+            Quisque lacinia sem ligula, eget varius massa vulputate at. Sed imperdiet congue enim.
+            %br/
+            %span.text-muted 1h ago
+    / END TWITTER
+   
+  .row
+    / MESSAGES WIDGET
+    .col-md-4
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            %span.fa.fa-comments
+            Messages
+          .pull-right
+            %span.label.label-primary> Dmitry
+            ,
+            %span.label.label-primary John
+        .panel-body
+          .messages.messages-img
+            .item.in.item-visible
+              .image
+                %img{:alt => "John Doe", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+              .text
+                .heading
+                  %a{:href => "#"} John Doe
+                  %span.date 08:33
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis suscipit eros vitae iaculis.
+            .item.item-visible
+              .image
+                %img{:alt => "Dmitry Ivaniuk", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+              .text
+                .heading
+                  %a{:href => "#"} Dmitry Ivaniuk
+                  %span.date 08:27
+                Quisque ultricies turpis pulvinar lectus semper, eget fringilla purus tincidunt.
+            .item.in.item-visible
+              .image
+                %img{:alt => "John Doe", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+              .text
+                .heading
+                  %a{:href => "#"} John Doe
+                  %span.date 08:25
+                Fusce dictum mauris quis velit cursus, consectetur tempor justo volutpat.
+        .panel-footer
+          .input-group
+            %input.form-control{:placeholder => "Type a message...", :type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"}
+                %span.fa.fa-camera
+              %button.btn.btn-default{:type => "button"}
+                %span.fa.fa-link
+              %button.btn.btn-default{:type => "button"} Send
+    / END MESSAGES WIDGET
+
+    .col-md-4
+      / CONTACT LIST WIDGET
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Contacts
+          %ul.panel-controls
+            %li
+              %a.control-primary{:href => "#"}
+                %span.fa.fa-plus
+        .panel-body.list-group.list-group-contacts
+          %a.list-group-item{:href => "#"}
+            .list-group-status.status-online
+            %img.pull-left{:alt => "Brad Pitt", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+            %span.contacts-title Brad Pitt
+            %p Actor and Film Producer
+            .list-group-controls
+              %button.btn.btn-success
+                %span.fa.fa-phone
+          %a.list-group-item{:href => "#"}
+            .list-group-status.status-online
+            %img.pull-left{:alt => "Dmitry Ivaniuk", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+            %span.contacts-title Dmitry Ivaniuk
+            %p Web Developer/Designer
+            .list-group-controls
+              %button.btn.btn-success
+                %span.fa.fa-phone
+          %a.list-group-item{:href => "#"}
+            .list-group-status.status-away
+            %img.pull-left{:alt => "Nadia Ali", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+            %span.contacts-title Nadia Ali
+            %p Singer-Songwriter
+            .list-group-controls
+              %button.btn.btn-success
+                %span.fa.fa-phone
+          %a.list-group-item{:href => "#"}
+            .list-group-status.status-offline
+            %img.pull-left{:alt => "John Doe", :src => "http://ftp.glyph.fr.s3.amazonaws.com/glyph/glyph-logo.jpg"}/
+            %span.contacts-title John Doe
+            %p UI/UX Designer
+            .list-group-controls
+              %button.btn.btn-success
+                %span.fa.fa-phone
+      / END CONTACT LIST WIDGET
+
+    / DEFAULT MESSAGES
+    .col-md-4
+      %h4 Default Messages
+      .messages
+        .item.item-visible
+          .text
+            .heading
+              %a{:href => "#"} John Doe
+              %span.date 08:33
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis suscipit eros vitae iaculis.
+        .item.item-visible
+          .text
+            .heading
+              %a{:href => "#"} Dmitry Ivaniuk
+              %span.date 08:27
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis suscipit eros vitae iaculis.
+    / END DEFAULT MESSAGES  
+/ END PAGE CONTENT WRAPPER

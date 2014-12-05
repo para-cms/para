@@ -10,4 +10,24 @@
 
   %li.xn-icon-button.pull-right
     = link_to main_app.destroy_admin_user_session_path, method: 'delete' do
-      %i.fa.fa-sign-out
+      %i.fa.fa-power-off
+
+  %li.xn-icon-button.pull-right
+    = link_to para.admin_faq_path do
+      %i.fa.fa-question-circle 
+      
+  / LANG BAR
+  %li.xn-icon-button.pull-right
+    %a{:href => "#"}
+      %i.fa.fa-globe
+    %ul.xn-drop-left.xn-drop-white.animated.zoomIn
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-flag
+          English
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-flag-o
+          French
+      
+  / END LANG BAR
