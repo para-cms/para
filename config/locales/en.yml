@@ -28,7 +28,7 @@ en:
       page_category:
         name: "Page category"
       crud:
-        name: "Resources listing"
+        name: "Resources list"
 
     component_section:
       add: "Add a component section"

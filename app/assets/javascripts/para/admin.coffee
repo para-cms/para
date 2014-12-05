@@ -13,6 +13,7 @@
 #= require_tree ./lib
 #= require_tree ./inputs
 #= require_tree ./admin
+#= require admin/app
 
 # Initialize scope
 window.Para = {}
