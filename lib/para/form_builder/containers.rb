@@ -56,8 +56,13 @@ module Para
       end
 
       def return_to_path
-        template.params[:return_to].presence ||
-          template.component_path(template.instance_variable_get(:@component))
+        template.params[:return_to].presence || component_path
+      end
+
+      def component_path
+        if (component = template.instance_variable_get(:@component))
+          component.path
+        end
       end
     end
   end

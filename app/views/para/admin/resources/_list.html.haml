@@ -1,7 +1,7 @@
 .page-content-wrap
   = panel do |panel|
     = panel.header do
-      = icon_link_to t('para.shared.add'), component_relation_path(component, relation, nil, :new), icon: 'plus', class: 'btn btn-primary'
+      = icon_link_to t('para.shared.add'), component.relation_path(model.model_name.singular_route_key, action: :new), icon: 'plus', class: 'btn btn-primary'
 
     = panel.body do
       = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }

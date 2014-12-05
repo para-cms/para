@@ -31,6 +31,12 @@ module Para
       def value_for(instance)
         instance.send(name)
       end
+
+      # Allows parsing input params before they're passed to the model, so
+      # it can be easy to edit them according to some field type specific
+      # behavior
+      #
+      def parse_input(params); end
     end
   end
 end

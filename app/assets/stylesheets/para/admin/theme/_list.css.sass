@@ -1,5 +1,7 @@
 @import 'para/lib/variables'
+@import "compass/css3/border-radius"
 
+// List with progress bar
 .progress-list
   float: left
   width: 100%
@@ -9,6 +11,7 @@
     clear: both
     margin-top: 20px
 
+// List with tags
 .list-tags
   float: left
   width: 100%
@@ -24,9 +27,7 @@
       float: left
       background: #F5F5F5
       border: 1px solid $gray-lighter
-      -moz-border-radius: 3px
-      -webkit-border-radius: 3px
-      border-radius: 3px
+      +border-radius(3px)
       line-height: 23px
       font-size: 11px
       margin: 0 5px 5px 0
@@ -36,6 +37,7 @@
         text-decoration: none
         background: #F0F0F0
 
+// Basic list group
 .list-group
   margin: 0
   .list-group-item
@@ -58,7 +60,7 @@
       background: 0 0
       padding: 5px 10px
   &.border-bottom .list-group-item:last-child
-    border-bottom: 1px solid #E5E5E5
+    border-bottom: 1px solid $list-group-border
   &.list-group-navigation
     border: 0
     float: left
@@ -66,17 +68,13 @@
     .list-group-item
       border-left: 0
       border-right: 0
-      -moz-border-radius: 0
-      -webkit-border-radius: 0
-      border-radius: 0
+      +border-radius(0)
 
 .padding-0 .list-group
   border: 0
   .list-group-item
     border-width: 1px 0 0
-    -moz-border-radius: 0
-    -webkit-border-radius: 0
-    border-radius: 0
+    +border-radius(0)
     &:first-child
       border-top: 0
 
@@ -87,23 +85,22 @@
     &:focus, &:hover
       background: $brand-primary
       border-color: $brand-primary
-  border-color: #E5E5E5
+  border-color: $list-group-border
 
 a.list-group-item
   &:focus, &:hover
     background: #F9F9F9
 
+// List group for contact
 .list-group-contacts .list-group-item
   padding: 10px
   img
     border: 2px solid #F5F5F5
-    -moz-border-radius: 50%
-    -webkit-border-radius: 50%
-    border-radius: 50%
+    +border-radius(50%)
     width: 40px
     margin-right: 10px
   .contacts-title
-    font-size: 13px
+    font-size: $font-size-h6
     font-weight: 600
     line-height: 20px
   p
@@ -111,7 +108,7 @@ a.list-group-item
     line-height: 20px
   &.active
     background: #F5F5F5
-    border-color: #E5E5E5
+    border-color: $list-group-border
     color: #656d78
 
 .list-group-controls
@@ -131,9 +128,7 @@ a.list-group-item
     top: 15px
     width: 10px
     height: 10px
-    -moz-border-radius: 50%
-    -webkit-border-radius: 50%
-    border-radius: 50%
+    +border-radius(50%)
     content: " "
   &.status-online:after
     background: $brand-success
@@ -141,41 +136,3 @@ a.list-group-item
     background: $brand-warning
   &.status-offline:after
     background: #CCC
-
-
-.icons-list
-  list-style: none
-  padding: 0
-  margin: 0 0 20px
-  display: block
-  float: left
-  width: 100%
-  li
-    float: left
-    display: block
-    width: 25%
-    height: 30px
-    padding: 5px
-    line-height: 20px
-    font-size: 11px
-    border: 1px solid #FFF
-    &:hover
-      color: #333
-      cursor: pointer
-      background: #F5F5F5
-      border: 1px solid #E5E5E5
-      -moz-border-radius: 3px
-      -webkit-border-radius: 3px
-      border-radius: 3px
-    i, span:first-child
-      font-size: 18px
-      float: left
-      margin-right: 10px
-      color: #222
-      line-height: 20px
-
-.icon-preview
-  font-size: 88px
-  color: #222
-  text-align: center
-

@@ -4,7 +4,7 @@ module Para
   module Admin
     class PagesController < Para::Admin::ResourcesController
       resource :page, parent: false, class: 'Para::Page',
-                      find_by: :slug, though: :component
+                      find_by: :slug, through: :component
     end
   end
 end
