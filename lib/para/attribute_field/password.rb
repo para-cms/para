@@ -1,0 +1,18 @@
+module Para
+  module AttributeField
+    class PasswordField < AttributeField::Base
+      def initialize(model, options = {})
+        options.reverse_merge!(type: 'password', field_type: 'password')
+        super(model, options)
+      end
+
+      def value_for(instance)
+        nil
+      end
+
+      def parse_input(params)
+        params[name] = params[name].presence
+      end
+    end
+  end
+end

@@ -1,6 +1,5 @@
 module Para
   module ApplicationHelper
-    include Para::PathHelper
     include Para::SearchHelper
     include Para::ModelHelper
     include Para::OrderingHelper

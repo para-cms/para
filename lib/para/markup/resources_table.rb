@@ -22,7 +22,7 @@ module Para
         if orderable
           merge_class!(options, 'orderable')
           options[:data] ||= {}
-          options[:data][:'order-url'] = component_relation_path(component, model.name, model.new, :order)
+          options[:data][:'order-url'] = component.relation_path(model.model_name.route_key, action: :order)
         end
 
         table = content_tag(:table, options) do
@@ -103,9 +103,8 @@ module Para
 
       def edit_button(resource)
         view.link_to(
-          view.component_relation_path(
-            component, model.name, resource, :edit,
-            return_to: view.request.fullpath
+          component.relation_path(
+            resource, action: :edit, return_to: view.request.fullpath
           ),
           class: 'btn btn-primary'
         ) do
@@ -115,7 +114,7 @@ module Para
 
       def delete_button(resource)
         view.link_to(
-          view.component_relation_path(component, model.name, resource, :show),
+          component.relation_path(resource),
           method: :delete,
           data: {
             confirm: I18n.t('para.list.delete_confirmation')

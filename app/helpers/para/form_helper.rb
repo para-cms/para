@@ -10,7 +10,7 @@ module Para
       options = default_options.deep_merge(options)
 
       unless options.key?(:url)
-        options[:url] = component_relation_path(@component, resource.class.name, resource)
+        options[:url] = @component.relation_path(resource)
       end
 
       simple_form_for(resource, options, &block)

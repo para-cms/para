@@ -1,9 +1,14 @@
 .page-content-wrap
   = simple_form_for @component, as: :component, url: admin_component_section_components_path(@component_section), wrapper: :horizontal_form, html: { class: "form-horizontal form-group-separated" } do |form|
-  
     .block.form-inputs
       = form.input :name
-      = form.input :type, collection: registered_components_options, include_blank: false
+
+      / Configurable attributes
+      - if form.object.class.configurable?
+        - form.object.class.configurable_attributes.each do |key, options|
+          = form.input key, options
+
+      = form.hidden_field :type, value: params[:type] || form.object.type
 
     .block.form-actions
       = form.button :submit, class: 'btn-success'

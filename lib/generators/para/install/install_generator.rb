@@ -25,6 +25,9 @@ module Para
         ['devise', '~> 3.0'],
         ['simple_form'],
         ['simple_form_extension'],
+        # Pull requests are pending, and I don't want to release the gem
+        # under another name to be able to depend on it
+        ['active_decorator', github: 'glyph-fr/active_decorator', branch: 'dev'],
         ['paperclip', '~> 4.2'],
         ['cancancan', '~> 1.9'],
         ['friendly_id', '~> 5.0'],
@@ -32,10 +35,9 @@ module Para
         ['kaminari', '>= 0.16.1'],
         ['ransack', '>= 1.4.1'],
         ['bootstrap-kaminari-views', '>= 0.0.5']
-      ].each do |name, version|
+      ].each do |*args|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
-          gem name unless version
-          gem(name, version) if version
+          gem *args
         end
       end
     end
