@@ -8,9 +8,6 @@
 #= require simple_form_extension
 #= require jquery.scrollto
 #= require html5-sortable
-#= require moment.min
-#= require fullcalendar/fullcalendar.min
-#= require highlight
 #= require cocoon
 #= require_self
 #= require_tree ./lib

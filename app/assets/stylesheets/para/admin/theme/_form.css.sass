@@ -6,7 +6,7 @@
   -webkit-appearance: none
   &:focus
     +box-shadow(none)
-    border-color: #C1C1C1
+    border-color: $input-border-focus
     background: #FFF
   &[disabled], &[readonly]
     color: #CCC
@@ -32,16 +32,16 @@
   margin-bottom: 0
 
 .form-group-separated 
-  border-top: 1px dashed #D5D5D5
+  border-top: 1px dashed $gray-lighter
 
 .form-group-separated .form-group 
-  border-bottom: 1px dashed #D5D5D5
+  border-bottom: 1px dashed $gray-lighter
   margin-bottom: 0px
 
 .form-group-separated .form-group [class^="col-md-"],
 .form-group-separated .form-group [class^="col-sm-"],
 .form-group-separated .form-group .control-label 
-  border-left: 1px dashed #D5D5D5
+  border-left: 1px dashed $gray-lighter
   padding: 12px 10px
 
 .form-group-separated .form-group [class^="col-md-"]:first-child,
