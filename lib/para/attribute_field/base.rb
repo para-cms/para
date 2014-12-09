@@ -1,7 +1,21 @@
 module Para
   module AttributeField
     class Base
+      class_attribute :_field_options
+
       attr_reader :model, :name, :type, :field_type, :field_method
+
+      def self.field_option(key, method_name, options = {})
+        self._field_options ||= []
+        
+        self._field_options += [{
+          key: key,
+          method_name: method_name,
+          options: options
+        }]
+      end
+
+      field_option :as, :field_type_name
 
       def initialize(model, options = {})
         @model = model
@@ -37,6 +51,19 @@ module Para
       # behavior
       #
       def parse_input(params); end
+
+      def field_options
+        self.class._field_options.each_with_object({}) do |params, hash|
+          value = send(params[:method_name])
+          hash[params[:key]] = value if value != nil || params[:options][:allow_nil]
+        end
+      end
+
+      private
+
+      def field_type_name
+        field_type.presence && field_type.to_sym
+      end
     end
   end
 end
