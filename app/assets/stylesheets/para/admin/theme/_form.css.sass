@@ -11,10 +11,9 @@
   &[disabled], &[readonly]
     color: #CCC
   &[disabled]:focus, &[readonly]:focus
-    background: #EEE
+    background: $input-bg-disabled
     color: #CCC
     border-color: $gray-lighter
-
 
 .input-group-addon
   border-color: $brand-primary
@@ -31,25 +30,26 @@
 .form-group:last-child
   margin-bottom: 0
 
+// Form separated
 .form-group-separated 
   border-top: 1px dashed $gray-lighter
+  .form-group 
+    border-bottom: 1px dashed $gray-lighter
+    margin-bottom: 0px
 
-.form-group-separated .form-group 
-  border-bottom: 1px dashed $gray-lighter
-  margin-bottom: 0px
+    [class^="col-md-"],
+    [class^="col-sm-"]
+      border-left: 1px dashed $gray-lighter
+      padding: 12px 10px
+      &:first-child  
+        border-left: 0px
+    &:last-child 
+      border-bottom: 0px    
+    .control-label 
+      border-left: none
 
-.form-group-separated .form-group [class^="col-md-"],
-.form-group-separated .form-group [class^="col-sm-"],
-.form-group-separated .form-group .control-label 
-  border-left: 1px dashed $gray-lighter
-  padding: 12px 10px
-
-.form-group-separated .form-group [class^="col-md-"]:first-child,
-.form-group-separated .form-group [class^="col-sm-"]:first-child  
-  border-left: 0px
-
-.form-group-separated .form-group:last-child 
-  border-bottom: 0px
+  .panel-body.form-inputs
+    padding: 0 10px
 
 .form-group-separated.panel-body 
   padding: 0px
@@ -117,10 +117,3 @@ label.valid
 
 .label
   font-weight: 500
-
-// Override redactor
-// -------------------------
-.redactor_box,
-.redactor_box textarea
-  z-index: 2 !important
-

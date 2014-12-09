@@ -1,0 +1,27 @@
+@import "para/lib/variables"
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+
+.redactor_box,
+.redactor_box textarea
+  z-index: 2 !important
+
+.redactor_box
+  .redactor_toolbar
+    +box-shadow(none)
+    +border-radius($input-border-radius $input-border-radius 0 0)
+    border: 1px solid $input-border
+  .redactor_editor
+    background-color: $input-bg
+    border: 1px solid $input-border
+    border-top-width: 0px 
+    +border-radius(0 0 $input-border-radius $input-border-radius)
+    &:focus
+      border-color: $input-border-focus
+      background: #FFF
+    &[disabled], &[readonly]
+      color: #CCC
+    &[disabled]:focus, &[readonly]:focus
+      background: $input-bg-disabled
+      color: #CCC
+      border-color: $gray-lighter
