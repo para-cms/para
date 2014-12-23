@@ -42,7 +42,7 @@
         padding: 15px 10px 15px 15px
         text-decoration: none
         +text-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
-        border-bottom: 1px solid #2f3c48
+        border-bottom: 1px solid $navbar-border-bottom-color
         vertical-align: text-bottom
         .fa, .glyphicon
           color: #fff
@@ -53,10 +53,10 @@
           vertical-align: baseline
           +transition(color 200ms ease)
         &:hover
-          background: #3d4e5d
+          background: $navbar-link-hover-active-bg
           +transition(all 200ms ease)
           .fa, .glyphicon
-            color: #ffd559
+            color: $navbar-icon-color
       ul
         background: #273541
         max-height: 0
@@ -64,14 +64,14 @@
         overflow: hidden
         li
           > a
-            color: #ccc
+            color: $gray
             font-size: 12px
             line-height: 19px
             font-weight: 400
             padding: 12px 10px
-            border-bottom-color: #23303b
+            border-bottom-color: $navbar-submenu-hove-active-bg
           &.active > a, > a:hover
-            background: #23303b
+            background: $navbar-submenu-hove-active-bg
             color: #fff
     &.xn-openable:before
       position: absolute
@@ -89,10 +89,10 @@
         content: "\f106"
       >
         a
-          background: #3d4e5d
+          background: $navbar-link-hover-active-bg
           +transition(all 200ms ease)
           .fa, .glyphicon
-            color: #ffd559
+            color: $navbar-icon-color
         ul
           max-height: 1200px
     &.xn-title
@@ -100,8 +100,8 @@
       line-height: 20px
       font-weight: 600
       font-size: 13px
-      color: #999
-      border-bottom: 1px solid #2f3c48
+      color: $gray-dark
+      border-bottom: 1px solid $navbar-border-bottom-color
   > li
     &.xn-openable:before
       top: 15px
@@ -155,15 +155,15 @@
         color: #fff
         text-shadow: none
         &:hover
-          background: #3d4e5d
+          background: $navbar-link-hover-active-bg
           .fa, .glyphicon
-            color: #ffd559
+            color: $navbar-icon-color
         .fa, .glyphicon
           color: #fff
       &.active > a
-        background: #3d4e5d
+        background: $navbar-link-hover-active-bg
         .fa, .glyphicon
-          color: #ffd559
+          color: $navbar-icon-color
       ul
         width: 220px
         position: absolute
@@ -201,7 +201,7 @@
           left: auto
           ul
             left: auto
-            right: 230px
+            right: $left-menu-width-open + 10px
             &:after
               right: auto
               left: 100%
@@ -211,7 +211,7 @@
               margin-right: -5px
         ul
           top: 0
-          right: -230px
+          right: -$left-menu-width-open + 10px
           &:after
             right: 100%
             top: 23px
@@ -283,9 +283,9 @@
     .xn-search
       padding: 10px 5px
       input
-        width: 100px
+        width: $left-menu-width-open - 120px
         &:focus
-          width: 200px
+          width: $left-menu-width-open - 20px
       &:before
         left: 5px
 
@@ -352,7 +352,7 @@
         .fa, .glyphicon
           margin: 0
       ul
-        width: 220px
+        width: $left-menu-width-open
         position: absolute
         overflow: visible
         display: none
@@ -372,7 +372,7 @@
       width: 30px
       padding: 0 2px 0 28px
       &:focus
-        width: 200px
+        width: $left-menu-width-open - 20px
         padding: 0 8px 0 28px
   &.x-navigation-custom
     li
@@ -383,19 +383,19 @@
         &:hover
           background: #2b3742
           .fa, .glyphicon
-            color: #ffd559
+            color: $navbar-icon-color
         .fa, .glyphicon
           color: #DDD
       &.active > a
         background: #2b3742
         .fa, .glyphicon
-          color: #ffd559
+          color: $navbar-icon-color
     > li
       > a
         padding: 12px 10px 12px 12px
         border-bottom: 0
         font-size: 13px
-        color: #CCC
+        color: $gray
         border-left: 3px solid transparent
         &:hover
           color: #FFF
@@ -403,9 +403,9 @@
       &.active > a
         color: #FFF
         background: #374654
-        border-left: 3px solid #ffd559
+        border-left: 3px solid $navbar-icon-color
       &.xn-openable:before
-        color: #CCC
+        color: $gray
         top: 12px
       &.xn-title
         border-bottom: 0
@@ -430,7 +430,7 @@
     padding: 10px 10px 0 9px
     position: relative
     input
-      width: 200px
+      width: $left-menu-width-open - 20px
       height: 30px
       padding: 0 8px 0 28px
       line-height: 25px
@@ -623,7 +623,7 @@
       float: left
       font-size: 11px
       font-weight: 400
-      color: #999
+      color: $gray-dark
   .profile-controls a
     width: 30px
     height: 30px
