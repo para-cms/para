@@ -1,3 +1,11 @@
+@mixin clearfix()
+  &:before,
+  &:after 
+    content: " "
+    display: table
+  &:after
+    clear: both
+
 // Commonds
 // -------------------------
 $title-color: #434a54
@@ -6,3 +14,8 @@ $title-color: #434a54
 // -------------------------
 $left-menu-width-open: 220px
 $left-menu-width-close: 50px
+
+// Table
+// -------------------------
+$table-heading-color: #56688A
+$table-heading-bg: #f1f5f9

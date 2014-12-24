@@ -2,31 +2,23 @@ module Para
   module FormBuilder
     module Containers
       def fieldset(&block)
-        template.content_tag(:div, class: 'row') do
-          template.content_tag(:div, class: 'col-md-12 col-lg-8') do
-            template.content_tag(:div, class: 'block form-inputs') do
-              template.capture(&block)
-            end
-          end
+        template.content_tag(:div, class: 'block form-inputs') do
+          template.capture(&block)
         end
       end
 
       def actions(&block)
-        template.content_tag(:div, class: 'row') do
-          template.content_tag(:div, class: 'col-md-12 col-lg-8') do
-            template.content_tag(:div, class: 'block form-actions') do
-              if block
-                template.capture(&block)
-              else
-                [
-                  return_to_hidden_field,
-                  para_submit_button,
-                  para_submit_and_edit_button,
-                  para_submit_and_add_another_button,
-                  para_cancel_button
-                ].join("\n").html_safe
-              end
-            end
+        template.content_tag(:div, class: 'block form-actions') do
+          if block
+            template.capture(&block)
+          else
+            [
+              return_to_hidden_field,
+              para_submit_button,
+              para_submit_and_edit_button,
+              para_submit_and_add_another_button,
+              para_cancel_button
+            ].join("\n").html_safe
           end
         end
       end

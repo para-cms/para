@@ -1,13 +1,7 @@
 @import 'para/lib/variables'
-@import "compass/css3/transform"
+@import "variables"
 
-@mixin clearfix()
-  &:before,
-  &:after 
-    content: " "
-    display: table
-  &:after
-    clear: both
+@import "compass/css3/opacity"
 
 .sorting, .sorting_asc, .sorting_desc
   position: relative
@@ -16,17 +10,15 @@
 .sorting:before, .sorting_asc:before, .sorting_desc:before
   float: right
   font-family: FontAwesome
-  opacity: .9
-  filter: alpha(opacity = 90)
+  +opacity(.9)
   width: 10px
   height: 10px
   display: block
 
 .sorting:before
   content: "\f0dc"
-  opacity: .3
-  filter: alpha(opacity = 30)
-
+  +opacity(.3)
+  
 .sorting_desc:before
   content: "\f0d8"
 
@@ -34,29 +26,4 @@
   content: "\f0d7"
 
 .sorting_asc_disabled:before, .sorting_desc_disabled:before
-  opacity: .1
-  filter: alpha(opacity = 10)
-
-// Sortable positioning
-.table
-  .sortable-placeholder-container
-    display: table-row
-
-.panel
-  .collapsed
-    .caret
-      +rotate(270deg)
-
-.nested-many-field
-  &.orderable
-    .sortable-placeholder
-      margin-bottom: 20px
-    .form-fields
-      +clearfix
-      float: none
-    
-.sortable-placeholder
-  border: 2px dotted $gray-lighter
-  width: 100%
-  background-color: #f2f2f2
-
+  +opacity(.1)

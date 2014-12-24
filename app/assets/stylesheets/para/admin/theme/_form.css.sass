@@ -6,15 +6,14 @@
   -webkit-appearance: none
   &:focus
     +box-shadow(none)
-    border-color: #C1C1C1
+    border-color: $input-border-focus
     background: #FFF
   &[disabled], &[readonly]
     color: #CCC
   &[disabled]:focus, &[readonly]:focus
-    background: #EEE
+    background: $input-bg-disabled
     color: #CCC
     border-color: $gray-lighter
-
 
 .input-group-addon
   border-color: $brand-primary
@@ -31,8 +30,33 @@
 .form-group:last-child
   margin-bottom: 0
 
+// Form separated
+.form-group-separated 
+  border-top: 1px dashed $gray-lighter
+  .form-group 
+    border-bottom: 1px dashed $gray-lighter
+    margin-bottom: 0px
+
+    [class^="col-md-"],
+    [class^="col-sm-"]
+      border-left: 1px dashed $gray-lighter
+      padding: 12px 10px
+      &:first-child  
+        border-left: 0px
+    &:last-child 
+      border-bottom: 0px    
+    .control-label 
+      border-left: none
+
+  .panel-body.form-inputs
+    padding: 0 10px
+
+.form-group-separated.panel-body 
+  padding: 0px
+
 .help-block
   color: #AAB2BD
+  margin-bottom: 0
 
 .input-group-btn:first-child >
   .btn, .btn-group
@@ -93,10 +117,3 @@ label.valid
 
 .label
   font-weight: 500
-
-// Override redactor
-// -------------------------
-.redactor_box,
-.redactor_box textarea
-  z-index: 2 !important
-

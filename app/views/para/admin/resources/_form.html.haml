@@ -3,9 +3,6 @@
 
   = form.fieldset do
     - model_field_mappings(resource.class).fields.each do |field|
-      - if field.field_type
-        = form.send(field.field_method, field.name, as: field.field_type)
-      - else
-        = form.send(field.field_method, field.name)
+      = form.send(field.field_method, field.name, field.field_options)
 
   = form.actions

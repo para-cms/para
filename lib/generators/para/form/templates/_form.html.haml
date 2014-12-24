@@ -3,11 +3,7 @@
 
   = form.fieldset do
   <%- attributes.each do |field| -%>
-    <%- if field.field_type -%>
-    = form.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
-    <%- else -%>
-    = form.<%= field.field_method %> :<%= field.name %>
-    <%- end -%>
+    = form.<%= field.field_method %> :<%= field.name %><%= field_options_for(field) %>
   <%- end -%>
 
   = form.actions

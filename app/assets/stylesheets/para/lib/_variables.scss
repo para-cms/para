@@ -14,7 +14,7 @@ $bootstrap-sass-asset-helper: true !default;
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
 $gray-dark:              lighten(#000, 20%) !default;   // #333
 $gray:                   lighten(#000, 33.5%) !default; // #555
-$gray-light:             lighten(#000, 60%) !default;   // #999
+$gray-light:             #EEEEEE !default;   // #999
 $gray-lighter:           #D5D5D5 !default; // #eee
 
 // Brand colors
@@ -152,12 +152,12 @@ $btn-link-disabled-color:        $gray-light !default;
 // -------------------------
 
 $input-bg:                       #F9F9F9 !default;
-$input-bg-disabled:              $gray-lighter !default;
+$input-bg-disabled:              $gray-light !default;
 
-$input-color:                    $gray-light !default;
+$input-color:                    $gray-darker !default;
 $input-border:                   $gray-lighter !default;
 $input-border-radius:            $border-radius-base !default;
-$input-border-focus:             #66afe9 !default;
+$input-border-focus:             #C1C1C1 !default;
 
 $input-color-placeholder:        $gray-light !default;
 
@@ -519,7 +519,7 @@ $panel-default-heading-bg:    #F5F5F5 !default;
 
 $panel-primary-text:          darken($brand-primary, 15%) !default;
 $panel-primary-border:        lighten($btn-primary-border, 15%) !default;
-$panel-primary-heading-bg:    lighten($btn-primary-bg, 15%) !default;
+$panel-primary-heading-bg:    $panel-default-heading-bg !default;
 
 $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;

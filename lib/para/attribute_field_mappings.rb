@@ -5,6 +5,7 @@ require 'para/attribute_field/password'
 require 'para/attribute_field/image'
 require 'para/attribute_field/has_many'
 require 'para/attribute_field/nested_many'
+require 'para/attribute_field/redactor'
 
 module Para
   class AttributeFieldMappings
