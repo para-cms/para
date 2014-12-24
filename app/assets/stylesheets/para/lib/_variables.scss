@@ -12,10 +12,10 @@ $bootstrap-sass-asset-helper: true !default;
 // -------------------------
 
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
-$gray-dark:              lighten(#000, 20%) !default;   // #333
-$gray:                   lighten(#000, 33.5%) !default; // #555
-$gray-light:             #EEEEEE !default;   // #999
-$gray-lighter:           #D5D5D5 !default; // #eee
+$gray-dark:              #999999 !default; 
+$gray:                   #CCCCCC !default; 
+$gray-light:             #EEEEEE !default; 
+$gray-lighter:           #D5D5D5 !default; 
 
 // Brand colors
 // -------------------------
@@ -30,7 +30,7 @@ $brand-info:            #3fbae4 !default;
 // -------------------------
 
 $body-bg:               #fff !default;
-$text-color:            $gray-dark !default;
+$text-color:            $gray-darker !default;
 
 // Links
 // -------------------------
@@ -497,7 +497,7 @@ $list-group-bg:               #fff !default;
 $list-group-border:           #E5E5E5 !default;
 $list-group-border-radius:    $border-radius-base !default;
 
-$list-group-hover-bg:         #f5f5f5 !default;
+$list-group-hover-bg:         #F9F9F9 !default;
 $list-group-active-color:     $component-active-color !default;
 $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;

@@ -32,7 +32,7 @@
       font-size: 11px
       margin: 0 5px 5px 0
       padding: 0 8px
-      color: #656d78
+      color: $breadcrumb-active-color
       &:hover
         text-decoration: none
         background: #F0F0F0
@@ -49,7 +49,7 @@
     .progress
       margin: 5px 0
     &.active .badge
-      color: #656d78
+      color: $breadcrumb-active-color
     &:last-child
       border-bottom: 0
   &.list-group-simple
@@ -89,7 +89,7 @@
 
 a.list-group-item
   &:focus, &:hover
-    background: #F9F9F9
+    background: $list-group-hover-bg
 
 // List group for contact
 .list-group-contacts .list-group-item
@@ -109,7 +109,7 @@ a.list-group-item
   &.active
     background: $btn-default-bg
     border-color: $list-group-border
-    color: #656d78
+    color: $breadcrumb-active-color
 
 .list-group-controls
   position: absolute
@@ -135,4 +135,4 @@ a.list-group-item
   &.status-away:after
     background: $brand-warning
   &.status-offline:after
-    background: #CCC
+    background: $gray
