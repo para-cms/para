@@ -180,8 +180,8 @@ $dropdown-border:                #e5e5e5 !default;
 $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
-$dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-color:            $gray-darker !default;
+$dropdown-link-hover-color:      darken($gray-darker, 5%) !default;
 $dropdown-link-hover-bg:         darken(#fff, 5%) !default;
 
 $dropdown-link-active-color:     $component-active-color !default;
@@ -336,7 +336,7 @@ $nav-tabs-border-color:                     #ddd !default;
 $nav-tabs-link-hover-border-color:          $gray-lighter !default;
 
 $nav-tabs-active-link-hover-bg:             $body-bg !default;
-$nav-tabs-active-link-hover-color:          $gray !default;
+$nav-tabs-active-link-hover-color:          $gray-darker !default;
 $nav-tabs-active-link-hover-border-color:   #ddd !default;
 
 $nav-tabs-justified-link-border-color:            #ddd !default;
