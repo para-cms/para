@@ -1,4 +1,4 @@
-@import 'para/admin/theme/variables'
+@import "para/admin/theme/variables"
 @import "compass/css3/text-shadow"
 @import "compass/css3/inline-block"
 @import "compass/css3/transition"
@@ -120,6 +120,23 @@ button
 .x-navigation 
   .xn-text-initial
     display: none
+
+  li.section-actions
+    &.active:before,
+    &:before,
+      content: none
+    .xn-openable:before
+      top: 8px  
+    a
+      font-size: 0.9em
+      padding-top: 8px
+      padding-bottom: 8px
+      background: darken($navbar-default-bg, 5%) 
+    .fa
+      font-size: 0.9em
+      margin-right: 0px
+      text-align: left
+
   &.x-navigation-minimized
     .xn-text-initial
       display: block
@@ -132,27 +149,7 @@ button
       .xn-openable:before
         top: 12px  
       a    
-        padding: 12px 10px      
-
-  li.section-actions
-    &.active:before,
-    &:before,
-      content: none
-    .xn-openable:before
-      top: 8px  
-    a
-      font-size: 0.9em
-      padding: 8px 10px
-      background: lighten(#23303b, 10%)
-      &:hover
-        padding-left: 15px
-
-    &.active
-      > a
-        padding-left: 15px
-    .fa
-      font-size: 0.9em
-      margin-right: 0px
+        padding: 12px 10px 
 
 // Table
 .para-component-relation-table
