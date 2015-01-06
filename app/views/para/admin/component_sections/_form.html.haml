@@ -5,5 +5,6 @@
       = form.input :name
 
     .block.form-actions
-      = form.button :submit, class: 'btn-success'
-      = link_to t('para.shared.cancel'), admin_path, class: 'btn btn-danger'
+      .col-sm-9.col-sm-offset-3
+        = form.button :submit, class: 'btn-success'
+        = link_to t('para.shared.cancel'), admin_path, class: 'btn btn-danger'

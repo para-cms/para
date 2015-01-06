@@ -18,7 +18,10 @@
     - @component_sections.each do |component_section|
       %li.xn-openable{ class: ('active' if component_section_active?(component_section)) }
         = link_to "#" do
-          = component_section.name
+          %span.xn-text-initial{ data: { toggle: "tooltip", placement: "right", :"original-title" => component_section.name } }
+            = component_section.name[0,1]
+          %span.xn-text
+            = component_section.name
 
         %ul
           - component_section.components.each do |component|
@@ -35,8 +38,7 @@
                 %li.xn-openable
                   = link_to '#' do
                     %i.fa.fa-plus
-                    %span.xn-text
-                      = t('para.component.add')
+                    = t('para.component.add')
                   %ul
                     - registered_components_options.each do |name, type|
                       %li= link_to name, para.new_admin_component_section_components_path(component_section, type: type)

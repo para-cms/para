@@ -11,4 +11,5 @@
       = form.hidden_field :type, value: params[:type] || form.object.type
 
     .block.form-actions
-      = form.button :submit, class: 'btn-success'
+      .col-sm-9.col-sm-offset-3
+        = form.button :submit, class: 'btn-success'
