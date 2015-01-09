@@ -3,8 +3,8 @@ module Para
     def para_form_for(resource, options = {}, &block)
       default_options = {
         as: :resource,
-        wrapper: :vertical_form,
-        html: { class: 'form-vertical' }
+        wrapper: :horizontal_form,
+        html: { class: 'form-horizontal form-group-separated' }
       }
 
       options = default_options.deep_merge(options)

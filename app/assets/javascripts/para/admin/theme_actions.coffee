@@ -237,6 +237,7 @@ $(document).on 'page:change', ->
       elm.addClass("show").removeClass "hidden"
     false
 
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' })
 
 $(window).resize ->
   x_navigation_onresize()

@@ -1,10 +1,14 @@
-@import 'para/lib/variables'
+@import "para/admin/theme/variables"
 @import "compass/css3/text-shadow"
 @import "compass/css3/inline-block"
 @import "compass/css3/transition"
 @import "compass/css3/box-shadow"
 @import "compass/css3/border-radius"
 @import "compass/css3/transform"
+
+.animated
+  -webkit-animation-duration: 100ms
+  animation-duration: 100ms
 
 // More button style
 
@@ -13,9 +17,9 @@
   outline-offset: 0
 
 @mixin button-hover-focus-active($color-border, $color-bg)
-  +box-shadow(0px -2px $color-border inset)
+  +box-shadow(0px -2px darken($color-border, 5%) inset)
   &:hover
-    +box-shadow(0px -2px darken($color-border, 12%) inset)
+    +box-shadow(0px -2px darken($color-border, 15%) inset)
     background-color: darken($color-bg, 2%)
   &:focus,
   &:active,
@@ -90,34 +94,78 @@ button
   &.btn-inverse
     +button-variant-inverse($btn-info-border, $btn-info-bg)
 
-// Left menu
-.x-navigation li.section-actions
-  &.active:before,
-  &:before,
-    content: none
-  a
-    font-size: 0.9em
-    padding: 8px 10px
-    background: lighten(#23303b, 10%)
-    &:hover
-      padding-left: 15px
+// Badge
+.label-primary,
+.badge-primary
+  background-color: $brand-primary
 
-  &.active
-    > a
-      padding-left: 15px
-  .fa
-    font-size: 0.9em
-    margin-right: 0px
+.label-success,
+.badge-success 
+  background-color: $brand-success
+
+.label-info,
+.badge-info 
+  background-color: $brand-info
+
+.label-warning,
+.badge-warning 
+  background-color: $brand-warning
+
+.label-danger,
+.badge-danger 
+  background-color: $brand-danger
+
+
+// Left menu
+.x-navigation 
+  .xn-text-initial
+    display: none
+
+  li.section-actions
+    &.active:before,
+    &:before,
+      content: none
+    .xn-openable:before
+      top: 8px  
+    a
+      font-size: 0.9em
+      padding-top: 8px
+      padding-bottom: 8px
+      background: darken($navbar-default-bg, 5%) 
+    .fa
+      font-size: 0.9em
+      margin-right: 0px
+      text-align: left
+
+  &.x-navigation-minimized
+    .xn-text-initial
+      display: block
+      padding: 1em 0.7em
+      margin: -1em -0.7em
+    .xn-openable.active
+      .tooltip
+        display: none !important
+    li.section-actions 
+      .xn-openable:before
+        top: 12px  
+      a    
+        padding: 12px 10px 
 
 // Table
 .para-component-relation-table
   td > img
     height: 50px  
 
-// Form actions
+// Form
+.block.form-inputs
+  margin-bottom: 0
+  padding: 0px 10px
+
 .form-actions
   padding-top: 20px
-  padding-bottom: 30px
-  padding-left: 10px
-  padding-right: 10px
-  border-top: 1px solid $gray-light
+  padding-left: 0
+  padding-bottom: 15px
+  padding-right: 15px
+  border-top: 1px dashed $gray-lighter
+  .btn
+    margin-bottom: 15px

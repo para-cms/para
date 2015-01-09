@@ -1,7 +1,6 @@
 
 @import url('//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,500,600,700&subset=latin,cyrillic-ext')
 
-@import 'para/lib/variables'
 @import "variables"
 @import "compass/css3/transition"
 
@@ -29,7 +28,10 @@ body, html
     [class^=col-lg-], [class^=col-md-], [class^=col-sm-], [class^=col-xs-]
       padding-left: 0
       padding-right: 0
-
+      
+[class^=col-lg-], [class^=col-md-], [class^=col-sm-], [class^=col-xs-]  
+  padding-left: 10px
+  padding-right: 10px
 
 // Main container 
 // -------------------------
@@ -39,7 +41,7 @@ body, html
   float: left
   min-height: 100%
   position: relative
-  background: $brand-primary
+  background: $navbar-default-bg
 
   // Left Menu system close or open
   .page-sidebar
@@ -89,7 +91,7 @@ body, html
            
       .content-frame-left
         float: left
-        width: 300px
+        width: $content-frame-with
         padding: 10px
         min-height: 100%
         background: rgba(0, 0, 0, 0.02)
@@ -106,7 +108,7 @@ body, html
 
       .content-frame-right
         float: right
-        width: 300px
+        width: $content-frame-with
         padding: 10px
         min-height: 100%
         background: rgba(0, 0, 0, 0.02)
@@ -125,10 +127,10 @@ body, html
 
       .content-frame-body
         padding: 70px 10px 10px
-        margin-left: 300px
+        margin-left: $content-frame-with
         &.content-frame-body-left
           margin-left: 0
-          margin-right: 300px
+          margin-right: $content-frame-with
 
       .content-frame-left-toggle, .content-frame-right-toggle
         display: none
@@ -138,8 +140,6 @@ body, html
     .page-content-wrap
       float: left
       width: 100%
-      padding-left: 25px
-      padding-right: 25px
 
   // Left menu close or open
   &.page-container-wide .page-content
@@ -160,3 +160,35 @@ body, html
       padding-top: 50px
     &.page-navigation-toggled .x-navigation.x-navigation-horizontal
       padding-right: 50px
+
+/* Animations */
+@-webkit-keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+  
+@-moz-keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+
+@keyframes pulsate 
+  0% 
+    opacity: 0.0
+  
+  50% 
+    opacity: 1.0
+  
+  100% 
+    opacity: 0.0
+  

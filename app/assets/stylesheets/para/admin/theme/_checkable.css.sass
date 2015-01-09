@@ -1,4 +1,4 @@
-@import 'para/lib/variables'
+@import 'variables'
 @import "compass/css3/inline-block"
 
 @mixin fontAwesome
@@ -29,6 +29,16 @@
     float: right
     line-height: 1
 
+.form-group.boolean 
+  [class^="col-"] label
+    margin-bottom: 0
+    padding-top: 2px
+  i
+    font-size: 20px
+    line-height: 1
+
+.form-group.boolean input[type=checkbox],
+.form-group.boolean input[type=radio],
 .checkbox input[type=checkbox],
 .radio input[type=radio]
   position: absolute
@@ -46,17 +56,17 @@ input[type=checkbox]:checked + .checkbox-icon:before
 
 input[type=checkbox]:focus + label.check_boxes:before,
 input[type=checkbox]:focus + .checkbox-icon:before
-  color: lighten($input-border-focus, 10%)
+  color: $input-border-focus
 
 .boolean .checkbox-icon,
 .checkbox .checkbox-icon
   &:hover
     &:before
-      color: lighten($input-border-focus, 10%)
+      color: $input-border-focus
   &:before
     +fontAwesome
     content: "\f096"
-    color: $input-color
+    color: $input-border
 
 input[type=radio]:checked + label.radio_buttons:before,
 input[type=radio]:checked + .radio-icon:before
@@ -64,21 +74,17 @@ input[type=radio]:checked + .radio-icon:before
 
 input[type=radio]:focus + label.radio_buttons:before,
 input[type=radio]:focus + .radio-icon:before
-  color: lighten($input-border-focus, 10%)
+  color: $input-border-focus
 
 .boolean .radio-icon,
 .radio .radio-icon
   &:hover
     &:before
-      color: lighten($input-border-focus, 10%)
+      color: $input-border-focus
   &:before
     +fontAwesome
     content: "\f10c"
-    color: $input-color
-
-.form-group.boolean .col-sm-9 label
-  margin-bottom: 0
-  margin-top: 7px
+    color: $input-border
 
 // INLINE OVERRIDE //
 .radio-inline,

@@ -1,0 +1,44 @@
+@import "variables"
+
+@import "compass/css3/transform"
+@import "compass/css3/transition"
+
+.order-anchor
+  float: left
+  margin-right: 10px
+  color: $gray-darker
+  cursor: move
+  outline: 0
+  +single-transition(all, .2s, ease-out)
+  &:hover
+    color: $gray-darker
+  &:focus,
+  &:active
+    cursor: move
+    color: $gray-darker
+
+.table
+  .sortable-dragging
+    .btn-group
+      display: none
+    .order-anchor
+      display: inline-block
+      position: relative  
+
+.panel
+  .collapsed
+    .caret
+      +rotate(270deg)
+
+.nested-many-field
+  &.orderable
+    .sortable-placeholder
+      margin-bottom: 20px
+    .form-fields
+      +clearfix
+      float: none
+    
+.sortable-placeholder
+  border: 1px dashed $gray-lighter
+  width: 100%
+  background-color: $input-bg
