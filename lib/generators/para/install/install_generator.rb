@@ -35,9 +35,9 @@ module Para
         ['kaminari', '>= 0.16.1'],
         ['ransack', '>= 1.4.1'],
         ['bootstrap-kaminari-views', '>= 0.0.5']
-      ].each do |*args|
+      ].each do |name, *args|
         unless gemfile_contents.match(/gem ['"]#{ name }['"]/)
-          gem *args
+          gem name, *args
         end
       end
     end
