@@ -8,6 +8,10 @@ module Para
       def show
         @q = @component.model.search(params[:q])
         @resources = @q.result.page(params[:page])
+
+        if(@resources.respond_to?(:ordered))
+          @resources = @resources.ordered
+        end
       end
     end
   end
