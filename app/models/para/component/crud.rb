@@ -3,10 +3,10 @@ module Para
     class Crud < Para::Component::Base
       register :crud, self
 
-      configurable_on :model_name, as: :selectize, collection: :available_models
+      configurable_on :model_type, as: :selectize, collection: :available_models
 
       def model
-        @model ||= model_name.presence && model_name.constantize
+        @model ||= model_type.presence && model_type.constantize
       end
 
       def available_models
