@@ -178,6 +178,13 @@ $(document).on 'page:change', ->
     $(".x-navigation-horizontal li,.x-navigation-minimized li").removeClass "active"  if html_click_avail
     return
 
+  $(".selectize-tags").selectize
+    delimiter: ","
+    persist: false
+    create: (input) ->
+      value: input
+      text: input
+
   $(".widget-remove").on "click", ->
     $(this).parents(".widget").fadeOut 400, ->
       $(this).remove()
