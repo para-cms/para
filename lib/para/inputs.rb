@@ -3,6 +3,7 @@ module Para
     extend ActiveSupport::Autoload
 
     autoload :NestedManyInput
+    autoload :HasOneInput
   end
 end
 
