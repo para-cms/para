@@ -7,6 +7,9 @@ module Para
         model.reflections.each do |name, reflection|
           next if name == :component
 
+          # Remove foreign key, if existing, from fields
+          fields_hash.delete(reflection.foreign_key.to_s)
+
           if model.nested_attributes_options[name]
             if reflection.collection?
               fields_hash[name] = AttributeField::NestedManyField.new(

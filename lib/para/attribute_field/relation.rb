@@ -3,6 +3,10 @@ module Para
     class RelationField < AttributeField::Base
       private
 
+      def reflection
+        @reflection ||= model.reflections[name.to_s]
+      end
+
       def resource_name(resource)
         [:name, :title].each do |method|
           return resource.send(method) if resource.respond_to?(method)
