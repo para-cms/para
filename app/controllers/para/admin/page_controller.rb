@@ -3,12 +3,11 @@ require_dependency "para/application_controller"
 module Para
   module Admin
     class PageController < Para::Admin::BaseController
-      load_and_authorize_resource :component, class: 'Para::Component::Base'
-      load_and_authorize_resource :page, parent: false, class: 'Para::Page'
+      load_and_authorize_component
+      load_and_authorize_resource :page, parent: false, through: :component,
+                                         class: 'Para::Page', singleton: true
 
       def update
-        @page = @component.page
-
         if @page.update_attributes(page_params)
           @component.update! name: @page.title
           @component.update! slug: @page.slug
