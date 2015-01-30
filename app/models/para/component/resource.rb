@@ -19,6 +19,10 @@ module Para
         end
       end
 
+      def model_table_name
+        model && model.table_name
+      end
+
       private
 
       def excluded_models

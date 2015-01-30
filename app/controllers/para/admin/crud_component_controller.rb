@@ -6,7 +6,7 @@ module Para
       load_and_authorize_component
 
       def show
-        @q = @component.model.search(params[:q])
+        @q = @component.resources.search(params[:q])
         @resources = @q.result.page(params[:page])
 
         if(@resources.respond_to?(:ordered))

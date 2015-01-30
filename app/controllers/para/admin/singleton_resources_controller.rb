@@ -6,7 +6,6 @@ module Para
       include Para::Admin::ResourceControllerConcerns
 
       before_filter :load_and_authorize_singleton_resource
-
       after_filter :attach_resource_to_component, only: [:create]
 
       private

@@ -6,6 +6,8 @@ module Para
       include Para::Admin::ResourceControllerConcerns
 
       before_filter :load_and_authorize_crud_resource
+      after_filter :attach_resource_to_component, only: [:create]
+      after_filter :remove_resource_from_component, only: [:destroy]
 
       private
 
@@ -15,6 +17,16 @@ module Para
         )
 
         loader.load_and_authorize_resource
+      end
+
+      def attach_resource_to_component
+        return unless resource.persisted? && @component.namespaced?
+        @component.add_resource(resource)
+      end
+
+      def remove_resource_from_component
+        return unless @component.namespaced?
+        @component.remove_resource(resource)
       end
     end
   end
