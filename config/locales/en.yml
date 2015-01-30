@@ -29,6 +29,8 @@ en:
         name: "Page category"
       crud:
         name: "Resources list"
+      singleton_resource:
+        name: "Resource form"
 
     component_section:
       add: "Add a component section"
@@ -73,6 +75,12 @@ en:
       para/component/base:
         one: "Component"
         other: "Components"
+      para/component/crud:
+        one: "Resource listing"
+        other: "Resource listings"
+      para/component/singleton_resource:
+        one: "Resource form"
+        other: "Resource forms"
       para/page:
         one: "Page"
         other: "Pages"

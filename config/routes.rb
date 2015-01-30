@@ -27,5 +27,9 @@ Para::Engine.routes.draw do
         end
       end
     end
+
+    component :singleton_resource, path: 'resource-form' do
+      resource :singleton_resource, path: 'resource', only: [:create, :update]
+    end
   end
 end

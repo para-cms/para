@@ -29,6 +29,8 @@ fr:
         name: "Groupe de pages"
       crud:
         name: "Listing de ressources"
+      singleton_resource:
+        name: "Formulaire de ressource"
 
     component_section:
       add: "Ajouter une section"
@@ -73,6 +75,12 @@ fr:
       para/component/base:
         one: "Composant"
         other: "Composants"
+      para/component/crud:
+        one: "Listing de ressources"
+        other: "Listings de ressources"
+      para/component/singleton_resource:
+        one: "Formulaire de ressource"
+        other: "Formulaires de ressource"
       para/page:
         one: "Page"
         other: "Pages"

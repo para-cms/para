@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  component_id: 
+  resource_id: 
+
+two:
+  component_id: 
+  resource_id: 
