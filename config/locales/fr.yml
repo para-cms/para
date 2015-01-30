@@ -23,10 +23,6 @@ fr:
       create: "Créer un(e) Composant"
       add: "Ajouter un composant"
       none_created: "Aucune page pour le moment ..."
-      page:
-        name: "Page"
-      page_category:
-        name: "Groupe de pages"
       crud:
         name: "Listing de ressources"
       singleton_resource:
@@ -81,14 +77,7 @@ fr:
       para/component/singleton_resource:
         one: "Formulaire de ressource"
         other: "Formulaires de ressource"
-      para/page:
-        one: "Page"
-        other: "Pages"
     attributes:
-      para/page:
-        title: "Titre"
-        slug: "Adresse de la page"
-        content: "Contenu"
       para/component/base:
         name: "Titre"
         type: "Type"

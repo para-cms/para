@@ -14,8 +14,6 @@ end
 
 # Require models
 require 'para/component/base'
-require 'para/component/page'
-require 'para/component/page_category'
 require 'para/component/resource'
 require 'para/component/crud'
 require 'para/component/singleton_resource'
