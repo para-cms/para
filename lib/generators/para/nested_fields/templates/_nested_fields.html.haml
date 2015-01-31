@@ -1,13 +1,13 @@
-.panel.panel-default.form-fields.push-down-5
+.panel.panel-default.form-fields
   .panel-heading
     = form.reorder_anchor
 
     %h3.panel-title
       = link_to "##{ form.nested_resource_dom_id }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
         = form.nested_resource_name
-          %span.caret
+        %span.caret
 
-    %ul.panel-controls    
+    %ul.panel-controls
       %li
         = form.remove_association_button
 
@@ -16,8 +16,8 @@
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
   <%- attributes.each do |field| -%>
     <%- if field.field_type -%>
-    = form.<%= field.field_method %> :<%= field.name %>, as: :<%= field.field_type %>
+    = form.<%= field.field_method %> :<%= field.field_name %>, as: :<%= field.field_type %>
     <%- else -%>
-    = form.<%= field.field_method %> :<%= field.name %>
+    = form.<%= field.field_method %> :<%= field.field_name %>
     <%- end -%>
   <%- end -%>

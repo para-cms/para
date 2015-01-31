@@ -7,7 +7,7 @@ module Para
 
       def self.field_option(key, method_name, options = {})
         self._field_options ||= []
-        
+
         self._field_options += [{
           key: key,
           method_name: method_name,
@@ -57,6 +57,10 @@ module Para
           value = send(params[:method_name])
           hash[params[:key]] = value if value != nil || params[:options][:allow_nil]
         end
+      end
+
+      def field_name
+        name
       end
 
       private

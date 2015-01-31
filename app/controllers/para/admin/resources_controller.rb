@@ -81,6 +81,27 @@ module Para
         end
       end
 
+      def resource
+        @resource ||= begin
+          self.class.ensure_resource_name_defined!
+          instance_variable_get(:"@#{ self.class.resource_name }")
+        end
+      end
+
+      def resource_params
+        @resource_params ||= parse_resource_params(
+          params.require(:resource).permit!
+        )
+      end
+
+      def parse_resource_params(hash)
+        model_field_mappings(self.class.resource_model).fields.each do |field|
+          field.parse_input(hash) if hash.key?(field.name)
+        end
+
+        hash
+      end
+
       def self.resource(name, options = {})
         default_options = {
           class: name.to_s.camelize,
@@ -105,13 +126,6 @@ module Para
         end
       end
 
-      def resource
-        @resource ||= begin
-          self.class.ensure_resource_name_defined!
-          instance_variable_get(:"@#{ self.class.resource_name }")
-        end
-      end
-
       def self.ensure_resource_name_defined!
         unless resource_name.presence
           raise "Resource not defined in your controller. " \
@@ -119,20 +133,6 @@ module Para
                 "`resource :resource_name` macro when subclassing " \
                 "Para::Admin::ResourcesController"
         end
-      end
-
-      def resource_params
-        @resource_params ||= parse_resource_params(
-          params.require(:resource).permit!
-        )
-      end
-
-      def parse_resource_params(hash)
-        model_field_mappings(self.class.resource_model).fields.each do |field|
-          field.parse_input(hash) if hash.key?(field.name)
-        end
-
-        hash
       end
     end
   end

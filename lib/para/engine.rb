@@ -19,8 +19,28 @@ module Para
     end
 
     initializer 'Para Orderable Mixin' do
-      ActiveSupport.on_load :active_record do
+      ActiveSupport.on_load(:active_record) do
         include Para::ActiveRecordOrderableMixin
+      end
+    end
+
+    initializer 'Extend paperclip attachment definition' do
+      return unless Kernel.const_defined?('Paperclip')
+
+      ActiveSupport.on_load(:active_record) do
+        ::Paperclip::HasAttachedFile.send(
+          :include, Para::Ext::Paperclip::HasAttachedFileMixin
+        )
+      end
+    end
+
+    initializer 'Extend cancan ControllerResource class' do
+      return unless Kernel.const_defined?('CanCan')
+
+      ActiveSupport.on_load(:active_record) do
+        ::CanCan::ControllerResource.send(
+          :include, Para::Ext::Cancan::ControllerResource
+        )
       end
     end
   end

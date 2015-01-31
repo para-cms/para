@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Para
-  class Admin::PagesControllerTest < ActionController::TestCase
+  class ComponentResourceTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
     # end

@@ -23,12 +23,10 @@ en:
       create: "Create a component"
       add: "Add a component"
       none_created: "No components created for now ..."
-      page:
-        name: "Page"
-      page_category:
-        name: "Page category"
       crud:
         name: "Resources list"
+      singleton_resource:
+        name: "Resource form"
 
     component_section:
       add: "Add a component section"
@@ -73,14 +71,15 @@ en:
       para/component/base:
         one: "Component"
         other: "Components"
-      para/page:
-        one: "Page"
-        other: "Pages"
+      para/component/crud:
+        one: "Resource listing"
+        other: "Resource listings"
+      para/component/singleton_resource:
+        one: "Resource form"
+        other: "Resource forms"
     attributes:
-      para/page:
-        title: "Title"
-        slug: "URL fragment"
-        content: "Page content"
       para/component/base:
         name: "Title"
         type: "Type"
+        model_type: "Resource"
+        namespaced: "Only list component's resources"

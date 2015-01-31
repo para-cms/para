@@ -20,7 +20,7 @@ module Para
       scope :ordered, -> { order('position ASC') }
 
       def self.model_name
-        @model_name ||= Para::Component::ModelName.new(self)
+        @model_name ||= ModelName.new(self)
       end
 
       def self.configurable_on(key, options = {})

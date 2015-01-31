@@ -19,6 +19,7 @@ require 'font-awesome-rails'
 require 'rails/routing_mapper'
 require 'rails/relation_length_validator'
 
+require 'para/ext'
 require 'para/errors'
 require 'para/config'
 require 'para/model_field_parsers'

@@ -22,7 +22,7 @@
     list-style: none
     display: block
     z-index: 3
-  background: $brand-primary
+  background: $navbar-default-bg
   li
     float: left
     display: block
@@ -36,16 +36,16 @@
         float: left
         width: 100%
         line-height: 19px
-        color: #fff
+        color: $navbar-default-link-color
         font-size: 13px
         font-weight: 400
         padding: 15px 10px 15px 15px
         text-decoration: none
         +text-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
-        border-bottom: 1px solid $navbar-border-bottom-color
+        border-bottom: 1px solid $navbar-default-border
         vertical-align: text-bottom
         .fa, .glyphicon
-          color: #fff
+          color: $navbar-default-link-color
           text-align: center
           width: 20px
           font-size: 14px
@@ -53,26 +53,26 @@
           vertical-align: baseline
           +transition(color 200ms ease)
         &:hover
-          background: $navbar-link-hover-active-bg
+          background: $navbar-default-link-hover-bg
           +transition(all 200ms ease)
           .fa, .glyphicon
             color: $navbar-icon-color
       ul
-        background: #273541
+        background: darken($navbar-default-bg, 5%)
         max-height: 0
         +transition(all 200ms ease)
         overflow: hidden
         li
           > a
-            color: $gray
+            color: $navbar-default-link-color
             font-size: 12px
             line-height: 19px
             font-weight: 400
             padding: 12px 10px
-            border-bottom-color: $navbar-submenu-hove-active-bg
+            border-bottom-color: darken($navbar-default-border, 5%)
           &.active > a, > a:hover
-            background: $navbar-submenu-hove-active-bg
-            color: #fff
+            background: darken($navbar-default-link-hover-bg, 5%)
+            color: $navbar-default-link-color
     &.xn-openable:before
       position: absolute
       font-family: FontAwesome
@@ -80,7 +80,7 @@
       font-size: 14px
       width: 20px
       height: 20px
-      color: #FFF
+      color: $navbar-default-link-color
       right: 0
       top: 12px
       cursor: pointer
@@ -89,7 +89,7 @@
         content: "\f106"
       >
         a
-          background: $navbar-link-hover-active-bg
+          background: $navbar-default-link-active-bg
           +transition(all 200ms ease)
           .fa, .glyphicon
             color: $navbar-icon-color
@@ -100,40 +100,40 @@
       line-height: 20px
       font-weight: 600
       font-size: 13px
-      color: $gray-dark
-      border-bottom: 1px solid $navbar-border-bottom-color
+      color: $navbar-default-color
+      border-bottom: 1px solid $navbar-default-border
   > li
     &.xn-openable:before
       top: 15px
     > ul > li
       > a
-        padding-left: 25px
+        padding-left: 15px
       &.active > a
-        padding-left: 30px
+        padding-left: 20px
       >
         a:hover
-          padding-left: 30px
+          padding-left: 20px
         ul > li
           > a
-            padding-left: 40px
+            padding-left: 30px
           &.active > a
-            padding-left: 45px
+            padding-left: 35px
           >
             a:hover
-              padding-left: 45px
+              padding-left: 35px
             ul > li
               > a
-                padding-left: 50px
+                padding-left: 40px
               &.active > a
-                padding-left: 55px
+                padding-left: 45px
               >
                 a:hover
-                  padding-left: 55px
+                  padding-left: 45px
                 ul > li
                   > a
-                    padding-left: 60px
+                    padding-left: 50px
                   &.active > a, > a:hover
-                    padding-left: 65px
+                    padding-left: 55px
     &:last-child > a
       +border-radius(0 0 0 5px)
       border-bottom: 0
@@ -141,7 +141,7 @@
   // Horizontal Navbar    
   &.x-navigation-horizontal
     height: 50px
-    background: $brand-primary
+    background: $navbar-default-bg
     .xn-logo a
       border-bottom: 0
       width: 200px
@@ -152,20 +152,20 @@
         padding: 15px
         border-bottom: 0
         line-height: 20px
-        color: #fff
+        color: $navbar-default-link-color
         text-shadow: none
         &:hover
-          background: $navbar-link-hover-active-bg
+          background: $navbar-default-link-hover-bg
           .fa, .glyphicon
             color: $navbar-icon-color
         .fa, .glyphicon
-          color: #fff
+          color: $navbar-default-link-color
       &.active > a
-        background: $navbar-link-hover-active-bg
+        background: $navbar-default-link-active-bg
         .fa, .glyphicon
           color: $navbar-icon-color
       ul
-        width: 220px
+        width: $left-menu-width-open
         position: absolute
         overflow: visible
         display: none
@@ -252,28 +252,28 @@
       &.xn-openable > a
         padding-right: 20px
     ul.xn-drop-white
-      background: #FFF
+      background: $dropdown-bg
       ul
-        background: #FFF
+        background: $dropdown-bg
         &:after
-          border-right-color: #FFF
+          border-right-color: $dropdown-bg
       li
         > a
-          color: #333
+          color: $dropdown-link-color
           +text-shadow(none)
-          border-bottom: 1px solid #E9E9E9
+          border-bottom: 1px solid $dropdown-border
           &:hover
-            background: $btn-default-bg
-            color: #333
+            background: $dropdown-link-hover-bg
+            color: $dropdown-link-hover-color
           .fa, .glyphicon
-            color: $brand-primary
+            color: $dropdown-link-color
         &.active
           > a
-            color: #333
+            color: $dropdown-link-active-color
             text-shadow: none
-            border-bottom: 1px solid #E9E9E9
+            border-bottom: 1px solid $dropdown-border
           &.xn-openable:before
-            color: #333
+            color: $dropdown-link-active-color
     .xn-icon-button > a
       padding: 15px 10px
       text-align: center
@@ -311,7 +311,7 @@
           width: 0
           position: absolute
           pointer-events: none
-          border-color: transparent $brand-primary transparent transparent
+          border-color: transparent darken($navbar-default-bg, 5%) transparent transparent
           border-width: 5px
           margin-top: -5px
       &.xn-title
@@ -320,7 +320,7 @@
         display: block
       ul
         top: 0
-        right: -$left-menu-width-open + 10px
+        right: -$left-menu-width-open
         +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
         &:after
           right: 100%
@@ -331,14 +331,14 @@
           width: 0
           position: absolute
           pointer-events: none
-          border-color: transparent $brand-primary transparent transparent
+          border-color: transparent darken($navbar-default-bg, 5%) transparent transparent
           border-width: 5px
           margin-top: -5px
         li
           > a
-            padding-left: 15px!important
+            padding-left: 15px !important
           &.active > a, > a:hover
-            padding-left: 20px!important
+            padding-left: 20px !important
           &:first-child > a
             +border-radius(3px 3px 0 0)
           &:last-child > a
@@ -367,58 +367,14 @@
         display: none
       &.xn-logo > a:first-child
         padding: 0
-        width: 50px
+        width: $left-menu-width-close
     .xn-search input
       width: 30px
       padding: 0 2px 0 28px
       &:focus
         width: $left-menu-width-open - 20px
         padding: 0 8px 0 28px
-  &.x-navigation-custom
-    li
-      ul
-        background: #2d3945
-      > a
-        border-bottom: 0
-        &:hover
-          background: #2b3742
-          .fa, .glyphicon
-            color: $navbar-icon-color
-        .fa, .glyphicon
-          color: #DDD
-      &.active > a
-        background: #2b3742
-        .fa, .glyphicon
-          color: $navbar-icon-color
-    > li
-      > a
-        padding: 12px 10px 12px 12px
-        border-bottom: 0
-        font-size: 13px
-        color: $gray
-        border-left: 3px solid transparent
-        &:hover
-          color: #FFF
-          background: #374654
-      &.active > a
-        color: #FFF
-        background: #374654
-        border-left: 3px solid $navbar-icon-color
-      &.xn-openable:before
-        color: $gray
-        top: 12px
-      &.xn-title
-        border-bottom: 0
-      &.xn-logo > a
-        border-left: 0
-        &:hover
-          background-color: #e0401d
-    &.x-navigation-minimized > li
-      > a
-        padding: 15px 10px 15px 7px
-      &.xn-profile > a
-        border-left: 0
-        padding: 7px
+  
   .xn-padding      
     padding: 10px 10px 0 9px
   .xn-form
@@ -482,7 +438,7 @@
         text-align: center
         font-weight: 300
         line-height: 45px
-        background-color: #e34724
+        background-color: $navbar-default-brand-color
         padding: 0
         border-bottom: 0
         color: #FFF
@@ -490,7 +446,7 @@
         .xn-text
           margin-left: -3px
         &:hover
-          background-color: #e0401d
+          background-color: $navbar-default-brand-hover-bg
     &.xn-profile
       padding: 0
       border-bottom: 1px solid #273541

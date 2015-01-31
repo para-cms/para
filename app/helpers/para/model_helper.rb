@@ -17,9 +17,10 @@ module Para
       component.class.reflections[relation.to_sym].klass
     end
 
-    def field_value_for(model, field_name)
-      string = model_field_mappings(model.class).fields_hash[field_name.to_sym].value_for(model)
-      string.kind_of?(String) ? truncate_html(string) : string
+    def field_value_for(object, field_name)
+      fields = model_field_mappings(object.class).fields_hash
+      value = fields[field_name.to_sym].value_for(object)
+      value.kind_of?(String) ? truncate_html(value) : value
     end
   end
 end

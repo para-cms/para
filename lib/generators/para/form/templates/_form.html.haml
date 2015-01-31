@@ -3,7 +3,7 @@
 
   = form.fieldset do
   <%- attributes.each do |field| -%>
-    = form.<%= field.field_method %> :<%= field.name %><%= field_options_for(field) %>
+    = form.<%= field.field_method %> :<%= field.field_name %><%= field_options_for(field) %>
   <%- end -%>
 
   = form.actions

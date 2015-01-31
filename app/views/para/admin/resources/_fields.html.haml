@@ -7,7 +7,7 @@
         = form.nested_resource_name
         %span.caret
 
-    %ul.panel-controls    
+    %ul.panel-controls
       %li
         = form.remove_association_button
 
@@ -16,7 +16,7 @@
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
     - form.nested_fields.each do |field|
       - if field.field_type
-        = form.send(field.field_method, field.name, as: field.field_type)
+        = form.send(field.field_method, field.field_name, as: field.field_type)
       - else
-        = form.send(field.field_method, field.name)
+        = form.send(field.field_method, field.field_name)
 .clearfix
