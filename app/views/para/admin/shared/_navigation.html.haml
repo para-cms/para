@@ -6,13 +6,6 @@
         dministration
     %a.x-navigation-control{:href => "#"}
 
-  - if can?(:create, Para::ComponentSection)
-    %li
-      = link_to para.new_admin_component_section_path do
-        %i.fa.fa-plus
-        %span.xn-text
-          = t('para.component_section.add')
-
   %li.xn-title Navigation
   - if @component_sections.any?
     - @component_sections.each do |component_section|
@@ -28,30 +21,6 @@
             - active = request.url.split('/').pop == component.slug
             %li{ class: active && 'active' }
               = link_to component.name, component.path
-
-          %li.xn-openable.section-actions
-            = link_to '#' do
-              %i.fa.fa-bars
-              = t('para.component_section.actions')
-            - if can?(:create, Para::Component::Base)
-              %ul
-                %li.xn-openable
-                  = link_to '#' do
-                    %i.fa.fa-plus
-                    = t('para.component.add')
-                  %ul
-                    - registered_components_options.each do |name, type|
-                      %li= link_to name, para.new_admin_component_section_components_path(component_section, type: type)
-
-                - if can?(:update, component_section)
-                  %li
-                    = link_to para.edit_admin_component_section_path(component_section) do
-                      %i.fa.fa-pencil
-                      = t('para.component_section.edit')
-                  %li
-                    = link_to para.admin_component_section_path(component_section), method: 'delete', data: { confirm: t('para.confirmation.shared.destroy', model: component_section.name) } do
-                      %i.fa.fa-remove
-                      = t('para.component_section.destroy')
 
   - else
     %li.xn-title.text-info

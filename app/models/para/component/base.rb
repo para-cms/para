@@ -13,11 +13,18 @@ module Para
       extend FriendlyId
       friendly_id :name, use: [:slugged, :finders, :history]
 
-      validates :name, :type, presence: true
+      validates :identifier, :type, presence: true
 
       belongs_to :component_section, class_name: 'Para::ComponentSection'
 
-      scope :ordered, -> { order('position ASC') }
+      scope :ordered, -> { order(position: :asc) }
+
+      def name
+        read_attribute(:name) || I18n.t(
+          "components.component.#{ identifier }",
+          default: identifier.humanize
+        )
+      end
 
       def self.model_name
         @model_name ||= ModelName.new(self)

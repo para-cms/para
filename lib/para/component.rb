@@ -9,6 +9,10 @@ module Para
         component.name == model_name
       end
     end
+
+    def self.config
+      @config ||= Para::ComponentsConfiguration.new
+    end
   end
 end
 
