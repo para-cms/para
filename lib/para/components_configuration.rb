@@ -1,7 +1,7 @@
 module Para
   class ComponentsConfiguration
     def draw(&block)
-      load_components
+      eager_load_components!
       instance_eval(&block)
       build
     end
@@ -14,15 +14,42 @@ module Para
       @sections ||= []
     end
 
+    def method_missing(method, *args, &block)
+      component_for(method) || super
+    end
+
+    def component_for(identifier)
+      if (component = components_cache[identifier])
+        component
+      elsif (component_id = components_ids_hash[identifier])
+        components_cache[identifier] = Para::Component::Base.find(component_id)
+      end
+    end
+
     private
 
     def build
       sections.each_with_index do |section, index|
         section.refresh(position: index)
+
+        section.components.each do |component|
+          components_ids_hash[component.identifier] = component.model.id
+        end
       end
     end
 
-    def load_components
+    def components_ids_hash
+      @components_ids_hash ||= {}.with_indifferent_access
+    end
+
+    # Only store components cache for the request duration to avoid expired
+    # references to AR object between requests
+    #
+    def components_cache
+      RequestStore.store[:components_cache] ||= {}.with_indifferent_access
+    end
+
+    def eager_load_components!
       glob = Rails.root.join('app', 'components', '**', '*_component.rb')
 
       Dir[glob].each do |file|
@@ -31,7 +58,7 @@ module Para
     end
 
     class Section
-      attr_accessor :identifier
+      attr_accessor :identifier, :model
 
       def initialize(identifier, &block)
         self.identifier = identifier.to_s
@@ -47,18 +74,18 @@ module Para
       end
 
       def refresh(attributes = {})
-        section = ComponentSection.where(identifier: identifier).first_or_initialize
-        section.assign_attributes(attributes)
-        section.save!
+        self.model = ComponentSection.where(identifier: identifier).first_or_initialize
+        model.assign_attributes(attributes)
+        model.save!
 
         components.each_with_index do |component, index|
-          component.refresh(component_section: section, position: index)
+          component.refresh(component_section: model, position: index)
         end
       end
     end
 
     class Component
-      attr_accessor :identifier, :type, :options
+      attr_accessor :identifier, :type, :options, :model
 
       def initialize(identifier, type, options = {})
         self.identifier = identifier.to_s
@@ -67,9 +94,9 @@ module Para
       end
 
       def refresh(attributes = {})
-        component = type.where(identifier: identifier).first_or_initialize
-        component.assign_attributes(attributes.merge(options))
-        component.save!
+        self.model = type.where(identifier: identifier).first_or_initialize
+        model.assign_attributes(attributes.merge(options))
+        model.save!
       end
     end
   end
