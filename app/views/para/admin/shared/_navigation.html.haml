@@ -9,8 +9,8 @@
   %li.xn-title Navigation
   - if @component_sections.any?
     - @component_sections.each do |component_section|
-      %li.xn-openable{ class: ('active' if component_section_active?(component_section)) }
-        = link_to "#" do
+      %li.xn-openable.active
+        = link_to "javascript:void(0);" do
           %span.xn-text-initial{ data: { toggle: "tooltip", placement: "right", :"original-title" => component_section.name } }
             = component_section.name[0,1]
           %span.xn-text
