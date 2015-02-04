@@ -51,18 +51,18 @@ module Para
     end
 
     def components_installed?
-      non_existant_table = %w(components component_sections).any? do |name|
-        !ActiveRecord::Base.table_exists?("para_#{ name }")
+      tables_exist = %w(components component_sections).all? do |name|
+        ActiveRecord::Base.table_exists?("para_#{ name }")
       end
 
-      if non_existant_table
+      unless tables_exist
         Rails.logger.warn(
           "Para migrations are not installed.\n" \
           "Skipping components definition until next app reload."
         )
       end
 
-      non_existant_table
+      tables_exist
     end
 
     def eager_load_components!
