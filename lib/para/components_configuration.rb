@@ -1,6 +1,7 @@
 module Para
   class ComponentsConfiguration
     def draw(&block)
+      return unless components_installed?
       eager_load_components!
       instance_eval(&block)
       build
@@ -47,6 +48,21 @@ module Para
     #
     def components_cache
       RequestStore.store[:components_cache] ||= {}.with_indifferent_access
+    end
+
+    def components_installed?
+      non_existant_table = %w(components component_sections).any? do |name|
+        !ActiveRecord::Base.table_exists?("para_#{ name }")
+      end
+
+      if non_existant_table
+        Rails.logger.warn(
+          "Para migrations are not installed.\n" \
+          "Skipping components definition until next app reload."
+        )
+      end
+
+      non_existant_table
     end
 
     def eager_load_components!
