@@ -51,8 +51,8 @@ module Para
     end
 
     def components_installed?
-      tables_exist = %w(components component_sections).all? do |name|
-        ActiveRecord::Base.table_exists?("para_#{ name }")
+      tables_exist = %w(component/base component_section).all? do |name|
+        Para.const_get(name.camelize).table_exists?
       end
 
       unless tables_exist
