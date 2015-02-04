@@ -13,6 +13,11 @@ module Para
       copy_file 'initializer.rb', 'config/initializers/para.rb'
     end
 
+    def copy_components_config
+      say 'Installing config/components.rb file'
+      copy_file 'components.rb', 'config/components.rb'
+    end
+
     def copy_migrations
       say 'Installing migrations'
       rake 'para:install:migrations'
