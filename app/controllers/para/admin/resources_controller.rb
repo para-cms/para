@@ -53,7 +53,7 @@ module Para
 
         ids = resources_params.map { |resource| resource[:id] }
 
-        resources = self.class.resource_model.where(id: ids)
+        resources = resource_model.where(id: ids)
         resources_hash = resources.each_with_object({}) do |resource, hash|
           hash[resource.id.to_s] = resource
         end
@@ -79,6 +79,10 @@ module Para
         else
           params.delete(:return_to).presence || @component.path
         end
+      end
+
+      def resource_model
+        self.class.resource_model
       end
 
       def resource
