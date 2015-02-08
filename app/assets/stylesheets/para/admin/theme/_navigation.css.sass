@@ -76,7 +76,7 @@
     &.xn-openable:before
       position: absolute
       font-family: FontAwesome
-      content: "\f107"
+      // content: "\f107"
       font-size: 14px
       width: 20px
       height: 20px
@@ -86,11 +86,12 @@
       cursor: pointer
     &.active
       &.xn-openable:before
-        content: "\f106"
+        // content: "\f106"
       >
         a
           background: $navbar-default-link-active-bg
           +transition(all 200ms ease)
+          cursor: default
           .fa, .glyphicon
             color: $navbar-icon-color
         ul
@@ -138,7 +139,7 @@
       +border-radius(0 0 0 5px)
       border-bottom: 0
 
-  // Horizontal Navbar    
+  // Horizontal Navbar
   &.x-navigation-horizontal
     height: 50px
     background: $navbar-default-bg
@@ -289,7 +290,7 @@
       &:before
         left: 5px
 
-  // Lef Menu small   
+  // Lef Menu small
   &.x-navigation-minimized
     width: $left-menu-width-close
     .xn-text
@@ -374,14 +375,14 @@
       &:focus
         width: $left-menu-width-open - 20px
         padding: 0 8px 0 28px
-  
-  .xn-padding      
+
+  .xn-padding
     padding: 10px 10px 0 9px
   .xn-form
     padding: 10px 10px 10px 9px
     position: relative
     label
-      color: #fff      
+      color: #fff
   .xn-search
     padding: 10px 10px 0 9px
     position: relative
@@ -622,4 +623,3 @@
   .profile-mini
     display: block
     border-bottom: 0   
-     

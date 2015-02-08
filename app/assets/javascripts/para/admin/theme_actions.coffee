@@ -1,5 +1,5 @@
 onload = ->
-  x_navigation_onresize()
+  # x_navigation_onresize()
   page_content_onresize()
   return
 
@@ -77,82 +77,82 @@ panel_remove = (panel, action, callback) ->
 # EOF PANEL FUNCTIONS
 
 # X-NAVIGATION CONTROL FUNCTIONS
-x_navigation_onresize = ->
-  inner_port = window.innerWidth or $(document).width()
-  if inner_port < 1025
-    $(".page-sidebar .x-navigation").removeClass "x-navigation-minimized"
-    $(".page-container").removeClass "page-container-wide"
-    $(".page-sidebar .x-navigation li.active").removeClass "active"
-    $(".x-navigation-horizontal").each ->
-      $(".x-navigation-horizontal").addClass("x-navigation-h-holder").removeClass "x-navigation-horizontal"  unless $(this).hasClass("x-navigation-panel")
-      return
+# x_navigation_onresize = ->
+#   inner_port = window.innerWidth or $(document).width()
+#   if inner_port < 1025
+#     $(".page-sidebar .x-navigation").removeClass "x-navigation-minimized"
+#     $(".page-container").removeClass "page-container-wide"
+#     $(".page-sidebar .x-navigation li.active").removeClass "active"
+#     $(".x-navigation-horizontal").each ->
+#       $(".x-navigation-horizontal").addClass("x-navigation-h-holder").removeClass "x-navigation-horizontal"  unless $(this).hasClass("x-navigation-panel")
+#       return
 
-  else
-    x_navigation_minimize "close"  if $(".page-navigation-toggled").length > 0
-    $(".x-navigation-h-holder").addClass("x-navigation-horizontal").removeClass "x-navigation-h-holder"
-  return
+#   else
+#     x_navigation_minimize "close"  if $(".page-navigation-toggled").length > 0
+#     $(".x-navigation-h-holder").addClass("x-navigation-horizontal").removeClass "x-navigation-h-holder"
+#   return
 
-x_navigation_minimize = (action) ->
-  if action is "open"
-    $(".page-container").removeClass "page-container-wide"
-    $(".page-sidebar .x-navigation").removeClass "x-navigation-minimized"
-    $(".x-navigation-minimize").find(".fa").removeClass("fa-indent").addClass "fa-dedent"
-    $(".page-sidebar.scroll").mCustomScrollbar "update"
-  if action is "close"
-    $(".page-container").addClass "page-container-wide"
-    $(".page-sidebar .x-navigation").addClass "x-navigation-minimized"
-    $(".x-navigation-minimize").find(".fa").removeClass("fa-dedent").addClass "fa-indent"
-    $(".page-sidebar.scroll").mCustomScrollbar "disable", true
-  $(".x-navigation li.active").removeClass "active"
-  return
+# x_navigation_minimize = (action) ->
+#   if action is "open"
+#     $(".page-container").removeClass "page-container-wide"
+#     $(".page-sidebar .x-navigation").removeClass "x-navigation-minimized"
+#     $(".x-navigation-minimize").find(".fa").removeClass("fa-indent").addClass "fa-dedent"
+#     $(".page-sidebar.scroll").mCustomScrollbar "update"
+#   if action is "close"
+#     $(".page-container").addClass "page-container-wide"
+#     $(".page-sidebar .x-navigation").addClass "x-navigation-minimized"
+#     $(".x-navigation-minimize").find(".fa").removeClass("fa-dedent").addClass "fa-indent"
+#     $(".page-sidebar.scroll").mCustomScrollbar "disable", true
+#   $(".x-navigation li.active").removeClass "active"
+#   return
 
-x_navigation = ->
-  $(".x-navigation-control").click ->
-    $(this).parents(".x-navigation").toggleClass "x-navigation-open"
-    onresize()
-    false
+# x_navigation = ->
+#   $(".x-navigation-control").click ->
+#     $(this).parents(".x-navigation").toggleClass "x-navigation-open"
+#     onresize()
+#     false
 
-  x_navigation_minimize "close"  if $(".page-navigation-toggled").length > 0
-  $(".x-navigation-minimize").click ->
-    if $(".page-sidebar .x-navigation").hasClass("x-navigation-minimized")
-      $(".page-container").removeClass "page-navigation-toggled"
-      x_navigation_minimize "open"
-    else
-      $(".page-container").addClass "page-navigation-toggled"
-      x_navigation_minimize "close"
-    onresize()
-    false
+#   x_navigation_minimize "close"  if $(".page-navigation-toggled").length > 0
+#   $(".x-navigation-minimize").click ->
+#     if $(".page-sidebar .x-navigation").hasClass("x-navigation-minimized")
+#       $(".page-container").removeClass "page-navigation-toggled"
+#       x_navigation_minimize "open"
+#     else
+#       $(".page-container").addClass "page-navigation-toggled"
+#       x_navigation_minimize "close"
+#     onresize()
+#     false
 
-  $(".x-navigation  li > a").click ->
-    li = $(this).parent("li")
-    ul = li.parent("ul")
-    ul.find(" > li").not(li).removeClass "active"
-    return
+#   $(".x-navigation  li > a").click ->
+#     li = $(this).parent("li")
+#     ul = li.parent("ul")
+#     ul.find(" > li").not(li).removeClass "active"
+#     return
 
-  $(".x-navigation li").click (event) ->
-    li = $(event.target).closest('li')
+#   $(".x-navigation li").click (event) ->
+#     li = $(event.target).closest('li')
 
-    if li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
-      event.stopPropagation()
+#     if li.children("ul").length > 0 or li.children(".panel").length > 0 or li.hasClass("xn-profile") > 0
+#       event.stopPropagation()
 
-      if li.hasClass("active")
-        li.removeClass "active"
-        li.find("li.active").removeClass "active"
-      else
-        li.addClass "active"
-      onresize()
-      if li.hasClass("xn-profile") > 0
-        true
-      else
-        false
+#       if li.hasClass("active")
+#         li.removeClass "active"
+#         li.find("li.active").removeClass "active"
+#       else
+#         li.addClass "active"
+#       onresize()
+#       if li.hasClass("xn-profile") > 0
+#         true
+#       else
+#         false
 
 
-  # XN-SEARCH
-  $(".xn-search").on "click", ->
-    $(this).find("input").focus()
-    return
+#   # XN-SEARCH
+#   $(".xn-search").on "click", ->
+#     $(this).find("input").focus()
+#     return
 
-  return
+#   return
 
 # END XN-SEARCH
 
@@ -171,7 +171,7 @@ onresize = (timeout) ->
 $(document).on 'page:change', ->
 
   onload()
-  x_navigation()
+  # x_navigation()
 
   html_click_avail = true
   $("html").on "click", ->
@@ -247,7 +247,7 @@ $(document).on 'page:change', ->
   $("body").tooltip({ selector: '[data-toggle=tooltip]' })
 
 $(window).resize ->
-  x_navigation_onresize()
+  # x_navigation_onresize()
   page_content_onresize()
 
 # NEW OBJECT(GET SIZE OF ARRAY)

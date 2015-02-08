@@ -43,5 +43,13 @@ module Para
         )
       end
     end
+
+    initializer 'Build components tree' do |app|
+      components_config_path = Rails.root.join('config', 'components.rb')
+
+      app.config.to_prepare do
+        require components_config_path if File.exist?(components_config_path)
+      end
+    end
   end
 end

@@ -29,6 +29,7 @@ require 'para/orderable'
 require 'para/form_builder'
 require 'para/markup'
 require 'para/engine'
+require 'para/components_configuration'
 
 module Para
   extend ActiveSupport::Autoload
@@ -44,6 +45,10 @@ module Para
     else
       Para::Config
     end
+  end
+
+  def self.components
+    Para::Component.config
   end
 
   def self.store
