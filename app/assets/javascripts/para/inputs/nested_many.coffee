@@ -29,9 +29,8 @@ class Para.NestedManyField
     if @orderable
       @$fieldsList.sortable('reload')
 
-    $element.find('[data-redactor]').simpleFormRedactor()
-    $element.find('[data-air-redactor]').simpleFormAirRedactor()
-
+    if ($redactor = $element.find('[data-redactor]')).length
+      $redactor.simpleFormRedactor()
 
   openInsertedField: ($field) ->
     $target = $($field.attr('href'))
