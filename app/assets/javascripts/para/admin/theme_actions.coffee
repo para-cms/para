@@ -1,3 +1,36 @@
+responsive_sidebar_navigation = ->
+  document_width = $(document).width() 
+  if document_width < 1024
+    console.log 'mobile', document_width
+    $('.page-sidebar .xn-openable')
+      .each ->
+        li = $(this)
+        li.removeClass 'active'
+
+      .click (event) ->
+        event.stopPropagation()
+        li = $(this)
+        if li.hasClass('active')
+          li.removeClass 'active'
+          li.find('li.active').removeClass 'active'
+        else
+          li.addClass 'active'   
+
+  else 
+    console.log 'desktop', document_width  
+    $('.page-sidebar .xn-openable')
+      .each ->
+        li = $(this)
+        li.addClass 'active'
+
+      .click (event) ->
+        event.stopPropagation()
+        li = $(this)
+        if li.hasClass('active')  
+          return
+        else
+          li.addClass 'active'  
+
 init_navigation_horizontal = ->
   $('.x-navigation-horizontal  li > a').click ->
     li = $(this).parent('li')
@@ -34,6 +67,7 @@ page_content_size = ->
 $(document).on 'page:change', ->
   page_content_size()
   init_navigation_horizontal()
+  responsive_sidebar_navigation()
 
   $(".selectize-tags").selectize
     delimiter: ","
@@ -48,4 +82,4 @@ $(document).on 'page:change', ->
 
 $(window).resize ->  
   page_content_size()
-
+  responsive_sidebar_navigation()
