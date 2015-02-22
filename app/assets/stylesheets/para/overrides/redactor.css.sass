@@ -2,26 +2,25 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/box-shadow"
 
-.redactor_box,
-.redactor_box textarea
-  z-index: 2 !important
-
-.redactor_button_disabled
+.redactor-button-disabled
   &:hover,
   &:focus
     background-color: transparent !important
     color: #333 !important
     cursor: disabled
 
-.redactor_dropdown a
+.redactor-dropdown a
   color: $dropdown-link-color
   &:hover,
   &:focus
     background-color: $dropdown-link-hover-bg
     color: $dropdown-link-hover-color !important
 
-.redactor_box
-  .redactor_toolbar
+.redactor-box
+  .redactor-toolbar
+    /* Override z-index because we don't whant */
+    /* redactor_toolbar fixed somewhere or on top of everythink ..*/
+    z-index: 1 !important
     +box-shadow(none)
     +border-radius($input-border-radius $input-border-radius 0 0)
     border: 1px solid $input-border
@@ -31,7 +30,7 @@
         background-color: $btn-primary-bg
         color: $btn-primary-color
 
-  .redactor_editor
+  .redactor-editor
     background-color: $input-bg
     border: 1px solid $input-border
     border-top-width: 0px 
@@ -53,6 +52,7 @@
     border-top-width: 0px 
     &:focus
       background-color: #111
+      color: $gray-lighter
 
 .redactor-editor      
   div.row
@@ -65,7 +65,7 @@
     border: 1px dashed $gray-light
     margin-bottom: 0      
 
-#redactor_modal 
+#redactor-modal 
   input[type="text"], 
   input[type="password"], 
   input[type="email"],
@@ -80,7 +80,7 @@
       +box-shadow(none)
 
   footer 
-    button.redactor_modal_action_btn
+    button.redactor-modal-action-btn
       background-color: $btn-primary-bg
       color: $btn-primary-color
       &:hover,

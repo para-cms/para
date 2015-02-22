@@ -1,5 +1,5 @@
 !!!
-%html.body-full-height{ lang: 'en' }
+%html{ lang: 'en' }
   %head
     %title= Para.config.admin_title || I18n.t('para.admin.title')
 
@@ -20,12 +20,11 @@
   %body
     .page-container.page-navigation-top-fixed
 
-      .page-sidebar.page-sidebar-fixed.scroll
+      .page-sidebar
         = render partial: 'para/admin/shared/navigation'
 
       .page-content        
         = render partial: 'para/admin/shared/header'
-        = render partial: 'para/admin/shared/breadcrumb' 
         = display_flash
         
         = yield

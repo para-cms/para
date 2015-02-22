@@ -1,5 +1,10 @@
 @import "para/admin/theme/variables"
 
+@media (max-width: $screen-xs-max) 
+  .control-label
+    margin-top: 10px
+    margin-bottom: 0
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) 
   .form-horizontal .control-label
@@ -11,14 +16,14 @@
       padding-right: 25px
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: $screen-md-min) 
+@media (min-width: 1200px) 
   .form-group-separated 
     .form-actions,
     .form-group
       padding-right: 150px
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: $screen-lg-min) 
+/* Large devices (large desktops, 1400px and up) */
+@media (min-width: 1500px) 
   .form-group-separated 
     .form-actions,
     .form-group
