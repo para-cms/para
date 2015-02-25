@@ -16,6 +16,10 @@ module Para
       def resource=(value)
         build_component_resource(resource: value) unless component_resource
       end
+
+      def default_form_actions
+        [:submit]
+      end
     end
   end
 end

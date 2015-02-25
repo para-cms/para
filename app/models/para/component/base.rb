@@ -46,6 +46,11 @@ module Para
       def should_generate_new_friendly_id?
         slug.blank? || name_changed?
       end
+
+      def default_form_actions
+        [:submit, :submit_and_edit, :submit_and_add_another, :cancel]
+      end
+
     end
 
     class ModelName < ActiveModel::Name
