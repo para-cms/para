@@ -117,6 +117,14 @@ button
 
 
 // Left menu
+.page-container .page-sidebar 
+  position: fixed
+  height: 100%
+  bottom: 0
+  overflow: auto
+  background-color: $navbar-default-bg
+
+
 .x-navigation 
   &.x-navigation-horizontal
     left: 0
@@ -163,6 +171,12 @@ button
     height: 50px  
 
 // Form
+
+.form-group-separated
+  &:after
+    clear: both
+    content: " "
+    display: table
 .block.form-inputs
   margin-bottom: 0
   padding: 0px 10px
