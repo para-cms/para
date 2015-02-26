@@ -1,0 +1,3 @@
+%ul.tree.sortable-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree) } }
+  = render partial: 'para/admin/resources/tree_item', collection: resources.roots.ordered, as: :root
+

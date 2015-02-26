@@ -1,0 +1,5 @@
+%li.tree-item{ data: { id: root.id } }
+  = root.name
+  = root.position
+  %ul.tree
+    = render partial: 'para/admin/resources/tree_item', collection: root.children.ordered, as: :root

@@ -32,10 +32,12 @@ module Para
     end
 
     def table_for(options)
+      partial = :table
+      partial = :tree if options[:model].tree?
       render(
         partial: find_partial_for(
           options[:model].name.underscore.pluralize,
-          :table
+          partial
         ),
         locals: options
       )

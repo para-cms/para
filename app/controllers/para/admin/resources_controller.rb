@@ -69,6 +69,22 @@ module Para
         head 200
       end
 
+      def tree
+        resources_params = params[:resources].values
+
+        ids = resources_params.map { |resource| resource[:id] }
+        resources = resource_model.where(id: ids)
+        resources_hash = resources.each_with_object({}) do |resource, hash|
+          hash[resource.id.to_s] = resource
+        end
+        ActiveRecord::Base.transaction do
+          resources_params.each do |data|
+            resources_hash[data[:id]].update position: data[:position], parent_id: data[:parent_id]
+          end
+        end
+        head 200
+      end
+
       private
 
       def after_form_submit_path
