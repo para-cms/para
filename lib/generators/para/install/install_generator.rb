@@ -9,17 +9,14 @@ module Para
     end
 
     def copy_initializer_file
-      say 'Installing default initializer template'
       copy_file 'initializer.rb', 'config/initializers/para.rb'
     end
 
     def copy_components_config
-      say 'Installing config/components.rb file'
       copy_file 'components.rb', 'config/components.rb'
     end
 
     def copy_migrations
-      say 'Installing migrations'
       rake 'para:install:migrations'
     end
 
@@ -48,8 +45,9 @@ module Para
     end
 
     def bundle_install
-      say 'Bundling installed gems ...'
-      puts `bundle install`
+      Bundler.with_clean_env do
+        run 'bundle install'
+      end
     end
 
     def friendly_id_install
