@@ -19,8 +19,11 @@ module Para
       attributes = model_field_mappings(model).fields
       relation = options.fetch(:relation, model.name.to_s.underscore.pluralize)
 
+      partial = :list
+      partial = :tree if model.respond_to? :roots
+
       render(
-        partial: find_partial_for(relation, :list),
+        partial: find_partial_for(relation, partial),
         locals: {
           component: @component,
           resources: resources,
@@ -33,7 +36,6 @@ module Para
 
     def table_for(options)
       partial = :table
-      partial = :tree if options[:model].tree?
       render(
         partial: find_partial_for(
           options[:model].name.underscore.pluralize,

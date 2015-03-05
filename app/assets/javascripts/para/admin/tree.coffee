@@ -4,14 +4,27 @@ class Para.ResourceTree
 
   initializeTree: ->
     @orderUrl = @$el.data('url')
+    @maxDepth = parseInt @$el.data('max-depth')
 
     $(".tree")
       .sortable
+        handle: ".handle"
+        items: ".node"
         connectWith: ".tree"
       .on('sortupdate', $.proxy(@sortUpdate, this))
 
-  sortUpdate: ->
+  sortUpdate: (e, data) ->
+    @handlePlaceholder($el) for $el in [data.endparent, data.startparent, data.item]
     @updateOrder()
+
+  handlePlaceholder: ($el) ->
+    $placeholder = $el.find("> .tree .placeholder")
+    console.log $el, $el.parents('.tree').length - 1, @maxDepth, $el.find('> .node').length, $el.parents('.tree').length - 1 >= @maxDepth or $el.find('> .node').length    
+    if $el.parents('.tree').length - 1 >= @maxDepth or $el.find('> .node').length    
+      $placeholder.hide()
+      $el.children(".node").each (index, el) => @handlePlaceholder $(el)
+    else
+      $placeholder.show()
 
   updateOrder: ->
     Para.ajax(
@@ -24,7 +37,7 @@ class Para.ResourceTree
 
   buildOrderedData: ->
     data = {}
-    $(".tree-item").each (index) ->
+    $(".node").each (index) ->
       $this = $(this)
       data[index] = { 
         id: $this.data("id"), 
@@ -37,5 +50,5 @@ class Para.ResourceTree
     # TODO: Add flash message to display ordering success
 
 $(document).on 'page:change', ->
-  $('.sortable-tree').each (i, el) ->
+  $('.root-tree').each (i, el) ->
     new Para.ResourceTree($(el))

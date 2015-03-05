@@ -1,0 +1,37 @@
+@import "variables"
+
+
+.root-tree
+
+.node
+  padding: 0 5px
+  margin: 10px
+  border-left: 4px solid $gray
+  .placeholder
+    height: 20px
+    border: dashed 1px $gray
+.tree
+  list-style: none
+
+.table >
+  tbody > tr >
+    td, th
+      border-width: 1px
+      vertical-align: middle
+  tfoot > tr >
+    td, th
+      border-width: 1px
+  thead > tr >
+    td, th
+      border-width: 1px
+
+.table > thead > tr > th
+  background: $table-heading-bg
+  color: $table-heading-color
+  font-size: 12px
+
+.table
+  &.table-actions td
+    line-height: 28px
+  .progress-small
+    margin: 7px 0 8px

@@ -1,3 +1,15 @@
-%ul.tree.sortable-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree) } }
-  = render partial: 'para/admin/resources/tree_item', collection: resources.roots.ordered, as: :root
+.page-content-wrap
+  = panel do |panel|
+    = panel.header do
+      = icon_link_to t('para.shared.add'), component.relation_path(model.model_name.singular_route_key, action: :new), icon: 'plus', class: 'btn btn-primary'
+
+    - if resources.length > 0
+      = panel.body do
+        %ul.tree.root-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree), :"max-depth" => @component.model.max_depth } }
+          = render partial: 'para/admin/resources/tree_item', collection: resources.roots, as: :root
+
+    - else
+      = panel.body do
+        = alert class: 'no-margin-bottom', dismissable: false do
+          = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
 

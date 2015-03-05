@@ -8,10 +8,6 @@ module Para
       Para::Markup::ResourcesTable.new(self).container(options, &block)
     end
 
-    def resources_tree(options = {}, &block)
-      Para::Markup::ResourcesTree.new(self).container(options, &block)
-    end
-
     def panel(options = {}, &block)
       Para::Markup::Panel.new(self).container(options, &block)
     end
