@@ -1,3 +1,13 @@
+collapse_sidebar = (event) ->
+  event.stopPropagation()
+  li = $(this)
+  if li.hasClass('active')
+    li.removeClass 'active'          
+    li.find('li.active').removeClass 'active'
+  else
+    li.parent().find('.xn-openable').removeClass 'active'    
+    li.addClass 'active'   
+
 responsive_sidebar_navigation = ->
   document_width = $(document).width() 
   if document_width < 1024
@@ -6,14 +16,7 @@ responsive_sidebar_navigation = ->
         li = $(this)
         li.removeClass 'active'
 
-      .click (event) ->
-        event.stopPropagation()
-        li = $(this)
-        if li.hasClass('active')
-          li.removeClass 'active'
-          li.find('li.active').removeClass 'active'
-        else
-          li.addClass 'active'   
+      .on 'click', collapse_sidebar 
 
   else 
     $('.page-sidebar .xn-openable')
@@ -21,13 +24,7 @@ responsive_sidebar_navigation = ->
         li = $(this)
         li.addClass 'active'
 
-      .click (event) ->
-        event.stopPropagation()
-        li = $(this)
-        if li.hasClass('active')  
-          return
-        else
-          li.addClass 'active'  
+      .off 'click', collapse_sidebar
 
 init_navigation_horizontal = ->
   $('.x-navigation-horizontal  li > a').click ->
@@ -47,23 +44,7 @@ init_navigation_horizontal = ->
         li.addClass 'active'
     
 
-page_content_size = ->  
-  $content = $(".page-content")
-  $sidebar = $(".page-sidebar")
-  $navigation_top = $('.page-navigation-top-fixed .x-navigation-horizontal')
-  
-  navigation_top_height = $navigation_top.height() 
-
-  document_height = $(document).height() - navigation_top_height if $content.height() < $(document).height()
-  sidebar_height = $sidebar.height() - navigation_top_height if $sidebar.height() > $content.height()
-
-  content_height = if sidebar_height > document_height then sidebar_height else document_height
-
-  $content.height content_height
-
-
 $(document).on 'page:change', ->
-  page_content_size()
   init_navigation_horizontal()
   responsive_sidebar_navigation()
 
@@ -79,5 +60,4 @@ $(document).on 'page:change', ->
     false
 
 $(window).resize ->  
-  page_content_size()
   responsive_sidebar_navigation()

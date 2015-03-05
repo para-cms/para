@@ -10,6 +10,11 @@ module Para
           # Remove foreign key, if existing, from fields
           fields_hash.delete(reflection.foreign_key.to_s)
 
+          if reflection.options[:polymorphic] == true
+            fields_hash.delete(reflection.foreign_type.to_s)
+            next
+          end
+
           if model.nested_attributes_options[name]
             if reflection.collection?
               fields_hash[name] = AttributeField::NestedManyField.new(
