@@ -5,7 +5,7 @@ module Para
         input_html_options[:class] << "nested-many"
 
         parent_model = @builder.object.class
-        model = parent_model.reflections[attribute_name].klass
+        model = parent_model.reflect_on_association(attribute_name).klass
         orderable = options.fetch(:orderable, model.orderable?)
         add_button = options.fetch(:add_button, true)
 

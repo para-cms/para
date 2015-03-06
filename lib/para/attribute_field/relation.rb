@@ -4,7 +4,7 @@ module Para
       private
 
       def reflection
-        @reflection ||= model.reflections[name]
+        @reflection ||= model.reflect_on_association(name)
       end
 
       def resource_name(resource)
