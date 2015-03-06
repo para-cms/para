@@ -50,7 +50,7 @@ module Para
       def inverse_of?(field_name)
         return false unless nested?
 
-        reflection = parent_object.class.reflections[nested_attribute_name]
+        reflection = parent_object.class.reflect_on_association(nested_attribute_name)
         reflection && (reflection.options[:inverse_of] == field_name)
       end
 

@@ -14,7 +14,7 @@ module Para
     end
 
     def relation_klass_for(component, relation)
-      component.class.reflections[relation.to_sym].klass
+      component.class.reflect_on_association(relation).klass
     end
 
     def field_value_for(object, field_name)
