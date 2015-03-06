@@ -5,6 +5,12 @@ module Para
 
       def parse!
         model.reflections.each do |name, reflection|
+          # We ensure that name is a symbol and not a string for 4.2+
+          # versions of AR
+          # We may find a better solution to handle strings, since our
+          # `fields_hash` is already a `HashWithIndifferentAccess`
+          name = name.to_sym
+
           next if name == :component
 
           # Remove foreign key, if existing, from fields
