@@ -14,15 +14,14 @@ class Para.ResourceTree
       .on('sortupdate', $.proxy(@sortUpdate, this))
 
   sortUpdate: (e, data) ->
-    @handlePlaceholder($el) for $el in [data.endparent, data.startparent, data.item]
+    @handlePlaceholder($el) for $el in [data.endparent, data.startparent, data.item.find('.tree')]
     @updateOrder()
 
   handlePlaceholder: ($el) ->
-    $placeholder = $el.find("> .tree .placeholder")
-    console.log $el, $el.parents('.tree').length - 1, @maxDepth, $el.find('> .node').length, $el.parents('.tree').length - 1 >= @maxDepth or $el.find('> .node').length    
-    if $el.parents('.tree').length - 1 >= @maxDepth or $el.find('> .node').length    
+    $placeholder = $el.find("> .placeholder")
+    if $el.parents('.tree').length - 1 >= @maxDepth or $el.find('> .node').length
       $placeholder.hide()
-      $el.children(".node").each (index, el) => @handlePlaceholder $(el)
+      $el.children("> .tree").each (index, el) => @handlePlaceholder $(el)
     else
       $placeholder.show()
 

@@ -11,5 +11,8 @@ module Para
 
     mattr_accessor :admin_title
     @@admin_title = nil
+
+    mattr_accessor :default_tree_max_depth
+    @@default_tree_max_depth = 3
   end
 end

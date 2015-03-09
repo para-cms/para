@@ -3,5 +3,5 @@
     %i.fa.fa-sort.fa-fw
   = root.name
   %ul.tree
-    %li.placeholder{ class: "#{ 'hidden' if root.depth >= @component.model.max_depth || root.children.any? }"}
+    %li.placeholder{ class: "#{ 'hidden' unless can_insert_children?(root) }"}
     = render partial: 'para/admin/resources/tree_item', collection: root.children.ordered, as: :root
