@@ -9,6 +9,6 @@
       %i.fa.fa-trash
 
   %ul.tree
-    %li.placeholder{ class: "#{ 'hidden' unless can_insert_children?(root) }"}
+    %li.placeholder{ class: "#{ 'hidden' unless needs_placeholder?(root) }"}
     = render partial: 'para/admin/resources/tree_item', collection: root.children.ordered, as: :root
     

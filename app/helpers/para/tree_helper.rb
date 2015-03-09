@@ -1,6 +1,6 @@
 module Para
   module TreeHelper
-    def can_insert_children?(node)
+    def needs_placeholder?(node)
       node.children.empty? && node.depth < max_depth_for(node.class)
     end
 
