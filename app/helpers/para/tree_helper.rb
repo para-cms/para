@@ -8,20 +8,33 @@ module Para
       model.max_depth || Para.config.default_tree_max_depth
     end
 
-    def reorder_anchor(options = {})
-      options[:class] ||= ''
-      options[:class] = [options[:class], 'order-anchor'].join(' ')
-
-      field = if (form = options.delete(:form))
-        form.hidden_field(:position, class: 'resource-position-field')
-      else
-        value = options.delete(:value) || 0
-        hidden_field_tag(:position, value, class: 'resource-position-field')
+    def actions(resource)
+      content_tag(:div, class: 'pull-right btn-group') do
+        edit_button(resource) + delete_button(resource)
       end
+    end
 
-      content_tag(:span, options) do
-        content_tag(:i, '', class: 'fa fa-bars') +
-        field
+    def edit_button(resource)
+      link_to(
+        component.relation_path(
+          resource, action: :edit, return_to: view.request.fullpath
+        ),
+        class: 'btn btn-primary'
+      ) do
+        content_tag(:i, '', class: 'fa fa-pencil')
+      end
+    end
+
+    def delete_button(resource)
+      link_to(
+        component.relation_path(resource),
+        method: :delete,
+        data: {
+          confirm: I18n.t('para.list.delete_confirmation')
+        },
+        class: 'btn btn-danger'
+      ) do
+        content_tag(:i, '', class: 'fa fa-trash')
       end
     end
   end
