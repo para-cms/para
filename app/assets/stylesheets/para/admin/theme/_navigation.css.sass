@@ -30,7 +30,7 @@
     margin: 0
     position: relative
     >
-      a
+      a, button
         display: block
         float: left
         width: 100%
@@ -62,16 +62,20 @@
         +transition(all 200ms ease)
         overflow: hidden
         li
-          > a
+          > a, button
             color: $navbar-default-link-color
             font-size: 12px
             line-height: 19px
             font-weight: 400
             padding: 12px 10px
             border-bottom-color: darken($navbar-default-border, 5%)
-          &.active > a, > a:hover
+          &.active > a, 
+          &.active > button,
+          > a:hover,
+          > button:hover
             background: darken($navbar-default-link-hover-bg, 5%)
             color: $navbar-default-link-color
+
     &.xn-openable:before
       position: absolute
       font-family: FontAwesome
@@ -148,7 +152,7 @@
     > li
       &.xn-openable:before
         display: none
-      > a
+      > a, button
         padding: 15px
         border-bottom: 0
         line-height: 20px
@@ -160,7 +164,8 @@
             color: $navbar-icon-color
         .fa, .glyphicon
           color: $navbar-default-link-color
-      &.active > a
+      &.active > a,
+      &.active > button
         background: $navbar-default-link-active-bg
         .fa, .glyphicon
           color: $navbar-icon-color
@@ -225,31 +230,36 @@
             border-width: 5px
             margin-top: -5px
         li
-          > a
+          > a, button
             padding-left: 10px
           &.active > a, > a:hover
             padding-left: 15px
       li
         width: 100%
-        &:first-child a
+        &:first-child a,
+        &:first-child button
           +border-radius(3px 3px 0 0)
-        &:last-child a
+        &:last-child a,
+        &:last-child button
           +border-radius(0 0 3px 3px)
           border-bottom-color: transparent
         &.xn-openable:before
           content: "\f105"
         &.active.xn-openable:before
           content: "\f104"
-      &:last-child > a
+      &:last-child > a,
+      &:last-child > button
         +border-radius(0)
-      &.last > a
+      &.last > a,
+      &.last > button
         +border-radius(0 5px 0 0)
     li
       width: auto
       position: relative
       &.active > ul
         display: block
-      &.xn-openable > a
+      &.xn-openable > a,
+      &.xn-openable > button
         padding-right: 20px
     ul.xn-drop-white
       background: $dropdown-bg
@@ -258,7 +268,7 @@
         &:after
           border-right-color: $dropdown-bg
       li
-        > a
+        > a, button
           color: $dropdown-link-color
           +text-shadow(none)
           border-bottom: 1px solid $dropdown-border
@@ -268,13 +278,14 @@
           .fa, .glyphicon
             color: $dropdown-link-color
         &.active
-          > a
+          > a, button
             color: $dropdown-link-active-color
             text-shadow: none
             border-bottom: 1px solid $dropdown-border
           &.xn-openable:before
             color: $dropdown-link-active-color
-    .xn-icon-button > a
+    .xn-icon-button > a,
+    .xn-icon-button > button
       padding: 15px 10px
       text-align: center
       width: 50px

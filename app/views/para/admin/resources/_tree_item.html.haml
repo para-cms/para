@@ -1,13 +1,15 @@
 %li.node{ data: { id: root.id } }
-  %span.handle
-    %i.fa.fa-sort.fa-fw
-  = root.name
-  .pull-right
-    = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-primary" do
-      %i.fa.fa-pencil
-    = link_to @component.relation_path(root), method: :delete, data: { confirm: I18n.t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
-      %i.fa.fa-trash
-
+  .node-row
+    %span.handle
+      %i.fa.fa-bars.fa-fw
+    %span.node-name  
+      = root.name
+    .pull-right.btn-group
+      = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-primary" do
+        %i.fa.fa-pencil
+      = link_to @component.relation_path(root), method: :delete, data: { confirm: I18n.t('para.list.delete_confirmation') }, class: 'btn btn-danger' do
+        %i.fa.fa-trash
+    .clearfix    
   %ul.tree
     %li.placeholder{ class: "#{ 'hidden' unless needs_placeholder?(root) }"}
     = render partial: 'para/admin/resources/tree_item', collection: root.children.ordered, as: :root

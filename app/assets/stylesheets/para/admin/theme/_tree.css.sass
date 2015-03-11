@@ -1,20 +1,54 @@
 @import "variables"
 
+@import "compass/css3/inline-block"
 
 .root-tree
+  padding-left: 0
+  > .node
+    margin-bottom: 20px
+  .tree
+    padding-left: 40px
+    .sortable-dragging
+      .placeholder,
+      .btn-group
+        display: none
+
+  .sortable-placeholder
+    height: 30px  
+    margin: 10px 0px 20px 0
 
 .node
-  padding: 2px
-  margin: 10px
   border-left: 4px solid $gray
-  .handle
-    cursor: pointer
+  padding-bottom: 5px
+  .node-row
     padding: 5px
+    &:hover
+      background-color: $table-bg-hover
+  .handle
+    cursor: move
+    padding: 5px
+    text-align: center
+    width: 32px
+    +inline-block
+    margin-top: 3px
+    &:focus
+    &:active,
+    &:hover
+      cursor: move
+
+  .node-name  
+    margin-top: 3px
+    +inline-block
+
   .placeholder
-    height: 20px
+    height: 30px
     border: dashed 1px $gray
+    margin-top: 5px
+
 .tree
   list-style: none
+  .node:last-child
+    margin-bottom: 20px
 
 .table >
   tbody > tr >
