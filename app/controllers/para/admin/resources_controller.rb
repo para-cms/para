@@ -49,19 +49,25 @@ module Para
       end
 
       def order
-        resources_params = params[:resources].values
-
-        ids = resources_params.map { |resource| resource[:id] }
-
-        resources = resource_model.where(id: ids)
-        resources_hash = resources.each_with_object({}) do |resource, hash|
-          hash[resource.id.to_s] = resource
-        end
-
         ActiveRecord::Base.transaction do
-          resources_params.each do |resource_params|
+          resources_data.each do |resource_params|
             resource = resources_hash[resource_params[:id]]
             resource.position = resource_params[:position].to_i
+            resource.save(validate: false)
+          end
+        end
+
+        head 200
+      end
+
+      def tree
+        ActiveRecord::Base.transaction do
+          resources_data.each do |resource_params|
+            resource = resources_hash[resource_params[:id]]
+            resource.assign_attributes(
+              position: resource_params[:position].to_i,
+              parent_id: resource_params[:parent_id]
+            )
             resource.save(validate: false)
           end
         end
@@ -136,6 +142,22 @@ module Para
                 "You can define the resource of your controller with the " \
                 "`resource :resource_name` macro when subclassing " \
                 "Para::Admin::ResourcesController"
+        end
+      end
+
+      def resources_data
+        @resources_data ||= params[:resources].values
+      end
+
+      def resources_hash
+        @resources_hash ||= begin
+          
+          ids = resources_data.map { |resource| resource[:id] }
+
+          resources = resource_model.where(id: ids)
+          resources.each_with_object({}) do |resource, hash|
+            hash[resource.id.to_s] = resource
+          end 
         end
       end
     end

@@ -7,6 +7,7 @@ Para::Engine.routes.draw do
         resources :crud_resources, path: '/' do
           collection do
             patch 'order'
+            patch 'tree'
           end
         end
       end

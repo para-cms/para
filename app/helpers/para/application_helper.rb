@@ -7,6 +7,7 @@ module Para
     include Para::FormHelper
     include Para::MarkupHelper
     include Para::TagHelper
+    include Para::TreeHelper
     include Para::FlashHelper
   end
 end
