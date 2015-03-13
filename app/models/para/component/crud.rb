@@ -11,6 +11,8 @@ module Para
                foreign_key: :component_id, autosave: true
 
       def namespaced?
+        return true if namespaced.blank?
+
         case namespaced
         when 'true'  then true
         when 'false' then false
