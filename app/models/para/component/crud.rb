@@ -11,7 +11,11 @@ module Para
                foreign_key: :component_id, autosave: true
 
       def namespaced?
-        !!namespaced
+        case namespaced
+        when 'true'  then true
+        when 'false' then false
+        else raise 'Please specify a namespace that is either true or false'
+        end
       end
 
       def resources
