@@ -5,10 +5,16 @@ namespace :para do
       configuration file
     DESC
 
-    task :clean do
+    task clean: :environment do
       Para::Component::Base.find_each do |component|
         unless Para.components.component_for(component.identifier)
           component.destroy
+        end
+      end
+
+      Para::ComponentSection.find_each do |section|
+        unless Para.components.section_for(section.identifier)
+          section.destroy
         end
       end
     end

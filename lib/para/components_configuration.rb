@@ -19,6 +19,14 @@ module Para
       component_for(method) || super
     end
 
+    def section_for(identifier)
+      if (section = sections_cache[identifier])
+        section
+      elsif (section_id = sections_ids_hash[identifier])
+        sections_cache[identifier] = Para::ComponentSection.find(section_id)
+      end
+    end
+
     def component_for(identifier)
       if (component = components_cache[identifier])
         component
@@ -32,6 +40,7 @@ module Para
     def build
       sections.each_with_index do |section, index|
         section.refresh(position: index)
+        sections_ids_hash[section.identifier] = section.model.id
 
         section.components.each do |component|
           components_ids_hash[component.identifier] = component.model.id
@@ -39,8 +48,19 @@ module Para
       end
     end
 
+    def sections_ids_hash
+      @sections_ids_hash ||= {}.with_indifferent_access
+    end
+
     def components_ids_hash
       @components_ids_hash ||= {}.with_indifferent_access
+    end
+
+    # Only store components cache for the request duration to avoid expired
+    # references to AR object between requests
+    #
+    def sections_cache
+      RequestStore.store[:sections_cache] ||= {}.with_indifferent_access
     end
 
     # Only store components cache for the request duration to avoid expired
