@@ -10,4 +10,7 @@ Para.config do |config|
 
   # Configure the default admin HTML page <title>
   # config.admin_title = I18n.t('para.admin.title')
+
+  # Configure the default max depth for trees
+  # config.default_tree_max_depth = 3
 end

@@ -27,7 +27,8 @@ class Para.NestedManyField
       @openInsertedField($collapsible)
 
     if @orderable
-      @$fieldsList.sortable('reload')
+      @$fieldsList.sortable('destroy')
+      @initializeOrderable()
 
     if ($redactor = $element.find('[data-redactor]')).length
       $redactor.simpleFormRedactor()
