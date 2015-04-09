@@ -86,10 +86,14 @@ module Para
     end
 
     def eager_load_components!
-      glob = Rails.root.join('app', 'components', '**', '*_component.rb')
+      $LOAD_PATH.each do |path|
+        next unless path.match(/\/components$/)
 
-      Dir[glob].each do |file|
-        load(file)
+        glob = File.join(path, '**', '*_component.rb')
+
+        Dir[glob].each do |file|
+          load(file)
+        end
       end
     end
 
