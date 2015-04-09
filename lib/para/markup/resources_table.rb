@@ -96,8 +96,25 @@ module Para
       def actions_cell(resource)
         content_tag(:td) do
           content_tag(:div, class: 'pull-right btn-group') do
-            edit_button(resource) + delete_button(resource)
+            edit_button(resource) +
+            clone_button(resource) +
+            delete_button(resource)
           end
+        end
+      end
+
+      def clone_button(resource)
+        return unless defined?(resource.class.para_cloneable_associations)
+        return unless resource.class.para_cloneable_associations.any?
+
+        view.link_to(
+          component.relation_path(
+            resource, action: :clone, return_to: view.request.fullpath
+          ),
+          method: :post,
+          class: 'btn btn-info'
+        ) do
+          content_tag(:i, '', class: 'fa fa-refresh')
         end
       end
 
