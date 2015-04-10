@@ -104,8 +104,7 @@ module Para
       end
 
       def clone_button(resource)
-        return unless defined?(resource.class.para_cloneable_associations)
-        return unless resource.class.para_cloneable_associations.any?
+        return unless resource.class.cloneable?
 
         view.link_to(
           component.relation_path(

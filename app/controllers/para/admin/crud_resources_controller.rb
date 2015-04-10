@@ -10,7 +10,7 @@ module Para
       after_filter :remove_resource_from_component, only: [:destroy]
 
       def clone
-        new_resource = resource.deep_clone include: resource.class.para_cloneable_associations
+        new_resource = resource.deep_clone include: resource.class.cloneable_associations
         new_resource.save!
 
         if new_resource.save
@@ -18,7 +18,7 @@ module Para
             resource: resource
           ).first
 
-          if component_resource.present?
+          if component_resource
             Para::ComponentResource.create! do |record|
               record.resource = new_resource
               record.component = component_resource.component
