@@ -72,6 +72,8 @@
 
       // Handle drag events on draggable items
       items.on('dragstart.h5s', function(e) {
+        e.stopPropagation();
+        
         var dt = e.originalEvent.dataTransfer;
         dt.effectAllowed = 'move';
         dt.setData('text', '');
