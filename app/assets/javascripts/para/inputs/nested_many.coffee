@@ -33,6 +33,12 @@ class Para.NestedManyField
     if ($redactor = $element.find('[data-redactor]')).length
       $redactor.simpleFormRedactor()
 
+    if ($selectize = $('[data-selectize]'))
+      $selectize.simpleFormSelectize()
+
+    if ($slider = $('[data-slider]'))
+      $slider.simpleFormSlider()
+
   openInsertedField: ($field) ->
     $target = $($field.attr('href'))
     $target.collapse('show').on 'shown.bs.collapse', ->
