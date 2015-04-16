@@ -6,9 +6,7 @@ module Para
       include Para::ModelHelper
 
       class_attribute :resource_name, :resource_class
-
       load_and_authorize_component
-
       helper_method :resource
 
       def new
@@ -151,13 +149,13 @@ module Para
 
       def resources_hash
         @resources_hash ||= begin
-          
+
           ids = resources_data.map { |resource| resource[:id] }
 
           resources = resource_model.where(id: ids)
           resources.each_with_object({}) do |resource, hash|
             hash[resource.id.to_s] = resource
-          end 
+          end
         end
       end
     end

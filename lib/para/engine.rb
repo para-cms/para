@@ -24,6 +24,12 @@ module Para
       end
     end
 
+    initializer 'Para Cloneable' do
+      ActiveSupport.on_load(:active_record) do
+        include Para::Cloneable
+      end
+    end
+
     initializer 'Extend paperclip attachment definition' do
       return unless Kernel.const_defined?('Paperclip')
 

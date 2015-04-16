@@ -6,8 +6,12 @@ Para::Engine.routes.draw do
       scope ':model' do
         resources :crud_resources, path: '/' do
           collection do
-            patch 'order'
-            patch 'tree'
+            patch :order
+            patch :tree
+          end
+
+          member do
+            post :clone
           end
         end
       end
