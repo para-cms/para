@@ -33,10 +33,10 @@ class Para.NestedManyField
     if ($redactor = $element.find('[data-redactor]')).length
       $redactor.simpleFormRedactor()
 
-    if ($selectize = $('[data-selectize]'))
+    if ($selectize = $element.find('[data-selectize]'))
       $selectize.simpleFormSelectize()
 
-    if ($slider = $('[data-slider]'))
+    if ($slider = $element.find('[data-slider]'))
       $slider.simpleFormSlider()
 
   openInsertedField: ($field) ->
