@@ -78,9 +78,9 @@ module Para
         end
       end
 
-      def data_for(resource, field_name)
+      def data_for(resource, field_name, type = nil)
         content_tag(:td) do
-          view.field_value_for(resource, field_name).to_s
+          view.field_value_for(resource, field_name, type).to_s
         end
       end
 
