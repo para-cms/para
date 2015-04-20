@@ -78,9 +78,9 @@ module Para
         end
       end
 
-      def data_for(resource, field_name)
+      def data_for(resource, field_name, type = nil)
         content_tag(:td) do
-          view.field_value_for(resource, field_name).to_s
+          view.field_value_for(resource, field_name, type).to_s
         end
       end
 
@@ -104,8 +104,7 @@ module Para
       end
 
       def clone_button(resource)
-        return unless defined?(resource.class.para_cloneable_associations)
-        return unless resource.class.para_cloneable_associations.any?
+        return unless resource.class.cloneable?
 
         view.link_to(
           component.relation_path(

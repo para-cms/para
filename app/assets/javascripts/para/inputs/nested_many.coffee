@@ -5,6 +5,8 @@ class Para.NestedManyField
     @initializeOrderable()
     @initializeCocoon()
 
+    @$field.on 'shown.bs.collapse', $.proxy(@collapseShown, this)
+
   initializeOrderable: ->
     @orderable = @$field.hasClass('orderable')
     return unless @orderable
@@ -33,11 +35,22 @@ class Para.NestedManyField
     if ($redactor = $element.find('[data-redactor]')).length
       $redactor.simpleFormRedactor()
 
+    if ($selectize = $element.find('[data-selectize]'))
+      $selectize.simpleFormSelectize()
+
+    if ($slider = $element.find('[data-slider]'))
+      $slider.simpleFormSlider()
+
   openInsertedField: ($field) ->
     $target = $($field.attr('href'))
-    $target.collapse('show').on 'shown.bs.collapse', ->
-      $.scrollTo($target, 200)
-      $target.find('input, select').eq('0').focus()
+    $target.collapse('show')
+
+  collapseShown: (e) ->
+    $target = $(e.target)
+    $field = @$field.find("[data-toggle='collapse'][href='##{ $target.attr('id') }']")
+    scrollOffset = -($('[data-header]').outerHeight() + 20)
+    $.scrollTo($field, 200, offset: scrollOffset)
+    $target.find('input, textarea, select').eq('0').focus()
 
 
 $(document).on 'page:change', ->

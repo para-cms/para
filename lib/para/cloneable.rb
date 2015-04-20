@@ -2,10 +2,18 @@ module Para
   module Cloneable
     extend ActiveSupport::Concern
 
+    included do
+      class_attribute :cloneable_associations
+    end
+
     module ClassMethods
-      def para_cloneable *args
-        cattr_accessor :para_cloneable_associations
-        self.para_cloneable_associations = args
+      def acts_as_cloneable(*args)
+        @cloneable = true
+        self.cloneable_associations = args
+      end
+
+      def cloneable?
+        @cloneable ||= false
       end
     end
   end

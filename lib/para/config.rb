@@ -14,5 +14,8 @@ module Para
 
     mattr_accessor :default_tree_max_depth
     @@default_tree_max_depth = 3
+
+    mattr_accessor :resource_name_methods
+    @@resource_name_methods = [:name, :title]
   end
 end

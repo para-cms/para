@@ -103,8 +103,8 @@ module Para
       end
 
       def parse_resource_params(hash)
-        model_field_mappings(self.class.resource_model).fields.each do |field|
-          field.parse_input(hash) if hash.key?(field.name)
+        model_field_mappings(resource_model).fields.each do |field|
+          field.parse_input(hash)
         end
 
         hash
