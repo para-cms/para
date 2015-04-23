@@ -9,6 +9,30 @@ module Para
       after_filter :attach_resource_to_component, only: [:create]
       after_filter :remove_resource_from_component, only: [:destroy]
 
+      def clone
+        new_resource = resource.deep_clone include: resource.class.cloneable_associations
+        new_resource.save!
+
+        if new_resource.save
+          component_resource = Para::ComponentResource.where(
+            resource: resource
+          ).first
+
+          if component_resource
+            Para::ComponentResource.create! do |record|
+              record.resource = new_resource
+              record.component = component_resource.component
+            end
+          end
+
+          flash_message(:success, new_resource)
+          redirect_to after_form_submit_path
+        else
+          flash_message(:error, new_resource)
+          render after_form_submit_path
+        end
+      end
+
       private
 
       def load_and_authorize_crud_resource

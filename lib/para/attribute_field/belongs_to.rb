@@ -16,6 +16,25 @@ module Para
       def relation_options
         reflection.klass.all
       end
+
+      def parse_input(params)
+        if (id = params[reflection.foreign_key].presence) && !reflection.klass.exists?(id: id)
+          resource = reflection.klass.new
+
+          Para.config.resource_name_methods.each do |method_name|
+            setter_name = :"#{ method_name }="
+
+            if resource.respond_to?(setter_name)
+              resource.send(setter_name, id)
+
+              if resource.save
+                params[reflection.foreign_key] = resource.id
+                break
+              end
+            end
+          end
+        end
+      end
     end
   end
 end

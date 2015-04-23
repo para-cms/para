@@ -17,9 +17,9 @@ module Para
       component.class.reflect_on_association(relation).klass
     end
 
-    def field_value_for(object, field_name)
-      fields = model_field_mappings(object.class).fields_hash
-      value = fields[field_name.to_sym].value_for(object)
+    def field_value_for(object, field_name, type = nil)
+      field = model_field_mappings(object.class).field_for(field_name, type)
+      value = field.value_for(object)
       value.kind_of?(String) ? truncate_html(value) : value
     end
   end

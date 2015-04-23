@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rolify', '~> 3.4'
   s.add_dependency 'kaminari'
   s.add_dependency 'ransack'
+  s.add_dependency 'deep_cloneable', '~> 2.1.1'
   s.add_dependency 'request_store'
   s.add_dependency 'truncate_html'
 

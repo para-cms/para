@@ -13,4 +13,11 @@ Para.config do |config|
 
   # Configure the default max depth for trees
   # config.default_tree_max_depth = 3
+
+  # Configure the methods which Para will try to call on resources to fetch
+  # their name.
+  #
+  # Default is [:name, :title]
+  #
+  # config.resource_name_methods += [:full_name]
 end

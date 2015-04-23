@@ -24,7 +24,18 @@ module Para
     end
 
     def fields
-      @fields_hash.values
+      fields_hash.values
+    end
+
+    def field_for(field_name, type = nil)
+      fields_hash[field_name] ||= if model.new.respond_to?(field_name)
+        build_field_for(field_name, type)
+      else
+        raise NoMethodError.new(
+          "No attribute or method correspond to ##{ field_name } " +
+          "in the model #{ model.name }. No field could be created."
+        )
+      end
     end
 
     private
@@ -39,11 +50,7 @@ module Para
 
         # Reject uneditable attributes
         unless UNEDITABLE_ATTRIBUTES.include?(column.name)
-          field_class = case column.type
-          when :boolean then AttributeField::BooleanField
-          when :date, :datetime then AttributeField::DatetimeField
-          else AttributeField::Base
-          end
+          field_class = field_class_for(column.type)
 
           fields[column.name] = field_class.new(
             model, name: column.name, type: column.type
@@ -52,6 +59,22 @@ module Para
       end.with_indifferent_access
 
       Para::ModelFieldParsers.parse!(model, fields_hash)
+    end
+
+    def build_field_for(attribute_name, type)
+      field_class = field_class_for(type)
+
+      field_class.new(
+        model, name: attribute_name, type: type
+      )
+    end
+
+    def field_class_for(type)
+      case type
+      when :boolean then AttributeField::BooleanField
+      when :date, :datetime then AttributeField::DatetimeField
+      else AttributeField::Base
+      end
     end
   end
 end

@@ -11,6 +11,9 @@ fr:
         destroy:
           success: "%{model} supprimé(e)"
           error: "Impossible de supprimer le(a) %{model}"
+        clone:
+          success: "%{model} cloné(e)"
+          error: "Impossible de cloner le(a) %{model}"
 
     admin:
       title: "Administration"
