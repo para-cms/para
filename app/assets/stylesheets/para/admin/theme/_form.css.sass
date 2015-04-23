@@ -1,4 +1,4 @@
-@import 'variables'
+@import "variables"
 @import "compass/css3/box-shadow"
 
 .form-control
@@ -31,9 +31,9 @@
   margin-bottom: 0
 
 // Form separated
-.form-group-separated 
+.form-group-separated
   border-top: 1px dashed $gray-lighter
-  .form-group 
+  .form-group
     border-bottom: 1px dashed $gray-lighter
     margin-bottom: 0px
 
@@ -41,17 +41,17 @@
     [class^="col-sm-"]
       border-left: 1px dashed $gray-lighter
       padding: 12px 10px
-      &:first-child  
+      &:first-child
         border-left: 0px
-    &:last-child 
-      border-bottom: 0px    
-    .control-label 
+    &:last-child
+      border-bottom: 0px
+    .control-label
       border-left: none
 
   .panel-body.form-inputs
     padding: 0 10px
 
-.form-group-separated.panel-body 
+.form-group-separated.panel-body
   padding: 0px
 
 .help-block
@@ -117,3 +117,12 @@ label.valid
 
 .label
   font-weight: 500
+
+.form-fixed-actions
+  margin-bottom: 90px
+  .form-actions
+    position: fixed
+    bottom: 0
+    margin-bottom: 0
+    z-index: 2
+    // Width defined in responsive stylesheet

@@ -1,31 +1,40 @@
 @import "para/admin/theme/variables"
+@import "compass/css3/shared"
 
-@media (max-width: $screen-xs-max) 
+$experimental-support-for-opera: true
+
+@media (max-width: $screen-xs-max)
   .control-label
     margin-top: 10px
     margin-bottom: 0
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: $screen-sm-min) 
+@media (min-width: $screen-sm-min)
   .form-horizontal .control-label
     padding-top: 15px
-    
-  .form-group-separated 
-    .form-group,
-    .form-actions
+
+  .form-group-separated
+    .form-group
       padding-right: 25px
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 1200px) 
-  .form-group-separated 
-    .form-actions,
+/*
+ * Medium devices (desktops, 1025px and up)
+ * Note : Breakpoint defined by the theme for the sidebar to fix on top
+ */
+@media (min-width: 1025px)
+  .form-fixed-actions
+    .form-actions
+      +experimental-value(width, calc(100% - 270px))
+
+/* Medium high devices (desktops, 1200px and up) */
+@media (min-width: 1200px)
+  .form-group-separated
     .form-group
       padding-right: 150px
 
 /* Large devices (large desktops, 1400px and up) */
-@media (min-width: 1500px) 
-  .form-group-separated 
-    .form-actions,
+@media (min-width: 1500px)
+  .form-group-separated
     .form-group
       padding-right: 250px
-    
+

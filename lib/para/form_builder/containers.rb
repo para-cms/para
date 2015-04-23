@@ -8,7 +8,7 @@ module Para
       end
 
       def actions(options = {}, &block)
-        template.content_tag(:div, class: 'block form-actions') do
+        template.content_tag(:div, class: 'block form-actions form-group') do
           template.content_tag(:div, class: 'col-sm-9 col-sm-offset-3') do
             if block
               template.capture(&block)

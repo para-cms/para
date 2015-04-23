@@ -8,6 +8,7 @@
       %i.fa.fa-long-arrow-left
       Retour à l'application
 
-  %li.xn-icon-button.pull-right
-    = button_to main_app.destroy_admin_user_session_path, method: 'delete', class: 'btn-sign-out' do
+  %li.pull-right
+    = link_to main_app.destroy_admin_user_session_path, method: :delete do
       %i.fa.fa-power-off
+      Se déconnecter

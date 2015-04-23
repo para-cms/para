@@ -12,10 +12,10 @@ $bootstrap-sass-asset-helper: true !default;
 // -------------------------
 
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
-$gray-dark:              #999999 !default; 
-$gray:                   #CCCCCC !default; 
-$gray-light:             #EEEEEE !default; 
-$gray-lighter:           #D5D5D5 !default; 
+$gray-dark:              #999999 !default;
+$gray:                   #CCCCCC !default;
+$gray-light:             #EEEEEE !default;
+$gray-lighter:           #D5D5D5 !default;
 
 // Brand colors
 // -------------------------
@@ -269,16 +269,16 @@ $navbar-padding-horizontal:        floor($grid-gutter-width / 2) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 
 $navbar-default-color:             #999999 !default;
-$navbar-default-bg:                #33414e !default;
-$navbar-default-border:            #2f3c48 !default;
+$navbar-default-bg:                #fff !default;
+$navbar-default-border:            #fafafa !default;
 
 // Navbar links
-$navbar-default-link-color:                #fff !default;
+$navbar-default-link-color:                #333 !default;
 $navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             #3d4e5d !default;
+$navbar-default-link-hover-bg:             #eee !default;
 $navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-bg:            #3d4e5d !default;
-$navbar-default-link-disabled-color:       #ccc !default;
+$navbar-default-link-active-bg:            #eee !default;
+$navbar-default-link-disabled-color:       #eee !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label

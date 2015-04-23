@@ -3,6 +3,7 @@
 
 @import "variables"
 @import "compass/css3/transition"
+@import "compass/css3/box-shadow"
 
 html *
   outline: 0!important
@@ -27,12 +28,12 @@ body, html
     [class^=col-lg-], [class^=col-md-], [class^=col-sm-], [class^=col-xs-]
       padding-left: 0
       padding-right: 0
-      
-[class^=col-lg-], [class^=col-md-], [class^=col-sm-], [class^=col-xs-]  
+
+[class^=col-lg-], [class^=col-md-], [class^=col-sm-], [class^=col-xs-]
   padding-left: 10px
   padding-right: 10px
 
-// Main container 
+// Main container
 // -------------------------
 
 .page-container
@@ -48,6 +49,7 @@ body, html
     float: left
     position: relative
     z-index: 3
+    +box-shadow(2px 0 5px #fafafa)
     &.page-sidebar-fixed
       position: fixed
   &.page-container-wide .page-sidebar
@@ -87,7 +89,7 @@ body, html
           h2
             margin-bottom: 0
             font-size: 22px
-           
+
       .content-frame-left
         float: left
         width: $content-frame-with
@@ -135,10 +137,11 @@ body, html
         display: none
         margin-left: 5px
 
-    // Basic content frame    
+    // Basic content frame
     .page-content-wrap
       float: left
       width: 100%
+      padding: 0 25px
 
   // Left menu close or open
   &.page-container-wide .page-content
@@ -149,7 +152,7 @@ body, html
   &.page-navigation-top .page-content
     margin-left: 0
 
-  // Top navigation fixed  
+  // Top navigation fixed
   &.page-navigation-top-fixed
     .x-navigation.x-navigation-horizontal
       position: fixed
@@ -161,33 +164,33 @@ body, html
       padding-right: 50px
 
 /* Animations */
-@-webkit-keyframes pulsate 
-  0% 
-    opacity: 0.0
-  
-  50% 
-    opacity: 1.0
-  
-  100% 
-    opacity: 0.0
-  
-@-moz-keyframes pulsate 
-  0% 
-    opacity: 0.0
-  
-  50% 
-    opacity: 1.0
-  
-  100% 
+@-webkit-keyframes pulsate
+  0%
     opacity: 0.0
 
-@keyframes pulsate 
-  0% 
-    opacity: 0.0
-  
-  50% 
+  50%
     opacity: 1.0
-  
-  100% 
+
+  100%
     opacity: 0.0
-  
+
+@-moz-keyframes pulsate
+  0%
+    opacity: 0.0
+
+  50%
+    opacity: 1.0
+
+  100%
+    opacity: 0.0
+
+@keyframes pulsate
+  0%
+    opacity: 0.0
+
+  50%
+    opacity: 1.0
+
+  100%
+    opacity: 0.0
+

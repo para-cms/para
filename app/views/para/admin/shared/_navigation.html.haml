@@ -8,15 +8,15 @@
 
   - if @component_sections.any?
     - @component_sections.each do |component_section|
-      %li.xn-openable.active
-        = link_to "javascript:void(0);" do
+      %li.component-section-item.xn-openable.active
+        = link_to "javascript:void(0);", class: 'component-section-title' do
           %span.xn-text
             = component_section.name
 
         %ul
           - component_section.components.each do |component|
-            - active = request.url.split('/').pop == component.slug
-            %li{ class: active && 'active' }
+            - active = request.fullpath.split('/')[3] == component.slug
+            %li.component-item{ class: active && 'active' }
               = link_to component.name, component.path
 
   - else

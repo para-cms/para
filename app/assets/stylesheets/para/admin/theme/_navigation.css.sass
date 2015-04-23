@@ -30,17 +30,20 @@
     margin: 0
     position: relative
     >
+      .component-section-title
+        font-weight: bold
+        background-color: #f0f0f0
       a, button
         display: block
         float: left
         width: 100%
         line-height: 19px
         color: $navbar-default-link-color
-        font-size: 13px
+        // font-size: 13px
         font-weight: 400
         padding: 15px 10px 15px 15px
         text-decoration: none
-        +text-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
+        // +text-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
         border-bottom: 1px solid $navbar-default-border
         vertical-align: text-bottom
         .fa, .glyphicon
@@ -48,7 +51,7 @@
           text-align: center
           width: 20px
           font-size: 14px
-          margin-right: 10px
+          margin-right: 3px
           vertical-align: baseline
           +transition(color 200ms ease)
         &:hover
@@ -57,7 +60,7 @@
           .fa, .glyphicon
             color: $navbar-icon-color
       ul
-        background: darken($navbar-default-bg, 5%)
+        // background: darken($navbar-default-bg, 5%)
         max-height: 0
         +transition(all 200ms ease)
         overflow: hidden
@@ -69,12 +72,12 @@
             font-weight: 400
             padding: 12px 10px
             border-bottom-color: darken($navbar-default-border, 5%)
-          &.active > a, 
+          &.active > a,
           &.active > button,
           > a:hover,
           > button:hover
             background: darken($navbar-default-link-hover-bg, 5%)
-            color: $navbar-default-link-color
+            color: lighten($navbar-default-link-color, 20%)
 
     &.xn-openable:before
       position: absolute
@@ -146,6 +149,7 @@
   &.x-navigation-horizontal
     height: 50px
     background: $navbar-default-bg
+    +box-shadow(0 2px 5px #fafafa)
     .xn-logo a
       border-bottom: 0
       width: $left-menu-width-open
@@ -402,7 +406,7 @@
       padding: 0 8px 0 28px
       line-height: 25px
       border: 1px solid #29343f
-      background: #2d3945
+      background: #fff
       color: #AAA
       +transition(all 200ms ease)
       +border-radius(5px)
