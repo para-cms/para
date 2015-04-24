@@ -1,5 +1,5 @@
 module Para
-  class TableGenerator < Rails::Generators::NamedBase
+  class TableGenerator < Para::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
     desc 'Para resources table generator'
@@ -7,7 +7,7 @@ module Para
     def generate_table
       template(
         "_table.html.haml",
-        "app/views/admin/#{ plural_name }/_table.haml"
+        "app/views/admin/#{ plural_namespaced_path }/_table.haml"
       )
     end
 
