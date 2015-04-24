@@ -1,6 +1,4 @@
 = para_form_for(resource) do |form|
-  = form.error_notification
-
   = form.fieldset do
   <%- attributes.each do |field| -%>
     = form.<%= field.field_method %> :<%= field.field_name %><%= field_options_for(field) %>

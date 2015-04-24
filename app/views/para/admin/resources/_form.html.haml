@@ -1,6 +1,4 @@
 = para_form_for(resource) do |form|
-  = form.error_notification
-
   = form.fieldset do
     - model_field_mappings(resource.class).fields.each do |field|
       = form.send(field.field_method, field.field_name, field.field_options)
