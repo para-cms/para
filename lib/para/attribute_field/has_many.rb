@@ -8,6 +8,9 @@ module Para
       end
 
       def parse_input(params)
+        if (ids = params[foreign_key]) && String === ids
+          params[foreign_key] = ids.split(',')
+        end
       end
     end
   end

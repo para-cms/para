@@ -7,6 +7,10 @@ module Para
         @reflection ||= model.reflect_on_association(name)
       end
 
+      def foreign_key
+        @foreign_key ||= reflection.try(:foreign_key)
+      end
+
       def resource_name(resource)
         Para.config.resource_name_methods.each do |method|
           return resource.send(method) if resource.respond_to?(method)
