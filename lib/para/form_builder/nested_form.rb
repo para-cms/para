@@ -8,12 +8,13 @@ module Para
       end
 
       def nested_resource_name
-        @nested_resource_name ||= object.try(:name) || object.try(:title) || [
-          object.class.model_name.human,
-          (
-            (id = object.id) ? id : I18n.t('para.form.nested.new')
-          )
-        ].join(' - ')
+        @nested_resource_name ||= begin
+          resource_name = Para.config.resource_name_methods.find do |method_name|
+            object.try(method_name).presence
+          end
+
+          resource_name || default_resource_name
+        end
       end
 
       def nested_resource_dom_id
@@ -64,6 +65,15 @@ module Para
 
       def parent_object
         nested? && options[:parent_builder] && options[:parent_builder].object
+      end
+
+      private
+
+      def default_resource_name
+        model_name = object.class.model_name.human
+        id_or_new = (id = object.id) ? id : I18n.t('para.form.nested.new')
+
+        [model_name, id_or_new].join(' - ')
       end
     end
   end
