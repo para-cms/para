@@ -3,8 +3,11 @@ module Para
     class NestedManyField < AttributeField::HasManyField
       def parse_input(params)
         if (nested_attributes = params[nested_attributes_key])
-          nested_attributes.each do |_, attributes|
-            nested_model_mappings.parse_input(attributes)
+          nested_attributes.each do |index, attributes|
+            nested_model_mappings.fields.each do |field|
+              field.parse_input(attributes)
+            end
+            params[nested_attributes_key][index] = attributes
           end
         end
       end
@@ -14,7 +17,7 @@ module Para
       end
 
       def nested_attributes_key
-        @nested_attributes_key ||= :"#{ reflection.foreign_key }_attributes"
+        @nested_attributes_key ||= :"#{ name }_attributes"
       end
     end
   end

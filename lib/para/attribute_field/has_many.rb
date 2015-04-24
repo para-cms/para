@@ -8,8 +8,8 @@ module Para
       end
 
       def parse_input(params)
-        if (ids = params[foreign_key]) && String === ids
-          params[foreign_key] = ids.split(',')
+        if (ids = params[foreign_key.pluralize]) && String === ids
+          params[foreign_key.pluralize] = ids.split(',')
         end
       end
     end
