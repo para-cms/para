@@ -1,5 +1,5 @@
 module Para
-  class FormGenerator < Rails::Generators::NamedBase
+  class FormGenerator < Para::Generators::NamedBase
     include Para::Admin::BaseHelper
 
     source_root File.expand_path("../templates", __FILE__)
@@ -7,7 +7,7 @@ module Para
     def generate_form
       template(
         "_form.html.haml",
-        "app/views/admin/#{ plural_name }/_form.html.haml"
+        "app/views/admin/#{ plural_namespaced_path }/_form.html.haml"
       )
     end
 

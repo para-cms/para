@@ -1,5 +1,5 @@
 module Para
-  class NestedFieldsGenerator < Rails::Generators::NamedBase
+  class NestedFieldsGenerator < Para::Generators::NamedBase
     include Para::Admin::BaseHelper
 
     source_root File.expand_path("../templates", __FILE__)
@@ -7,7 +7,7 @@ module Para
     def generate_form
       template(
         "_nested_fields.html.haml",
-        "app/views/admin/#{ plural_name }/_fields.html.haml"
+        "app/views/admin/#{ plural_namespaced_path }/_fields.html.haml"
       )
     end
 

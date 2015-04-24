@@ -38,6 +38,7 @@ module Para
   eager_autoload do
     autoload :Config
     autoload :Component
+    autoload :Generators
   end
 
   def self.config(&block)
