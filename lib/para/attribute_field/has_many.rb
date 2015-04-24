@@ -6,6 +6,9 @@ module Para
           resource_name(resource)
         end.join(', ')
       end
+
+      def parse_input(params)
+      end
     end
   end
 end
