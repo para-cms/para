@@ -9,11 +9,11 @@ module Para
 
       def nested_resource_name
         @nested_resource_name ||= begin
-          resource_name = Para.config.resource_name_methods.find do |method_name|
-            object.try(method_name).presence
+          name_method = Para.config.resource_name_methods.find do |method_name|
+            object.respond_to?(method_name)
           end
 
-          resource_name || default_resource_name
+          object.try(name_method).presence || default_resource_name
         end
       end
 
