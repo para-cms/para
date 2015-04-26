@@ -8,9 +8,19 @@ module Para
       end
 
       def parse_input(params)
-        if (ids = params[foreign_key.pluralize]) && String === ids
-          params[foreign_key.pluralize] = ids.split(',')
-        end
+        if (ids = params[plural_foreign_key].presence) && String === ids
+          # Format selectize value for Rails
+          ids = params[plural_foreign_key] = ids.split(',')
+
+          on_the_fly_creation(ids) do |resource, value|
+            params[plural_foreign_key].delete(value)
+            params[plural_foreign_key] << resource.id
+          end
+        end 
+      end
+
+      def plural_foreign_key
+        foreign_key.pluralize
       end
     end
   end
