@@ -1,6 +1,6 @@
 module Para
   module Admin
-    class BaseController < ApplicationController
+    class BaseController < Para::ApplicationController
       include Para::Admin::BaseHelper
 
       if Para.config.authenticate_admin_method
