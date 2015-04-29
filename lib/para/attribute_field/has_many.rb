@@ -20,7 +20,7 @@ module Para
       end
 
       def plural_foreign_key
-        foreign_key.pluralize
+        foreign_key.to_s.pluralize
       end
     end
   end

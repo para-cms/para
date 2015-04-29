@@ -9,6 +9,8 @@ module Para
             end
             params[nested_attributes_key][index] = attributes
           end
+        else
+          super(params)
         end
       end
 
