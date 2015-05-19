@@ -11,20 +11,20 @@ $bootstrap-sass-asset-helper: true !default;
 // Grays
 // -------------------------
 
-$gray-darker:            lighten(#000, 13.5%) !default; // #222
-$gray-dark:              #999999 !default;
-$gray:                   #CCCCCC !default;
-$gray-light:             #EEEEEE !default;
-$gray-lighter:           #D5D5D5 !default;
+$gray-darker:            #555 !default; // #222
+$gray-dark:              #999 !default;
+$gray:                   #CCC !default;
+$gray-light:             #EEE !default;
+$gray-lighter:           #fbfbfb !default;
 
 // Brand colors
 // -------------------------
 
-$brand-primary:         #33414e !default;
-$brand-success:         #95b75d !default;
-$brand-warning:         #fea223 !default;
-$brand-danger:          #b64645 !default;
-$brand-info:            #3fbae4 !default;
+$brand-primary:         #428bca !default;
+$brand-success:         #5cb85c !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+$brand-info:            #5bc0de !default;
 
 // Scaffolding
 // -------------------------
@@ -121,31 +121,29 @@ $table-border-color:                 #E5E5E5 !default; // table and cell border
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
-$btn-default-bg:                 #f5f5f5 !default;
-$btn-default-border:             #ccc !default;
+$btn-default-color:              #59595a !default;
+$btn-default-bg:                 #fff !default;
+$btn-default-border:             #ddd !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             #29343f !default;
+$btn-primary-border:             $btn-primary-bg !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             #89ad4d !default;
+$btn-success-border:             $btn-success-bg !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             #fe970a !default;
+$btn-warning-border:             $btn-warning-bg !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              #a43f3e !default;
+$btn-danger-border:              $btn-danger-bg !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                #29b2e1 !default;
-
-$btn-link-disabled-color:        $gray-light !default;
+$btn-info-border:                $btn-info-bg !default;
 
 
 // Forms
@@ -155,7 +153,7 @@ $input-bg:                       #F9F9F9 !default;
 $input-bg-disabled:              $gray-light !default;
 
 $input-color:                    $gray-darker !default;
-$input-border:                   $gray-lighter !default;
+$input-border:                   $gray-light !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #C1C1C1 !default;
 
@@ -184,7 +182,7 @@ $dropdown-link-color:            $gray-darker !default;
 $dropdown-link-hover-color:      darken($gray-darker, 5%) !default;
 $dropdown-link-hover-bg:         darken(#fff, 5%) !default;
 
-$dropdown-link-active-color:     $component-active-color !default;
+$dropdown-link-active-color:     $gray-darker !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
 
 $dropdown-link-disabled-color:   $gray-light !default;
@@ -270,14 +268,14 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 
 $navbar-default-color:             #999999 !default;
 $navbar-default-bg:                #fff !default;
-$navbar-default-border:            #fafafa !default;
+$navbar-default-border:            $gray !default;
 
 // Navbar links
-$navbar-default-link-color:                #333 !default;
-$navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             #eee !default;
-$navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-bg:            #eee !default;
+$navbar-default-link-color:                #555 !default;
+$navbar-default-link-hover-color:          #555 !default;
+$navbar-default-link-hover-bg:             #f7f7f7 !default;
+$navbar-default-link-active-color:         $brand-primary !default;
+$navbar-default-link-active-bg:            #fff !default;
 $navbar-default-link-disabled-color:       #eee !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
@@ -382,21 +380,21 @@ $jumbotron-font-size:            ceil($font-size-base * 1.5) !default;
 // Form states and alerts
 // -------------------------
 
-$state-success-text:             #3c763d !default;
+$state-success-text:             $brand-success !default;
 $state-success-bg:               #dff0d8 !default;
-$state-success-border:           #90b456 !default;
+$state-success-border:           darken($state-success-bg, 10%) !default;
 
-$state-info-text:                #31708f !default;
+$state-info-text:                $brand-info !default;
 $state-info-bg:                  #d9edf7 !default;
-$state-info-border:              #36b7e3 !default;
+$state-info-border:              darken($state-info-bg, 10%) !default;
 
-$state-warning-text:             #8a6d3b !default;
+$state-warning-text:             $brand-warning !default;
 $state-warning-bg:               #fcf8e3 !default;
-$state-warning-border:           #fe9e19 !default;
+$state-warning-border:           darken($state-warning-bg, 10%) !default;
 
-$state-danger-text:              #a94442 !default;
+$state-danger-text:              $brand-danger !default;
 $state-danger-bg:                #f2dede !default;
-$state-danger-border:            #af4342 !default;
+$state-danger-border:            darken($state-danger-bg, 10%) !default;
 
 
 // Tooltips
@@ -494,17 +492,21 @@ $progress-bar-info-bg:        $brand-info !default;
 // List group
 // -------------------------
 $list-group-bg:               #fff !default;
-$list-group-border:           #E5E5E5 !default;
+$list-group-border:           #ddd !default;
 $list-group-border-radius:    $border-radius-base !default;
 
-$list-group-hover-bg:         #F9F9F9 !default;
+$list-group-hover-bg:         #f5f5f5 !default;
 $list-group-active-color:     $component-active-color !default;
 $list-group-active-bg:        $component-active-bg !default;
 $list-group-active-border:    $list-group-active-bg !default;
 
-$list-group-link-color:          #555 !default;
-$list-group-link-heading-color:  #333 !default;
+$list-group-link-color:          $gray !default;
+$list-group-link-heading-color:  $gray !default;
+$list-group-active-text-color:   $component-active-color  !default;
 
+$list-group-disabled-color:      $gray-light !default;
+$list-group-disabled-bg:         $gray-lighter !default;
+$list-group-disabled-text-color: $list-group-disabled-color !default;
 
 // Panels
 // -------------------------

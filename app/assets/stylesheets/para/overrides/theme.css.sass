@@ -16,32 +16,48 @@
   outline: none
   outline-offset: 0
 
-@mixin button-hover-focus-active($color-border, $color-bg)
-  +box-shadow(0px -2px darken($color-border, 5%) inset)
+@mixin button-hover-focus-active($color-border, $color-bg) 
+  position: relative
+  +box-shadow(0px 4px darken($color-border, 10%) )
+  +single-transition(none)
   &:hover
-    +box-shadow(0px -2px darken($color-border, 15%) inset)
-    background-color: darken($color-bg, 2%)
+    top: 2px
+    +box-shadow(0px 2px darken($color-border, 10%) )
+    background-color: $color-bg
+    border-color: $color-border
   &:focus,
   &:active,
   &.active,
   .open &.dropdown-toggle
-    background-color: darken($color-bg, 2%)
-    +box-shadow(0px -1px 5px $color-border inset)
+    background-color: $color-bg
+    top: 4px
+    +box-shadow(0px 0 darken($color-border, 10%))  
+    border-color: $color-border
 
-@mixin button-variant-inverse($color-border, $color-bg)
+@mixin button-variant-inverse($color-border, $color-bg) 
   color: $color-border
   background-color: transparent
-  &:hover,
-  &:focus,
-  &:active,
-  &.active,
-  .open &.dropdown-toggle
+  +box-shadow(none)
+  +single-transition(all, .2s, linear)
+  &:hover
+    +box-shadow(none)
+    top: 0
     color: #fff
     background-color: $color-bg
     outline: none
     outline: 0
-
-.btn,
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    +box-shadow(none)
+    top: 0
+    color: #fff
+    background-color: darken($color-bg, 5%)
+    outline: none
+    outline: 0
+       
+.btn, 
 input,
 textarea,
 select,
@@ -50,24 +66,24 @@ button
   &,
   &:active,
   &.active
-    &:focus
+    &:focus 
       +tab-focus()
   &:hover,
   &:focus
     +tab-focus()
-
+  
 
 .btn-default
-  +button-hover-focus-active($btn-default-border, $btn-default-bg)
+  +button-hover-focus-active($btn-default-border, $btn-default-bg) 
   &.btn-inverse
     +button-variant-inverse($btn-default-border, $btn-default-bg)
-    color: darken($btn-default-border, 15%)
+    color: $btn-default-color
     &:hover,
     &:focus,
     &:active,
     &.active,
     .open &.dropdown-toggle
-      color: darken($btn-default-border, 15%)
+      color: $btn-default-color
 
 .btn-primary
   +button-hover-focus-active($btn-primary-border, $btn-primary-bg)
@@ -115,7 +131,6 @@ button
 .badge-danger 
   background-color: $brand-danger
 
-
 // Left menu
 .page-container .page-sidebar 
   position: fixed
@@ -123,7 +138,6 @@ button
   bottom: 0
   overflow: auto
   background-color: $navbar-default-bg
-
 
 .x-navigation 
   &.x-navigation-horizontal
@@ -140,36 +154,6 @@ button
     font-size: 30px
     padding: 10px !important
 
-  li.section-actions
-    &.active:before,
-    &:before,
-      content: none
-    .xn-openable:before
-      top: 8px  
-    a
-      font-size: 0.9em
-      padding-top: 8px
-      padding-bottom: 8px
-      background: darken($navbar-default-bg, 5%) 
-    .fa
-      font-size: 0.9em
-      margin-right: 0px
-      text-align: left
-
-  &.x-navigation-minimized
-    .xn-text-initial
-      display: block
-      padding: 1em 0.7em
-      margin: -1em -0.7em
-    .xn-openable.active
-      .tooltip
-        display: none !important
-    li.section-actions 
-      .xn-openable:before
-        top: 12px  
-      a    
-        padding: 12px 10px 
-
 // Table
 .para-component-relation-table
   td > img
@@ -179,6 +163,13 @@ button
   min-width: 97px
 
 // Form
+.input-group-btn
+  .btn,
+  .btn:hover,
+  .btn:focus,
+  .btn:active,
+    top: 0
+    +box-shadow(none)
 
 .form-group-separated
   &:after
@@ -195,7 +186,7 @@ button
   padding-left: 0
   padding-bottom: 15px
   padding-right: 15px
-  border-top: 1px dashed $gray-lighter
+  border-top: 1px dashed $gray-light
   background-color: $body-bg
   .btn
     margin-bottom: 15px

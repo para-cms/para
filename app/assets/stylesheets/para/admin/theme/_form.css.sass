@@ -32,19 +32,17 @@
 
 // Form separated
 .form-group-separated
-  border-top: 1px dashed $gray-lighter
+  border-top: 1px dashed $gray-light
   .form-group
-    border-bottom: 1px dashed $gray-lighter
+    border-bottom: 1px dashed $gray-light
     margin-bottom: 0px
 
     [class^="col-md-"],
     [class^="col-sm-"]
-      border-left: 1px dashed $gray-lighter
+      border-left: 1px dashed $gray-light
       padding: 12px 10px
       &:first-child
         border-left: 0px
-    &:last-child
-      border-bottom: 0px
     .control-label
       border-left: none
 
@@ -123,6 +121,9 @@ label.valid
   .form-actions
     position: fixed
     bottom: 0
+    right: 35px
     margin-bottom: 0
     z-index: 2
+    padding-bottom: 0
+    border-bottom: 0
     // Width defined in responsive stylesheet

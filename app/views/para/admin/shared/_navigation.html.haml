@@ -1,25 +1,22 @@
-%ul.x-navigation
-  %li.xn-logo
+%ul.sidebar-navigation
+  %li.brand-logo
     = link_to para.admin_path do
-      A
-      %span.xn-text
-        dministration
+      = t('para.admin.title')
     %a.x-navigation-control{:href => "#"}
-
+  
   - if @component_sections.any?
     - @component_sections.each do |component_section|
-      %li.component-section-item.xn-openable.active
-        = link_to "javascript:void(0);", class: 'component-section-title' do
-          %span.xn-text
-            = component_section.name
+      %li.component-section-item
+        = link_to "#", class: 'component-section-title' do
+          = component_section.name
 
-        %ul
+        %ul.component-section-list-items
           - component_section.components.each do |component|
             - active = request.fullpath.split('/')[3] == component.slug
             %li.component-item{ class: active && 'active' }
               = link_to component.name, component.path
 
   - else
-    %li.xn-title.text-info
-      %span.xn-text
+    %li.component-section-item
+      .component-section-title
         = t('para.component.none_created')
