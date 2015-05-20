@@ -1,6 +1,10 @@
 module Para
   module AttributeField
     class HasManyField < RelationField
+      def field_name
+        reflection.name
+      end
+
       def value_for(instance)
         instance.send(name).map do |resource|
           resource_name(resource)
@@ -16,7 +20,7 @@ module Para
             params[plural_foreign_key].delete(value)
             params[plural_foreign_key] << resource.id
           end
-        end 
+        end
       end
 
       def plural_foreign_key

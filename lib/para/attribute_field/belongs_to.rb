@@ -4,7 +4,7 @@ module Para
       field_option :collection, :relation_options
 
       def field_name
-        reflection.foreign_key
+        reflection.name
       end
 
       def value_for(instance)
