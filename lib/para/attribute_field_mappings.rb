@@ -9,6 +9,7 @@ require 'para/attribute_field/belongs_to'
 require 'para/attribute_field/has_many'
 require 'para/attribute_field/nested_many'
 require 'para/attribute_field/redactor'
+require 'para/attribute_field/translation'
 
 module Para
   class AttributeFieldMappings

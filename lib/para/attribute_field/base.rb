@@ -63,6 +63,10 @@ module Para
         name
       end
 
+      def attribute_column_path
+        [name]
+      end
+
       private
 
       def field_type_name

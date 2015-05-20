@@ -1,18 +1,22 @@
 module Para
   module SearchHelper
-    def searchable_attributes(attributes)
-      attributes.select do |attr|
-        [:string, :text].include?(attr.type.to_sym) &&
-          !attr.name.match(/password/)
-      end.map(&:name).join('_or_')
-    end
-
     def fulltext_search_param_for(attributes)
       "#{ searchable_attributes(attributes) }_cont"
     end
 
     def filtered?(attributes)
       params[:q] && params[:q][fulltext_search_param_for(attributes)].present?
+    end
+
+    def searchable_attributes(attributes)
+      whitelist = attributes.select do |attribute|
+        [:string, :text].include?(attribute.type.to_sym) &&
+          !attribute.name.match(/password/)
+      end
+
+      whitelist.map do |attribute|
+        attribute.attribute_column_path.join('_')
+      end.join('_or_')
     end
   end
 end
