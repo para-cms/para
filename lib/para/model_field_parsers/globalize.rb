@@ -16,7 +16,7 @@ module Para
       end
 
       def applicable?
-        defined?(Globalize) && model.translates?
+        defined?(::Globalize) && model.translates?
       end
     end
   end
