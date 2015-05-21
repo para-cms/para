@@ -16,6 +16,9 @@ module Para
   end
 end
 
+# Require concerns
+require 'para/component/exportable'
+
 # Require models
 require 'para/component/base'
 require 'para/component/resource'

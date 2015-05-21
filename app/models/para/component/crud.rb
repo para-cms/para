@@ -3,9 +3,10 @@ module Para
     class Crud < Para::Component::Resource
       register :crud, self
 
-      configurable_on :model_type, as: :selectize, collection: :available_models
-      configurable_on :namespaced, as: :boolean, collection: [true, false],
-                      wrapper: :horizontal_radio_and_checkboxes
+      include Para::Component::Exportable
+
+      configurable_on :model_type
+      configurable_on :namespaced
 
       has_many :component_resources, class_name: 'Para::ComponentResource',
                foreign_key: :component_id, autosave: true

@@ -1,0 +1,12 @@
+- if component.exportable?
+  - component.exports.each do |export|
+    .btn-group
+      %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+        %i.fa.fa-download
+        = export_name_for(model, export)
+        %span.caret
+      %ul.dropdown-menu{:role => "menu"}
+        - export[:formats].each do |format|
+          %li
+            = link_to component.relation_path(model.model_name.route_key, action: :export, format: format) do
+              = t('para.export.as', extension: format)

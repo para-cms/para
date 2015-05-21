@@ -3,6 +3,8 @@
     = panel.header do
       = icon_link_to t('para.shared.add'), component.relation_path(model.model_name.singular_route_key, action: :new), icon: 'plus', class: 'btn btn-primary'
 
+      = render partial: find_partial_for(relation, :exports_menu), locals: { component: component, model: model }
+
     = panel.body do
       = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 

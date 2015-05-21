@@ -53,6 +53,10 @@ fr:
       no_results: "Aucun résultat pour cette recherche, merci d'essayer avec d'autres critères"
       empty: "Aucune entrée créée pour le moment"
 
+    export:
+      name: "Export %{name}"
+      as: "Exporter (.%{extension})"
+
     shared:
       save: "Enregistrer"
       cancel: "Annuler"

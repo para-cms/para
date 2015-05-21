@@ -26,6 +26,10 @@ module Para
         )
       end
 
+      def exportable?
+        false
+      end
+
       def self.model_name
         @model_name ||= ModelName.new(self)
       end

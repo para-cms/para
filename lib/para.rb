@@ -31,6 +31,7 @@ require 'para/form_builder'
 require 'para/markup'
 require 'para/engine'
 require 'para/components_configuration'
+require 'para/exporter'
 
 module Para
   extend ActiveSupport::Autoload
