@@ -8,6 +8,7 @@ Para::Engine.routes.draw do
           collection do
             patch :order
             patch :tree
+            get :export
           end
 
           member do

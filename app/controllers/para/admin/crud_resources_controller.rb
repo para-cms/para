@@ -33,6 +33,20 @@ module Para
         end
       end
 
+      def export
+        if @component.exportable?
+          exporter = Para::Exporter.for(
+            resource_model.name, params[:format]
+          ).new(@component.resources.search(params[:q]).result)
+
+          send_data exporter.render, type: exporter.mime_type,
+                                     disposition: exporter.disposition,
+                                     filename: exporter.file_name
+        else
+          redirect_to component_path(@component)
+        end
+      end
+
       private
 
       def load_and_authorize_crud_resource

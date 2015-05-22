@@ -9,5 +9,6 @@ module Para
     include Para::TagHelper
     include Para::TreeHelper
     include Para::FlashHelper
+    include Para::ExportsHelper
   end
 end
