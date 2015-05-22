@@ -1,14 +1,15 @@
 %ul.navigation-horizontal{ data: { header: true } }
   %li.brand-logo
     = link_to para.admin_path do
-      Administration
+      = t('para.admin.title')
 
   %li
     = link_to main_app.root_path do
       %i.fa.fa-long-arrow-left
-      Retour à l'application
+      = t('para.admin.back_to_app')
 
   %li.pull-right
     = link_to main_app.destroy_admin_user_session_path, method: :delete do
       %i.fa.fa-power-off
-      Se déconnecter
+      = t('para.admin.sign_out')
+      

@@ -17,6 +17,8 @@ fr:
 
     admin:
       title: "Administration"
+      back_to_app: "Retour à l'application"
+      sign_out: "Se déconnecter"
 
     confirmation:
       shared:

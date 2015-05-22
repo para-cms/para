@@ -129,113 +129,15 @@
       +border-radius(3px)
       +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
       z-index: 3
-      ul.xn-drop-white:after
-        border-right-color: #FFF
-    > ul
-      top: 60px
-      left: 0
-      &.xn-drop-white:after
-        border-bottom-color: #FFF
-      &.xn-drop-left
-        left: auto
-        right: 0
-        &.xn-drop-white ul:after
-          border-left-color: #FFF
-      &:after
-        bottom: 100%
-        left: 27px
-        border: solid transparent
-        content: " "
-        height: 0
-        width: 0
-        position: absolute
-        pointer-events: none
-        border-color: transparent transparent $brand-primary
-        border-width: 5px
-        margin-left: -5px
-      &.xn-drop-left:after
-        right: 20px
-        left: auto
-        ul
-          left: auto
-          right: $left-menu-width-open + 10px
-          &:after
-            right: auto
-            left: 100%
-            border: solid transparent
-            border-left-color: $brand-primary
-            border-width: 5px
-            margin-right: -5px
-      ul
-        top: 0
-        right: -$left-menu-width-open + 10px
-        &:after
-          right: 100%
-          top: 23px
-          border: solid transparent
-          content: " "
-          height: 0
-          width: 0
-          position: absolute
-          pointer-events: none
-          border-color: transparent $brand-primary transparent transparent
-          border-width: 5px
-          margin-top: -5px
       li
-        > a, button
-          padding-left: 10px
-        &.active > a, > a:hover
-          padding-left: 15px
-    li
-      width: 100%
-      &:first-child a,
-      &:first-child button
-        +border-radius(3px 3px 0 0)
-      &:last-child a,
-      &:last-child button
-        +border-radius(0 0 3px 3px)
-        border-bottom-color: transparent
-      &.xn-openable:before
-        content: "\f105"
-      &.active.xn-openable:before
-        content: "\f104"
-    &:last-child > a,
-    &:last-child > button
-      +border-radius(0)
-    &.last > a,
-    &.last > button
-      +border-radius(0 5px 0 0)
+        width: 100%
+      
   li
     width: auto
     position: relative
     &.active > ul
       display: block
-    &.xn-openable > a,
-    &.xn-openable > button
-      padding-right: 20px
-  ul.xn-drop-white
-    background: $dropdown-bg
-    ul
-      background: $dropdown-bg
-      &:after
-        border-right-color: $dropdown-bg
-    li
-      > a, button
-        color: $dropdown-link-color
-        +text-shadow(none)
-        border-bottom: 1px solid $dropdown-border
-        &:hover
-          background: $dropdown-link-hover-bg
-          color: $dropdown-link-hover-color
-        .fa, .glyphicon
-          color: $dropdown-link-color
-      &.active
-        > a, button
-          color: $dropdown-link-active-color
-          text-shadow: none
-          border-bottom: 1px solid $dropdown-border
-        &.xn-openable:before
-          color: $dropdown-link-active-color
+  
   .xn-icon-button > a,
   .xn-icon-button > button
     padding: 15px 10px
@@ -243,52 +145,9 @@
     width: 50px
     .fa, .glyphicon
       margin: 0
-  .xn-search
-    padding: 10px 5px
-    input
-      width: $left-menu-width-open - 120px
-      &:focus
-        width: $left-menu-width-open - 20px
-    &:before
-      left: 5px
+  
 
-  // OSEF for now 
-  // .xn-padding
-  //   padding: 10px 10px 0 9px
-  // .xn-form
-  //   padding: 10px 10px 10px 9px
-  //   position: relative
-  //   label
-  //     color: #fff
-  // .xn-search
-  //   padding: 10px 10px 0 9px
-  //   position: relative
-  //   input
-  //     width: $left-menu-width-open - 20px
-  //     height: 30px
-  //     padding: 0 8px 0 28px
-  //     line-height: 25px
-  //     border: 1px solid #29343f
-  //     background: #fff
-  //     color: #AAA
-  //     +transition(all 200ms ease)
-  //     +border-radius(5px)
-  //   &:before
-  //     content: "\f002"
-  //     font-family: FontAwesome
-  //     position: absolute
-  //     width: 30px
-  //     height: 30px
-  //     text-align: center
-  //     font-size: 17px
-  //     line-height: 28px
-  //     color: #AAA
-  //     left: 10px
-  //     top: 10px
-  //     z-index: 2
-  //     cursor: pointer
-  // .xn-visible
-  //   display: none
+
   .x-navigation-control
     position: absolute
     right: 0
@@ -356,57 +215,6 @@
     bottom: auto
     right: 1px
     top: 5px
-
-.x-navigation li
-  > .panel
-    display: none
-    position: absolute
-    left: 0
-    top: 56px
-    width: 400px
-    z-index: 3
-    border-top-width: 1px
-    +border-radius(3px)
-    &.xn-drop-left
-      left: auto
-      right: 0
-    .panel-heading
-      padding: 5px 10px
-      .panel-title
-        font-size: 14px
-    .panel-footer
-      line-height: 30px
-      padding: 3px 10px
-  &.active > .panel
-    display: block
-  > .panel
-    &:after
-      top: -11px
-      left: 20px
-      border: solid transparent
-      content: " "
-      height: 0
-      width: 0
-      position: absolute
-      pointer-events: none
-      border-color: transparent transparent #E5E5E5
-      border-width: 5px
-      margin-left: -5px
-    &.xn-drop-left:after
-      right: 20px
-      left: auto
-    &.dragged:after
-      display: none
-    &.panel-primary:after
-      border-bottom-color: $brand-primary
-    &.panel-info:after
-      border-bottom-color: $brand-info
-    &.panel-warning:after
-      border-bottom-color: $brand-warning
-    &.panel-danger:after
-      border-bottom-color: $brand-danger
-    &.panel-success:after
-      border-bottom-color: $brand-success
 
 
 /*
