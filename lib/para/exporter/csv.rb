@@ -13,8 +13,12 @@ module Para
         'text/csv'
       end
 
+      def export_type
+        :excel
+      end
+
       def render
-        CSV.generate(col_sep: ";", row_sep: "\r\n") do |csv|
+        CSV.generate do |csv|
           csv << headers
 
           resources.each do |resource|
@@ -38,7 +42,7 @@ module Para
       end
 
       def encode(string)
-        string.presence && string.to_s.encode('Windows-1252')
+        string.presence && string.to_s.encode('UTF-8')
       end
     end
   end
