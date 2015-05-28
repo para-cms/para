@@ -72,9 +72,15 @@ module Para
         cells.join("\n").html_safe
       end
 
-      def header_for(field_name)
+      def header_for(field_name, sort: field_name)
         content_tag(:th) do
-          model.human_attribute_name(field_name)
+          if sort != field_name
+              view.sort_link(search, *sort)
+          elsif searchable?(field_name)
+            view.sort_link(search, field_name)
+          else
+            model.human_attribute_name(field_name)
+          end
         end
       end
 
@@ -139,6 +145,16 @@ module Para
         ) do
           content_tag(:i, '', class: 'fa fa-trash')
         end
+      end
+
+      private
+
+      def search
+        @search ||= view.instance_variable_get(:@q)
+      end
+
+      def searchable?(field_name)
+        model.columns_hash.keys.include?(field_name.to_s)
       end
     end
   end
