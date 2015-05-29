@@ -52,8 +52,6 @@ body, html
     +box-shadow(2px 0 5px #fafafa)
     &.page-sidebar-fixed
       position: fixed
-  &.page-container-wide .page-sidebar
-    width: $left-menu-width-close
 
   // Right side Content
   .page-content
@@ -142,15 +140,6 @@ body, html
       float: left
       width: 100%
       padding: 0 25px
-
-  // Left menu close or open
-  &.page-container-wide .page-content
-    margin-left: $left-menu-width-close
-    +transition(all, .2ms ease)
-  &.page-navigation-toggled .page-content
-    margin-left: $left-menu-width-close
-  &.page-navigation-top .page-content
-    margin-left: 0
 
   // Top navigation fixed
   &.page-navigation-top-fixed

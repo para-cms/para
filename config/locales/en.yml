@@ -83,3 +83,4 @@ en:
         type: "Type"
         model_type: "Resource"
         namespaced: "Only list component's resources"
+
