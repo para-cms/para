@@ -1,6 +1,6 @@
 @import 'variables'
 
-@media only screen and (max-width: 768px)
+@media (max-width: $container-sm)
   [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-']
     margin-bottom: 10px
   .login-container
@@ -25,17 +25,32 @@
         left: 25px
         padding: 7px 0px
 
-@media only screen and (max-width: 1024px)
+@media (max-width: $screen-md)
   .page-container
+    .navbar-toggle 
+      display: block !important
     .page-sidebar
-      position: relative !important
-      float: left
+      position: fixed
+      top: $navbar-height
+      float: none
       width: 100%
-      height: auto !important
-      bottom: auto !important
+      height: auto 
       overflow: auto
-      &.scroll
-        position: relative
+
+      .brand-logo
+        display: none
+
+      .sidebar-navigation 
+        .component-item.active 
+          a, 
+          button
+            border-right: none
+            border-left: 4px solid $navbar-default-link-active-color
+
+  // OLD    
+  .page-container 
+    
+    
     .page-content
       margin-left: 0px
       .content-frame
@@ -111,3 +126,9 @@
         right: 90%
   .error-container
     width: 100%
+
+@media (min-width: $screen-md)
+  .page-sidebar.navbar-collapse.collapse
+    height: 100% !important
+    overflow: auto !important
+
