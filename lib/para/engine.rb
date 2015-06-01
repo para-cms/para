@@ -1,7 +1,5 @@
 module Para
   class Engine < ::Rails::Engine
-    isolate_namespace Para
-
     initializer 'add vendor path to assets pipeline' do |app|
       %w(javascripts stylesheets).each do |folder|
         app.config.assets.paths << File.expand_path(

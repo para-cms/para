@@ -40,6 +40,7 @@ module Para
     autoload :Config
     autoload :Component
     autoload :Generators
+    autoload :Routes
   end
 
   def self.config(&block)
@@ -56,5 +57,9 @@ module Para
 
   def self.store
     RequestStore.store
+  end
+
+  def self.table_name_prefix
+    'para_'
   end
 end
