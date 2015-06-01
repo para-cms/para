@@ -87,9 +87,9 @@ module Para
     end
 
     def mount_engine
-      mount_path = ask('Where would you like to mount Para engine ? [/]').presence || '/'
-      gsub_file 'config/routes.rb', /mount Para::Engine.*\'/, ''
-      route "mount Para::Engine, at: '#{mount_path.match(/^\//) ? mount_path : "/#{mount_path}"}', as: 'para'"
+      say "Mounting Para engine in routes"
+      gsub_file 'config/routes.rb', /para_at.+\n/, ''
+      route "para_at '/'"
     end
 
     def final_message

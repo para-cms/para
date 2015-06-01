@@ -26,6 +26,10 @@ module Para
               fields_hash[name] = AttributeField::NestedManyField.new(
                 model, name: name, type: 'has_many', field_type: 'nested_many'
               )
+            else
+              fields_hash[name] = AttributeField::NestedOneField.new(
+                model, name: name, type: 'belongs_to', field_type: 'nested_one'
+              )
             end
           else
             if reflection.collection?

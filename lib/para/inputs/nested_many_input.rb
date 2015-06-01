@@ -8,6 +8,10 @@ module Para
         model = parent_model.reflect_on_association(attribute_name).klass
         orderable = options.fetch(:orderable, model.orderable?)
         add_button = options.fetch(:add_button, true)
+        # Load existing resources
+        resources = object.send(attribute_name)
+        # Order them if the list should be orderable
+        resources = resources.order(:position) if orderable
 
         template.render(
           partial: 'para/inputs/nested_many',
@@ -17,7 +21,8 @@ module Para
             attribute_name: attribute_name,
             orderable: orderable,
             add_button: add_button,
-            dom_identifier: dom_identifier
+            dom_identifier: dom_identifier,
+            resources: resources
           }
         )
       end

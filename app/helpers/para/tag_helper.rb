@@ -18,6 +18,7 @@ module Para
       model = resources.model
       attributes = model_field_mappings(model).fields
       relation = options.fetch(:relation, model.name.to_s.underscore.pluralize)
+      allow_adding_resource = options.fetch(:addable, true)
 
       partial = :list
       partial = :tree if model.respond_to? :roots
@@ -29,7 +30,8 @@ module Para
           resources: resources,
           relation: relation,
           model: model,
-          attributes: attributes
+          attributes: attributes,
+          allow_adding_resource: allow_adding_resource
         }
       )
     end

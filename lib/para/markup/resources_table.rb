@@ -84,9 +84,16 @@ module Para
         end
       end
 
-      def data_for(resource, field_name, type = nil)
-        content_tag(:td) do
+      def data_for(*args)
+        value = if args.length >= 2
+          resource, field_name, type = args
           view.field_value_for(resource, field_name, type).to_s
+        else
+          view.excerpt_value_for(args.first)
+        end
+
+        content_tag(:td) do
+          value
         end
       end
 
