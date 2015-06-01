@@ -75,9 +75,9 @@ module Para
       def header_for(field_name, sort: field_name)
         content_tag(:th) do
           if sort != field_name
-              view.sort_link(search, *sort)
+              view.sort_link(search, *sort, hide_indicator: true)
           elsif searchable?(field_name)
-            view.sort_link(search, field_name)
+            view.sort_link(search, field_name, hide_indicator: true)
           else
             model.human_attribute_name(field_name)
           end

@@ -1,8 +1,7 @@
-%ul.sidebar-navigation
+%ul.sidebar-navigation.collapse.navbar-collapse#menu-sidebar
   %li.brand-logo
     = link_to admin_path do
       = t('para.admin.title')
-    %a.x-navigation-control{:href => "#"}
 
   - if @component_sections.any?
     - @component_sections.each do |component_section|

@@ -1,15 +1,27 @@
 %ul.navigation-horizontal{ data: { header: true } }
   %li.brand-logo
     = link_to admin_path do
-      = t('para.admin.title')
+      .hidden-sm.hidden-xs
+        = t('para.admin.title')
+      .visible-sm.visible-xs
+        %i.fa.fa-home
 
   %li
-    = link_to main_app.root_path do
+    = link_to root_path do
       %i.fa.fa-long-arrow-left
-      = t('para.admin.back_to_app')
+      %span.text-hidden
+        = t('para.admin.back_to_app')
 
   %li.pull-right
-    = link_to main_app.destroy_admin_user_session_path, method: :delete do
-      %i.fa.fa-power-off
-      = t('para.admin.sign_out')
+    %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '#menu-sidebar' } }
+      %span.sr-only
+        = t('para.admin.toggle_navigation')
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
 
+  %li.pull-right
+    = link_to destroy_admin_user_session_path, method: :delete do
+      %i.fa.fa-power-off
+      %span.text-hidden
+        = t('para.admin.sign_out')

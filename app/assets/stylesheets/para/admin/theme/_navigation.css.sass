@@ -3,7 +3,30 @@
 @import "compass/css3/text-shadow"
 @import "compass/css3/transition"
 @import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
 @import "compass/css3/border-radius"
+
+.page-sidebar 
+  position: fixed
+  height: 100%
+  bottom: 0
+  overflow: auto
+  background-color: $navbar-default-bg
+  width: $left-menu-width-open
+  float: left
+  z-index: 3
+  +box-shadow(2px 0 5px #fafafa)
+  &.navbar-collapse
+    padding: 0
+
+.navbar-toggle  
+  border-color: $navbar-default-toggle-border-color
+  margin-left: 10px
+  .icon-bar
+    background-color: $navbar-default-toggle-icon-bar-bg
+  &:hover,
+  &:focus
+    background-color: $navbar-default-toggle-hover-bg  
 
 .brand-logo
   width: 100%
@@ -20,6 +43,8 @@
     background-color: $navbar-default-brand-color
     padding: 15px
     line-height: 20px
+    .fa
+      color: $navbar-icon-brand-color !important
     &:hover,
     &:focus,
     &:active
@@ -95,7 +120,7 @@
 
 // Horizontal Navbar
 .navigation-horizontal
-  height: 50px
+  height: $navbar-height
   background: $navbar-default-bg
   +box-shadow(0 2px 5px #fafafa)
   .brand-logo a
@@ -116,6 +141,11 @@
           color: $navbar-icon-color
       .fa, .glyphicon
         color: $navbar-default-link-color
+      &.navbar-toggle  
+        padding: 9px 10px
+        border-bottom: 1px solid $navbar-default-toggle-border-color
+        display: none
+
     &.active > a,
     &.active > button
       background: $navbar-default-link-active-bg
@@ -146,27 +176,6 @@
     .fa, .glyphicon
       margin: 0
   
-
-
-  .x-navigation-control
-    position: absolute
-    right: 0
-    width: 50px
-    height: 50px
-    cursor: pointer
-    display: none
-    &:hover
-      background: #e0401d
-      border-bottom: 0
-    &:before
-      position: absolute
-      font-family: FontAwesome
-      content: "\f0c9"
-      font-size: 14px
-      top: 14px
-      left: 20px
-      color: #FFF
-      +text-shadow(1px 2px 2px rgba(0, 0, 0, 0.3))
   > li
     
     &.xn-profile

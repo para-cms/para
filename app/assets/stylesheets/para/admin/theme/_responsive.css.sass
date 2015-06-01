@@ -1,15 +1,40 @@
 @import 'variables'
 
-@media only screen and (max-width: 768px)
+@media (max-width: $screen-xs)
+  .form-fixed-actions .form-actions  
+    margin: 0
+    right: 0
+    left: 0
+    padding-right: 0
+    [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-']
+      margin-bottom: 0
+    input[type="submit"],
+    a
+      width: 49%
+      white-space: normal
+      vertical-align: top
+      
+
+@media (max-width: $screen-sm)
+  span.text-hidden
+    display: none
+
+  .form-group-separated .form-group 
+    [class^="col-md-"], [class^="col-sm-"]
+      border-left: none
+
   [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-']
     margin-bottom: 10px
+
   .login-container
     padding: 0px 10px
     .login-box
       padding-top: 10px
       width: 100%
+
   .tocify
     display: none
+    
   .timeline.timeline-right
     &:before
       left: 60px
@@ -25,17 +50,33 @@
         left: 25px
         padding: 7px 0px
 
-@media only screen and (max-width: 1024px)
+@media (max-width: $screen-md)
+  .navigation-horizontal 
+    .brand-logo a
+      width: auto
+
   .page-container
+    .navbar-toggle 
+      display: block !important
     .page-sidebar
-      position: relative !important
-      float: left
+      position: fixed
+      top: $navbar-height
+      bottom: auto
       width: 100%
-      height: auto !important
-      bottom: auto !important
+      max-height: 337px
+      float: none
       overflow: auto
-      &.scroll
-        position: relative
+
+      .brand-logo
+        display: none
+
+      .sidebar-navigation 
+        .component-item.active 
+          a, 
+          button
+            border-right: none
+            border-left: 4px solid $navbar-default-link-active-color
+
     .page-content
       margin-left: 0px
       .content-frame
@@ -47,60 +88,21 @@
           margin-right: 0px
           &.content-frame-body-left
             margin-right: 0px
-        .content-frame-left-toggle, .content-frame-right-toggle
-          display: inline-block
-    &.page-navigation-toggled .page-content
-      margin-left: 0px
+        
     &.page-mode-rtl .page-content
       margin-right: 0px
-    &.page-navigation-top-fixed
-      .x-navigation.x-navigation-horizontal
-        padding-right: 0px
-        position: relative
-        li.xn-logo
-          display: none
-      .page-content
-        padding-top: 0px
-  .x-navigation
-    max-height: 50px
-    overflow: hidden
-    background: $brand-primary
-    &.x-navigation-panel
-      height: 50px
-      max-height: auto
-      overflow: visible
-      li
-        &.xn-icon-button
-          width: 50px
-        &.xn-search
-          width: auto
-    .xn-search input
-      width: 100%
-    &.x-navigation-open
-      max-height: 1200px
-      overflow: visible
-    .x-navigation-control
-      display: block
-  .x-navigation-minimize
-    display: none !important
-  .x-navigation-horizontal > li > ul
-    ul, &.xn-drop-left ul
-      position: relative
-      left: auto
-      right: auto
-      margin-left: 0px
-      margin-right: 0px
-      -moz-box-shadow: none
-      -webkit-box-shadow: none
-      box-shadow: none
-    ul:after
-      display: none
-  .x-navigation li > .panel
-    width: 250px
+   
+  .form-fixed-actions .form-actions  
+    margin: 0
+    right: 0
+    left: 0
+    padding-right: 0
+
   .icons-list li
     width: 100%
   .gallery .gallery-item
     width: 50%
+
   .timeline .timeline-item
     .timeline-item-content
       width: 90%
@@ -111,3 +113,11 @@
         right: 90%
   .error-container
     width: 100%
+
+
+
+@media (min-width: $screen-md)
+  .page-sidebar.navbar-collapse.collapse
+    height: 100% !important
+    overflow: auto !important
+

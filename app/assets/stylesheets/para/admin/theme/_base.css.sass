@@ -43,18 +43,6 @@ body, html
   position: relative
   background: $navbar-default-bg
 
-  // Left Menu system close or open
-  .page-sidebar
-    width: $left-menu-width-open
-    float: left
-    position: relative
-    z-index: 3
-    +box-shadow(2px 0 5px #fafafa)
-    &.page-sidebar-fixed
-      position: fixed
-  &.page-container-wide .page-sidebar
-    width: $left-menu-width-close
-
   // Right side Content
   .page-content
     min-height: 100%
@@ -133,24 +121,11 @@ body, html
           margin-left: 0
           margin-right: $content-frame-with
 
-      .content-frame-left-toggle, .content-frame-right-toggle
-        display: none
-        margin-left: 5px
-
     // Basic content frame
     .page-content-wrap
       float: left
       width: 100%
       padding: 0 25px
-
-  // Left menu close or open
-  &.page-container-wide .page-content
-    margin-left: $left-menu-width-close
-    +transition(all, .2ms ease)
-  &.page-navigation-toggled .page-content
-    margin-left: $left-menu-width-close
-  &.page-navigation-top .page-content
-    margin-left: 0
 
   // Top navigation fixed
   &.page-navigation-top-fixed
@@ -160,9 +135,7 @@ body, html
       right: 0
       left: 0
     .page-content
-      padding-top: 50px
-    &.page-navigation-toggled .navigation-horizontal
-      padding-right: 50px
+      padding-top: $navbar-height
 
 /* Animations */
 @-webkit-keyframes pulsate

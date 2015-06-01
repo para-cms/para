@@ -19,7 +19,6 @@
   font-size: 13px
   padding: 0 10px
   line-height: 28px
-  color: #FFF
   vertical-align: bottom
 
 .input-group-btn
@@ -41,11 +40,16 @@
       padding: 12px 10px
       &:first-child
         border-left: 0px
+
     .control-label
       border-left: none
 
   .panel-body.form-inputs
     padding: 0 10px
+
+  .collapse
+    .form-group:last-child
+      border-bottom: none
 
 .form-group-separated.panel-body
   padding: 0px
@@ -119,8 +123,7 @@ label.valid
   .form-actions
     position: fixed
     bottom: 0
-    right: 35px
-    margin-bottom: 0
+    margin: 0
     z-index: 2
     padding-bottom: 0
     border-bottom: 0

@@ -251,7 +251,7 @@ $grid-gutter-width:         20px !default;
 // Navbar collapse
 
 // Point at which the navbar becomes uncollapsed
-$grid-float-breakpoint:     $screen-sm-min !default;
+$grid-float-breakpoint:     $screen-md-min !default;
 // Point at which the navbar begins collapsing
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
 
@@ -285,7 +285,7 @@ $navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 5
 $navbar-default-brand-hover-bg:            darken($navbar-default-brand-color, 5%) !default;
 
 // Navbar toggle
-$navbar-default-toggle-hover-bg:           #ddd !default;
+$navbar-default-toggle-hover-bg:           #f7f7f7 !default;
 $navbar-default-toggle-icon-bar-bg:        #ccc !default;
 $navbar-default-toggle-border-color:       #ddd !default;
 
