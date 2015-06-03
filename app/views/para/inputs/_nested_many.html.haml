@@ -1,7 +1,7 @@
 .nested-many-field{ class: ('orderable' if orderable) }
   .fields-list{ id: dom_identifier }
     = form.simple_fields_for attribute_name, resources, nested_attribute_name: attribute_name, orderable: orderable do |nested_form|
-      = render partial: 'para/inputs/nested_many_container', locals: { form: nested_form, }
+      = render partial: 'para/inputs/nested_many_container', locals: { form: nested_form, model: model }
 
   -# Add button
   - if add_button
