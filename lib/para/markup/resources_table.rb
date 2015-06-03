@@ -84,6 +84,14 @@ module Para
         end
       end
 
+      # Data for can accept 2 versions of arguments :
+      #
+      #   - resource, field_name, type : cell value will be retrieved from
+      #       the field_value_for helper
+      #
+      #   - a single value : The value to display in the cell directly
+      #       which will be processed to be shorter than 100 chars
+      #
       def data_for(*args)
         value = if args.length >= 2
           resource, field_name, type = args
