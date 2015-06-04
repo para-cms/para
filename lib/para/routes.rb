@@ -37,7 +37,7 @@ module Para
             end
           end
 
-          block.call
+          block.call if block
         end
       end
     end
