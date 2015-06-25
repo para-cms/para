@@ -56,15 +56,15 @@ module Para
       @components_ids_hash ||= {}.with_indifferent_access
     end
 
-    # Only store components cache for the request duration to avoid expired
-    # references to AR object between requests
+    # Only store sections cache for the request duration to avoid expired
+    # references to AR objects between requests
     #
     def sections_cache
       RequestStore.store[:sections_cache] ||= {}.with_indifferent_access
     end
 
     # Only store components cache for the request duration to avoid expired
-    # references to AR object between requests
+    # references to AR objects between requests
     #
     def components_cache
       RequestStore.store[:components_cache] ||= {}.with_indifferent_access
