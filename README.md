@@ -1,4 +1,4 @@
-# Para Ain't Rails Admin ![https://travis-ci.org/para-cms/para](https://travis-ci.org/glyph-fr/para.svg?branch=master)
+# Para Ain't Rails Admin
 
 Admin / CMS Framework for rails. WIP
 

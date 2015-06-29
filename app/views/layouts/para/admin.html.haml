@@ -23,10 +23,10 @@
       .page-sidebar.collapse.navbar-collapse#menu-sidebar
         = render partial: 'para/admin/shared/navigation'
 
-      .page-content        
+      .page-content
         = render partial: 'para/admin/shared/header'
         = display_flash
-        
+
         = yield
 
     = javascript_include_tag 'para/admin', :'data-turbolinks-eval' => false

@@ -1,11 +1,6 @@
 module Para
   module FlashHelper
     def display_flash
-      # Get devise errors if present
-      if respond_to?(:devise_error_messages!)
-        flash[:alert] = devise_error_messages! if defined?(resource) && devise_error_messages! != ""
-      end
-
       # Render empty string if no flash
       return "" if flash.empty?
 
