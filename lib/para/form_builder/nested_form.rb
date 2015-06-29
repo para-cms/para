@@ -13,7 +13,7 @@ module Para
             object.respond_to?(method_name)
           end
 
-          object.try(name_method).presence || default_resource_name
+          (name_method && object.try(name_method).presence) || default_resource_name
         end
       end
 
