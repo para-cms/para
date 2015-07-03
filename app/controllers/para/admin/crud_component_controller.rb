@@ -9,7 +9,7 @@ module Para
         @q = @component.resources.search(params[:q])
         @resources = @q.result.page(params[:page])
 
-        if(@resources.respond_to?(:ordered))
+        if(@resources.orderable?)
           @resources = @resources.ordered
         end
       end
