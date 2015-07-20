@@ -93,3 +93,9 @@ fr:
         type: "Type"
         model_type: "Ressource"
         namespaced: "Ne lister que les ressources du componsant ?"
+
+  activemodel:
+    models:
+      settings_rails/form:
+        one: "Configuration"
+        other: "Configuration"

@@ -34,6 +34,10 @@ module Para
               component :singleton_resource, path: 'resource-form' do
                 resource :singleton_resource, path: 'resource', only: [:create, :update]
               end
+
+              component :settings do
+                resource :settings_form, controller: 'settings_form', only: [:update]
+              end
             end
           end
 
