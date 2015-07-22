@@ -8,7 +8,11 @@ module Para
       end
 
       def foreign_key
-        @foreign_key ||= reflection.try(:foreign_key)
+        @foreign_key ||= reflection && case reflection.macro
+        when :belongs_to then reflection.foreign_key
+        when :has_one then :"#{ reflection.name }_id"
+        when :has_many then :"#{ reflection.name.to_s.singularize }_ids"
+        end
       end
 
       def resource_name(resource)
