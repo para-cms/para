@@ -4,10 +4,15 @@ module Para
       default_options = {
         as: :resource,
         wrapper: :horizontal_form,
-        html: { class: 'form-horizontal form-group-separated' }
+        html: { class: '' }
       }
 
       options = default_options.deep_merge(options)
+
+      options[:html][:class] = [
+        options[:html][:class].presence,
+        'form-horizontal form-group-separated'
+      ].compact.join(' ')
 
       unless options.key?(:url)
         options[:url] = @component.relation_path(resource)
