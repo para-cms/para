@@ -9,7 +9,8 @@ module Para
         @q = @component.resources.search(params[:q])
         @resources = @q.result.page(params[:page])
 
-        if(@resources.orderable?)
+        # Sort collection for orderable and trees
+        if(@resources.orderable? || @resources.respond_to?(:roots))
           @resources = @resources.ordered
         end
       end
