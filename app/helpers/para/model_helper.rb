@@ -26,18 +26,12 @@ module Para
     def excerpt_value_for(value)
       return value unless value.kind_of?(String)
 
-      # Check wether the string is HTML or contains whitespace.
-      # If so, use `truncate_html` helper, else truncate the string
-      # so no-whitespace string (URLs for example) display the beginning of
-      # their value, and not "..."
-      if value.match(/\s|<|>/)
-        truncate_html(value)
+      value = sanitize(value, tags: [])
+      
+      if (truncated = value[0..100]) != value
+        "#{ truncated }..."
       else
-        if (truncated = value[0..100]) != value
-          "#{ truncated }..."
-        else
-          value
-        end
+        value
       end
     end
   end
