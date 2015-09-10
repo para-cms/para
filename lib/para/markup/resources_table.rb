@@ -11,7 +11,7 @@ module Para
           @orderable = model.orderable?
         end
 
-        if !options.key?(:orderable) || options.delete(:actions)
+        if !options.key?(:actions) || options.delete(:actions)
           @actions = true
         end
 
