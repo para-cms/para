@@ -10,6 +10,16 @@ $experimental-support-for-opera: true
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min)
+  legend
+    margin-left: 25%
+
+  .form-inputs > legend
+    margin-left: 24%
+    padding-left: 12px
+
+  .form-fixed-actions
+    margin-bottom: 90px
+
   .form-horizontal .control-label
     padding-top: 15px
 
@@ -19,6 +29,9 @@ $experimental-support-for-opera: true
     .collapse
       .form-group
         padding-right: 0
+
+@media (min-width: $screen-md-min)
+  
 /*
  * Medium devices (desktops, 1025px and up)
  * Note : Breakpoint defined by the theme for the sidebar to fix on top
@@ -36,6 +49,9 @@ $experimental-support-for-opera: true
     .collapse
       .form-group
         padding-right: 0
+
+  .form-inputs > legend
+    margin-left: 21%      
 
 /* Large devices (large desktops, 1400px and up) */
 @media (min-width: 1500px)
