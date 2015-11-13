@@ -10,9 +10,7 @@ module Para
         @resources = @q.result.page(params[:page])
 
         # Sort collection for orderable and trees
-        if(@resources.orderable? || @resources.respond_to?(:roots))
-          @resources = @resources.ordered
-        end
+        @resources = @resources.ordered if @resources.respond_to?(:ordered)
       end
     end
   end

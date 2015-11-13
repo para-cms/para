@@ -135,8 +135,21 @@ module Para
 
       def refresh(attributes = {})
         self.model = type.where(identifier: identifier).first_or_initialize
-        model.assign_attributes(attributes.merge(options))
+        model.assign_attributes(attributes.merge(options_with_defaults))
         model.save!
+      end
+
+      # Ensures unset :configuration store options are set to nil to allow
+      # removing a configuration option from the components.rb file
+      #
+      def options_with_defaults
+        configurable_keys = type.local_stored_attributes.try(:[], :configuration) || []
+        configurable_keys += options.keys
+        configurable_keys.uniq!
+
+        configurable_keys.each_with_object({}) do |key, hash|
+          hash[key] = options[key]
+        end
       end
     end
   end

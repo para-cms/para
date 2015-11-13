@@ -33,41 +33,41 @@
   .redactor-editor
     background-color: $input-bg
     border: 1px solid $input-border
-    border-top-width: 0px 
+    border-top-width: 0px
     +border-radius(0 0 $input-border-radius $input-border-radius)
     &:focus
       border-color: $input-border-focus
       background: #FFF
     &[disabled], &[readonly]
-      color: #CCC
+      color: $gray-dark
     &[disabled]:focus, &[readonly]:focus
       background: $input-bg-disabled
-      color: #CCC
+      color: $gray-dark
       border-color: $gray-lighter
 
   textarea.form-control
     background-color: $input-bg
     color: $input-color
     border: 1px solid $input-border
-    border-top-width: 0px 
+    border-top-width: 0px
     &:focus
       background-color: #111
       color: $gray-lighter
 
-.redactor-editor      
+.redactor-editor
   div.row
     margin-left: -15px
     margin-right: -15px
     margin-bottom: 0
   div[class^=col-lg-], div[class^=col-md-], div[class^=col-sm-], div[class^=col-xs-]
     padding-left: 15px
-    padding-right: 15px  
+    padding-right: 15px
     border: 1px dashed $gray-light
-    margin-bottom: 0      
+    margin-bottom: 0
 
-#redactor-modal 
-  input[type="text"], 
-  input[type="password"], 
+#redactor-modal
+  input[type="text"],
+  input[type="password"],
   input[type="email"],
   textarea
     border-color: $input-border
@@ -79,7 +79,7 @@
       border-color: $input-border-focus
       +box-shadow(none)
 
-  footer 
+  footer
     button.redactor-modal-action-btn
       background-color: $btn-primary-bg
       color: $btn-primary-color

@@ -1,6 +1,6 @@
 module Para
   module FlashHelper
-    def display_flash
+    def display_admin_flash
       # Render empty string if no flash
       return "" if flash.empty?
 

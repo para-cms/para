@@ -17,7 +17,7 @@ module Para
     end
 
     def copy_migrations
-      rake 'para:install:migrations'
+      rake 'para_engine:install:migrations'
     end
 
     def install_gems
