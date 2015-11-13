@@ -12,5 +12,5 @@
     .clearfix    
   %ul.tree
     %li.placeholder{ class: "#{ 'hidden' unless needs_placeholder?(root) }"}
-    = render partial: 'para/admin/resources/tree_item', collection: root.children.ordered, as: :root
+    = render partial: find_partial_for(model, 'tree_item'), collection: root.children.ordered, as: :root, locals: { model: model }
     

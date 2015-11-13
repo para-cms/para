@@ -6,7 +6,7 @@
     - if resources.length > 0
       = panel.body do
         %ul.tree.root-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree), :"max-depth" => max_depth_for(model) } }
-          = render partial: 'para/admin/resources/tree_item', collection: resources.roots, as: :root
+          = render partial: find_partial_for(model, 'tree_item'), collection: resources.roots, as: :root, locals: { model: model}
 
     - else
       = panel.body do
