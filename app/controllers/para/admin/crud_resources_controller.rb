@@ -49,6 +49,15 @@ module Para
 
       private
 
+      def resource_model
+        @resource_model ||= 
+          if @component.subclassable_with?(params[:type])
+            params[:type].constantize
+          else
+            super
+          end
+      end
+
       def load_and_authorize_crud_resource
         loader = self.class.cancan_resource_class.new(
           self, resource_name, parent: false, class: resource_model.name

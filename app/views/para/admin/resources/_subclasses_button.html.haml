@@ -1,0 +1,10 @@
+.btn-group
+  %button.btn.btn-primary.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false }}
+    = t('para.shared.add')
+    %span.caret
+
+  %ul.dropdown-menu
+    - component.subclass_names.each do |subclass|
+      %li
+        = link_to component.relation_path(model.model_name.singular_route_key, action: :new, type: subclass) do
+          = subclass.constantize.model_name.human

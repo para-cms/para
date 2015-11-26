@@ -30,6 +30,10 @@ module Para
         false
       end
 
+      def subclassable?
+        false
+      end
+
       def self.model_name
         @model_name ||= ModelName.new(self)
       end

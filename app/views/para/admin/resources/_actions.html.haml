@@ -1,1 +1,7 @@
-= icon_link_to t('para.shared.add'), component.relation_path(model.model_name.singular_route_key, action: :new), icon: 'plus', class: 'btn btn-primary' if allow_adding_resource
+- if allow_adding_resource
+  - if component.subclassable?
+    = render partial: find_partial_for(relation, :subclasses_button), locals: { component: component, model: model }
+  - else
+    = render partial: find_partial_for(relation, :add_button), locals: { component: component , model: model}
+
+= render partial: find_partial_for(relation, :exports_menu), locals: { component: component, model: model }
