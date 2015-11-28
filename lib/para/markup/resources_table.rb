@@ -129,37 +129,42 @@ module Para
       def clone_button(resource)
         return unless resource.class.cloneable?
 
-        view.link_to(
-          component.relation_path(
-            resource, action: :clone, return_to: view.request.fullpath
-          ),
+        path = component.relation_path(
+          resource, action: :clone, return_to: view.request.fullpath
+        )
+
+        options = {
           method: :post,
           class: 'btn btn-info'
-        ) do
+        }
+
+        view.link_to(path, options) do
           content_tag(:i, '', class: 'fa fa-refresh')
         end
       end
 
       def edit_button(resource)
-        view.link_to(
-          component.relation_path(
-            resource, action: :edit, return_to: view.request.fullpath
-          ),
-          class: 'btn btn-primary'
-        ) do
+        path = component.relation_path(
+          resource, action: :edit, return_to: view.request.fullpath
+        )
+
+        view.link_to(path, class: 'btn btn-primary') do
           content_tag(:i, '', class: 'fa fa-pencil')
         end
       end
 
       def delete_button(resource)
-        view.link_to(
-          component.relation_path(resource),
+        path = component.relation_path(resource)
+
+        options = {
           method: :delete,
           data: {
             confirm: I18n.t('para.list.delete_confirmation')
           },
           class: 'btn btn-danger'
-        ) do
+        }
+
+        view.link_to(path, options) do
           content_tag(:i, '', class: 'fa fa-trash')
         end
       end
