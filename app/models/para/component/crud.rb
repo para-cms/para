@@ -4,6 +4,7 @@ module Para
       register :crud, self
 
       include Para::Component::Exportable
+      include Para::Component::Subclassable
 
       configurable_on :model_type
       configurable_on :namespaced
