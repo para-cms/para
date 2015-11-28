@@ -1,6 +1,8 @@
 module Para
   module AttributeField
     class BelongsToField < RelationField
+      register :belongs_to, self
+
       field_option :collection, :relation_options
 
       def field_name

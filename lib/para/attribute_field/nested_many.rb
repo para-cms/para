@@ -1,6 +1,8 @@
 module Para
   module AttributeField
     class NestedManyField < AttributeField::HasManyField
+      register :nested_many, self
+
       def parse_input(params)
         if (nested_attributes = params[nested_attributes_key])
           nested_attributes.each do |index, attributes|

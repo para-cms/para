@@ -1,6 +1,8 @@
 module Para
   module AttributeField
     class PasswordField < AttributeField::Base
+      register :password, self
+
       def initialize(model, options = {})
         options.reverse_merge!(type: 'password', field_type: 'password')
         super(model, options)

@@ -99,3 +99,11 @@ fr:
       settings_rails/form:
         one: "Configuration"
         other: "Configuration"
+
+  date:
+    formats:
+      admin: '%d/%m/%Y'
+
+  time:
+    formats:
+      admin: '%d/%m/%Y %H:%M'

@@ -1,6 +1,8 @@
 module Para
   module AttributeField
     class HasManyField < RelationField
+      register :has_many, self
+
       def field_name
         reflection.name
       end

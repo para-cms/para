@@ -4,6 +4,8 @@ module Para
       include ActionView::Helpers::SanitizeHelper
       include ActionView::Helpers::TextHelper
 
+      register :redactor, self
+
       def initialize(model, options = {})
         options.reverse_merge!(type: 'text', field_type: 'redactor')
         super(model, options)

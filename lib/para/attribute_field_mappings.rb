@@ -4,6 +4,7 @@ require 'para/attribute_field/datetime'
 require 'para/attribute_field/password'
 require 'para/attribute_field/file'
 require 'para/attribute_field/image'
+require 'para/attribute_field/enum'
 require 'para/attribute_field/relation'
 require 'para/attribute_field/belongs_to'
 require 'para/attribute_field/has_many'
@@ -30,13 +31,19 @@ module Para
     end
 
     def field_for(field_name, type = nil)
-      fields_hash[field_name] ||= if model.new.respond_to?(field_name)
-        build_field_for(field_name, type)
+      existing_field = fields_hash[field_name]
+
+      if !existing_field || (type && !existing_field.type?(type))
+        fields_hash[field_name] = if model.new.respond_to?(field_name)
+          build_field_for(field_name, type)
+        else
+          raise NoMethodError.new(
+            "No attribute or method correspond to ##{ field_name } " +
+            "in the model #{ model.name }. No field could be created."
+          )
+        end
       else
-        raise NoMethodError.new(
-          "No attribute or method correspond to ##{ field_name } " +
-          "in the model #{ model.name }. No field could be created."
-        )
+        existing_field
       end
     end
 
@@ -65,18 +72,12 @@ module Para
 
     def build_field_for(attribute_name, type)
       field_class = field_class_for(type)
-
-      field_class.new(
-        model, name: attribute_name, type: type
-      )
+      field_class.new(model, name: attribute_name, type: type)
     end
 
     def field_class_for(type)
-      case type
-      when :boolean then AttributeField::BooleanField
-      when :date, :datetime then AttributeField::DatetimeField
-      else AttributeField::Base
-      end
+      attribute_class = type && AttributeField::Base.field_types[type.to_sym]
+      attribute_class || AttributeField::Base
     end
   end
 end

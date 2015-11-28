@@ -2,6 +2,7 @@ module Para
   module AttributeField
     class Base
       class_attribute :_field_options
+      cattr_accessor :_field_types
 
       attr_reader :model, :name, :type, :field_type, :field_method
 
@@ -13,6 +14,29 @@ module Para
           method_name: method_name,
           options: options
         }]
+      end
+
+      # Registers the class as the responder for a given field type
+      #
+      # Example :
+      #
+      #   # This will allow looking :my_field or :myfield up and instantiate
+      #   # self as the field
+      #   class MyField < Para::AttributeField::Base
+      #     register :my_field, :myfield, self
+      #   end
+      #
+      #
+      def self.register(*args)
+        attribute_class = args.pop
+
+        args.each do |arg|
+          Base.field_types[arg] = attribute_class
+        end
+      end
+
+      def self.field_types
+        @_field_types ||= {}
       end
 
       field_option :as, :field_type_name
@@ -65,6 +89,10 @@ module Para
 
       def attribute_column_path
         [name]
+      end
+
+      def type?(type)
+        self.type.to_s == type.to_s
       end
 
       private

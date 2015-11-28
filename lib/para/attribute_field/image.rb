@@ -3,6 +3,8 @@ module Para
     class ImageField < AttributeField::Base
       include ActionView::Helpers::AssetTagHelper
 
+      register :image, self
+
       def value_for(instance)
         style = attachment_thumb_style_for(instance)
 

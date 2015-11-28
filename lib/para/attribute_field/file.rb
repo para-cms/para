@@ -3,6 +3,8 @@ module Para
     class FileField < AttributeField::Base
       include ActionView::Helpers::UrlHelper
 
+      register :file, self
+
       field_option :wrapper, :wrapper_name
 
       def value_for(instance)
