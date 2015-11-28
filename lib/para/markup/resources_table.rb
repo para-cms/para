@@ -11,9 +11,7 @@ module Para
           @orderable = model.orderable?
         end
 
-        if !options.key?(:actions) || options.delete(:actions)
-          @actions = true
-        end
+        @actions = options.fetch(:actions, true)
 
         merge_class!(options, 'table')
         merge_class!(options, 'para-component-relation-table')
@@ -119,9 +117,11 @@ module Para
       def actions_cell(resource)
         content_tag(:td) do
           content_tag(:div, class: 'pull-right btn-group') do
-            edit_button(resource) +
-            clone_button(resource) +
-            delete_button(resource)
+            edit = edit_button(resource) if action?(:edit)
+            clone = clone_button(resource) if action?(:clone)
+            delete = delete_button(resource) if action?(:delete)
+
+            edit + clone + delete
           end
         end
       end
@@ -177,6 +177,10 @@ module Para
 
       def searchable?(field_name)
         model.columns_hash.keys.include?(field_name.to_s)
+      end
+
+      def action?(type)
+        actions == true || actions.include?(type)
       end
     end
   end
