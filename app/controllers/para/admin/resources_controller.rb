@@ -77,7 +77,7 @@ module Para
 
       def after_form_submit_path
         if params[:_save_and_edit]
-          { action: 'edit', id: resource.to_param }
+          { action: 'edit', id: resource.id }
         elsif params[:_save_and_add_another]
           { action: 'new' }
         else
