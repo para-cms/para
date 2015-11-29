@@ -44,6 +44,8 @@ fr:
       shared:
         new:
           title: "Créer un(e) %{model}"
+        edit:
+          title: "Modification d'un(e) %{model}"
       nested:
         name: "Nom"
         add: "Ajouter"
