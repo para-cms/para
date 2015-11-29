@@ -5,6 +5,7 @@ require 'para/form_builder/field_mappings'
 require 'para/form_builder/nested_form'
 require 'para/form_builder/ordering'
 require 'para/form_builder/settings'
+require 'para/form_builder/tabs'
 
 # We'll implement our own form builder later, but for now it would need to
 # patch or override Cocoon to allow creating nested fields with our custom
@@ -17,6 +18,7 @@ SimpleForm::FormBuilder.class_eval do
   include Para::FormBuilder::NestedForm
   include Para::FormBuilder::Ordering
   include Para::FormBuilder::Settings
+  include Para::FormBuilder::Tabs
 end
 
 SimpleForm::FormBuilder.map_type(:inet, to: SimpleForm::Inputs::StringInput)
