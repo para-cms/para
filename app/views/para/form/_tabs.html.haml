@@ -1,0 +1,13 @@
+.form-tabs
+  %nav.navbar.navbar-inverse
+    %ul.nav.navbar-nav{ role: 'tablist' }
+      - tabs.each_with_index do |tab, index|
+        %li{ class: ('active' if index == 0), role: 'presentation' }
+          = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
+            %i.fa{ class: "fa-#{ tab.icon }" }
+            = tab.title
+
+  .tab-content
+    - tabs.each_with_index do |tab, index|
+      .tab-pane{ id: tab.dom_id, class: ('active' if index == 0), role: 'tabpanel' }
+        = tab.content
