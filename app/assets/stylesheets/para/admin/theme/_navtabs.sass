@@ -134,7 +134,8 @@
       border-top: none
       &.active
         border-top-color: $navbar-inverse-link-hover-color
-
+        margin-bottom: 0
+        
 @media (min-width: $screen-md-min)
   .form-tabs
     .navbar
@@ -142,5 +143,7 @@
         border-top: 4px solid transparent
         &.active
           border-top-color: $navbar-inverse-link-hover-color
+          border-bottom: 1px solid #fff
+          margin-bottom: -1px
         > a
           padding-top: 12.5px
