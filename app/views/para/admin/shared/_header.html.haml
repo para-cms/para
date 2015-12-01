@@ -6,12 +6,6 @@
       .visible-sm.visible-xs
         %i.fa.fa-home
 
-  %li
-    = link_to root_path do
-      %i.fa.fa-long-arrow-left
-      %span.text-hidden
-        = t('para.admin.back_to_app')
-
   %li.pull-right
     %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '#menu-sidebar' } }
       %span.sr-only
@@ -25,3 +19,9 @@
       %i.fa.fa-power-off
       %span.text-hidden
         = t('para.admin.sign_out')
+
+  %li.pull-right
+    = link_to root_path, target: "_blank" do
+      %i.fa.fa-home
+      %span.text-hidden
+        = t('para.admin.back_to_app')

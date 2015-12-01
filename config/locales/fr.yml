@@ -18,7 +18,7 @@ fr:
     admin:
       title: "Administration"
       toggle_navigation: "Open navigation"
-      back_to_app: "Retour à l'application"
+      back_to_app: "Afficher le site"
       sign_out: "Se déconnecter"
 
     confirmation:
