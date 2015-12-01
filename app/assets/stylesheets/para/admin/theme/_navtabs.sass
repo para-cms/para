@@ -125,3 +125,22 @@
     margin-left: 150px
   .panel-body
     padding-top: 10px
+
+.form-tabs
+  .navbar
+    margin-bottom: 0
+    +border-radius(0)
+    .nav li
+      border-top: none
+      &.active
+        border-top-color: $navbar-inverse-link-hover-color
+
+@media (min-width: $screen-md-min)
+  .form-tabs
+    .navbar
+      .nav li
+        border-top: 4px solid transparent
+        &.active
+          border-top-color: $navbar-inverse-link-hover-color
+        > a
+          padding-top: 12.5px
