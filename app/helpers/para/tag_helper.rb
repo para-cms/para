@@ -46,5 +46,17 @@ module Para
         locals: options
       )
     end
+
+    def add_button_for(component, relation, model)
+      partial_name = if component.subclassable?
+        :subclassable_add_button
+      else
+        :add_button
+      end
+
+      render partial: find_partial_for(relation, partial_name), locals: {
+        component: component, model: model
+      }
+    end
   end
 end

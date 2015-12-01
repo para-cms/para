@@ -12,8 +12,12 @@
 
     - else
       = panel.body do
-        = alert class: 'no-margin-bottom', dismissable: false do
-          = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
+        = alert class: 'no-results no-margin-bottom', dismissable: false do
+          - if filtered?(attributes)
+            = t('para.list.no_results')
+          - else
+            = t('para.list.empty')
+            = add_button_for(component, relation, model) if allow_adding_resource
 
     - if resources.total_count > resources.length
       = panel.footer do
