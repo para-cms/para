@@ -75,6 +75,10 @@ fr:
         "true": "Oui"
         "false": "Non"
 
+  admin:
+    breadcrumbs:
+      home: "Tableau de bord"
+
   activerecord:
     errors:
       relation_length_is_smaller: "doit contenir au moins %{minimum} éléments"

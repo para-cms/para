@@ -24,8 +24,13 @@ module Para
       end
 
       def resource_title_for(resource)
-        resource.try(:title) || resource.try(:name) ||
-        t('para.form.shared.edit.title', model: resource.class.model_name.human)
+        if resource.new_record?
+          t('para.form.shared.new.title', model: resource.class.model_name.human)
+        else
+          resource.try(:title).presence ||
+            resource.try(:name).presence ||
+            t('para.form.shared.edit.title', model: resource.class.model_name.human)
+        end
       end
 
       def registered_components_options

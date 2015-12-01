@@ -40,6 +40,8 @@ module Para
         loader.load_and_authorize_resource
 
         ActiveDecorator::Decorator.instance.decorate(@component) if @component
+
+        add_breadcrumb(@component.name, @component.path)
       end
     end
   end

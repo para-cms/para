@@ -1,8 +1,6 @@
 module Para
   module Admin
-    class SingletonResourceComponentController < Para::Admin::BaseController
-      load_and_authorize_component
-
+    class SingletonResourceComponentController < Para::Admin::ComponentController
       attr_accessor :resource
       helper_method :resource
 

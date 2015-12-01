@@ -50,7 +50,7 @@ module Para
       private
 
       def resource_model
-        @resource_model ||= 
+        @resource_model ||=
           if @component.subclassable_with?(params[:type])
             params[:type].constantize
           else
@@ -64,6 +64,8 @@ module Para
         )
 
         loader.load_and_authorize_resource
+
+        add_breadcrumb(resource_title_for(resource))
       end
 
       def attach_resource_to_component

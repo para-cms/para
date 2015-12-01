@@ -2,9 +2,7 @@ require_dependency "para/application_controller"
 
 module Para
   module Admin
-    class CrudComponentController < Para::Admin::BaseController
-      load_and_authorize_component
-
+    class CrudComponentController < Para::Admin::ComponentController
       def show
         @q = @component.resources.search(params[:q])
         @resources = @q.result.page(params[:page])

@@ -1,8 +1,6 @@
 module Para
   module Admin
-    class SettingsComponentController < Para::Admin::BaseController
-      load_and_authorize_component
-
+    class SettingsComponentController < Para::Admin::ComponentController
       def show
         @settings = SettingsRails::Form.new
       end
