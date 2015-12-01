@@ -17,7 +17,8 @@
             = t('para.list.no_results')
           - else
             = t('para.list.empty')
-            = add_button_for(component, relation, model) if allow_adding_resource
+
+          = add_button_for(component, relation, model) if allow_adding_resource
 
     - if resources.total_count > resources.length
       = panel.footer do

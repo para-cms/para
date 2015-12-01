@@ -55,8 +55,8 @@ fr:
     list:
       search_title: "Recherche"
       delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
-      no_results: "Aucun résultat pour cette recherche, merci d'essayer avec d'autres critères"
-      empty: "Aucune entrée créée pour le moment"
+      no_results: "Aucun résultat pour cette recherche, merci d'essayer avec d'autres critères ou de créer une nouvelle entrée avec le bouton suivant :"
+      empty: "Aucune entrée créée pour le moment. Créez une nouvelle entrée avec le bouton suivant :"
 
     export:
       name: "Export %{name}"
