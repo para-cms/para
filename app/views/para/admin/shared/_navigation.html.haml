@@ -11,8 +11,7 @@
 
         %ul.component-section-list-items
           - component_section.components.each do |component|
-            - active = @component == component
-            %li.component-item{ class: active && 'active' }
+            %li.component-item{ class: (@component == component) && 'active' }
               = link_to component.name, component.path
 
   - else
