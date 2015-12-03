@@ -4,7 +4,7 @@ module Para
       default_options = {
         as: :resource,
         wrapper: :horizontal_form,
-        html: { class: '' }
+        html: { class: '', data: { :'para-form' => true } }
       }
 
       options = default_options.deep_merge(options)
