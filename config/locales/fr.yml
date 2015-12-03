@@ -26,19 +26,10 @@ fr:
         destroy: 'Etes-vous sure de vouloir supprimer %{model} ?'
 
     component:
-      create: "Créer un(e) Composant"
-      add: "Ajouter un composant"
-      none_created: "Aucune page pour le moment ..."
-      crud:
-        name: "Listing de ressources"
-      singleton_resource:
-        name: "Formulaire de ressource"
+      none_created: "Aucun composant pour le moment ..."
 
-    component_section:
-      add: "Ajouter une section"
-      edit: 'Modifier la section'
-      destroy: 'Supprimer la section'
-      actions: "Actions"
+    dashboard:
+      title: "Tableau de bord"
 
     form:
       shared:

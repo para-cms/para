@@ -11,7 +11,7 @@
 
         %ul.component-section-list-items
           - component_section.components.each do |component|
-            - active = request.fullpath.split('/')[3] == component.slug
+            - active = @component == component
             %li.component-item{ class: active && 'active' }
               = link_to component.name, component.path
 
