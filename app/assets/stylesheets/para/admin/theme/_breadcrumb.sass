@@ -3,11 +3,12 @@
 
 .breadcrumb
   width: 100%
-  background: #f2f2f2
   margin-bottom: 0px
   padding: 0
   +border-radius(0)
   overflow: hidden
+  border-top: 1px solid #fafafa
+  +box-shadow(0 2px 5px #fafafa)
   li + li:before
     display: none
   li
@@ -18,7 +19,7 @@
       color: yellow
       pointer-events: none
       cursor: default
-      padding: 15px 10px 16px 30px
+      padding: 15px 10px 15px 30px
     a
       font-size: 1.1em
       color: $breadcrumb-color
@@ -26,12 +27,12 @@
       display: block
       position: relative
       background-color: $breadcrumb-bg
-      padding: 15px 10px 16px 30px
+      padding: 15px 10px 15px 30px
       &:hover
-        color: $breadcrumb-active-color
-        background-color: darken($breadcrumb-bg, 5%)
+        color: #000
+        background-color: #f7f7f7
         &:after
-          border-left-color: darken($breadcrumb-bg, 5%)
+          border-left-color: #f7f7f7
 
       &:after
         content: " "
@@ -53,11 +54,11 @@
         height: 0
         border-top: 30px solid transparent
         border-bottom: 30px solid transparent
-        border-left: 15px solid #fff
+        border-left: 15px solid $brand-primary
         position: absolute
         top: 50%
         margin-top: -30px
-        margin-left: 3px
+        margin-left: 2px
         left: 100%
         z-index: 1
     
