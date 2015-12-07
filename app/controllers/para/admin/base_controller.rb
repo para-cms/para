@@ -41,7 +41,7 @@ module Para
 
         ActiveDecorator::Decorator.instance.decorate(@component) if @component
 
-        add_breadcrumb(@component.name, @component.path)
+        add_breadcrumb(@component.name, @component.path) if @component
       end
     end
   end

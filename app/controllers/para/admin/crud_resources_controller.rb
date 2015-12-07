@@ -6,7 +6,7 @@ module Para
       include Para::Admin::ResourceControllerConcerns
 
       before_filter :load_and_authorize_crud_resource
-      before_filter :add_breadcrumbs, only: [:show, :index]
+      before_filter :add_breadcrumbs, only: [:show, :index, :edit, :new]
 
       after_filter :attach_resource_to_component, only: [:create]
       after_filter :remove_resource_from_component, only: [:destroy]
