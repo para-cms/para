@@ -3,7 +3,7 @@ module Para
     module BaseHelper
       include Para::ApplicationHelper
 
-      def find_partial_for(relation, partial)
+      def find_partial_for(relation, partial, partial_dir: 'admin/resources')
         if relation.kind_of? ActiveRecord::Base
           relation = relation.class
         end
@@ -13,7 +13,7 @@ module Para
         if lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
           "admin/#{ relation }/#{ partial }"
         else
-          "para/admin/resources/#{ partial }"
+          "para/#{ partial_dir }/#{ partial }"
         end
       end
 
