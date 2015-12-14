@@ -9,6 +9,7 @@ module Para
             nested_model_mappings.fields.each do |field|
               field.parse_input(attributes)
             end
+
             params[nested_attributes_key][index] = attributes
           end
         else
