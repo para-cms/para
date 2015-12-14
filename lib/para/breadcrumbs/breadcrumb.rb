@@ -30,7 +30,7 @@ module Para
       end
 
       def active?(request)
-        path == request.fullpath || !_path
+        path == request.path || !_path
       end
 
       private

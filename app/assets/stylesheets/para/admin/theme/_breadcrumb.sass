@@ -1,29 +1,68 @@
 @import 'variables'
 @import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
 
 .breadcrumb
   width: 100%
-  background: $breadcrumb-bg
   margin-bottom: 0px
-  padding: 6px 15px 7px
+  padding: 0
   +border-radius(0)
+  overflow: hidden
+  border-top: 1px solid #fafafa
+  +box-shadow(0 2px 5px #fafafa)
+  li + li:before
+    display: none
   li
-    font-size: 11px
-    line-height: 12px
-    color: $breadcrumb-color
-    text-decoration: none
+    &:first-child a
+      padding-left: 27px
+    &:last-child
+      background-color: transparent !important
+      color: yellow
+      pointer-events: none
+      cursor: default
+      padding: 15px 10px 15px 30px
     a
-      font-size: 11px
-      line-height: 12px
+      font-size: 1.1em
       color: $breadcrumb-color
       text-decoration: none
+      display: block
+      position: relative
+      background-color: $breadcrumb-bg
+      padding: 15px 10px 15px 30px
       &:hover
-        color: $breadcrumb-active-color
+        color: #000
+        background-color: #f7f7f7
+        &:after
+          border-left-color: #f7f7f7
+
+      &:after
+        content: " "
+        display: block
+        width: 0
+        height: 0
+        border-top: 30px solid transparent
+        border-bottom: 30px solid transparent
+        border-left: 15px solid $breadcrumb-bg
+        position: absolute
+        top: 50%
+        margin-top: -30px
+        left: 100%
+        z-index: 2
+      &:before
+        content: " "
+        display: block
+        width: 0
+        height: 0
+        border-top: 30px solid transparent
+        border-bottom: 30px solid transparent
+        border-left: 15px solid $brand-primary
+        position: absolute
+        top: 50%
+        margin-top: -30px
+        margin-left: 2px
+        left: 100%
+        z-index: 1
+    
     &:hover, &:last-child
       color: $breadcrumb-active-color
-  > li + li:before
-    font-family: FontAwesome
-    content: "\f105"
-    color: $breadcrumb-color
-    padding: 0 8px
 

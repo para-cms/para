@@ -157,7 +157,7 @@ $input-border:                   $gray-light !default;
 $input-border-radius:            $border-radius-base !default;
 $input-border-focus:             #C1C1C1 !default;
 
-$input-color-placeholder:        $gray-light !default;
+$input-color-placeholder:        $gray-dark !default;
 
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
 $input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
@@ -572,10 +572,10 @@ $badge-border-radius:         10px !default;
 
 // Breadcrumbs
 // -------------------------
-$breadcrumb-bg:               #e8e8e8 !default;
-$breadcrumb-color:            #99a0aa !default;
-$breadcrumb-active-color:     #656d78 !default;
-$breadcrumb-separator:        "/" !default;
+$breadcrumb-bg:               #fff !default;
+$breadcrumb-color:            #555 !default;
+$breadcrumb-active-color:     $brand-primary !default;
+$breadcrumb-separator:        "" !default;
 
 
 // Carousel

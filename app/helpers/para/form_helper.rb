@@ -22,7 +22,15 @@ module Para
         default_options[:html][:class] << ' form-fixed-actions'
       end
 
-      simple_form_for(resource, options, &block)
+      simple_form_for(resource, options) do |form|
+        capture { block.call(form) }.tap do |content|
+          # Append hidden field with type if resource is subclassable
+          # to avoid bad class instantiation in create action
+          if @component.subclassable? && resource.new_record?
+            content << form.hidden_field(:type, value: resource.type)
+          end
+        end
+      end
     end
   end
 end

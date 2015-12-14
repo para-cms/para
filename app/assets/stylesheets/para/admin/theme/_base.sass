@@ -128,13 +128,19 @@ body, html
 
   // Top navigation fixed
   &.page-navigation-top-fixed
+    .breadcrumb
+      position: fixed
+      top: $navbar-height
+      left: $left-menu-width-open
+      right: 0
+      z-index: 3
     .navigation-horizontal
       position: fixed
       top: 0
       right: 0
       left: 0
     .page-content
-      padding-top: $navbar-height
+      padding-top: $navbar-height + 50
 
 /* Animations */
 @-webkit-keyframes pulsate

@@ -6,6 +6,8 @@ module Para
       include Para::Admin::ResourceControllerConcerns
 
       before_filter :load_and_authorize_crud_resource
+      before_filter :add_breadcrumbs, only: [:show, :index, :edit, :new]
+
       after_filter :attach_resource_to_component, only: [:create]
       after_filter :remove_resource_from_component, only: [:destroy]
 
@@ -64,9 +66,11 @@ module Para
         )
 
         loader.load_and_authorize_resource
-
-        add_breadcrumb(resource_title_for(resource))
       end
+
+      def add_breadcrumbs
+        add_breadcrumb(resource_title_for(resource))
+      end        
 
       def attach_resource_to_component
         return unless resource.persisted? && @component.namespaced?
