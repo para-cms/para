@@ -62,7 +62,8 @@
   display: block
   z-index: 3
   background-color: $navbar-default-bg
-  li
+  +box-shadow(0 2px 5px #fafafa)
+  .ul-navbar li
     float: left
     display: block
     width: 100%
@@ -122,107 +123,114 @@
 .navigation-horizontal
   height: $navbar-height
   background: $navbar-default-bg
-  .brand-logo a
-    border-bottom: 0
-    width: $left-menu-width-open
-  > li
-    > a, button
-      padding: 15px
+  .ul-navbar
+    &.list-inline
+      margin-left: 0
+
+    .brand-logo a
       border-bottom: 0
-      line-height: 20px
-      color: $navbar-default-link-color
-      text-shadow: none
-      display: block
-      &:hover
-        background: $navbar-default-link-hover-bg
-        text-decoration: none
+      width: $left-menu-width-open
+    li
+      background-color: #fff
+      > a, button
+        padding: 15px
+        border-bottom: 0
+        line-height: 20px
+        color: $navbar-default-link-color
+        text-shadow: none
+        display: block
+        
+        &:hover
+          background: $navbar-default-link-hover-bg
+          text-decoration: none
+          .fa, .glyphicon
+            color: $navbar-icon-color
+        .fa, .glyphicon
+          color: $navbar-default-link-color
+        &.navbar-toggle  
+          padding: 9px 10px
+          border-bottom: 1px solid $navbar-default-toggle-border-color
+          display: none
+      .brand-logo a
+        background-color: $navbar-default-brand-color
+      &.active > a,
+      &.active > button
+        background: $navbar-default-link-active-bg
         .fa, .glyphicon
           color: $navbar-icon-color
-      .fa, .glyphicon
-        color: $navbar-default-link-color
-      &.navbar-toggle  
-        padding: 9px 10px
-        border-bottom: 1px solid $navbar-default-toggle-border-color
+      ul
+        width: $left-menu-width-open
+        position: absolute
+        overflow: visible
         display: none
-
-    &.active > a,
-    &.active > button
-      background: $navbar-default-link-active-bg
-      .fa, .glyphicon
-        color: $navbar-icon-color
-    ul
-      width: $left-menu-width-open
-      position: absolute
-      overflow: visible
-      display: none
-      +border-radius(3px)
-      +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
-      z-index: 3
-      li
-        width: 100%
-      
-  li
-    width: auto
-    position: relative
-    &.active > ul
-      display: block
-  
-  .xn-icon-button > a,
-  .xn-icon-button > button
-    padding: 15px 10px
-    text-align: center
-    width: 50px
-    .fa, .glyphicon
-      margin: 0
-  
-  > li
+        +border-radius(3px)
+        +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
+        z-index: 3
+        li
+          width: 100%
+        
+    li
+      width: auto
+      position: relative
+      &.active > ul
+        display: block
     
-    &.xn-profile
-      padding: 0
-      border-bottom: 1px solid #273541
-      .profile-mini
-        display: none
-        width: 50px
-        padding: 7px
-        img
-          width: 36px
-          border: 2px solid #FFF
-          +border-radius(50%)
-  .informer
-    font-size: 11px
-    position: absolute
-    line-height: 20px
-    text-align: center
-    padding: 0 5px
-    background: #BBB
-    right: 10px
-    top: 15px
-    color: #FFF
-    +border-radius(3px)
-    &.pulsate
-      -webkit-animation: pulsate 1s ease-out
-      -webkit-animation-iteration-count: infinite
-      -moz-animation: pulsate 1s ease-out
-      -moz-animation-iteration-count: infinite
-      animation: pulsate 1s ease-out
-      animation-iteration-count: infinite
-    &.informer-primary
-      background: $brand-primary
-    &.informer-success
-      background: $brand-success
-    &.informer-info
-      background: $brand-info
-    &.informer-warning
-      background: $brand-warning
-    &.informer-danger
-      background: $brand-danger
-  li li .informer
-    top: 12px
-  .xn-icon-button .informer
-    left: auto
-    bottom: auto
-    right: 1px
-    top: 5px
+    .xn-icon-button > a,
+    .xn-icon-button > button
+      padding: 15px 10px
+      text-align: center
+      width: 50px
+      .fa, .glyphicon
+        margin: 0
+    
+    > li
+      
+      &.xn-profile
+        padding: 0
+        border-bottom: 1px solid #273541
+        .profile-mini
+          display: none
+          width: 50px
+          padding: 7px
+          img
+            width: 36px
+            border: 2px solid #FFF
+            +border-radius(50%)
+    .informer
+      font-size: 11px
+      position: absolute
+      line-height: 20px
+      text-align: center
+      padding: 0 5px
+      background: #BBB
+      right: 10px
+      top: 15px
+      color: #FFF
+      +border-radius(3px)
+      &.pulsate
+        -webkit-animation: pulsate 1s ease-out
+        -webkit-animation-iteration-count: infinite
+        -moz-animation: pulsate 1s ease-out
+        -moz-animation-iteration-count: infinite
+        animation: pulsate 1s ease-out
+        animation-iteration-count: infinite
+      &.informer-primary
+        background: $brand-primary
+      &.informer-success
+        background: $brand-success
+      &.informer-info
+        background: $brand-info
+      &.informer-warning
+        background: $brand-warning
+      &.informer-danger
+        background: $brand-danger
+    li li .informer
+      top: 12px
+    .xn-icon-button .informer
+      left: auto
+      bottom: auto
+      right: 1px
+      top: 5px
 
 
 /*
