@@ -4,9 +4,9 @@ module Para
       @registered_components ||= {}
     end
 
-    def self.registered_component?(model_name)
-      registered_components.any? do |name, component|
-        component.name == model_name
+    def self.registered_component?(identifier)
+      registered_components.any? do |component_identifier, _|
+        component_identifier == identifier
       end
     end
 

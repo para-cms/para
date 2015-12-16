@@ -7,8 +7,6 @@ module Para
     end
 
     def draw(mount_location = '/', &block)
-      routes = self
-
       router.instance_eval do
         scope mount_location do
           scope module: :para do

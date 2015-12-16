@@ -17,5 +17,29 @@ module Para
 
     mattr_accessor :resource_name_methods
     @@resource_name_methods = [:name, :title]
+
+    mattr_accessor :ability_class_name
+    @@ability_class_name = 'Para::Ability'
+
+    mattr_accessor :plugins
+    @@plugins = []
+
+    # Allows accessing plugins root module to configure them through a method
+    # from the Para::Config class.
+    #
+    # Example :
+    #
+    #   Para.config do |config|
+    #     config.my_plugin.my_var = 'foo'
+    #   end
+    #
+    def self.method_missing(method_name, *args, &block)
+      if plugins.include?(method_name)
+        plugin = Para::Plugins.module_name_for(method_name).constantize
+        block ? block.call(plugin) : plugin
+      else
+        super
+      end
+    end
   end
 end

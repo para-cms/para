@@ -1,5 +1,8 @@
 module Para
   class ComponentsConfiguration
+    class UndefinedComponentTypeError < StandardError
+    end
+
     def draw(&block)
       return unless components_installed?
       eager_load_components!
@@ -85,6 +88,12 @@ module Para
       tables_exist
     end
 
+    # Eager loads every file ending with _component.rb that's included in a
+    # $LOAD_PATH directory which ends in "/components"
+    #
+    # Note : This allows not to process too many folders, but makes it harder to
+    # plug gems into the components system
+    #
     def eager_load_components!
       $LOAD_PATH.each do |path|
         next unless path.match(/\/components$/)
@@ -127,10 +136,17 @@ module Para
     class Component
       attr_accessor :identifier, :type, :options, :model
 
-      def initialize(identifier, type, options = {})
+      def initialize(identifier, type_identifier, options = {})
         self.identifier = identifier.to_s
-        self.type = Para::Component.registered_components[type]
+        self.type = Para::Component.registered_components[type_identifier]
         self.options = options
+
+        unless type
+          raise UndefinedComponentTypeError.new(
+            "Undefined Para component : #{ type_identifier }. " +
+            "Please ensure that your app or gems define this component type."
+          )
+        end
       end
 
       def refresh(attributes = {})
