@@ -70,10 +70,23 @@ module Para
         cells.join("\n").html_safe
       end
 
-      def header_for(field_name, sort: field_name)
-        label = model.human_attribute_name(field_name)
+      def header_for(field_name = nil, options = {}, &block)
+        if Hash === field_name
+          options = field_name
+          field_name = nil
+        end
 
-        content_tag(:th) do
+        sort = options.delete(:sort) || field_name
+
+        label = if Symbol === field_name
+          model.human_attribute_name(field_name)
+        elsif block
+          capture { block.call }
+        else
+          field_name
+        end
+
+        content_tag(:th, options) do
           if sort != field_name
               view.sort_link(search, *sort, label, hide_indicator: true)
           elsif searchable?(field_name)
@@ -92,10 +105,12 @@ module Para
       #   - a single value : The value to display in the cell directly
       #       which will be processed to be shorter than 100 chars
       #
-      def data_for(*args)
+      def data_for(*args, &block)
         value = if args.length >= 2
           resource, field_name, type = args
           view.field_value_for(resource, field_name, type).to_s
+        elsif block
+          capture { block.call }
         else
           view.excerpt_value_for(args.first)
         end
