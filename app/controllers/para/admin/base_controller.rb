@@ -12,6 +12,8 @@ module Para
 
       layout 'para/admin'
 
+      helper_method :current_admin
+
       def current_admin
         @current_admin ||= if Para.config.current_admin_method
           send(Para.config.current_admin_method)
