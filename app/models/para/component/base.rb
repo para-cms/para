@@ -10,12 +10,11 @@ module Para
         Para::Component.registered_components[name] = component
       end
 
-      extend FriendlyId
-      friendly_id :name, use: [:slugged, :finders, :history]
+      belongs_to :component_section, class_name: 'Para::ComponentSection'
 
       validates :identifier, :type, presence: true
 
-      belongs_to :component_section, class_name: 'Para::ComponentSection'
+      before_validation :ensure_slug
 
       scope :ordered, -> { order(position: :asc) }
 
@@ -51,14 +50,19 @@ module Para
         @configurable_attributes ||= {}
       end
 
-      def should_generate_new_friendly_id?
-        slug.blank? || name_changed?
-      end
-
       def default_form_actions
         [:submit, :submit_and_edit, :submit_and_add_another, :cancel]
       end
 
+      def to_param
+        slug
+      end
+
+      private
+
+      def ensure_slug
+        self.slug = identifier.parameterize if slug.blank? || identifier_changed?
+      end
     end
 
     class ModelName < ActiveModel::Name

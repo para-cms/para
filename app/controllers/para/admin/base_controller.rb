@@ -3,12 +3,11 @@ module Para
     class BaseController < Para::ApplicationController
       include Para::Admin::BaseHelper
 
-      before_action :authorize_admin_access
-
       if Para.config.authenticate_admin_method
         before_action Para.config.authenticate_admin_method
       end
 
+      before_action :authorize_admin_access
       before_action :load_component_sections
 
       layout 'para/admin'
