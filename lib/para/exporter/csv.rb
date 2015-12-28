@@ -31,7 +31,7 @@ module Para
 
       def headers
         fields.map do |field|
-          encode(User.human_attribute_name(field))
+          encode(model.human_attribute_name(field))
         end
       end
 

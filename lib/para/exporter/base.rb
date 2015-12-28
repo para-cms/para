@@ -1,10 +1,11 @@
 module Para
   module Exporter
     class Base
-      attr_reader :resources
+      attr_reader :resources, :model
 
       def initialize(resources)
         @resources = resources
+        @model = @resources.model
       end
 
       def disposition
