@@ -5,13 +5,11 @@ module Para
 
       def parse_input(params)
         if (nested_attributes = params[nested_attributes_key])
-          nested_attributes.each do |index, attributes|
-            nested_model_mappings.fields.each do |field|
-              field.parse_input(attributes)
-            end
-
-            params[nested_attributes_key][index] = attributes
+          nested_model_mappings.fields.each do |field|
+            field.parse_input(nested_attributes)
           end
+
+          params[nested_attributes_key] = nested_attributes
         else
           super(params)
         end

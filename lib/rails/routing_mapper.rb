@@ -3,6 +3,10 @@ module ActionDispatch
     class Mapper
       def para_at(mount_location, &block)
         Para::Routes.new(self).draw(mount_location, &block)
+
+        Para::Config.plugins.each do |plugin|
+          draw_plugin_routes(plugin)
+        end
       end
 
       def para_plugin(plugin_name)
@@ -21,6 +25,17 @@ module ActionDispatch
         delete endpoint => "#{ controller }#destroy", as: "destroy_#{as}"
 
         scope(endpoint, as: component_name, &block) if block
+      end
+
+      private
+
+      def draw_plugin_routes(identifier)
+        routes = [
+          Para::Plugins.module_name_for(identifier),
+          'Routes'
+        ].join('::').constantize
+
+        routes.new(self).draw
       end
     end
   end

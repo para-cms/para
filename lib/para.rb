@@ -3,7 +3,6 @@ require 'paperclip'
 require 'simple_form'
 require 'simple_form_extension'
 require 'active_decorator'
-require 'friendly_id'
 require 'haml-rails'
 require 'truncate_html'
 require 'cocoon'
@@ -42,6 +41,7 @@ module Para
     autoload :Component
     autoload :Generators
     autoload :Routes
+    autoload :Plugins
     autoload :Breadcrumbs
   end
 

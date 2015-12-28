@@ -5,14 +5,17 @@
 
   - if @component_sections.any?
     - @component_sections.each do |component_section|
+      - next unless component_section.components.any? { |component| can?(:manage, component) }
+
       %li.component-section-item
         = link_to "#", class: 'component-section-title' do
           = component_section.name
 
         %ul.component-section-list-items
           - component_section.components.each do |component|
-            %li.component-item{ class: (@component == component) && 'active' }
-              = link_to component.name, component.path
+            - if can? :manage, component
+              %li.component-item{ class: (@component == component) && 'active' }
+                = link_to component.name, component.path
 
   - else
     %li.component-section-item

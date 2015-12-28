@@ -8,8 +8,8 @@
   padding: 0
   +border-radius(0)
   overflow: hidden
-  border-top: 1px solid #fafafa
-  +box-shadow(0 2px 5px #fafafa)
+  border: 1px solid $gray-light
+  border-bottom: 1px solid $gray-light
   li + li:before
     display: none
   li
@@ -20,20 +20,20 @@
       color: yellow
       pointer-events: none
       cursor: default
-      padding: 15px 10px 15px 30px
+      padding: 5px 10px 5px 30px
     a
-      font-size: 1.1em
+      font-size: 1em
       color: $breadcrumb-color
       text-decoration: none
       display: block
       position: relative
       background-color: $breadcrumb-bg
-      padding: 15px 10px 15px 30px
+      padding: 5px 10px 5px 30px
       &:hover
         color: #000
-        background-color: #f7f7f7
+        background-color: $gray-light
         &:after
-          border-left-color: #f7f7f7
+          border-left-color: $gray-light
 
       &:after
         content: " "

@@ -9,7 +9,6 @@ responsive_sidebar_navigation = ->
     scrollToComponentSection($activeItem)
 
   $('.component-item').on 'click', 'a', (e) ->
-    console.log 'scroll to ', $(e.currentTarget).closest('.component-item')
     scrollToComponentSection($(e.currentTarget), 150)
 
 $(document).on 'page:change', ->
