@@ -18,6 +18,7 @@ end
 
 # Require concerns
 require 'para/component/exportable'
+require 'para/component/importable'
 require 'para/component/subclassable'
 
 # Require models

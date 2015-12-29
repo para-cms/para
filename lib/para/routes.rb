@@ -20,6 +20,7 @@ module Para
                       patch :order
                       patch :tree
                       get :export
+                      post :import
                     end
 
                     member do

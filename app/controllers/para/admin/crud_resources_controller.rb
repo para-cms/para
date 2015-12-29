@@ -45,8 +45,22 @@ module Para
                                      disposition: exporter.disposition,
                                      filename: exporter.file_name
         else
-          redirect_to component_path(@component)
+          redirect_to @component.path
         end
+      end
+
+      def import
+        if @component.importable?
+          file = params[:file]
+          if file
+            importer = params[:importer].constantize.new(file.tempfile)
+            importer.run
+            flash_message(:success)
+          else
+            flash_message(:error)
+          end
+        end
+        redirect_to @component.path
       end
 
       private

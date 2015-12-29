@@ -1,0 +1,8 @@
+- if component.importable?
+  - component.imports.each do |importer|
+    = form_tag component.relation_path(model.model_name.route_key, action: :import, importer: importer), method: 'post', multipart: 'true' do
+      .fileinput
+        = file_field_tag 'file'
+      %button.btn.btn-default{ type: 'submit' }
+        = fa_icon 'upload'
+        = t('para.import')
