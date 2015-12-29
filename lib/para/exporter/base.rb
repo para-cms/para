@@ -1,11 +1,23 @@
 module Para
   module Exporter
     class Base
-      attr_reader :resources, :model
+      attr_reader :resources
+      class_attribute :model_name
 
       def initialize(resources)
         @resources = resources
-        @model = @resources.model
+      end
+
+      def model
+        @model ||= if (model_name = self.class.model_name)
+          model_name.constantize
+        else
+          raise 'You must define model to export in your exporter as following: `exports \'YourModelName\'`'
+        end
+      end
+
+      def self.exports model_name
+        self.model_name = model_name
       end
 
       def disposition
