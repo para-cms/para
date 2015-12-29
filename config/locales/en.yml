@@ -50,6 +50,16 @@ en:
       no_results: "No results found, please try with other criterions"
       empty: "The list is empty"
 
+    export:
+      name: "Export %{name}"
+      as: "Exporter (.%{extension})"
+
+    import:
+      name: Import
+      select: "Select file"
+      change: "Change file"
+      placeholder: File format ( .csv .xlsx )
+
     shared:
       save: "Save"
       cancel: "Cancel"

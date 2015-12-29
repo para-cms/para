@@ -56,6 +56,12 @@ fr:
       name: "Export %{name}"
       as: "Exporter (.%{extension})"
 
+    import:
+      name: Importer
+      select: "Sélectionnez un fichier"
+      change: "Changer"
+      placeholder: Fichier au format ( .csv .xlsx )
+
     shared:
       save: "Enregistrer"
       cancel: "Annuler"
