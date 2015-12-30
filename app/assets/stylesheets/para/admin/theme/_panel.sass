@@ -171,14 +171,15 @@
   text-decoration: none
 
 ul.panel-controls
-  float: right
   padding: 0
   margin: 0
   list-style: none
   position: relative
   > li
     float: left
-    > a
+    margin: 0 2px
+    max-width: 500px
+    > a:not(.btn)
       display: block
       float: left
       width: 30px
@@ -215,26 +216,6 @@ ul.panel-controls
   padding: 5px 10px
   line-height: 12px
   margin-top: 4px
-
-ul.panel-controls > li
-  &.label-control .label
-    +inline-block
-    font-size: 11px
-    padding: 5px 10px
-    line-height: 12px
-    margin-top: 4px
-  > .dropdown-menu
-    left: auto
-    right: 3px
-    &:after, &:before
-      left: auto
-      right: 11px
-    &:after
-      margin-left: auto
-      margin-right: -5px
-    &:before
-      margin-left: auto
-      margin-right: -6px
 
 .panel-heading .label
   line-height: 16px

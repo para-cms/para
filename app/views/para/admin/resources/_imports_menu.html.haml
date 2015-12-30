@@ -1,8 +1,22 @@
 - if component.importable?
   - component.imports.each do |importer|
     = form_tag component.relation_path(model.model_name.route_key, action: :import, importer: importer), method: 'post', multipart: 'true' do
-      .fileinput
-        = file_field_tag 'file'
-      %button.btn.btn-default{ type: 'submit' }
-        = fa_icon 'upload'
-        = t('para.import')
+      .fileinput.fileinput-new.input-group{ data: { provides: 'fileinput' } }
+        .form-control.uneditable-input{ data: { trigger: 'fileinput' } }
+          %span.fileinput-placeholder
+            = t('para.import.placeholder')
+          = fa_icon 'file', class: 'fileinput-exists'
+          %span.fileinput-filename
+        .input-group-btn  
+          .btn.btn-default.btn-file
+            %span.fileinput-new
+              = t('para.import.select')
+            %span.fileinput-exists  
+              = t('para.import.change')
+            = file_field_tag 'file', class: 'file file-upload'
+          .btn.btn-danger.fileinput-exists{ type: 'button', data: { dismiss: 'fileinput' } }
+            = fa_icon 'times'
+
+          %button.btn.btn-default{ type: 'submit' }
+            = fa_icon 'upload'
+            = t('para.import.name')

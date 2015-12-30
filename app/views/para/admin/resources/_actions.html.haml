@@ -1,3 +1,7 @@
-= add_button_for(component, relation,  model) if allow_adding_resource
-= render partial: find_partial_for(relation, :exports_menu), locals: { component: component, model: model }
-= render partial: find_partial_for(relation, :imports_menu), locals: { component: component, model: model }
+%ul.panel-controls
+  %li
+    = add_button_for(component, relation,  model) if allow_adding_resource
+  %li  
+    = render partial: find_partial_for(relation, :exports_menu), locals: { component: component, model: model }
+  %li  
+    = render partial: find_partial_for(relation, :imports_menu), locals: { component: component, model: model }
