@@ -1,7 +1,5 @@
 @import "variables"
 
-@import "compass/css3/opacity"
-
 .sort_link, .sort_link_asc, .sort_link_desc
   position: relative
   cursor: pointer
@@ -11,14 +9,14 @@
   bottom: 5px
   right: -15px
   font-family: FontAwesome
-  +opacity(.9)
+  opacity: .9
   width: 10px
   height: 10px
   display: block
 
 .sort_link:before
   content: "\f0dc"
-  +opacity(.3)
+  opacity: .3
   
 .sort_link.asc:before
   content: "\f0d8"
@@ -27,4 +25,4 @@
   content: "\f0d7"
 
 .sort_link.asc.disabled:before, .sort_link.desc.disabled:before
-  +opacity(.1)
+  opacity: .1

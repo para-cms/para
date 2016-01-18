@@ -1,11 +1,10 @@
 @import "variables"
-@import "compass/css3/box-shadow"
 
 .form-control
-  +box-shadow(none)
+  box-shadow: none
   -webkit-appearance: none
   &:focus
-    +box-shadow(none)
+    box-shadow: none
     border-color: $input-border-focus
     background: #FFF
   &[disabled], &[readonly]

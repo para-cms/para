@@ -1,11 +1,5 @@
 @import "variables"
 
-@import "compass/css3/text-shadow"
-@import "compass/css3/transition"
-@import "compass/css3/box-shadow"
-@import "compass/css3/inline-block"
-@import "compass/css3/border-radius"
-
 .page-sidebar 
   position: fixed
   height: 100%
@@ -15,7 +9,7 @@
   width: $left-menu-width-open
   float: left
   z-index: 3
-  +box-shadow(2px 0 5px #fafafa)
+  box-shadow: 2px 0 5px #fafafa
   &.navbar-collapse
     padding: 0
 
@@ -62,7 +56,7 @@
   display: block
   z-index: 3
   background-color: $navbar-default-bg
-  +box-shadow(0 2px 5px #fafafa)
+  box-shadow: 0 2px 5px #fafafa
   .ul-navbar li
     float: left
     display: block
@@ -102,7 +96,7 @@
       font-weight: 400
       padding: 10px 15px
       text-decoration: none
-      +transition(all 200ms ease)
+      transition: all 200ms ease
       &:hover,
       &:focus
         color: $navbar-default-link-hover-color
@@ -163,8 +157,8 @@
         position: absolute
         overflow: visible
         display: none
-        +border-radius(3px)
-        +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
+        border-radius: 3px
+        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1)
         z-index: 3
         li
           width: 100%
@@ -195,7 +189,7 @@
           img
             width: 36px
             border: 2px solid #FFF
-            +border-radius(50%)
+            border-radius: 50%
     .informer
       font-size: 11px
       position: absolute
@@ -206,12 +200,8 @@
       right: 10px
       top: 15px
       color: #FFF
-      +border-radius(3px)
+      border-radius: 3px
       &.pulsate
-        -webkit-animation: pulsate 1s ease-out
-        -webkit-animation-iteration-count: infinite
-        -moz-animation: pulsate 1s ease-out
-        -moz-animation-iteration-count: infinite
         animation: pulsate 1s ease-out
         animation-iteration-count: infinite
       &.informer-primary
@@ -250,7 +240,7 @@
     img
       width: 100px
       border: 3px solid #FFF
-      +border-radius(50%)
+      border-radius: 50%
   .profile-data
     width: 100%
     float: left
@@ -275,9 +265,9 @@
     border: 2px solid #DDD
     line-height: 25px
     position: absolute
-    +border-radius(50%)
+    border-radius: 50%
     padding: 0
-    +transition(all 200ms ease)
+    transition: all 200ms ease
     &.profile-control-left
       left: 15px
       top: 53px

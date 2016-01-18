@@ -12,7 +12,6 @@ require 'request_store'
 require 'sass-rails'
 require 'selectize-rails'
 require 'bootstrap-sass'
-require 'compass-rails'
 require 'font-awesome-rails'
 
 require 'rails/routing_mapper'
