@@ -4,11 +4,14 @@ module Para
 
     included do
       scope :ordered, -> { order('position ASC') }
-      before_create :orederable_assign_position
+      before_create :orderable_assign_position
     end
 
-    def orederable_assign_position
-      last_resource = self.class.order('position DESC')
+    def orderable_assign_position
+      return if attribute_present?(:position)
+
+      last_resource = self.class.unscoped
+        .order('position DESC')
         .where.not(position: nil)
         .select(:position)
         .first
