@@ -1,13 +1,6 @@
 @import "para/admin/theme/variables"
-@import "compass/css3/text-shadow"
-@import "compass/css3/inline-block"
-@import "compass/css3/transition"
-@import "compass/css3/box-shadow"
-@import "compass/css3/border-radius"
-@import "compass/css3/transform"
 
 .animated
-  -webkit-animation-duration: 100ms
   animation-duration: 100ms
 
 // More button style
@@ -18,11 +11,11 @@
 
 @mixin button-hover-focus-active($color-border, $color-bg) 
   position: relative
-  +box-shadow(0px 2px darken($color-border, 10%) )
-  +single-transition(none)
+  box-shadow: 0px 2px darken($color-border, 10%) 
+  transition: none
   &:hover
     top: 1px
-    +box-shadow(0px 1px darken($color-border, 10%) )
+    box-shadow: 0px 1px darken($color-border, 10%) 
     background-color: $color-bg
     border-color: $color-border
   &:focus,
@@ -31,7 +24,7 @@
   .open &.dropdown-toggle
     background-color: darken($color-bg, 7%)
     top: 2px
-    +box-shadow(0px 0 darken($color-border, 10%))  
+    box-shadow: 0px 0 darken($color-border, 10%)
     border-color: $color-border
     &:hover
       background-color: darken($color-bg, 7%)
@@ -39,10 +32,10 @@
 @mixin button-variant-inverse($color-border, $color-bg) 
   color: $color-border
   background-color: transparent
-  +box-shadow(none)
-  +single-transition(all, .2s, linear)
+  box-shadow: none
+  transition: all, .2s, linear
   &:hover
-    +box-shadow(none)
+    box-shadow: none
     top: 0
     color: #fff
     background-color: $color-bg
@@ -52,7 +45,7 @@
   &:active,
   &.active,
   .open &.dropdown-toggle
-    +box-shadow(none)
+    box-shadow: none
     top: 0
     color: #fff
     background-color: darken($color-bg, 7%)
@@ -64,7 +57,7 @@ input,
 textarea,
 select,
 button
-  +single-transition(all, .1s, linear)
+  transition: all, .1s, linear
   &,
   &:active,
   &.active
@@ -148,7 +141,7 @@ button
   .btn:focus,
   .btn:active,
     top: 0
-    +box-shadow(none)
+    box-shadow: none
 
 .form-group-separated
   &:after

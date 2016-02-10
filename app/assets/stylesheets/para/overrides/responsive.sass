@@ -1,5 +1,4 @@
 @import "para/admin/theme/variables"
-@import "compass/css3/shared"
 
 $experimental-support-for-opera: true
 
@@ -39,7 +38,7 @@ $experimental-support-for-opera: true
 @media (min-width: 1025px)
   .form-fixed-actions
     .form-actions
-      +experimental-value(width, calc(100% - 270px))
+      width: calc(100% - 270px)
 
 /* Medium high devices (desktops, 1200px and up) */
 @media (min-width: 1200px)
