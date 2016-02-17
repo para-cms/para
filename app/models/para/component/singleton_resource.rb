@@ -6,7 +6,7 @@ module Para
       configurable_on :model_type, as: :selectize, collection: :available_models
 
       has_one :component_resource, class_name: 'Para::ComponentResource',
-              foreign_key: :component_id, autosave: true
+              foreign_key: :component_id, autosave: true, dependent: :destroy
 
       def resource
         build_component_resource(resource: model.new) unless component_resource

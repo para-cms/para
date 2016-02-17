@@ -11,7 +11,7 @@ module Para
       configurable_on :namespaced
 
       has_many :component_resources, class_name: 'Para::ComponentResource',
-               foreign_key: :component_id, autosave: true
+               foreign_key: :component_id, autosave: true, dependent: :destroy
 
       def namespaced?
         case namespaced
