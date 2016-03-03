@@ -39,7 +39,7 @@ module Para
         if @component.exportable?
           exporter = Para::Exporter.for(
             resource_model.name, params[:format]
-          ).new(@component.resources.search(params[:q]).result)
+          ).new(@component.resources.search(params[:q]).result.uniq)
 
           send_data exporter.render, type: exporter.mime_type,
                                      disposition: exporter.disposition,
