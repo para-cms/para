@@ -6,19 +6,20 @@
   padding: 0
   border-radius: 0
   overflow: hidden
-  border: 1px solid $gray-light
+  border: none
   border-bottom: 1px solid $gray-light
   li + li:before
     display: none
   li
-    &:first-child a
+    &:first-child
       padding-left: 27px
+      a
+        padding: 0
     &:last-child
       background-color: transparent !important
-      color: yellow
       pointer-events: none
       cursor: default
-      padding: 5px 10px 5px 30px
+      padding: 11px 10px 11px 30px
     a
       font-size: 1em
       color: $breadcrumb-color
@@ -26,7 +27,7 @@
       display: block
       position: relative
       background-color: $breadcrumb-bg
-      padding: 5px 10px 5px 30px
+      padding: 11px 10px 11px 30px
       &:hover
         color: #000
         background-color: $gray-light
