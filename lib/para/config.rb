@@ -16,7 +16,7 @@ module Para
     @@default_tree_max_depth = 3
 
     mattr_accessor :resource_name_methods
-    @@resource_name_methods = [:name, :title]
+    @@resource_name_methods = [:admin_name, :admin_title, :name, :title]
 
     mattr_accessor :ability_class_name
     @@ability_class_name = 'Para::Ability'
