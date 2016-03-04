@@ -8,7 +8,11 @@ module Para
         @resources = @q.result.uniq.page(params[:page])
 
         # Sort collection for orderable and trees
-        @resources = @resources.ordered if @resources.respond_to?(:ordered)
+        @resources = if @resources.respond_to?(:ordered)
+          @resources.ordered
+        else
+          @resources.order(created_at: :desc)
+        end
       end
     end
   end
