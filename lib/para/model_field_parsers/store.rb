@@ -4,8 +4,6 @@ module Para
       register :json, self
 
       def parse!
-        puts "model.stored_attributes ==> #{ model.stored_attributes.inspect }"
-
         model.stored_attributes.each do |store_key, field_names|
           fields_hash.delete(store_key)
 
