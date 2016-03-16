@@ -3,6 +3,10 @@ module Para
     module CrudDecorator
       include Para::Component::BaseDecorator
 
+      def path(options = {})
+        find_path([:admin, self, :resources], options)
+      end
+
       def relation_path(controller_or_resource, options = {})
         if (id = extract_id_from(controller_or_resource))
           options[:id] = id
@@ -22,9 +26,9 @@ module Para
 
       def route_key_for(id, options)
         if id || options[:action].presence && options[:action].to_sym == :new
-          :crud_resource
+          :resource
         else
-          :crud_resources
+          :resources
         end
       end
     end

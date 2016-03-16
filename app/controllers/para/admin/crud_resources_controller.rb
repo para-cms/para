@@ -11,6 +11,18 @@ module Para
       after_filter :attach_resource_to_component, only: [:create]
       after_filter :remove_resource_from_component, only: [:destroy]
 
+      def index
+        @q = @component.resources.search(params[:q])
+        @resources = @q.result.uniq.page(params[:page])
+
+        # Sort collection for orderable and trees
+        @resources = if @resources.respond_to?(:ordered)
+          @resources.ordered
+        else
+          @resources.order(created_at: :desc)
+        end
+      end
+
       def clone
         new_resource = resource.deep_clone include: resource.class.cloneable_associations
         new_resource.save!
@@ -83,8 +95,8 @@ module Para
       end
 
       def add_breadcrumbs
-        add_breadcrumb(resource_title_for(resource))
-      end        
+        add_breadcrumb(resource_title_for(resource)) if resource
+      end
 
       def attach_resource_to_component
         return unless resource.persisted? && @component.namespaced?

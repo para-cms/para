@@ -13,30 +13,8 @@ module Para
             namespace :admin do
               get '/' => 'main#index'
 
-              component :crud do
-                scope ':model' do
-                  resources :crud_resources, path: '/' do
-                    collection do
-                      patch :order
-                      patch :tree
-                      get :export
-                      post :import
-                    end
-
-                    member do
-                      post :clone
-                    end
-                  end
-                end
-              end
-
-              component :singleton_resource, path: 'resource-form' do
-                resource :singleton_resource, path: 'resource', only: [:create, :update]
-              end
-
-              component :settings do
-                resource :settings_form, controller: 'settings_form', only: [:update]
-              end
+              crud_component :crud, scope: ':model'
+              singleton_resource_component :singleton, scope: ':model'
             end
           end
 
