@@ -7,5 +7,6 @@ module Para
     autoload :FieldHelpers
     autoload :NamedBase
     autoload :NameHelpers
+    autoload :ComponentHelpers
   end
 end

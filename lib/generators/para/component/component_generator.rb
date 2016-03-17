@@ -1,5 +1,7 @@
 module Para
   class ComponentGenerator < Rails::Generators::NamedBase
+    include Para::Generators::ComponentHelpers
+
     source_root File.expand_path('../templates', __FILE__)
 
     desc 'Para component generator'
@@ -12,14 +14,12 @@ module Para
       template 'component.rb', "app/components/#{ component_file_name }.rb"
     end
 
+    def copy_component_decorator
+        template 'decorator.rb', "app/decorators/#{ decorator_file_name }.rb"
+      end
+
     def copy_component_controller
       template 'component_controller.rb', "app/controllers/admin/#{ component_file_name }_controller.rb"
-    end
-
-    def add_require_to_application_controller
-      prepend_to_file 'app/controllers/application_controller.rb' do
-        "require '#{ component_file_name }'\n"
-      end
     end
 
     def create_show_component_view
@@ -27,33 +27,13 @@ module Para
     end
 
     def add_route
-      route_file = File.read(Rails.root.join('config/routes.rb'))
-
-      unless route_file.match /^\s+namespace :admin do/
-        route "namespace :admin do\n  end\n"
-      end
-
-      inject_into_file 'config/routes.rb', after: '  namespace :admin do' do
-        "\n    component :#{ file_name } do\n    end"
-      end
+      add_component_to_routes :component, file_name
     end
 
     private
 
-    def component_name
-      if class_name.match(/Component/i)
-        class_name
-      else
-        "#{ class_name }Component"
-      end
-    end
-
-    def component_file_name
-      if file_name.match(/component/i)
-        file_name
-      else
-        "#{ file_name }_component"
-      end
+    def component_parent_name
+      'Para::Component::Base'
     end
   end
 end
