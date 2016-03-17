@@ -8,9 +8,6 @@ module Para
       before_filter :load_and_authorize_singleton_resource
       after_filter :attach_resource_to_component, only: [:create]
 
-      def show
-      end
-
       private
 
       def attach_resource_to_component

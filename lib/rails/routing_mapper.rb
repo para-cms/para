@@ -15,7 +15,7 @@ module ActionDispatch
       end
 
       def component(component_name, options = {}, &block)
-        path, as, controller, endpoint = component_informations_from(
+        as, controller, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -24,7 +24,7 @@ module ActionDispatch
       end
 
       def crud_component(component_name, options = {}, &block)
-        path, as, controller, endpoint = component_informations_from(
+        as, controller, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -51,7 +51,7 @@ module ActionDispatch
       end
 
       def singleton_resource_component(component_name, options = {}, &block)
-        path, as, _, endpoint = component_informations_from(
+        as, _, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -77,9 +77,9 @@ module ActionDispatch
         path = options.fetch(:path, component_name.to_s)
         as = options.fetch(:as, component_name)
         controller = options.fetch(:controller, "#{ component_name }_component")
-        endpoint = "#{ component_name }/:component_id"
+        endpoint = "#{ path }/:component_id"
 
-        [path, as, controller, endpoint]
+        [as, controller, endpoint]
       end
     end
   end
