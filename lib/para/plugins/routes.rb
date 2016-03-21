@@ -14,7 +14,7 @@ module Para
 
         router.instance_eval do
           namespace :admin do
-            scope module: :acl do
+            scope module: [:para, identifier].join('/').to_sym, as: identifier do
               router.instance_eval(&block)
             end
           end
