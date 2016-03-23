@@ -1,3 +1,5 @@
+- nested_locals ||= {}
+
 .panel.panel-default.form-fields
   .panel-heading
     = form.reorder_anchor
@@ -12,6 +14,6 @@
     .clearfix
 
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
-    = render partial: find_partial_for(model, :fields), locals: { form: form }
+    = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
 
   .clearfix

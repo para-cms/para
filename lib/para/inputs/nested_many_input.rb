@@ -13,6 +13,8 @@ module Para
         # Order them if the list should be orderable
         resources = resources.order(:position) if orderable
 
+        locals = options.fetch(:locals, {})
+
         template.render(
           partial: 'para/inputs/nested_many',
           locals: {
@@ -22,7 +24,8 @@ module Para
             orderable: orderable,
             add_button: add_button,
             dom_identifier: dom_identifier,
-            resources: resources
+            resources: resources,
+            nested_locals: locals
           }
         )
       end
