@@ -1,10 +1,10 @@
 .nested-many-field{ class: ('orderable' if orderable) }
   .fields-list{ id: dom_identifier }
     = form.simple_fields_for attribute_name, resources, nested_attribute_name: attribute_name, orderable: orderable do |nested_form|
-      = render partial: find_partial_for(model, :nested_many_container, partial_dir: 'inputs'), locals: { form: nested_form, model: model }
+      = render partial: find_partial_for(model, :nested_many_container, partial_dir: 'inputs'), locals: { form: nested_form, model: model, nested_locals: nested_locals }
 
   -# Add button
   - if add_button
-    = link_to_add_association form, attribute_name, partial: find_partial_for(model, :nested_many_container, partial_dir: 'inputs'), form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { model: model } } do
+    = link_to_add_association form, attribute_name, partial: find_partial_for(model, :nested_many_container, partial_dir: 'inputs'), form_name: 'form', class: 'btn btn-primary', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { model: model, nested_locals: nested_locals } } do
       %i.fa.fa-plus
       = t('para.form.nested.add')
