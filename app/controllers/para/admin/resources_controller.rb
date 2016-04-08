@@ -98,7 +98,7 @@ module Para
 
       def resource_params
         @resource_params ||= parse_resource_params(
-          params.require(:resource).permit!
+          (params[:resource] && params.require(:resource).permit!) || {}
         )
       end
 
