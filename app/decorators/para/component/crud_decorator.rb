@@ -13,7 +13,6 @@ module Para
         end
 
         route_key = route_key_for(options[:id], options)
-        options[:model] = model.model_name.singular_route_key
 
         polymorphic_path([:admin, self, route_key].compact, options)
       end
