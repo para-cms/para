@@ -9,13 +9,13 @@
   outline: none
   outline-offset: 0
 
-@mixin button-hover-focus-active($color-border, $color-bg) 
+@mixin button-hover-focus-active($color-border, $color-bg)
   position: relative
-  box-shadow: 0px 2px darken($color-border, 10%) 
+  box-shadow: 0px 2px darken($color-border, 10%)
   transition: none
   &:hover
     top: 1px
-    box-shadow: 0px 1px darken($color-border, 10%) 
+    box-shadow: 0px 1px darken($color-border, 10%)
     background-color: $color-bg
     border-color: $color-border
   &:focus,
@@ -29,7 +29,7 @@
     &:hover
       background-color: darken($color-bg, 7%)
 
-@mixin button-variant-inverse($color-border, $color-bg) 
+@mixin button-variant-inverse($color-border, $color-bg)
   color: $color-border
   background-color: transparent
   box-shadow: none
@@ -51,8 +51,8 @@
     background-color: darken($color-bg, 7%)
     outline: none
     outline: 0
-       
-.btn, 
+
+.btn,
 input,
 textarea,
 select,
@@ -61,15 +61,15 @@ button
   &,
   &:active,
   &.active
-    &:focus 
+    &:focus
       +tab-focus()
   &:hover,
   &:focus
     +tab-focus()
-  
+
 
 .btn-default
-  +button-hover-focus-active($btn-default-border, $btn-default-bg) 
+  +button-hover-focus-active($btn-default-border, $btn-default-bg)
   &.btn-inverse
     +button-variant-inverse($btn-default-border, $btn-default-bg)
     color: $btn-default-color
@@ -111,25 +111,25 @@ button
   background-color: $brand-primary
 
 .label-success,
-.badge-success 
+.badge-success
   background-color: $brand-success
 
 .label-info,
-.badge-info 
+.badge-info
   background-color: $brand-info
 
 .label-warning,
-.badge-warning 
+.badge-warning
   background-color: $brand-warning
 
 .label-danger,
-.badge-danger 
+.badge-danger
   background-color: $brand-danger
 
 // Table
 .para-component-relation-table
   td > img
-    height: 50px  
+    height: 50px
 
 .pull-right.btn-group
   min-width: 97px
@@ -148,9 +148,9 @@ button
     clear: both
     content: " "
     display: table
-    
+
 .block.form-inputs
-  margin-bottom: 20px
+  margin-bottom: 0
   padding: 0px 10px
   background-color: $body-bg
 

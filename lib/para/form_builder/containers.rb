@@ -1,9 +1,17 @@
 module Para
   module FormBuilder
     module Containers
-      def fieldset(&block)
+      def fieldset(options = {}, &block)
         template.content_tag(:div, class: 'block form-inputs') do
-          template.capture(&block)
+          buffer = if (title = options[:title])
+            template.content_tag(:div, class: 'form-group') do
+              template.content_tag(:legend, title)
+            end
+          else
+            ''.html_safe
+          end
+
+          buffer + template.capture(&block)
         end
       end
 
