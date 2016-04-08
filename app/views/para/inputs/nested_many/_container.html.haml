@@ -16,4 +16,6 @@
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
     = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
 
+    = form.hidden_field :type if form.object.class.column_names.include?(form.object.class.inheritance_column)
+
   .clearfix

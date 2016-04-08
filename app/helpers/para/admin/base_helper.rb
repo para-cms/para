@@ -4,17 +4,37 @@ module Para
       include Para::ApplicationHelper
 
       def find_partial_for(relation, partial, partial_dir: 'admin/resources')
-        if relation.kind_of? ActiveRecord::Base
+        relation_class = if relation.kind_of?(ActiveRecord::Base)
           relation = relation.class
+        elsif model?(relation)
+          relation
         end
 
-        relation = relation.to_s.underscore.pluralize
+        relation_name = find_relation_name_for(
+          'admin', plural_file_path_for(relation), partial,
+          relation_class: relation_class
+        )
 
-        if lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
-          "admin/#{ relation }/#{ partial }"
+        if relation_name
+          "admin/#{ relation_name }/#{ partial }"
         else
           "para/#{ partial_dir }/#{ partial }"
         end
+      end
+
+      def find_relation_name_for(namespace, relation, partial, options = {})
+        return relation if partial_exists?(relation, partial)
+        return nil unless options[:relation_class]
+
+        relation = options[:relation_class].ancestors.find do |ancestor|
+          next unless model?(ancestor)
+          break if ancestor == ActiveRecord::Base
+
+          ancestor_name = plural_file_path_for(ancestor.name)
+          partial_exists?(ancestor_name, partial)
+        end
+
+        plural_file_path_for(relation) if relation
       end
 
       def template_path_lookup(*paths)
@@ -56,6 +76,20 @@ module Para
 
       def flash_shared_key
         'para.flash.shared'
+      end
+
+      private
+
+      def plural_file_path_for(class_name)
+        class_name.to_s.underscore.pluralize
+      end
+
+      def model?(object)
+        object.respond_to?(:model_name)
+      end
+
+      def partial_exists?(relation, partial)
+        lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
       end
     end
   end

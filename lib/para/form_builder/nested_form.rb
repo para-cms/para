@@ -1,6 +1,10 @@
 module Para
   module FormBuilder
     module NestedForm
+      # FIXME : When we have a nested field that maps to an STI model, the _id
+      #         field is passed instead of the relation, and the inverse_of
+      #         guard doesn't work
+      #
       def nested_fields
         @nested_fields ||= fields.reject do |field|
           inverse_of?(field.name)

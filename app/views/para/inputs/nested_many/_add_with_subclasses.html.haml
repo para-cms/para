@@ -1,0 +1,10 @@
+.add-button.dropdown
+  %button.btn.btn-primary{ type: 'button', data: { toggle: 'dropdown' } }
+    %i.fa.fa-plus
+    = t('para.form.nested.add')
+    %span.caret
+  %ul.dropdown-menu
+    - model.descendants.sort_by { |m| m.model_name.human }.each do |submodel|
+      %li
+        = link_to_add_association form, attribute_name, wrap_object: proc { submodel.new }, partial: find_partial_for(submodel, 'nested_many/container', partial_dir: 'inputs'), form_name: 'form', class: 'dropdown-link', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { model: submodel, nested_locals: nested_locals } } do
+          = submodel.model_name.human
