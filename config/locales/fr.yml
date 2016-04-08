@@ -114,3 +114,21 @@ fr:
   time:
     formats:
       admin: '%d/%m/%Y %H:%M'
+
+  # Kaminari translations
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: "Dernière &raquo;"
+      previous: "&lsaquo; Précédente"
+      next: "Suivante &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Aucune entrée trouvée"
+          one: "Affichage des entrées <b>1&nbsp;-&nbsp;1</b> sur <b>1</b> au total"
+          other: "Affichage des entrées <b>1&nbsp;-&nbsp;%{count}</b> sur <b>%{count}</b> au total"
+      more_pages:
+        display_entries: "Affichage des entrées <b>%{first}&nbsp;-&nbsp;%{last}</b> sur <b>%{total}</b> au total"
