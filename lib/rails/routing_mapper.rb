@@ -31,8 +31,8 @@ module ActionDispatch
         controller = [component_name.to_s.singularize, 'resources'].join('_')
 
         scope endpoint, as: as do
-          resources :resources, controller: controller do
-            scope options[:scope] do
+          scope options[:scope] do
+            resources :resources, controller: controller do
               collection do
                 patch :order
                 patch :tree

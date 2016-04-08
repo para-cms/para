@@ -4,6 +4,7 @@ module Para
       include Para::Component::BaseDecorator
 
       def path(options = {})
+        options[:model] ||= model_singular_route_key
         find_path([:admin, self, :resources], options)
       end
 
@@ -13,6 +14,7 @@ module Para
         end
 
         route_key = route_key_for(options[:id], options)
+        options[:model] = model_singular_route_key
 
         polymorphic_path([:admin, self, route_key].compact, options)
       end
@@ -29,6 +31,10 @@ module Para
         else
           :resources
         end
+      end
+
+      def model_singular_route_key
+        @model_singular_route_key ||= model.model_name.singular_route_key
       end
     end
   end
