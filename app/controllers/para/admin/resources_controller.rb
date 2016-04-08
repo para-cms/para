@@ -96,6 +96,15 @@ module Para
         end
       end
 
+      # We check for the existance of `params[:resource]` to avoid rails'
+      # params sanitizer to raise if no `:resource` key is found. We prefer
+      # to let the model handle validations instead of asking the controller
+      # to validate some params presence
+      #
+      # Note : This also created a bug with cancan which tried to build the
+      #        params on a `new` action, that did not contain the `:resource`
+      #        key in the params, which made the `#new` action form raise
+      #
       def resource_params
         @resource_params ||= parse_resource_params(
           (params[:resource] && params.require(:resource).permit!) || {}
