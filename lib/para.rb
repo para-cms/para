@@ -8,6 +8,7 @@ require 'truncate_html'
 require 'cocoon'
 require 'cancan'
 require 'request_store'
+require 'roo'
 
 require 'sass-rails'
 require 'selectize-rails'

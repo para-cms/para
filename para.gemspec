@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'deep_cloneable', '~> 2.1.1'
   s.add_dependency 'request_store'
   s.add_dependency 'truncate_html'
+  s.add_dependency 'roo'
 
   s.add_dependency 'bootstrap-sass', '~> 3.2.0'
   s.add_dependency 'font-awesome-rails', '>= 4.0.0'
