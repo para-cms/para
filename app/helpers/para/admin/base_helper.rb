@@ -89,7 +89,9 @@ module Para
       end
 
       def partial_exists?(relation, partial)
-        lookup_context.find_all("admin/#{relation}/_#{ partial }").any?
+        partial_path = partial.to_s.split('/')
+        partial_path[-1] = "_#{ partial_path.last }"
+        lookup_context.find_all("admin/#{relation}/#{ partial_path.join('/') }").any?
       end
     end
   end

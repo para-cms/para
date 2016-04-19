@@ -16,8 +16,8 @@ module Para
 
     def generate_fields_container
       template(
-        "../../../../../app/views/para/inputs/_nested_many_container.html.haml",
-        "app/views/admin/#{ plural_namespaced_path }/_nested_many_container.html.haml"
+        "../../../../../app/views/para/inputs/nested_many/_container.html.haml",
+        "app/views/admin/#{ plural_namespaced_path }/nested_many/_container.html.haml"
       ) if options[:container]
     end
   end
