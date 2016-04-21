@@ -4,25 +4,16 @@ module Para
       extend ActiveSupport::Concern
 
       module ClassMethods
-        def descendants
-          eager_load_subclasses
-          super
-        end
-
-        private
-
-        def eager_load_subclasses
+        def eager_load!
           models_dir = Rails.root.join('app', 'models')
-
-          puts "eager_load_subclasses - #{ subclasses_dir } -- #{ models_dir.join(subclasses_dir, '*.rb') } // #{ Dir[models_dir.join(subclasses_dir, '*.rb')].inspect }"
 
           Dir[models_dir.join(subclasses_dir, '*.rb')].each do |file_path|
             file_name = File.basename(file_path, '.rb')
 
-            # Avoid Circular dependecy errors in development, when the first loaded
-            # class is not the base class. In this case, the base class loading
-            # is triggered by the child, so if we try to load that child again,
-            # Rails issues a CircularDependency error
+            # Avoid Circular dependecy errors in development, when the first
+            # loaded class is not the base class. In this case, the base class
+            # loading is triggered by the child, so if we try to load that child
+            # again, Rails issues a CircularDependency error
             file_load_path = File.join(File.dirname(file_path), file_name)
             next if ActiveSupport::Dependencies.loading.include?(file_load_path)
 
@@ -30,6 +21,8 @@ module Para
             require file_load_path
           end
         end
+
+        private
 
         # Allows the including class to define `.subclasses_namespace` class
         # method to override the namespace and directory used to eager load the

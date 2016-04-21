@@ -1,6 +1,8 @@
 module Para
   module Inputs
     class NestedManyInput < SimpleForm::Inputs::Base
+      attr_reader :resource
+
       def input(wrapper_options = nil)
         input_html_options[:class] << "nested-many"
 

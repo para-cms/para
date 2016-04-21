@@ -55,5 +55,9 @@ module Para
         require components_config_path if File.exist?(components_config_path)
       end
     end
+
+    initializer 'Load page sections' do |app|
+      Para::Page::Section.eager_load!
+    end
   end
 end
