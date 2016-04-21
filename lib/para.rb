@@ -33,6 +33,8 @@ require 'para/engine'
 require 'para/components_configuration'
 require 'para/exporter'
 require 'para/importer'
+require 'para/sti'
+require 'para/page'
 
 module Para
   extend ActiveSupport::Autoload
