@@ -48,6 +48,14 @@ module Para
       end
     end
 
+    initializer 'Extend simple form extension selectize input' do
+      ActiveSupport.on_load(:active_record) do
+        ::SimpleFormExtension::Inputs::SelectizeInput.send(
+          :include, Para::Ext::SimpleFormExtension::SelectizeInput
+        )
+      end
+    end
+
     initializer 'Build components tree' do |app|
       components_config_path = Rails.root.join('config', 'components.rb')
 
