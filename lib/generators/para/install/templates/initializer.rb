@@ -20,4 +20,8 @@ Para.config do |config|
   # Default is [:name, :title]
   #
   # config.resource_name_methods += [:full_name]
+
+  # Para plugins to load
+  #
+  # config.plugins = []
 end

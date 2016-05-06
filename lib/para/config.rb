@@ -18,11 +18,15 @@ module Para
     mattr_accessor :resource_name_methods
     @@resource_name_methods = [:admin_name, :admin_title, :name, :title]
 
-    mattr_accessor :ability_class_name
-    @@ability_class_name = 'Para::Ability'
-
     mattr_accessor :plugins
     @@plugins = []
+
+    # Hidden from initializer on purpose.
+    #
+    # This is mainly here to be overriden from a gem, not the app dev
+    #
+    mattr_accessor :ability_class_name
+    @@ability_class_name = 'Para::Ability'
 
     # Allows accessing plugins root module to configure them through a method
     # from the Para::Config class.
