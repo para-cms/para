@@ -11,3 +11,4 @@ end
 
 require 'para/ext/cancan'
 require 'para/ext/paperclip'
+require 'para/ext/simple_form_extension'
