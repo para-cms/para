@@ -1,8 +1,8 @@
 = resources_table(model: model, component: component) do |table|
   = table.header do
     - attributes.each do |field|
-      = table.header_for(field.name)
+      = table.header_for(field.name.to_sym)
 
   = table.rows(resources) do |resource|
     - attributes.each do |field|
-      = table.data_for(resource, field.name)
+      = table.data_for(resource, field.name.to_sym)
