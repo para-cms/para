@@ -15,6 +15,7 @@ module Para
 
               crud_component :crud, scope: ':model'
               singleton_resource_component :singleton, scope: ':model'
+              component :settings
             end
           end
 
