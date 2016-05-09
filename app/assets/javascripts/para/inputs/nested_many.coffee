@@ -17,7 +17,7 @@ class Para.NestedManyField
 
     @$fieldsList.on('sortupdate', $.proxy(@sortUpdate, this))
 
-  sortUpdate: (e, ui) ->
+  sortUpdate: ->
     @$fieldsList.find('.form-fields').each (i, el) ->
       $(el).find('.resource-position-field').val(i)
 
@@ -31,6 +31,7 @@ class Para.NestedManyField
     if @orderable
       @$fieldsList.sortable('destroy')
       @initializeOrderable()
+      @sortUpdate()
 
     if ($redactor = $element.find('[data-redactor]')).length
       $redactor.simpleFormRedactor()
