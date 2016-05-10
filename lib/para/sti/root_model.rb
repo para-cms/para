@@ -3,8 +3,22 @@ module Para
     module RootModel
       extend ActiveSupport::Concern
 
+      included do
+        class << self
+          def descendants_with_eager_loaded_subclasses
+            eager_load!
+            descendants_without_eager_loaded_subclasses
+          end
+
+          alias_method_chain :descendants, :eager_loaded_subclasses
+        end
+      end
+
       module ClassMethods
         def eager_load!
+          return if @eager_loaded
+          @eager_loaded = true
+
           models_dir = Rails.root.join('app', 'models')
 
           Dir[models_dir.join(subclasses_dir, '*.rb')].each do |file_path|
