@@ -1,6 +1,9 @@
 module Para
   module Markup
     class ResourcesTable < Para::Markup::Component
+      class_attribute :default_actions
+      self.default_actions = [:edit, :clone, :delete]
+
       attr_reader :model, :component, :orderable, :actions
 
       def container(options = {}, &block)
@@ -11,7 +14,7 @@ module Para
           @orderable = model.orderable?
         end
 
-        @actions = options.fetch(:actions, true)
+        @actions = build_actions(options.delete(:actions))
 
         merge_class!(options, 'table')
         merge_class!(options, 'para-component-relation-table')
@@ -132,11 +135,9 @@ module Para
       def actions_cell(resource)
         content_tag(:td) do
           content_tag(:div, class: 'pull-right btn-group') do
-            edit = edit_button(resource) if action?(:edit)
-            clone = clone_button(resource) if action?(:clone)
-            delete = delete_button(resource) if action?(:delete)
-
-            edit + clone + delete
+            actions.map do |type|
+              send(:"#{ type }_button", resource)
+            end.compact.join.html_safe
           end
         end
       end
@@ -194,8 +195,12 @@ module Para
         model.columns_hash.keys.include?(field_name.to_s)
       end
 
-      def action?(type)
-        actions == true || actions.include?(type)
+      def build_actions(actions)
+        if actions.in?([true, nil])
+          default_actions
+        else
+          actions
+        end
       end
     end
   end
