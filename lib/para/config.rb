@@ -45,5 +45,9 @@ module Para
         super
       end
     end
+
+    def self.routes
+      Para::Routes
+    end
   end
 end

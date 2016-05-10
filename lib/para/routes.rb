@@ -1,5 +1,7 @@
 module Para
   class Routes
+    class_attribute :routes_extensions
+
     attr_reader :router
 
     def initialize(router)
@@ -22,6 +24,16 @@ module Para
           block.call if block
         end
       end
+    end
+
+    def self.extend_routes_for(component_type, &block)
+      extensions = routes_extensions_for(component_type)
+      extensions << block
+    end
+
+    def self.routes_extensions_for(component_type)
+      self.routes_extensions ||= {}
+      self.routes_extensions[component_type] ||= []
     end
   end
 end

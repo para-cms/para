@@ -20,7 +20,11 @@ module ActionDispatch
         )
 
         get endpoint => "#{ controller }#show", as: as
-        scope(endpoint, as: component_name, &block) if block
+
+        scope(endpoint, as: component_name) do
+          instance_eval(&block) if block
+          add_extensions_for(:component)
+        end
       end
 
       def crud_component(component_name, options = {}, &block)
@@ -45,6 +49,7 @@ module ActionDispatch
               end
 
               instance_eval(&block) if block
+              add_extensions_for(:crud_component)
             end
           end
         end
@@ -59,6 +64,7 @@ module ActionDispatch
 
         scope endpoint, as: as do
           resource :resource, controller: controller, only: [:show, :create, :update]
+          add_extensions_for(:singleton_resource_component)
         end
       end
 
@@ -80,6 +86,12 @@ module ActionDispatch
         endpoint = "#{ path }/:component_id"
 
         [as, controller, endpoint]
+      end
+
+      def add_extensions_for(type)
+        Para.config.routes.routes_extensions_for(type).each do |extension|
+          instance_eval(&extension)
+        end
       end
     end
   end
