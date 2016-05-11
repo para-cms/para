@@ -1,6 +1,4 @@
-.page-title
-  %h1
-    = resource_title_for(resource)
+= page_top_bar(title: resource_title_for(resource), type: 'crud/new')
 
 .page-content-wrap
   = render find_partial_for(resource, :form)

@@ -28,6 +28,9 @@ module Para
     mattr_accessor :ability_class_name
     @@ability_class_name = 'Para::Ability'
 
+    mattr_accessor :page_actions
+    @@page_actions = {}
+
     # Allows accessing plugins root module to configure them through a method
     # from the Para::Config class.
     #
@@ -48,6 +51,14 @@ module Para
 
     def self.routes
       Para::Routes
+    end
+
+    def self.page_actions_for(type)
+      page_actions[type] ||= []
+    end
+
+    def self.add_actions_for(type, &block)
+      page_actions_for(type) << block
     end
   end
 end
