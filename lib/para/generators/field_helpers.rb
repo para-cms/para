@@ -10,12 +10,19 @@ module Para
         end
       end
 
-      def field_options_for(field)
-        field_options = field.field_options
+      def field_options_for(field, options = {})
+        field_options = field.field_options.merge(options)
 
         options = field_options.each_with_object([]) do |(key, value), ary|
           if writable_value?(value)
-            ary << "#{ key.inspect } => #{ value.inspect }"
+            if key.to_s.match(/^[\w\d]+/)
+              join_symbol = ': '
+            else
+              join_symbol = ' => '
+              key = key.inspect
+            end
+
+            ary << [key, join_symbol, value.inspect].join
           end
         end
 
