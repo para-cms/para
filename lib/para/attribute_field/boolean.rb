@@ -6,7 +6,7 @@ module Para
       field_option :wrapper, :wrapper_name
 
       def value_for(instance)
-        I18n.t("para.types.boolean.#{ (!!instance.send(name)).to_s }")
+        ::I18n.t("para.types.boolean.#{ (!!instance.send(name)).to_s }")
       end
 
       def wrapper_name

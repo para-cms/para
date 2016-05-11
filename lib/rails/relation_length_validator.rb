@@ -27,7 +27,7 @@ class RelationLengthValidator < ActiveModel::EachValidator
 
   def smaller_error_message
     message = options[:message] && options[:message][:minimum]
-    message || I18n.t(
+    message || ::I18n.t(
       "activerecord.errors.relation_length_is_smaller",
       minimum: minimum,
       default: "must have at least #{ minimum } elements"
@@ -36,7 +36,7 @@ class RelationLengthValidator < ActiveModel::EachValidator
 
   def greater_error_message
     message = options[:message] && options[:message][:maximum]
-    message || I18n.t(
+    message || ::I18n.t(
       "activerecord.errors.relation_length_is_greater",
       maximum: maximum,
       default: "must have at most #{ maximum } elements"

@@ -11,7 +11,7 @@ module Para
 
       def title
         @title ||= if Symbol === identifier
-          I18n.t("admin.breadcrumbs.#{ identifier }")
+          ::I18n.t("admin.breadcrumbs.#{ identifier }")
         else
           identifier
         end

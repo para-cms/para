@@ -66,9 +66,9 @@ module Para
         key = "#{ flash_shared_key }.#{ params[:action] }.#{ type }"
 
         translation = if resource
-          I18n.t(key, model: resource.class.model_name.human)
+          ::I18n.t(key, model: resource.class.model_name.human)
         else
-          I18n.t(key)
+          ::I18n.t(key)
         end
 
         flash[type] = translation

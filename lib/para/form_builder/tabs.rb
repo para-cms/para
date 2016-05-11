@@ -41,7 +41,7 @@ module Para
 
         def title
           if Symbol === identifier
-            I18n.t("forms.tabs.#{ object.class.model_name.i18n_key }.#{ identifier }")
+            ::I18n.t("forms.tabs.#{ object.class.model_name.i18n_key }.#{ identifier }")
           else
             identifier
           end

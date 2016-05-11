@@ -175,7 +175,7 @@ module Para
         options = {
           method: :delete,
           data: {
-            confirm: I18n.t('para.list.delete_confirmation')
+            confirm: ::I18n.t('para.list.delete_confirmation')
           },
           class: 'btn btn-danger'
         }

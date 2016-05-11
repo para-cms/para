@@ -19,7 +19,7 @@ module Para
       scope :ordered, -> { order(position: :asc) }
 
       def name
-        read_attribute(:name) || I18n.t(
+        read_attribute(:name) || ::I18n.t(
           "components.component.#{ identifier }",
           default: identifier.humanize
         )

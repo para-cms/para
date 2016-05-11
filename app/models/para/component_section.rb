@@ -9,7 +9,7 @@ module Para
     validates :identifier, presence: true
 
     def name
-      read_attribute(:name) || I18n.t(
+      read_attribute(:name) || ::I18n.t(
         "components.section.#{ identifier }",
         default: identifier.humanize
       )

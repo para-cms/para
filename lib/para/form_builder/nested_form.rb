@@ -39,7 +39,7 @@ module Para
             self, wrapper_class: 'form-fields', class: 'btn btn-danger'
           ) do
             template.content_tag(:i, '', class: 'fa fa-trash') +
-            I18n.t('para.form.nested.remove')
+            ::I18n.t('para.form.nested.remove')
           end
         end
       end
@@ -75,7 +75,7 @@ module Para
 
       def default_resource_name
         model_name = object.class.model_name.human
-        id_or_new = (id = object.id) ? id : I18n.t('para.form.nested.new')
+        id_or_new = (id = object.id) ? id : ::I18n.t('para.form.nested.new')
 
         [model_name, id_or_new].join(' - ')
       end

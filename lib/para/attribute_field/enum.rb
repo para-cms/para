@@ -6,7 +6,7 @@ module Para
       def value_for(instance)
         if (raw_value = instance.send(name)) &&
           path = enum_path_for(instance, raw_value)
-          translation = I18n.t("activerecord.#{ path }", default: false)
+          translation = ::I18n.t("activerecord.#{ path }", default: false)
 
           translation || raw_value
         end
