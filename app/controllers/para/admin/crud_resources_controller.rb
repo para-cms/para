@@ -95,7 +95,7 @@ module Para
       end
 
       def add_breadcrumbs
-        add_breadcrumb(resource_title_for(resource)) if resource
+        add_breadcrumb(resource_title_for(resource), path_to_edit(resource)) if resource
       end
 
       def attach_resource_to_component
@@ -106,6 +106,12 @@ module Para
       def remove_resource_from_component
         return unless @component.namespaced?
         @component.remove_resource(resource)
+      end
+
+      def path_to_edit(resource)
+        @component.relation_path(
+          resource, action: (resource.persisted? ? :edit : :new)
+        )
       end
     end
   end
