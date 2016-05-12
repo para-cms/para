@@ -6,7 +6,7 @@ module Para
       field_option :wrapper, :wrapper_name
 
       def value_for(instance)
-        (value = instance.send(name)) && I18n.l(value)
+        (value = instance.send(name)) && ::I18n.l(value)
       end
 
       def wrapper_name
