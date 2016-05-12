@@ -20,6 +20,16 @@ module Para
       def default_form_actions
         [:submit]
       end
+
+      def model_name
+        ModelName.new(self)
+      end
+
+      class ModelName < ActiveModel::Name
+        def singular_route_key
+          'singleton'
+        end
+      end
     end
   end
 end
