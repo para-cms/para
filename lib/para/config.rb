@@ -57,8 +57,10 @@ module Para
       page_actions[type] ||= []
     end
 
-    def self.add_actions_for(type, &block)
-      page_actions_for(type) << block
+    def self.add_actions_for(*types, &block)
+      types.each do |type|
+        page_actions_for(type) << block
+      end
     end
   end
 end
