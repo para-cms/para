@@ -79,7 +79,7 @@ module Para
 
       def resource_model
         @resource_model ||=
-          if @component.subclassable_with?(params[:type])
+          if params[:type] && @component.subclassable_with?(params[:type])
             params[:type].constantize
           else
             super
