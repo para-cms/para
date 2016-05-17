@@ -28,7 +28,8 @@ module Para
 
               # Notify ActiveRecord that the model has changed so nested models
               # get to run validation hooks and attachments are cleared
-              send(:"#{ attachment_name }_file_name_will_change!")
+              column_name = attribute_container_column_for(attachment_name)
+              send(:"#{ column_name }_will_change!")
             end
           end
 
@@ -59,6 +60,18 @@ module Para
             end
 
             @klass.send(:before_validation, :clear_removed_attachments)
+          end
+
+          @klass.send(:define_method, :attribute_container_column_for) do |attachment_name|
+            attribute_name = "#{ attachment_name }_file_name"
+
+            if self.class.columns.any? { |column| column.name == attribute_name }
+              return attribute_name
+            end
+
+            stored_attribute = self.class.stored_attributes.each do |key, fields|
+              return key if fields.include?(attribute_name.to_sym)
+            end
           end
         end
       end
