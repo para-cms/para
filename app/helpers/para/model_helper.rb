@@ -17,9 +17,13 @@ module Para
       component.class.reflect_on_association(relation).klass
     end
 
-    def field_value_for(object, field_name, type = nil)
+    def value_for(object, field_name, type = nil)
       field = model_field_mappings(object.class).field_for(field_name, type)
-      value = field.value_for(object)
+      field.value_for(object)
+    end
+
+    def field_value_for(object, field_name, type = nil)
+      value = value_for(object, field_name, type)
       excerpt_value_for(value)
     end
 
