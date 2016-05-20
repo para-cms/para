@@ -2,22 +2,23 @@ module Para
   module FormBuilder
     module Tabs
       def tabs(&block)
-        tabs_manager = TabsManager.new(template, object)
-        block.call(tabs_manager)
+        manager = TabsManager.new(template, object, self)
+        block.call(manager)
 
-        template.render partial: 'para/form/tabs', locals: { tabs: tabs_manager.tabs }
+        template.render partial: 'para/form/tabs', locals: { tabs: manager.tabs }
       end
 
       class TabsManager
-        attr_reader :template, :object
+        attr_reader :template, :object, :builder
 
-        def initialize(template, object)
+        def initialize(template, object, builder)
           @template = template
           @object = object
+          @builder = builder
         end
 
         def tab(identifier, options = {}, &block)
-          tabs << Tab.new(template, object, identifier, options, &block)
+          tabs << Tab.new(template, object, builder, identifier, options, &block)
           nil
         end
 
@@ -27,13 +28,14 @@ module Para
       end
 
       class Tab
-        attr_reader :template, :object, :identifier, :icon, :content
+        attr_reader :template, :object, :builder, :identifier, :icon, :content
 
         delegate :capture, to: :template
 
-        def initialize(template, object, identifier, options, &content_block)
+        def initialize(template, object, builder, identifier, options, &content_block)
           @template = template
           @object = object
+          @builder = builder
           @identifier = identifier
           @content = capture { content_block.call }
           @icon = options[:icon]
@@ -48,7 +50,10 @@ module Para
         end
 
         def dom_id
-          @dom_id = identifier.to_s.parameterize
+          @dom_id = [
+            builder.nested_resource_dom_id,
+            identifier.to_s.parameterize
+          ].join('-')
         end
       end
     end
