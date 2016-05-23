@@ -1,5 +1,5 @@
 module Para
-  class OrderableGenerator < Rails::Generators::NamedBase
+  class OrderableGenerator < Para::Generators::NamedBase
     include Rails::Generators::Migration
 
     source_root File.expand_path('../templates', __FILE__)
@@ -15,14 +15,14 @@ module Para
     def add_field_to_model
       migration_template(
         'orderable_migration.rb',
-        "db/migrate/add_orderable_position_to_#{ plural_file_name }.rb"
+        "db/migrate/add_orderable_position_to_#{ table_name }.rb"
       )
     end
 
     def add_orderable_to_model
       class_definition = "class #{ class_name } < ActiveRecord::Base\n"
 
-      inject_into_file "app/models/#{ file_name }.rb", after: class_definition do
+      inject_into_file "app/models/#{ singular_namespaced_path }.rb", after: class_definition do
         "  acts_as_orderable\n"
       end
     end
@@ -33,15 +33,7 @@ module Para
 
     def fianl_message
       message = "The #{ class_name } model is now orderable.\n"
-      message << "* Please migrate to update your model's table\n" unless options[:migrate]
-      message << <<-MESSAGE
-* Please add to your model resource's routes the ordering path.
-  e.g.: resources :#{ plural_file_name } do
-          collection do
-            patch 'order'
-          end
-        end
-      MESSAGE
+      message << "Please migrate to update your model's table\n" unless options[:migrate]
 
       say(message)
     end
