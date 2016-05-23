@@ -1,5 +1,8 @@
 module Para
   class TableGenerator < Para::Generators::NamedBase
+    include Para::Admin::BaseHelper
+    include Para::Generators::FieldHelpers
+
     source_root File.expand_path('../templates', __FILE__)
 
     desc 'Para resources table generator'
@@ -9,26 +12,6 @@ module Para
         "_table.html.haml",
         "app/views/admin/#{ plural_namespaced_path }/_table.haml"
       )
-    end
-
-    private
-
-    def attributes
-      @attributes ||= begin
-        model =
-          begin
-            Para.const_get(class_name)
-          rescue
-            class_name.classify.constantize
-          end
-        AttributeFieldMappings.new(model).fields
-      end
-    end
-
-    def attributes_list
-      @attributes_list ||= attributes.map do |field|
-        field.name.to_sym.inspect
-      end.join(', ')
     end
   end
 end

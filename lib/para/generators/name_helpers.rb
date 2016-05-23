@@ -8,6 +8,10 @@ module Para
       def singular_namespaced_path
         @singular_namespaced_path ||= File.join(*class_path, singular_name)
       end
+
+      def namespaced_class_name
+        @namespaced_class_name ||= [namespace, class_name].compact.join('::')
+      end
     end
   end
 end

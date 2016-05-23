@@ -5,7 +5,7 @@ module Para
 
       def attributes
         @attributes ||= begin
-          model = Para.const_get(class_name)
+          model = namespaced_class_name.constantize
           AttributeFieldMappings.new(model).fields
         end
       end
