@@ -43,7 +43,8 @@ module Para
       #
       def image?(options)
         if (styles = options[:styles]) && !styles.empty?
-          styles.values.first.match(/^(\d|x)/i)
+          styles.values.first.is_a?(String) &&
+            styles.values.first.match(/^(\d|x)/i)
         end
       end
     end
