@@ -9,7 +9,8 @@ module Para
       end
 
       def relation_path(controller_or_resource, *nested_resources, **options)
-        id_key = nested_resources.empty? ? :id : :resource_id
+        nested = nested_resources.any?
+        id_key = nested ? :resource_id : :id
 
         if (id = extract_id_from(controller_or_resource))
           options[id_key] = id
@@ -19,6 +20,8 @@ module Para
         options[:model] = model_singular_route_key
 
         data = [:admin, self, route_key].compact + nested_resources
+
+        options[:action] = action_option_for(options, nested: nested)
 
         polymorphic_path(data, options)
       end
@@ -39,6 +42,14 @@ module Para
 
       def model_singular_route_key
         @model_singular_route_key ||= model.model_name.singular_route_key
+      end
+
+      def action_option_for(options, nested: false)
+        if !nested && options[:action].try(:to_sym) == :show
+          :edit
+        else
+          options[:action]
+        end
       end
     end
   end
