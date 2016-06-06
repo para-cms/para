@@ -25,7 +25,7 @@ module Para
       def actions_for(type)
         Para.config.page_actions_for(type).map do |action|
           instance_eval(&action)
-        end
+        end.compact
       end
     end
   end
