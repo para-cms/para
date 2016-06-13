@@ -14,6 +14,8 @@ module Para
 
         if (id = extract_id_from(controller_or_resource))
           options[id_key] = id
+        elsif Hash === controller_or_resource
+          options = controller_or_resource
         end
 
         route_key = route_key_for(options[id_key], options)
