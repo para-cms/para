@@ -35,6 +35,7 @@ require 'para/exporter'
 require 'para/importer'
 require 'para/sti'
 require 'para/page'
+require 'para/search'
 
 module Para
   extend ActiveSupport::Autoload

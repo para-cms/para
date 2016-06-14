@@ -14,7 +14,7 @@ module Para
 
       def index
         @q = @component.resources.search(params[:q])
-        @resources = distinct_search_results(@q.result.page(params[:page]), @q)
+        @resources = distinct_search_results(@q).page(params[:page])
 
         # Sort collection for orderable and trees
         @resources = if @resources.respond_to?(:ordered)
