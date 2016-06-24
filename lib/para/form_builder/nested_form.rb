@@ -56,7 +56,7 @@ module Para
         return false unless nested?
 
         reflection = parent_object.class.reflect_on_association(nested_attribute_name)
-        reflection && (reflection.options[:inverse_of] == field_name)
+        reflection && (reflection.options[:inverse_of].to_s == field_name.to_s)
       end
 
       def nested?
@@ -64,7 +64,10 @@ module Para
       end
 
       def nested_attribute_name
-        options[:nested_attribute_name]
+        options[:nested_attribute_name] ||=
+          if (match = object_name.match(/\[(\w+)_attributes\]/))
+            match[1]
+          end
       end
 
       def parent_object
