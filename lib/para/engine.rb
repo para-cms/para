@@ -29,7 +29,7 @@ module Para
     end
 
     initializer 'Extend paperclip attachment definition' do
-      return unless Kernel.const_defined?('Paperclip')
+      next unless Kernel.const_defined?('Paperclip')
 
       ActiveSupport.on_load(:active_record) do
         ::Paperclip::HasAttachedFile.send(
@@ -39,7 +39,7 @@ module Para
     end
 
     initializer 'Extend cancan ControllerResource class' do
-      return unless Kernel.const_defined?('CanCan')
+      next unless Kernel.const_defined?('CanCan')
 
       ActiveSupport.on_load(:active_record) do
         ::CanCan::ControllerResource.send(
@@ -66,6 +66,10 @@ module Para
 
     initializer 'Load page sections' do |app|
       Para::Page::Section.eager_load!
+    end
+
+    initializer 'Check for extensions installation' do
+      Para::PostgresExtensionsChecker.check_all
     end
   end
 end

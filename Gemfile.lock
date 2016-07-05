@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    para (0.5.3)
+    para (0.5.4)
       active_decorator
       autoprefixer-rails
       bootstrap-sass (~> 3.2.0)
