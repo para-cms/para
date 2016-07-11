@@ -65,7 +65,9 @@ module Para
     end
 
     initializer 'Load page sections' do |app|
-      Para::Page::Section.eager_load!
+      app.config.to_prepare do
+        Para::Page::Section.eager_load!
+      end
     end
 
     initializer 'Check for extensions installation' do
