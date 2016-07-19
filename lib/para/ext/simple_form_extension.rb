@@ -14,6 +14,12 @@ module Para
               return name
             end
           end
+
+          if option.respond_to?(:model_name)
+            [option.model_name.human, option.id].join(' - ')
+          else
+            option.to_s
+          end
         end
       end
     end
