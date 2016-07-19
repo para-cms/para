@@ -1,5 +1,2 @@
 - form.nested_fields.each do |field|
-  - if field.field_type
-    = form.send(field.field_method, field.field_name, as: field.field_type)
-  - else
-    = form.send(field.field_method, field.field_name)
+  = form.send(field.field_method, field.field_name, field.field_options)
