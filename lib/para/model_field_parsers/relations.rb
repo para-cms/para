@@ -38,7 +38,7 @@ module Para
               fields_hash[name] = AttributeField::HasManyField.new(
                 model, name: name, type: 'has_many', field_type: 'selectize'
               )
-            else
+            elsif !reflection.options[:through]
               fields_hash[name] = AttributeField::BelongsToField.new(
                 model, name: name, type: 'belongs_to', field_type: 'selectize'
               )
