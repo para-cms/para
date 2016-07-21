@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    para (0.5.1)
+    para (0.5.4)
       active_decorator
       autoprefixer-rails
       bootstrap-sass (~> 3.2.0)
       cancancan (~> 1.9)
       cocoon
       deep_cloneable (~> 2.1.1)
-      devise (~> 3.0)
+      devise (>= 3.0, < 5.0)
       font-awesome-rails (>= 4.0.0)
       font-awesome-sass
       haml-rails

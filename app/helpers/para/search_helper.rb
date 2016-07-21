@@ -18,5 +18,9 @@ module Para
         attribute.attribute_column_path.join('_')
       end.join('_or_')
     end
+
+    def distinct_search_results(search)
+      Para::Search::Distinct.new(search).result
+    end
   end
 end

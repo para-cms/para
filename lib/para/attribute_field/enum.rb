@@ -6,16 +6,20 @@ module Para
       def value_for(instance)
         if (raw_value = instance.send(name)) &&
           path = enum_path_for(instance, raw_value)
-          translation = ::I18n.t("activerecord.#{ path }", default: false)
+          translation = ::I18n.t("activerecord.#{ path }", default: '')
 
-          translation || raw_value
+          translation.presence || raw_value
         end
+      end
+
+      def field_type
+        :selectize
       end
 
       private
 
       def enum_path_for(instance, key)
-        ['enums', instance.class.model_name.i18n_key, name, key].join('.')
+        ['enums', instance.model_name.i18n_key, name, key].join('.')
       end
     end
   end

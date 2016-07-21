@@ -4,6 +4,7 @@ module Para
   module Admin
     class CrudResourcesController < Para::Admin::ResourcesController
       include Para::Admin::ResourceControllerConcerns
+      include Para::SearchHelper
 
       before_filter :load_and_authorize_crud_resource
       before_filter :add_breadcrumbs, only: [:show, :index, :edit, :new]
@@ -13,7 +14,7 @@ module Para
 
       def index
         @q = @component.resources.search(params[:q])
-        @resources = @q.result.uniq.page(params[:page])
+        @resources = distinct_search_results(@q).page(params[:page])
 
         # Sort collection for orderable and trees
         @resources = if @resources.respond_to?(:ordered)

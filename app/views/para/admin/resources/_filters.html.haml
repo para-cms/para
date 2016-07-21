@@ -1,4 +1,4 @@
-= search_form_for @q, builder: SimpleForm::FormBuilder, url: @component.path do |form|
+= search_form_for @q, builder: SimpleForm::FormBuilder, url: @component.path, html: { data: { :'filters-form' => true } } do |form|
   .input-group
     %span.input-group-addon
       %i.fa.fa-search

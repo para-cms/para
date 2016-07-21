@@ -18,6 +18,8 @@ require 'font-awesome-rails'
 require 'rails/routing_mapper'
 require 'rails/relation_length_validator'
 
+require 'para/postgres_extensions_checker'
+
 require 'para/ext'
 require 'para/errors'
 require 'para/config'
@@ -35,6 +37,7 @@ require 'para/exporter'
 require 'para/importer'
 require 'para/sti'
 require 'para/page'
+require 'para/search'
 
 module Para
   extend ActiveSupport::Autoload

@@ -9,7 +9,13 @@ module Para
       end
 
       def relation_path(controller_or_resource, options = {})
-        find_path([:admin, self, controller_or_resource], options)
+        if Hash === controller_or_resource
+          options = controller_or_resource
+          controller_or_resource = nil
+        end
+
+        components = [:admin, self, controller_or_resource].compact
+        find_path(components, options)
       end
 
       private
