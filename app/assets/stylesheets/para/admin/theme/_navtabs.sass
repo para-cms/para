@@ -1,5 +1,9 @@
 @import 'variables'
 
+@import "compass/css3/box-shadow"
+@import "compass/css3/transition"
+@import "compass/css3/border-radius"
+
 .tabs
   float: left
   width: 100%
@@ -29,13 +33,13 @@
         border: 0
         font-size: 14px
         border-top: 2px solid transparent
-        border-radius: 0
+        +border-radius(0)
         color: #333
-        transition: all 200ms ease
+        +single-transition(all 200ms ease)
         background: $btn-default-bg
         padding: 9px 15px
       &:first-child > a
-        border-radius: 5px 0 0
+        +border-radius(5px 0 0)
       > a:hover
         border-color: transparent
         background: #FFF
@@ -43,24 +47,24 @@
       border: 0
       border-top: 2px solid $brand-primary
       background: #FFF
-      border-radius: 3px 3px 0 0
+      +border-radius( 3px 3px 0 0)
     li.active > a
       border: 0
       border-top: 2px solid $brand-primary
       background: #FFF
-      border-radius: 3px 3px 0 0
+      +border-radius( 3px 3px 0 0)
       &:focus, &:hover
         border: 0
         border-top: 2px solid $brand-primary
         background: #FFF
-        border-radius: 3px 3px 0 0
+        +border-radius( 3px 3px 0 0)
   &.nav-justified >
     li > a
       border: 0
       border-top: 2px solid transparent
-      border-radius: 0
+      +border-radius( 0)
       color: #333
-      transition: all 200ms ease
+      +single-transition(all 200ms ease)
       &:hover
         border-color: $brand-primary
         background: 0 0
@@ -68,12 +72,12 @@
       border: 0
       border-top: 2px solid $brand-primary
       background: #FFF
-      border-radius: 3px 3px 0 0
+      +border-radius( 3px 3px 0 0)
       &:focus, &:hover
         border: 0
         border-top: 2px solid $brand-primary
         background: #FFF
-        border-radius: 3px 3px 0 0
+        +border-radius( 3px 3px 0 0)
   a
     .caret, &:hover .caret
       color: $brand-primary
@@ -94,7 +98,7 @@
         width: 100%
         > a
           width: 100%
-          border-radius: 0
+          +border-radius( 0)
           border-top: 0
           border-left: 2px solid transparent
           background: #FFF
@@ -115,9 +119,9 @@
             border-left: 2px solid $brand-primary
             background: $btn-default-bg
         &:first-child > a
-          border-top-left-radius: 3px
+          +border-top-left-radius(3px)
         &:last-child > a
-          border-bottom-left-radius: 3px
+          +border-bottom-left-radius(3px)
   .tab-content
     width: auto
     margin-left: 150px
@@ -127,7 +131,7 @@
 .form-tabs
   .navbar
     margin-bottom: 0
-    border-radius: 0
+    +border-radius( 0)
     .nav li
       border-top: none
       &.active

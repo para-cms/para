@@ -1,5 +1,8 @@
 @import "para/admin/theme/variables"
 
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+
 .redactor-button-disabled
   &:hover,
   &:focus
@@ -19,8 +22,8 @@
     /* Override z-index because we don't whant */
     /* redactor_toolbar fixed somewhere or on top of everythink ..*/
     z-index: 1 !important
-    box-shadow: none
-    border-radius: $input-border-radius $input-border-radius 0 0
+    +box-shadow(none)
+    +border-radius($input-border-radius $input-border-radius 0 0)
     border: 1px solid $input-border
     li a
       &:hover,
@@ -32,7 +35,7 @@
     background-color: $input-bg
     border: 1px solid $input-border
     border-top-width: 0px
-    border-radius: 0 0 $input-border-radius $input-border-radius
+    +border-radius(0 0 $input-border-radius $input-border-radius)
     &:focus
       border-color: $input-border-focus
       background: #FFF
@@ -71,11 +74,11 @@
     border-color: $input-border
     background-color: $input-bg
     color: $input-color
-    box-shadow: none
+    +box-shadow(none)
     &:focus
       background-color: #fff
       border-color: $input-border-focus
-      box-shadow: none
+      +box-shadow(none)
 
   footer
     button.redactor-modal-action-btn

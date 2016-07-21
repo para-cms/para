@@ -1,12 +1,16 @@
 @import "variables"
 
+@import "compass/css3/transition"
+@import "compass/css3/transform"
+@import "compass/css3/inline-block"
+
 .order-anchor
   float: left
   margin-right: 10px
   color: $gray-darker
   cursor: move
   outline: 0
-  transition: all, .2s, ease-out
+  +single-transition(all, .2s, ease-out)
   &:hover
     color: $gray-darker
   &:focus,
@@ -19,13 +23,13 @@
     .btn-group
       display: none
     .order-anchor
-      display: inline-block
+      +inline-block
       position: relative  
 
 .panel
   .collapsed
     .caret
-      transform: rotate(270deg)
+      +rotate(270deg)
 
 .nested-many-field
   &.orderable

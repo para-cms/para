@@ -1,5 +1,8 @@
 @import "variables"
 
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+
 // Typographi
 // -------------------------
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
@@ -151,7 +154,7 @@
   background: #fcfbf4
   border: 1px dashed $gray-dark
   margin-bottom: 20px
-  border-radius: 3px
+  +border-radius(3px)
   float: left
   width: 100%
 
@@ -187,9 +190,9 @@
 
 .img-text
   border: 3px solid #FFF
-  border-radius: 3px
+  +border-radius(3px)
   margin: 0 10px 5px 0
-  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1)
+  +box-shadow(1px 1px 0 0 rgba(0, 0, 0, 0.1))
 
 .mail-checkall
   margin-right: 5px
