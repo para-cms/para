@@ -11,7 +11,7 @@ module Para
         # Load existing resources
         resources = object.send(attribute_name)
         # Order them if the list should be orderable
-        resources = resources.order(:position) if orderable
+        resources = resources.sort_by(&:position) if orderable
 
         locals = options.fetch(:locals, {})
 
