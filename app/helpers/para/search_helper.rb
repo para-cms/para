@@ -9,10 +9,7 @@ module Para
     end
 
     def searchable_attributes(attributes)
-      whitelist = attributes.select do |attribute|
-        [:string, :text].include?(attribute.type.to_sym) &&
-          !attribute.name.match(/password/)
-      end
+      whitelist = attributes.select(&:searchable?)
 
       whitelist.map do |attribute|
         attribute.attribute_column_path.join('_')

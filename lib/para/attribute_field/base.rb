@@ -4,7 +4,7 @@ module Para
       class_attribute :_field_options
       cattr_accessor :_field_types
 
-      attr_reader :model, :name, :type, :field_type, :field_method
+      attr_reader :model, :name, :type, :field_type, :field_method, :options
 
       def self.field_option(key, method_name, options = {})
         self._field_options ||= []
@@ -43,9 +43,10 @@ module Para
 
       def initialize(model, options = {})
         @model = model
-        @name = options[:name]
-        @type = options[:type]
-        @field_type = options[:field_type]
+        @name = options.delete(:name)
+        @type = options.delete(:type)
+        @field_type = options.delete(:field_type)
+        @options = options
 
         determine_name_and_field_method!
       end
@@ -68,6 +69,13 @@ module Para
 
       def value_for(instance)
         instance.send(name)
+      end
+
+      #
+      def searchable?
+        options[:searchable] != false && (
+          [:string, :text].include?(type.to_sym) && !name.match(/password/)
+        )
       end
 
       # Allows parsing input params before they're passed to the model, so

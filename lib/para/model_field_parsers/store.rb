@@ -14,7 +14,7 @@ module Para
 
           field_names.each do |field_name|
             fields_hash[field_name] = AttributeField::Base.new(
-              model, name: field_name, type: :string
+              model, name: field_name, type: :string, searchable: false
             )
           end
         end
