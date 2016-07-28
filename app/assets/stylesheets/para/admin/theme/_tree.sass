@@ -1,5 +1,7 @@
 @import "variables"
 
+@import "compass/css3/inline-block"
+
 .root-tree
   padding-left: 0
   > .node
@@ -27,7 +29,7 @@
     padding: 5px
     text-align: center
     width: 32px
-    display: inline-block
+    +inline-block
     margin-top: 3px
     &:focus,
     &:active,
@@ -36,7 +38,7 @@
 
   .node-name
     margin-top: 3px
-    display: inline-block
+    +inline-block
 
   .placeholder
     height: 30px

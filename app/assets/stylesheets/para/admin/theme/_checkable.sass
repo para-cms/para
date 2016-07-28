@@ -1,5 +1,7 @@
 @import 'variables'
 
+@import "compass/css3/inline-block"
+
 @mixin fontAwesome
   font-family: FontAwesome
   font-weight: normal
@@ -98,9 +100,9 @@ input[type=radio]:focus + .radio-icon:before
     border: none
     background-color: transparent
     background: none
-    display: inline-block
+    +inline-block
     &:hover
       cursor: pointer
     &:before
-      display: inline-block
+      +inline-block
       width: 20px

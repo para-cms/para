@@ -1,18 +1,21 @@
 @import "para/admin/theme/variables"
 
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+
 .selectize-dropdown, 
 .selectize-dropdown.form-control
-  border-radius: $border-radius-base
+  +border-radius($border-radius-base)
 
 .selectize-input,
 .selectize-input.full
   border-color: $input-border
-  border-radius: $input-border-radius
+  +border-radius($input-border-radius)
   &.focus
     border-color: $input-border-focus
-    box-shadow: none
+    +box-shadow(none)
   &.dropdown-active
-    border-radius: $input-border-radius
+    +border-radius($input-border-radius)
 
 .selectize-dropdown, 
 .selectize-input, 

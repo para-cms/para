@@ -1,14 +1,20 @@
 @import "variables"
 
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/transition"
+@import "compass/css3/transform"
+
 .panel
   float: left
   width: 100%
-  border-radius: $panel-border-radius
+  +border-radius($panel-border-radius)
   border: 0
   border-top: 2px solid $panel-default-border
   margin-bottom: 20px
   position: relative
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2)
+  +box-shadow(0 1px 1px 0 rgba(0, 0, 0, 0.2))
   &.panel-default
     border-top-color: $panel-default-border
     border-top-width: 1px
@@ -28,7 +34,7 @@
       float: left
       width: 30px
       border: 2px solid $gray-lighter
-      border-radius: 50%
+      +border-radius(50%)
       margin-right: 5px
     .panel-title
       margin-left: 7px
@@ -81,7 +87,7 @@
       margin-bottom: 10px
       position: relative
       img
-        border-radius: 5px 5px 0 0
+        +border-radius(5px 5px 0 0)
         width: 100%
       .panel-body-inform
         width: 30px
@@ -91,13 +97,13 @@
         left: 50%
         background: $brand-info
         color: #FFF
-        border-radius: 5px
+        +border-radius(5px)
         margin-left: -15px
         text-align: center
         line-height: 30px
         padding-left: 1px
         padding-top: 1px
-        transform: rotate(45deg)
+        +rotate(45deg)
         &.inform-primary
           background: $brand-primary
         &.inform-success
@@ -109,11 +115,11 @@
         .fa
           font-size: 16px
           color: #FFF
-          transform: rotate(-45deg)
+          +rotate(-45deg)
     &.list-group
       padding: 0
     &.profile
-      border-radius: 5px 5px 0 0
+      +border-radius(5px 5px 0 0)
     &.panel-body-search
       padding: 5px
     &.panel-body-half .panel-body
@@ -181,9 +187,9 @@ ul.panel-controls
       line-height: 28px
       color: $breadcrumb-active-color
       border: 1px solid #BBB
-      border-radius: 50%
+      +border-radius(50%)
       margin-left: 3px
-      transition: all 200ms ease
+      +single-transition(all, 200ms, ease)
       &.control-primary
         color: $brand-primary
         border-color: $brand-primary
@@ -204,7 +210,7 @@ ul.panel-controls
         color: $title-color
 
 .label-form
-  display: inline-block
+  +inline-block
   font-size: 11px
   padding: 5px 10px
   line-height: 12px
@@ -215,8 +221,8 @@ ul.panel-controls
   padding: 4px 10px
   margin: 3px 0 3px 5px
   font-size: 12px
-  display: inline-block
-  border-radius: 3px
+  +inline-block
+  +border-radius(3px)
   &.pulsate
     animation: pulsate 1s ease-out
     animation-iteration-count: infinite
