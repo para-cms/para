@@ -54,5 +54,5 @@ class Para.NestedManyField
     $target.find('input, textarea, select').eq('0').focus()
 
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   $('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))

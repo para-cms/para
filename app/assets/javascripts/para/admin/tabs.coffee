@@ -17,5 +17,5 @@ class Para.Tabs
   $: (args...) ->
     $.fn.find.apply(@$el, args)
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   $('[data-form-tabs]').each (i, el) -> new Para.Tabs(el: el)

@@ -11,7 +11,7 @@ responsive_sidebar_navigation = ->
   $('.component-item').on 'click', 'a', (e) ->
     scrollToComponentSection($(e.currentTarget), 150)
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   responsive_sidebar_navigation()
 
   $(".selectize-tags").selectize

@@ -6,6 +6,6 @@ class FiltersForm
   onChange: =>
     @$el.submit()
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   $('[data-filters-form]').each (i, el) ->
     new FiltersForm($el: $(el))

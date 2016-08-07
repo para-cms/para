@@ -38,16 +38,16 @@ class Para.ResourceTree
     data = {}
     $(".node").each (index) ->
       $this = $(this)
-      data[index] = { 
-        id: $this.data("id"), 
-        position: index, 
-        parent_id: $this.parent().parent().data("id") 
+      data[index] = {
+        id: $this.data("id"),
+        position: index,
+        parent_id: $this.parent().parent().data("id")
       }
     data
 
   orderUpdated: ->
     # TODO: Add flash message to display ordering success
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   $('.root-tree').each (i, el) ->
     new Para.ResourceTree($(el))

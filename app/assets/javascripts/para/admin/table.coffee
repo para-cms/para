@@ -41,6 +41,6 @@ class Para.ResourceTable
   orderUpdated: ->
     # TODO: Add flash message to display ordering success
 
-$(document).on 'page:change', ->
+$(document).on 'page:change turbolinks:load', ->
   $('.para-component-relation-table').each (i, el) ->
     new Para.ResourceTable($(el))
