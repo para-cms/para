@@ -3,7 +3,7 @@ module Para
     class SingletonResource < Para::Component::Resource
       register :singleton_resource, self
 
-      configurable_on :model_type, as: :selectize, collection: :available_models
+      configurable_on :model_type
 
       has_one :component_resource, class_name: 'Para::ComponentResource',
               foreign_key: :component_id, autosave: true, dependent: :destroy

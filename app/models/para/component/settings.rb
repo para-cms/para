@@ -3,7 +3,7 @@ module Para
     class Settings < Para::Component::Base
       register :settings, self
 
-      configurable_on :settings, as: :selectize
+      configurable_on :settings
 
       def settings
         eval(configuration['settings'])
