@@ -6,11 +6,11 @@ module Para
       include Para::Admin::ResourceControllerConcerns
       include Para::SearchHelper
 
-      before_filter :load_and_authorize_crud_resource
-      before_filter :add_breadcrumbs, only: [:show, :index, :edit, :new]
+      before_action :load_and_authorize_crud_resource
+      before_action :add_breadcrumbs, only: [:show, :index, :edit, :new]
 
-      after_filter :attach_resource_to_component, only: [:create]
-      after_filter :remove_resource_from_component, only: [:destroy]
+      after_action :attach_resource_to_component, only: [:create]
+      after_action :remove_resource_from_component, only: [:destroy]
 
       def index
         @q = @component.resources.search(params[:q])

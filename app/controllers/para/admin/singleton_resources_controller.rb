@@ -5,8 +5,8 @@ module Para
     class SingletonResourcesController < Para::Admin::ResourcesController
       include Para::Admin::ResourceControllerConcerns
 
-      before_filter :load_and_authorize_singleton_resource
-      after_filter :attach_resource_to_component, only: [:create]
+      before_action :load_and_authorize_singleton_resource
+      after_action :attach_resource_to_component, only: [:create]
 
       private
 
