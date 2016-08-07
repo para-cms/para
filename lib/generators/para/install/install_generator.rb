@@ -24,7 +24,7 @@ module Para
       gemfile_contents = File.read(Rails.root.join('Gemfile'))
 
       [
-        ['devise', '~> 3.0'],
+        ['devise', '>= 3.0'],
         # Allows for installing default wrappers and bootstrap adapters
         # This should be avoided when add an initializer namespaced to the
         # para environment
