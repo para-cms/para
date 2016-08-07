@@ -32,7 +32,6 @@ module Para
         ['simple_form_extension'],
         # Pull requests are pending, and I don't want to release the gem
         # under another name to be able to depend on it
-        ['active_decorator', github: 'glyph-fr/active_decorator', branch: 'dev'],
         ['kaminari', '>= 0.16.1'],
         ['ransack', '>= 1.4.1'],
         ['bootstrap-kaminari-views', '>= 0.0.5']

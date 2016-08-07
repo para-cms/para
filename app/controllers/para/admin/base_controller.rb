@@ -8,7 +8,6 @@ module Para
       end
 
       before_action :authorize_admin_access
-      before_action :load_component_sections
 
       layout 'para/admin'
 
@@ -30,10 +29,6 @@ module Para
 
       def authorize_admin_access
         authorize! :access, :admin
-      end
-
-      def load_component_sections
-        @component_sections = Para::ComponentSection.ordered.includes(:components)
       end
 
       def self.load_and_authorize_component(options = {})

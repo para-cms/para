@@ -3,8 +3,8 @@
     = link_to admin_path do
       = t('para.admin.title')
 
-  - if @component_sections.any?
-    - @component_sections.each do |component_section|
+  - if admin_component_sections.any?
+    - admin_component_sections.each do |component_section|
       - next unless component_section.components.any? { |component| can?(:manage, component) }
 
       %li.component-section-item
