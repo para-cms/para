@@ -3,11 +3,15 @@ Para.components.draw do
   # You can translate the section title at: components.section.menu
   #
   # section :menu do
-  #
-  #  # Create a component of type :crud in the the section :menu, with the
-  #  # identifier :pages, with the model 'Page' as the target type and
-  #  # namespacing it's managed to resources to the component
+  #  # Creating crud components can be done the following way
   #  #
-  #  component :pages, :crud, model_type: 'Page', namespaced: true
+  #  component :pages,   :crud
+  #  component :members, :crud, model_type: 'User'
+  #  component :news,    :crud, model_type: 'Page', namespaced: true
+
+  #  # Creating a component allowing you to edit a single resource is done
+  #  # with the `singleton_resource` component, the following way
+  #  #
+  #  component :home,    :singleton_resource, model_type: 'HomePage'
   # end
 end

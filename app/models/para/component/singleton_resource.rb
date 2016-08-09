@@ -25,6 +25,17 @@ module Para
         ModelName.new(self)
       end
 
+      def update_with(attributes)
+        # If no model_type is provided in the configuration file, default to
+        # the camelized version of the identifier, allowing to create
+        # singleton_resource components without setting the :model_type option,
+        # when given a conventional name
+        #
+        attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
+
+        super
+      end
+
       class ModelName < ActiveModel::Name
         def singular_route_key
           'singleton'

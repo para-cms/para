@@ -13,6 +13,8 @@ module Para
       has_many :component_resources, class_name: 'Para::ComponentResource',
                foreign_key: :component_id, autosave: true, dependent: :destroy
 
+      before_validation :ensure_model_type
+
       def namespaced?
         case namespaced
         when 'true' then true
@@ -32,6 +34,17 @@ module Para
         component_resources.where(resource: resource).first.destroy
       end
 
+      def update_with(attributes)
+        # If no model_type is provided in the configuration file, default to
+        # the singular and camelized version of the identifier, allowing to
+        # create crud components without setting the :model_type option, when
+        # given a conventional name
+        #
+        attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
+
+        super
+      end
+
       private
 
       def namespaced_resources
@@ -41,6 +54,10 @@ module Para
         ).where(
           para_component_resources: { component_id: id }
         )
+      end
+
+      def ensure_model_type
+        self.model_type ||= identifier
       end
     end
   end

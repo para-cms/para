@@ -151,7 +151,7 @@ module Para
 
       def refresh(attributes = {})
         self.model = type.where(identifier: identifier).first_or_initialize
-        model.assign_attributes(attributes.merge(options_with_defaults))
+        model.update_with(attributes.merge(options_with_defaults))
         model.save!
       end
 

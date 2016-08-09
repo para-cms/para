@@ -58,6 +58,16 @@ module Para
         slug
       end
 
+      # This method is used by the components configuration system to assign
+      # updated attributes from the config file to the component.
+      #
+      # This is meant to be overriden by components that have to define specific
+      # behavior, like for the Crud component
+      #
+      def update_with(attributes)
+        assign_attributes(attributes)
+      end
+
       private
 
       def ensure_slug
