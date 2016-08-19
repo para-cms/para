@@ -86,6 +86,8 @@ module Para
       end
 
       tables_exist
+    rescue ActiveRecord::NoDatabaseError
+      false # Do not load components when the database is not installed
     end
 
     # Eager loads every file ending with _component.rb that's included in a

@@ -22,6 +22,8 @@ module Para
           "SELECT COUNT(*) FROM pg_catalog.pg_extension " +
           "WHERE extname = '#{ extname }'"
         ).first['count'].to_i > 0
+      rescue ActiveRecord::NoDatabaseError
+        true # Do not issue warning when no database is installed
       end
     end
   end
