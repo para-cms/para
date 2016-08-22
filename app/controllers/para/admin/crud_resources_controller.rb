@@ -65,14 +65,24 @@ module Para
       def import
         if @component.importable?
           file = params[:file]
+
           if file
             importer = params[:importer].constantize.new(file.tempfile)
             importer.run
-            flash_message(:success)
+
+            if importer.errors.any?
+              flash[:warning] = t(
+                'para.flash.shared.import.success_with_errors',
+                errors: importer.errors.full_messages.join('<br>')
+              )
+            else
+              flash_message(:success)
+            end
           else
             flash_message(:error)
           end
         end
+
         redirect_to @component.path
       end
 

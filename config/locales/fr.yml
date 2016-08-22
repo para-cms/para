@@ -15,7 +15,10 @@ fr:
           success: "%{model} cloné(e)"
           error: "Impossible de cloner le(a) %{model}"
         import:
-          success: "Import réussi"
+          success: "L'import du fichier a été effectué avec succès"
+          success_with_errors: |
+            L'import du fichier a été effectué, mais certaines lignes n'ont pas
+            été prises en compte à causes d'erreurs :<br><br>%{errors}
           error: "Merci de sélectionner un fichier à importer"
 
     admin:
@@ -61,6 +64,7 @@ fr:
       select: "Sélectionnez un fichier"
       change: "Changer"
       placeholder: Fichier au format ( .csv .xlsx )
+      row_error_prefix: "- Ligne %{number} :"
 
     shared:
       save: "Enregistrer"
