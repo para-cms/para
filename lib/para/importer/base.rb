@@ -36,8 +36,7 @@ module Para
       def add_errors_from(index, record)
         # The file's row number starts at 1 and headers are striped, so we
         # add 2 to the index to obtain the row number
-        row_number = index + 2
-        row_name = I18n.t('para.import.row_error_prefix', number: row_number)
+        row_name = I18n.t('para.import.row_error_prefix', number: index)
 
         record.errors.full_messages.each do |message|
           errors.add(row_name, message)
