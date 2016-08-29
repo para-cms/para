@@ -27,18 +27,27 @@ module Para
       # The only problem is if we have engines that declare the same routes
       #
       def find_path(path, options)
-        polymorphic_path(path, options)
-      rescue NoMethodError, NameError => original_error
-        mounted_proxy_methods.each do |proxy_method|
-          begin
-            proxy = send(proxy_method)
-            return polymorphic_path(([proxy] + path), options)
-          rescue NoMethodError, NameError => e
-            next
+        if (result = safe_polymorphic_path(path, options))
+          result
+        else
+          mounted_proxy_methods.each do |proxy_method|
+            begin
+              proxy = send(proxy_method)
+              return polymorphic_path(([proxy] + path), options)
+            rescue NoMethodError, NameError => e
+              next
+            end
           end
-        end
 
-        raise original_error
+          raise "No component path found for : #{ path.inspect }, " +
+                "with options : #{ options.inspect }"
+        end
+      end
+
+      def safe_polymorphic_path(*args)
+        polymorphic_path(*args)
+      rescue NoMethodError, NameError
+        nil
       end
 
       def mounted_proxy_methods
