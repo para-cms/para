@@ -14,11 +14,12 @@ module Para
           scope module: :para do
             namespace :admin do
               get '/' => 'main#index'
-
-              crud_component :crud, scope: ':model'
-              singleton_resource_component :singleton, scope: ':model'
-              component :settings
             end
+
+            # Components are namespaced into :admin in their respective methods
+            crud_component
+            singleton_resource_component
+            component :settings
           end
 
           block.call if block

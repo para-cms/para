@@ -3,12 +3,18 @@ module Para
     class Base < ActiveRecord::Base
       self.table_name = 'para_components'
 
-      class_attribute :component_name, :configurable_attributes
+      class_attribute :component_name
 
       def self.register(name, component)
         self.component_name = name
         Para::Component.registered_components[name] = component
       end
+
+      def self.configurable_on(key, options = {})
+        store_accessor(:configuration, key)
+      end
+
+      configurable_on :controller
 
       belongs_to :component_section, class_name: 'Para::ComponentSection'
 
@@ -35,19 +41,6 @@ module Para
 
       def self.model_name
         @model_name ||= ModelName.new(self)
-      end
-
-      def self.configurable_on(key, options = {})
-        store_accessor(:configuration, key)
-        configurable_attributes[key] = options
-      end
-
-      def self.configurable?
-        configurable_attributes.length > 0
-      end
-
-      def self.configurable_attributes
-        @configurable_attributes ||= {}
       end
 
       def default_form_actions

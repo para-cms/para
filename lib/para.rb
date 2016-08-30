@@ -48,6 +48,7 @@ module Para
     autoload :Config
     autoload :Component
     autoload :Generators
+    autoload :Routing
     autoload :Routes
     autoload :Plugins
     autoload :Breadcrumbs

@@ -30,8 +30,8 @@ module Para
         # the camelized version of the identifier, allowing to create
         # singleton_resource components without setting the :model_type option,
         # when given a conventional name
-        #
         attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
+        attributes[:controller] ||= :singleton_resources
 
         super
       end
