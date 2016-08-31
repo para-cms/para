@@ -27,7 +27,7 @@ module Para
       # The only problem is if we have engines that declare the same routes
       #
       def find_path(path, options)
-        if (result = safe_polymorphic_path(path, options))
+        if (result = safe_polymorphic_path(path, options)) && !(result.is_a?(Exception))
           result
         else
           mounted_proxy_methods.each do |proxy_method|
@@ -39,15 +39,14 @@ module Para
             end
           end
 
-          raise "No component path found for : #{ path.inspect }, " +
-                "with options : #{ options.inspect }"
+          raise result
         end
       end
 
       def safe_polymorphic_path(*args)
         polymorphic_path(*args)
-      rescue NoMethodError, NameError
-        nil
+      rescue NoMethodError, NameError => exception
+        exception
       end
 
       def mounted_proxy_methods

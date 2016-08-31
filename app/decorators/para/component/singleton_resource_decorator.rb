@@ -4,7 +4,7 @@ module Para
       include Para::Component::BaseDecorator
 
       def path(options = {})
-        find_path([:admin, self, :resource], options)
+        find_path([:admin, self], options)
       end
 
       def relation_path(controller_or_resource, *nested_resources, **options)
