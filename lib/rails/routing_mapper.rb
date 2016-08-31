@@ -19,9 +19,9 @@ module ActionDispatch
           component_name, options
         )
 
-        get endpoint => "#{ controller }#show", as: as
-
         namespace :admin do
+          get endpoint => "#{ controller }#show", as: as
+
           scope(endpoint, as: component_name) do
             instance_eval(&block) if block
             add_extensions_for(:component)
