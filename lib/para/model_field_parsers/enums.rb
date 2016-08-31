@@ -12,7 +12,7 @@ module Para
       end
 
       def applicable?
-        !model.defined_enums.empty?
+        model.respond_to?(:defined_enums) && !model.defined_enums.empty?
       end
     end
   end
