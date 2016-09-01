@@ -7,8 +7,8 @@ module Para
 
       attr_reader :sheet
 
-      def initialize(file)
-        @sheet = Roo::Spreadsheet.open(file.path)
+      def initialize(file, options = {})
+        @sheet = Roo::Spreadsheet.open(file.path, options)
       end
 
       def run

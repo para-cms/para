@@ -19,6 +19,7 @@ fr:
           success_with_errors: |
             L'import du fichier a été effectué, mais certaines lignes n'ont pas
             été prises en compte à causes d'erreurs :<br><br>%{errors}
+          other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
           error: "Merci de sélectionner un fichier à importer"
 
     admin:
