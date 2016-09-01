@@ -67,7 +67,6 @@ module Para
           file = params[:file]
 
           if file
-
             importer = params[:importer].constantize.new(
               file, extension: File.extname(file.original_filename)
             )

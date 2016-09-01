@@ -8,14 +8,14 @@ module Para
       end
 
       def importable?
-        @importable ||= imports.length > 0
+        @importable ||= importers.length > 0
       end
 
       # TODO : Move :configuration column store to JSON instead of HStore
       # which handles more data types and will help us avoid eval here
-      def imports
-        @imports ||= if importers.present?
-          eval(importers)
+      def importers
+        @importers ||= if (importers = configuration['importers'].presence)
+          eval(importers).map(&:constantize)
         else
           []
         end

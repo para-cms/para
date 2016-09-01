@@ -64,6 +64,9 @@ fr:
       name: Importer
       select: "Sélectionnez un fichier"
       change: "Changer"
+      help_text: |
+        Sélectionnez un fichier Excel (.xls, .xlsx) ou CSV (.csv) à importer et
+        cliquez sur le bouton "Importer".
       placeholder: Fichier au format ( .csv .xlsx )
       row_error_prefix: "- Ligne %{number} :"
 

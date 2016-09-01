@@ -2,6 +2,7 @@ module Para
   module Importer
     class Base
       include ActiveModel::Validations
+      extend ActiveModel::Naming
 
       class_attribute :allows_import_errors
 
@@ -49,6 +50,10 @@ module Para
 
       def self.allow_import_errors!
         self.allows_import_errors = true
+      end
+
+      def headers
+        @headers ||= sheet.row(1)
       end
     end
   end
