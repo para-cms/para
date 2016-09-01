@@ -9,7 +9,6 @@ module Para
 
       def relation_path(controller_or_resource, *nested_resources, **options)
         nested = nested_resources.any?
-        nested_resources << :resource unless nested
 
         if Hash === controller_or_resource
           options = controller_or_resource
@@ -17,6 +16,7 @@ module Para
 
         options[:action] = action_option_for(options, nested: nested)
         data = [:admin, self, *nested_resources]
+
         polymorphic_path(data, options)
       end
 
