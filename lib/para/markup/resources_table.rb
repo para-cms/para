@@ -79,8 +79,6 @@ module Para
           field_name = nil
         end
 
-        sort = options.delete(:sort) || field_name
-
         label = if Symbol === field_name
           model.human_attribute_name(field_name)
         elsif block
@@ -90,7 +88,7 @@ module Para
         end
 
         content_tag(:th, options) do
-          if sort != field_name
+          if (sort = options.delete(:sort))
               view.sort_link(search, *sort, label, hide_indicator: true)
           elsif searchable?(field_name)
             view.sort_link(search, field_name, label, hide_indicator: true)
