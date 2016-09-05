@@ -17,12 +17,6 @@ module Para
       def model_table_name
         model && model.table_name
       end
-
-      private
-
-      def excluded_models
-        %w(FriendlyId::Slug)
-      end
     end
   end
 end
