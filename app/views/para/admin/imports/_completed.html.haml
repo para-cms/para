@@ -5,7 +5,7 @@
 
       %ul
         - status[:errors].each do |message|
-          %li= message
+          %li= message.html_safe
 
   - else
     .alert.alert-success

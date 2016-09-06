@@ -2,6 +2,7 @@ module Para
   module Importer
     class Base < ActiveJob::Base
       include ActiveJob::Status
+
       # Used to store import errors on the object
       include ActiveModel::Validations
       # Used to translate importer name with rails default `activemodel` i18n keys
@@ -44,8 +45,16 @@ module Para
         # add 2 to the index to obtain the row number
         row_name = I18n.t('para.import.row_error_prefix', number: index)
 
-        record.errors.full_messages.each do |message|
-          errors.add(row_name, message)
+        record.errors.messages.each do |attribute, messages|
+          messages.each do |message|
+            full_message = record.errors.full_message(attribute, message)
+
+            if (value = record.send(attribute)).presence
+              full_message << ' (<b>' <<  value << '</b>)'
+            end
+
+            errors.add(row_name, full_message)
+          end
         end
       end
 
