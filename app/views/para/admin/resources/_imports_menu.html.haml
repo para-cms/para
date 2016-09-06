@@ -1,6 +1,6 @@
 - if component.importable?
   - if component.importers.length == 1
-    = link_to "#component-import-#{ component.importers.first.model_name.route_key }", class: 'btn btn-default', data: { toggle: 'modal' } do
+    = link_to component.path(namespace: :import, action: :new, importer: component.importers.first.name), class: 'btn btn-default', remote: true, data: { :'importer-button' => true } do
       = fa_icon 'upload'
       = t('para.import.name')
 
@@ -12,36 +12,5 @@
         %span.caret
       %ul.dropdown-menu
         - component.importers.each do |importer|
-          %li= link_to importer.model_name.human, "#component-import-#{ importer.model_name.route_key }", data: { toggle: 'modal' }
-
-
-- component.importers.each do |importer|
-  = modal id: "component-import-#{ importer.model_name.route_key }" do |modal|
-    = modal.header do
-      = importer.model_name.human
-
-    = form_tag component.relation_path(model.model_name.route_key, action: :import, importer: importer.name), method: 'post', multipart: 'true' do
-      = modal.body do
-        %p= t('para.import.help_text')
-
-        .form-group
-          .fileinput.fileinput-new.input-group{ data: { provides: 'fileinput' } }
-            .form-control.uneditable-input{ data: { trigger: 'fileinput' } }
-              %span.fileinput-placeholder
-                = t('para.import.placeholder')
-              = fa_icon 'file', class: 'fileinput-exists'
-              %span.fileinput-filename
-            .input-group-btn
-              .btn.btn-default.btn-file
-                %span.fileinput-new
-                  = t('para.import.select')
-                %span.fileinput-exists
-                  = t('para.import.change')
-                = file_field_tag 'file', class: 'file file-upload'
-              .btn.btn-danger.fileinput-exists{ type: 'button', data: { dismiss: 'fileinput' } }
-                = fa_icon 'times'
-
-        = modal.footer do
-          %button.btn.btn-primary{ type: 'submit' }
-            = fa_icon 'upload'
-            = t('para.import.name')
+          %li
+            = link_to component.path(:imports, action: :new, importer: importer.name), remote: true, data: { :'importer-button' => true }

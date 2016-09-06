@@ -73,5 +73,22 @@ module Para
     initializer 'Check for extensions installation' do
       Para::PostgresExtensionsChecker.check_all
     end
+
+    initializer 'Ensure ActiveJob::Status store' do
+      if ActiveSupport::Cache::NullStore === ActiveJob::Status.store
+        ActiveJob::Status.store = :memory_store
+      end
+    end
+
+    # Allow generating resources in the gem without having all the unnecessary
+    # files generated
+    #
+    config.generators do |generators|
+      generators.skip_routes     true if generators.respond_to?(:skip_routes)
+      generators.helper          false
+      generators.stylesheets     false
+      generators.javascripts     false
+      generators.test_framework  false
+    end
   end
 end

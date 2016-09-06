@@ -1,0 +1,14 @@
+= modal id: "component-import-#{ @importer.model_name.route_key }" do |modal|
+  = modal.header do
+    = @importer.model_name.human
+
+  = simple_form_for @file, as: :file, url: @component.path(namespace: :imports, importer: @importer.name), remote: true do |form|
+    = modal.body do
+      %p= t('para.import.help_text')
+
+      = form.input :attachment, label: false, placeholder: t('para.import.placeholder')
+
+      = modal.footer do
+        %button.btn.btn-primary{ type: 'submit' }
+          = fa_icon 'upload'
+          = t('para.import.name')

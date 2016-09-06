@@ -62,44 +62,6 @@ module Para
         end
       end
 
-      def import
-        if @component.importable?
-          file = params[:file]
-
-          if file
-            importer = params[:importer].constantize.new(
-              file, extension: File.extname(file.original_filename)
-            )
-
-            importer.run
-
-            if importer.errors.any?
-              messages = importer.errors.full_messages
-
-              # Limit number of error messages to avoid cookie overflow, since
-              # flash messages are stored in session, and default session
-              # store is the cookie store, which only allows 4KB of data
-              if messages.length > 20
-                messages_count = messages.length
-                messages = messages.take(20)
-                messages << t('para.flash.shared.import.other_errors', count: messages_count - 20)
-              end
-
-              flash[:warning] = t(
-                'para.flash.shared.import.success_with_errors',
-                errors: messages.join('<br>')
-              )
-            else
-              flash_message(:success)
-            end
-          else
-            flash_message(:error)
-          end
-        end
-
-        redirect_to @component.path
-      end
-
       private
 
       def resource_model

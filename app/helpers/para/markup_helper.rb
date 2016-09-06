@@ -11,5 +11,9 @@ module Para
     def panel(options = {}, &block)
       Para::Markup::Panel.new(self).container(options, &block)
     end
+
+    def modal(options = {}, &block)
+      Para::Markup::Modal.new(self).container(options, &block)
+    end
   end
 end

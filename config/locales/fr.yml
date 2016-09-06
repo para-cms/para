@@ -18,7 +18,7 @@ fr:
           success: "L'import du fichier a été effectué avec succès"
           success_with_errors: |
             L'import du fichier a été effectué, mais certaines lignes n'ont pas
-            été prises en compte à causes d'erreurs :<br><br>%{errors}
+            été prises en compte à causes d'erreurs :
           other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
           error: "Merci de sélectionner un fichier à importer"
 
@@ -68,7 +68,8 @@ fr:
         Sélectionnez un fichier Excel (.xls, .xlsx) ou CSV (.csv) à importer et
         cliquez sur le bouton "Importer".
       placeholder: Fichier au format ( .csv .xlsx )
-      row_error_prefix: "- Ligne %{number} :"
+      row_error_prefix: "Ligne %{number} :"
+      importing_file: "Le fichier est en cours d'import, merci de patienter quelques instants ..."
 
     shared:
       save: "Enregistrer"
@@ -78,6 +79,7 @@ fr:
       save_and_edit: "Enregistrer et éditer"
       save_and_add_another_button: "Enregistrer et créer un(e) autre"
       destroy: "Supprimer"
+      close: "Fermer"
 
     types:
       boolean:

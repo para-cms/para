@@ -39,7 +39,7 @@ module Para
             end
           end
 
-          raise result
+          raise result.class, result.message
         end
       end
 

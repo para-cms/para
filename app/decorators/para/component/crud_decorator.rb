@@ -3,9 +3,9 @@ module Para
     module CrudDecorator
       include Para::Component::BaseDecorator
 
-      def path(options = {})
+      def path(namespace: :resources, **options)
         options[:model] ||= model_singular_route_key
-        find_path([:admin, self, :resources], options)
+        find_path([:admin, self, namespace], options)
       end
 
       def relation_path(controller_or_resource, *nested_resources, **options)

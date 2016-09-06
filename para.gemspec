@@ -31,14 +31,16 @@ Gem::Specification.new do |s|
   s.add_dependency 'request_store'
   s.add_dependency 'truncate_html'
   s.add_dependency 'roo'
+  s.add_dependency 'activejob-status'
 
   s.add_dependency 'bootstrap-sass', '~> 3.2.0'
   s.add_dependency 'font-awesome-rails', '>= 4.0.0'
-  s.add_dependency 'selectize-rails'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails'
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'compass-rails'
+
+  s.add_dependency 'vertebra'
 
   s.add_dependency 'rspec-core'
 

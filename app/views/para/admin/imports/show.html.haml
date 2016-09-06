@@ -1,0 +1,28 @@
+= modal id: "component-import-#{ @importer.model_name.route_key }", data: { :'import-status-url' => @component.path(namespace: :import, importer: @importer.name, id: @status.job_id) } do |modal|
+  = modal.header do
+    = @importer.model_name.human
+
+  - if @status.completed?
+    = modal.body do
+      - if @status[:errors].any?
+        .alert.alert-warning
+          = t('para.flash.shared.import.success_with_errors')
+
+          %ul
+            - @status[:errors].each do |message|
+              %li= message
+
+      - else
+        .alert.alert-success
+          = t('para.flash.shared.import.success')
+
+    = modal.footer do
+      %button.btn.btn-default{ data: { dismiss: 'modal' } }
+        = t('para.shared.close')
+
+  - else
+    = modal.body do
+      %p= t('para.import.importing_file')
+
+      .progress{ data: { :'async-progress' => 'import' } }
+        .progress-bar.progress-bar-striped.active{ role: "progressbar", style: "width: #{ @status.progress * 100 }%" }

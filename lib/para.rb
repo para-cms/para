@@ -10,12 +10,15 @@ require 'cocoon'
 require 'cancan'
 require 'request_store'
 require 'roo'
+require 'activejob-status'
 
 require 'sass-rails'
 require 'selectize-rails'
 require 'bootstrap-sass'
 require 'compass-rails'
 require 'font-awesome-rails'
+
+require 'vertebra'
 
 require 'rails/routing_mapper'
 require 'rails/relation_length_validator'

@@ -1,21 +1,24 @@
 module Para
   module Importer
-    class Base
+    class Base < ActiveJob::Base
+      include ActiveJob::Status
+      # Used to store import errors on the object
       include ActiveModel::Validations
-      extend ActiveModel::Naming
+      # Used to translate importer name with rails default `activemodel` i18n keys
+      extend  ActiveModel::Naming
 
       class_attribute :allows_import_errors
 
       attr_reader :sheet
 
-      def initialize(file, options = {})
-        @sheet = Roo::Spreadsheet.open(file.path, options)
-      end
+      def perform(file, options = {})
+        @sheet = Roo::Spreadsheet.open(file.attachment.path, options)
+        progress.total = sheet.last_row - 1
 
-      def run
         ActiveRecord::Base.transaction do
           (2..(sheet.last_row)).each do |index|
             begin
+              progress.increment
               import_from_row(sheet.row(index))
             rescue ActiveRecord::RecordInvalid => error
               if allows_import_errors?
@@ -26,6 +29,8 @@ module Para
             end
           end
         end
+
+        status.update(errors: errors.full_messages)
       end
 
       private

@@ -1,0 +1,24 @@
+class Para.AsyncProgress extends Vertebra.View
+  initialize: (options) ->
+    @targetUrl = options.progressUrl || @$el.data('async-progress-url')
+    @$progressBar = @$el.find('.progress-bar')
+    @trackProgress()
+
+  trackProgress: =>
+    $.get(@targetUrl).done(@onTrackingDataReceived).fail(@onJobError)
+
+  onTrackingDataReceived: (data) =>
+    if data.status is 'completed' then @completed() else @setProgress(data.progress)
+
+  setProgress: (progress) ->
+    @$progressBar.css(width: "#{ progress }%")
+    setTimeout(@trackProgress, 1500)
+    @trigger('progress')
+
+  completed: ->
+    @$progressBar.css(width: "100%")
+    @$progressBar.removeClass('progress-bar-striped').addClass('progress-bar-success')
+    @trigger('completed')
+
+  onJobError: (jqXHR, status, error) =>
+    console.log 'onJobError', jqXHR, status, error

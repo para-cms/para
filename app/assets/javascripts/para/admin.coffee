@@ -2,12 +2,14 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
-#= require selectize
+#= require vertebra
 #= require jasny.bootstrap.min
 #= require simple_form_extension
 #= require jquery.scrollto
 #= require html5-sortable
 #= require cocoon
+#= require jquery.remote-modal-form
+#= require sidekiq-job_monitor
 #= require_self
 #= require_tree ./lib
 #= require_tree ./inputs

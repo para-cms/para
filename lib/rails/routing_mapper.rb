@@ -54,7 +54,6 @@ module ActionDispatch
                     patch :order
                     patch :tree
                     get :export
-                    post :import
                   end
 
                   member do
@@ -63,6 +62,10 @@ module ActionDispatch
 
                   instance_eval(&block) if block
                   add_extensions_for(:crud_component)
+                end
+
+                scope ':importer' do
+                  resources :imports
                 end
               end
             end
