@@ -8,11 +8,14 @@ module Para
       # Used to translate importer name with rails default `activemodel` i18n keys
       extend  ActiveModel::Naming
 
+      rescue_from Exception, with: :rescue_exception
+
       class_attribute :allows_import_errors
 
-      attr_reader :sheet
+      attr_reader :file, :sheet
 
       def perform(file, options = {})
+        @file = file
         @sheet = Roo::Spreadsheet.open(file.attachment.path, options)
         progress.total = sheet.last_row - 1
 
@@ -21,8 +24,8 @@ module Para
             begin
               progress.increment
               import_from_row(sheet.row(index))
-            rescue ActiveRecord::RecordInvalid => error
-              if allows_import_errors?
+            rescue => error
+              if ActiveRecord::RecordInvalid === error && allows_import_errors?
                 add_errors_from(index, error.record)
               else
                 raise
@@ -68,6 +71,25 @@ module Para
 
       def headers
         @headers ||= sheet.row(1)
+      end
+
+      def rescue_exception(exception)
+        Rails.logger.fatal [exception.class.name, exception.message].join(' - ')
+
+        if defined?(ExceptionNotifier)
+          ExceptionNotifier.notify_exception(
+            exception, data: {
+              importer: self.class.name,
+              payload: {
+                file_type: file.class,
+                file_id: file.id,
+                file_name: file.attachment_file_name
+              }
+            }
+          )
+        end
+
+        raise exception
       end
     end
   end
