@@ -1,8 +1,10 @@
 - if component.importable?
   - if component.importers.length == 1
-    = link_to component.path(namespace: :import, action: :new, importer: component.importers.first.name), class: 'btn btn-default', remote: true, data: { :'importer-button' => true } do
+    - importer = component.importers.first
+
+    = link_to component.path(namespace: :import, action: :new, importer: importer.name), class: 'btn btn-default', remote: true, data: { :'importer-button' => true } do
       = fa_icon 'upload'
-      = t('para.import.name')
+      = importer.model_name.human
 
   - else
     .btn-group
@@ -13,4 +15,5 @@
       %ul.dropdown-menu
         - component.importers.each do |importer|
           %li
-            = link_to component.path(:imports, action: :new, importer: importer.name), remote: true, data: { :'importer-button' => true }
+            = link_to component.path(:imports, action: :new, importer: importer.name), remote: true, data: { :'importer-button' => true } do
+              = importer.model_name.human
