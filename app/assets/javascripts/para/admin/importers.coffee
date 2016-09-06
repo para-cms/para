@@ -1,4 +1,8 @@
 class Para.Importer extends RemoteModalForm
+  initialize: (options = {}) ->
+    super(options)
+    @refreshOnClose = false
+
   formSuccess: (e, response) ->
     super(e, response)
 
@@ -9,10 +13,13 @@ class Para.Importer extends RemoteModalForm
     @importStatusURL = @$el.data('import-status-url')
     progress = new Para.AsyncProgress(el: $progressBar, progressUrl: @importStatusURL)
     @listenTo(progress, 'completed', @onImportComplete)
+    @listenTo(progress, 'failed', @onImportComplete)
 
   onImportComplete: ->
     $.ajax(
       url: @importStatusURL
+      # Force HTTP ACCEPT header to HTML since Rails treats XHR request without
+      # a specific ACCEPT header as JS or JSON by defaut.
       accepts:
         'html': 'text/html'
       dataType: 'html'
@@ -22,5 +29,6 @@ class Para.Importer extends RemoteModalForm
     @formSuccess(null, response)
     @refreshOnClose = true
 
-$('body').on 'ajax:success', '[data-importer-button]', (e, response) ->
-    new Para.Importer(modalMarkup: response, $link: $(e.currentTarget))
+$(document).on 'page:change turbolinks:load', ->
+  $('body').on 'ajax:success', '[data-importer-button]', (e, response) ->
+      new Para.Importer(modalMarkup: response, $link: $(e.currentTarget))

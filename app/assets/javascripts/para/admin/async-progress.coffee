@@ -20,5 +20,7 @@ class Para.AsyncProgress extends Vertebra.View
     @$progressBar.removeClass('progress-bar-striped').addClass('progress-bar-success')
     @trigger('completed')
 
-  onJobError: (jqXHR, status, error) =>
-    console.log 'onJobError', jqXHR, status, error
+  onJobError: =>
+    @$progressBar.css(width: "100%")
+    @$progressBar.removeClass('progress-bar-striped').addClass('progress-bar-error')
+    @trigger('failed')

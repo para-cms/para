@@ -1,0 +1,16 @@
+= modal.body do
+  - if status[:errors].any?
+    .alert.alert-warning
+      = t('para.flash.shared.import.success_with_errors')
+
+      %ul
+        - status[:errors].each do |message|
+          %li= message
+
+  - else
+    .alert.alert-success
+      = t('para.flash.shared.import.success')
+
+= modal.footer do
+  %button.btn.btn-default{ data: { dismiss: 'modal' } }
+    = t('para.shared.close')

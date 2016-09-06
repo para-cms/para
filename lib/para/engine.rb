@@ -56,6 +56,14 @@ module Para
       end
     end
 
+    initializer 'Extend active job status\' status class' do
+      ActiveSupport.on_load(:active_job) do
+        ::ActiveJob::Status::Status.send(
+          :include, Para::Ext::ActiveJob::StatusMixin
+        )
+      end
+    end
+
     initializer 'Build components tree' do |app|
       components_config_path = Rails.root.join('config', 'components.rb')
 

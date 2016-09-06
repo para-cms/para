@@ -12,7 +12,11 @@ module Para
 
         respond_to do |format|
           format.json do
-            render json: { status: @status.status, progress: @status.progress * 100 }
+            if @status.failed?
+              render json: { status: @status.status }, status: 422
+            else
+              render json: { status: @status.status, progress: @status.progress * 100 }
+            end
           end
 
           format.html
@@ -33,7 +37,6 @@ module Para
 
           render 'show'
         else
-          flash_message(:error)
           render 'new'
         end
       end
@@ -47,7 +50,11 @@ module Para
       end
 
       def file_params
-        params.require(:file).permit(:attachment)
+        @file_params ||= if params[:file]
+          params.require(:file).permit(:attachment)
+        else
+          {}
+        end
       end
     end
   end

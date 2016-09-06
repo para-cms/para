@@ -12,3 +12,4 @@ end
 require 'para/ext/cancan'
 require 'para/ext/paperclip'
 require 'para/ext/simple_form_extension'
+require 'para/ext/active_job_status'

@@ -20,7 +20,7 @@ fr:
             L'import du fichier a été effectué, mais certaines lignes n'ont pas
             été prises en compte à causes d'erreurs :
           other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
-          error: "Merci de sélectionner un fichier à importer"
+          error: "Le fichier choisi contient des erreurs et n'a pu être importé"
 
     admin:
       title: "Administration"
