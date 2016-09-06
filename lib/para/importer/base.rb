@@ -24,8 +24,8 @@ module Para
             begin
               progress.increment
               import_from_row(sheet.row(index))
-            rescue => error
-              if ActiveRecord::RecordInvalid === error && allows_import_errors?
+            rescue ActiveRecord::RecordInvalid => error
+              if allows_import_errors?
                 add_errors_from(index, error.record)
               else
                 raise
