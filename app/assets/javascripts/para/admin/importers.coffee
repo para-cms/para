@@ -11,9 +11,9 @@ class Para.Importer extends RemoteModalForm
 
   trackProgress: ($progressBar) ->
     @importStatusURL = @$el.data('import-status-url')
-    progress = new Para.AsyncProgress(el: $progressBar, progressUrl: @importStatusURL)
-    @listenTo(progress, 'completed', @onImportComplete)
-    @listenTo(progress, 'failed', @onImportComplete)
+    @progress = new Para.AsyncProgress(el: $progressBar, progressUrl: @importStatusURL)
+    @listenTo(@progress, 'completed', @onImportComplete)
+    @listenTo(@progress, 'failed', @onImportComplete)
 
   onImportComplete: ->
     $.ajax(
@@ -28,6 +28,10 @@ class Para.Importer extends RemoteModalForm
   onFinalModalLoaded: (response) =>
     @formSuccess(null, response)
     @refreshOnClose = true
+
+  modalHide: ->
+    super()
+    @progress?.stop()
 
 $(document).on 'page:change turbolinks:load', ->
   $('body').on 'ajax:success', '[data-importer-button]', (e, response) ->

@@ -7,7 +7,7 @@ class @RemoteModalForm extends Vertebra.View
     'ajax:success a[data-remote]': 'pageLoaded'
     'ajax:error [data-remote]': 'formError'
     'hidden.bs.modal': 'modalHidden'
-    'hide.bs.modal': 'refreshPage'
+    'hide.bs.modal': 'modalHide'
 
   initialize: (options = {}) ->
     { modalMarkup, @$link, refreshOnClose } = options
@@ -44,6 +44,9 @@ class @RemoteModalForm extends Vertebra.View
 
   hideModal: (options = {}) ->
     @$el?.modal('hide')
+
+  modalHide: (e) ->
+    @refreshPage()
 
   modalHidden: (e) ->
     $(e.currentTarget).remove()

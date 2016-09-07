@@ -7,12 +7,15 @@ class Para.AsyncProgress extends Vertebra.View
   trackProgress: =>
     $.get(@targetUrl).done(@onTrackingDataReceived).fail(@onJobError)
 
+  stop: ->
+    clearTimeout(@progressTimeout)
+
   onTrackingDataReceived: (data) =>
     if data.status is 'completed' then @completed() else @setProgress(data.progress)
 
   setProgress: (progress) ->
     @$progressBar.css(width: "#{ progress }%")
-    setTimeout(@trackProgress, 1500)
+    @progressTimeout = setTimeout(@trackProgress, 1500)
     @trigger('progress')
 
   completed: ->
