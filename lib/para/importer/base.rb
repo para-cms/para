@@ -2,7 +2,6 @@ module Para
   module Importer
     class Base < ActiveJob::Base
       include ActiveJob::Status
-
       # Used to store import errors on the object
       include ActiveModel::Validations
       # Used to translate importer name with rails default `activemodel` i18n keys
@@ -74,6 +73,8 @@ module Para
       end
 
       def rescue_exception(exception)
+        status.update(status: :failed)
+
         Rails.logger.fatal [exception.class.name, exception.message].join(' - ')
 
         if defined?(ExceptionNotifier)
