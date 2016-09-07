@@ -27,35 +27,15 @@ module Para
       # The only problem is if we have engines that declare the same routes
       #
       def find_path(path, options)
-        if (result = safe_polymorphic_path(path, options)) && !(result.is_a?(Exception))
-          result
-        else
-          mounted_proxy_methods.each do |proxy_method|
-            begin
-              proxy = send(proxy_method)
-              return polymorphic_path(([proxy] + path), options)
-            rescue NoMethodError, NameError => e
-              next
-            end
-          end
-
-          raise result.class, result.message
+        safe_polymorphic_path(path, options).tap do |result|
+          raise result.class, result.message if Exception === result
         end
       end
 
-      def safe_polymorphic_path(*args)
-        polymorphic_path(*args)
-      rescue NoMethodError, NameError => exception
+      def safe_polymorphic_path(path, options)
+        polymorphic_path(path, options)
+      rescue => exception
         exception
-      end
-
-      def mounted_proxy_methods
-        @mounted_proxy_methods ||= begin
-          routes = Rails.application.routes
-          routes.mounted_helpers.instance_methods.select do |name|
-            /^[^_]/ =~ name
-          end
-        end
       end
     end
   end

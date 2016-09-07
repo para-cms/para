@@ -25,7 +25,7 @@ module Para
 
         options[:action] = action_option_for(options, nested: nested)
 
-        polymorphic_path(data, options)
+        find_path(data, options)
       end
 
       private
