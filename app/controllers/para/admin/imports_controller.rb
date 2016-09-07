@@ -44,8 +44,15 @@ module Para
       private
 
       def load_importer
+        importer_name = params[:importer]&.camelize
+
         @importer = @component.importers.find do |importer|
-          importer.name == params[:importer]
+          importer.name == importer_name
+        end
+
+        unless @importer
+          raise "Requested importer (#{ importer_name }) not found for " +
+                ":#{ @component.identifier } component."
         end
       end
 

@@ -45,6 +45,8 @@ module ActionDispatch
           [component_name.to_s.singularize, 'resources'].join('_')
         )
 
+        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
+
         namespace :admin do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
             scope endpoint, as: as do
@@ -65,7 +67,7 @@ module ActionDispatch
                 end
 
                 scope ':importer' do
-                  resources :imports
+                  resources :imports, controller: imports_controller
                 end
               end
             end
