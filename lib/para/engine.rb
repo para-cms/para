@@ -82,10 +82,12 @@ module Para
       Para::PostgresExtensionsChecker.check_all
     end
 
-    initializer 'Ensure ActiveJob::Status store' do
+    initializer 'Configure ActiveJob' do
       if ActiveSupport::Cache::NullStore === ActiveJob::Status.store
         ActiveJob::Status.store = :memory_store
       end
+
+      Para::Logging::ActiveJobLogSubscriber.attach_to :active_job
     end
 
     # Allow generating resources in the gem without having all the unnecessary

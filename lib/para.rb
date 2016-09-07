@@ -55,6 +55,7 @@ module Para
     autoload :Routes
     autoload :Plugins
     autoload :Breadcrumbs
+    autoload :Logging
   end
 
   def self.config(&block)

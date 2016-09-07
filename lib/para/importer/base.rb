@@ -75,7 +75,10 @@ module Para
       def rescue_exception(exception)
         status.update(status: :failed)
 
-        Rails.logger.fatal [exception.class.name, exception.message].join(' - ')
+        tag_logger(self.class.name, self.job_id) do
+          ActiveSupport::Notifications.instrument "failed.active_job",
+              adapter: self.class.queue_adapter, job: self, exception: exception
+        end
 
         if defined?(ExceptionNotifier)
           ExceptionNotifier.notify_exception(
