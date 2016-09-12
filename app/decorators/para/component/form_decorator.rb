@@ -1,10 +1,10 @@
 module Para
   module Component
-    module SingletonResourceDecorator
+    module FormDecorator
       include Para::Component::BaseDecorator
 
-      def path(options = {})
-        find_path([:admin, self], options)
+      def path(namespace: :resource, **options)
+        find_path([:admin, self, namespace], options)
       end
 
       def relation_path(controller_or_resource, *nested_resources, **options)
@@ -15,9 +15,9 @@ module Para
         end
 
         options[:action] = action_option_for(options, nested: nested)
-        data = [:admin, self, *nested_resources]
+        data = [:admin, self, :resource, *nested_resources]
 
-        polymorphic_path(data, options)
+        find_path(data, options)
       end
 
       def action_option_for(options, nested: false)

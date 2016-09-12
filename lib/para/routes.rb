@@ -18,7 +18,7 @@ module Para
 
             # Components are namespaced into :admin in their respective methods
             crud_component
-            singleton_resource_component
+            form_component
             component :settings
           end
 

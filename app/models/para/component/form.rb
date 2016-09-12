@@ -1,7 +1,7 @@
 module Para
   module Component
-    class SingletonResource < Para::Component::Resource
-      register :singleton_resource, self
+    class Form < Para::Component::Resource
+      register :form, self
 
       configurable_on :model_type
 
@@ -21,25 +21,15 @@ module Para
         [:submit]
       end
 
-      def model_name
-        ModelName.new(self)
-      end
-
       def update_with(attributes)
         # If no model_type is provided in the configuration file, default to
         # the camelized version of the identifier, allowing to create
-        # singleton_resource components without setting the :model_type option,
+        # form components without setting the :model_type option,
         # when given a conventional name
         attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
-        attributes[:controller] ||= :singleton_resources
+        attributes[:controller] ||= :form_resources
 
         super
-      end
-
-      class ModelName < ActiveModel::Name
-        def singular_route_key
-          'singleton'
-        end
       end
     end
   end

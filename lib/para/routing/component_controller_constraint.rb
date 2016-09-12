@@ -2,7 +2,7 @@
 # given controller to manage their resources.
 #
 # It's mainly used to allow users to override the default controller for the
-# resources of a given Crud or SingletonResource components without having to
+# resources of a given Crud or Form components without having to
 # subclass the component and declare all the routes again
 #
 module Para
