@@ -75,10 +75,10 @@ module ActionDispatch
         end
       end
 
-      def singleton_resource_component(component_name = nil, options = {}, &block)
+      def form_component(component_name = nil, options = {}, &block)
         if !component_name || Hash === component_name
           options = component_name || {}
-          component_name = :singleton
+          component_name = :form
           options[:scope] ||= ':model'
         end
 
@@ -95,7 +95,7 @@ module ActionDispatch
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
             scope endpoint, as: as do
               resource :resource, controller: controller, only: [:show, :create, :update]
-              add_extensions_for(:singleton_resource_component)
+              add_extensions_for(:form_component)
             end
           end
         end

@@ -2,10 +2,10 @@ require_dependency "para/application_controller"
 
 module Para
   module Admin
-    class SingletonResourcesController < Para::Admin::ResourcesController
+    class FormResourcesController < Para::Admin::ResourcesController
       include Para::Admin::ResourceControllerConcerns
 
-      before_action :load_and_authorize_singleton_resource
+      before_action :load_and_authorize_form
       after_action :attach_resource_to_component, only: [:create]
 
       private
@@ -16,7 +16,7 @@ module Para
         @component.save
       end
 
-      def load_and_authorize_singleton_resource
+      def load_and_authorize_form
         loader = self.class.cancan_resource_class.new(
           self, :resource, parent: false, class: resource_model.name,
           singleton: true, through: :component

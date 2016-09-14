@@ -153,7 +153,7 @@ module Para
         }
 
         view.link_to(path, options) do
-          content_tag(:i, '', class: 'fa fa-refresh')
+          content_tag(:i, '', class: 'fa fa-copy')
         end
       end
 

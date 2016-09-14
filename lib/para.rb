@@ -11,6 +11,7 @@ require 'cancan'
 require 'request_store'
 require 'roo'
 require 'activejob-status'
+require 'deep_cloneable'
 
 require 'sass-rails'
 require 'selectize-rails'

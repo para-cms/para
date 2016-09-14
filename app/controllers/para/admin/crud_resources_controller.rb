@@ -41,7 +41,7 @@ module Para
           end
 
           flash_message(:success, new_resource)
-          redirect_to after_form_submit_path
+          redirect_to @component.relation_path(new_resource, action: :edit)
         else
           flash_message(:error, new_resource)
           render after_form_submit_path
