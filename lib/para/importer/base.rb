@@ -15,7 +15,7 @@ module Para
 
       def perform(file, options = {})
         @file = file
-        @sheet = Roo::Spreadsheet.open(file.attachment.path, options)
+        @sheet = Roo::Spreadsheet.open(file.attachment_path, options)
         progress.total = sheet.last_row - 1
 
         ActiveRecord::Base.transaction do
