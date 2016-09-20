@@ -1,4 +1,18 @@
 namespace :para do
+  namespace :upgrade do
+    desc <<-DESC
+      Update database from SingletonResource to Form component without losing data
+    DESC
+
+    task singleton_to_form: :environment do
+      Para::Component::Base.where(type: 'Para::Component::SingletonResource').pluck(:identifier, :id).each do |identifier, id|
+        Para::ComponentResource.where(component_id: id)
+          .update_all component_id: Para::Component::Form.where(identifier: identifier).first.id
+        Para::Component::Base.where(id: id).delete_all
+      end
+    end
+  end
+
   namespace :components do
     desc <<-DESC
       Remove all components that are no longer referenced in the components.rb
