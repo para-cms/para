@@ -19,8 +19,10 @@ module ActionDispatch
           component_name, options
         )
 
+        actions = options.fetch(:actions, [:show])
+
         namespace :admin do
-          get endpoint => "#{ controller }#show", as: as
+          resource endpoint, controller: controller, as: as
 
           scope(endpoint, as: component_name) do
             instance_eval(&block) if block

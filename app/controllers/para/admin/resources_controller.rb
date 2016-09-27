@@ -122,7 +122,6 @@ module Para
       def self.resource(name, options = {})
         default_options = {
           class: name.to_s.camelize,
-          through: :component,
           parent: false
         }
 
