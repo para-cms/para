@@ -16,8 +16,8 @@ module Para
 
       module ClassMethods
         def eager_load!
-          return if @eager_loaded
-          @eager_loaded = true
+          return if RequestStore.store[descendants_eager_load_key]
+          RequestStore.store[descendants_eager_load_key] = true
 
           models_dir = Rails.root.join('app', 'models')
 
@@ -37,6 +37,12 @@ module Para
         end
 
         private
+
+        def descendants_eager_load_key
+          @descendants_eager_load_key ||= [
+            'para', 'root_model', 'descendants_eager_loaded', name
+          ].join(':')
+        end
 
         # Allows the including class to define `.subclasses_namespace` class
         # method to override the namespace and directory used to eager load the
