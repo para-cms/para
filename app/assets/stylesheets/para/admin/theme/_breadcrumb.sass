@@ -14,15 +14,6 @@
   li + li:before
     display: none
   li
-    &:first-child
-      padding-left: 27px
-      a
-        padding: 0
-    &:last-child
-      background-color: transparent !important
-      pointer-events: none
-      cursor: default
-      padding: 11px 10px 11px 30px
     a
       font-size: 1em
       color: $breadcrumb-color
@@ -64,7 +55,21 @@
         margin-left: 2px
         left: 100%
         z-index: 1
-    
+
     &:hover, &:last-child
-      color: $breadcrumb-active-color
+      a
+        color: $breadcrumb-active-color
+
+    &:first-child
+      a
+        padding-left: 20px
+
+    &:last-child
+      a
+        &:after,
+        &:before
+          content: none
+          border: none
+        &:hover
+          background-color: transparent
 

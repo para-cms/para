@@ -2,7 +2,4 @@
   - breadcrumbs.each do |breadcrumb|
     - active = breadcrumb.active?(request)
     %li{ class: ('active' if active) }
-      - if active
-        = breadcrumb.title
-      - else
-        = link_to breadcrumb.title, breadcrumb.path
+      = link_to breadcrumb.title, breadcrumb.path
