@@ -40,11 +40,10 @@ module ActionDispatch
           component_name, options
         )
 
-        controller = options.fetch(
-          :controller,
-          [component_name.to_s.singularize, 'resources'].join('_')
-        )
-
+        # By default, use absolute paths to para default controllers, avoiding
+        # namespacing issues in plugins and other module namespaced scenarios
+        #
+        controller = options.fetch(:controller, '/para/admin/crud_resources')
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
 
         namespace :admin do
@@ -86,16 +85,14 @@ module ActionDispatch
           component_name, options
         )
 
-        controller = options.fetch(
-          :controller,
-          [component_name, 'resources'].join('_')
-        )
+        controller = options.fetch(:controller, '/para/admin/form_resources')
 
         namespace :admin do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
             scope endpoint, as: as do
-              resource :resource, controller: controller, only: [:show, :create, :update]
-              add_extensions_for(:form_component)
+              resource :resource, controller: controller, only: [:show, :create, :update] do
+                add_extensions_for(:form_component)
+              end
             end
           end
         end

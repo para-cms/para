@@ -40,7 +40,7 @@ module Para
         # create crud components without setting the :model_type option, when
         # given a conventional name
         attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
-        attributes[:controller] ||= :crud_resources
+        attributes[:controller] ||= '/para/admin/crud_resources'
 
         super
       end

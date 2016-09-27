@@ -27,7 +27,7 @@ module Para
         # form components without setting the :model_type option,
         # when given a conventional name
         attributes[:model_type] ||= identifier.to_s.camelize.singularize if identifier
-        attributes[:controller] ||= :form_resources
+        attributes[:controller] ||= '/para/admin/form_resources'
 
         super
       end
