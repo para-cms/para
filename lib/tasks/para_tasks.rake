@@ -9,9 +9,9 @@ namespace :para do
       end
 
       Para::Component::Base.where(type: 'Para::Component::SingletonResource').pluck(:identifier, :id).each do |identifier, id|
-        Para::ComponentResource.where(component_id: id).update_all(
-          component_id: Para::Component::Form.find_by_identifier(identifier).id
-        )
+        if (form_component_id = Para::Component::Form.find_by_identifier(identifier).try(:id))
+          Para::ComponentResource.where(component_id: id).update_all(component_id: form_component_id)
+        end
 
         Para::Component::Base.where(id: id).destroy_all
       end
