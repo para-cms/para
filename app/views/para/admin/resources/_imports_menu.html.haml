@@ -15,5 +15,5 @@
       %ul.dropdown-menu
         - component.importers.each do |importer|
           %li
-            = link_to component.path(:imports, action: :new, importer: importer.model_name.singular_route_key), remote: true, data: { :'importer-button' => true } do
+            = link_to component.path(namespace: :import, action: :new, importer: importer.model_name.singular_route_key), remote: true, data: { :'importer-button' => true } do
               = importer.model_name.human
