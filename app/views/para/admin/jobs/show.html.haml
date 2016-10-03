@@ -1,0 +1,10 @@
+= modal id: "job-#{ @job.model_name.route_key }", data: { :'job-status-url' => url_for(action: :show, id: @status.job_id) } do |modal|
+  = modal.header do
+    = @job.model_name.human
+
+  - if @status.failed?
+    = render partial: 'failed', locals: { modal: modal, job: @job }
+  - elsif @status.completed?
+    = render partial: 'completed', locals: { modal: modal, job: @job, status: @status }
+  - else
+    = render partial: 'progress', locals: { modal: modal, job: @job, status: @status }

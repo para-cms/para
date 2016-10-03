@@ -1,6 +1,6 @@
 = modal.body do
   .alert.alert-danger
-    = t('para.flash.shared.import.error')
+    = t("para.jobs.#{ job.model_name.i18n_key }.error")
 
 = modal.footer do
   %button.btn.btn-default{ data: { dismiss: 'modal' } }

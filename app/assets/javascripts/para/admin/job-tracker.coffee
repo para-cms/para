@@ -1,23 +1,24 @@
-class Para.Importer extends RemoteModalForm
+class Para.JobTracker extends RemoteModalForm
   initialize: (options = {}) ->
     super(options)
     @refreshOnClose = false
+    @trackProgress()
 
   formSuccess: (e, response) ->
     super(e, response)
-
-    if ($progressBar = @$el.find('[data-async-progress]')).length
-      @trackProgress($progressBar)
+    @trackProgress()
 
   trackProgress: ($progressBar) ->
-    @importStatusURL = @$el.data('import-status-url')
-    @progress = new Para.AsyncProgress(el: $progressBar, progressUrl: @importStatusURL)
+    return unless ($progressBar = @$el.find('[data-async-progress]')).length
+
+    @jobStatusURL = @$el.data('job-status-url')
+    @progress = new Para.AsyncProgress(el: $progressBar, progressUrl: @jobStatusURL)
     @listenTo(@progress, 'completed', @onImportComplete)
     @listenTo(@progress, 'failed', @onImportComplete)
 
   onImportComplete: ->
     $.ajax(
-      url: @importStatusURL
+      url: @jobStatusURL
       # Force HTTP ACCEPT header to HTML since Rails treats XHR request without
       # a specific ACCEPT header as JS or JSON by defaut.
       accepts:
@@ -34,5 +35,5 @@ class Para.Importer extends RemoteModalForm
     @progress?.stop()
 
 $(document).on 'page:change turbolinks:load', ->
-  $('body').on 'ajax:success', '[data-importer-button]', (e, response) ->
-      new Para.Importer(modalMarkup: response, $link: $(e.currentTarget))
+  $('body').on 'ajax:success', '[data-job-tracker-button]', (e, response) ->
+      new Para.JobTracker(modalMarkup: response, $link: $(e.currentTarget))

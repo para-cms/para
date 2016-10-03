@@ -1,7 +1,7 @@
 = modal.body do
-  - if status[:errors].any?
+  - if status[:errors].try(:any?)
     .alert.alert-warning
-      = t('para.flash.shared.import.success_with_errors')
+      = t("para.jobs.#{ job.model_name.i18n_key }.success_with_errors")
 
       %ul
         - status[:errors].each do |message|
@@ -9,7 +9,7 @@
 
   - else
     .alert.alert-success
-      = t('para.flash.shared.import.success')
+      = t("para.jobs.#{ job.model_name.i18n_key }.success")
 
 = modal.footer do
   %button.btn.btn-default{ data: { dismiss: 'modal' } }

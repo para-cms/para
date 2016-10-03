@@ -14,13 +14,16 @@ fr:
         clone:
           success: "%{model} cloné(e)"
           error: "Impossible de cloner le(a) %{model}"
-        import:
-          success: "L'import du fichier a été effectué avec succès"
-          success_with_errors: |
-            L'import du fichier a été effectué, mais certaines lignes n'ont pas
-            été prises en compte à causes d'erreurs :
-          other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
-          error: "Le fichier choisi contient des erreurs et n'a pu être importé"
+
+    jobs:
+      para/importer/base:
+        progressing: "Le fichier est en cours d'import, merci de patienter quelques instants ..."
+        success: "L'import du fichier a été effectué avec succès"
+        success_with_errors: |
+          L'import du fichier a été effectué, mais certaines lignes n'ont pas
+          été prises en compte à causes d'erreurs :
+        other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
+        error: "Le fichier choisi contient des erreurs et n'a pu être importé"
 
     admin:
       title: "Administration"
@@ -69,7 +72,6 @@ fr:
         cliquez sur le bouton "Importer".
       placeholder: Fichier au format ( .csv .xlsx )
       row_error_prefix: "Ligne %{number} :"
-      importing_file: "Le fichier est en cours d'import, merci de patienter quelques instants ..."
 
     shared:
       save: "Enregistrer"

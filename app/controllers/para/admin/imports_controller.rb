@@ -1,27 +1,9 @@
 module Para
   module Admin
-    class ImportsController < Para::Admin::ComponentController
-      include Para::Admin::ResourceControllerConcerns
-
+    class ImportsController < Para::Admin::JobsController
       layout false
 
       before_action :load_importer
-
-      def show
-        @status = ActiveJob::Status.get(params[:id])
-
-        respond_to do |format|
-          format.json do
-            if @status.failed?
-              render json: { status: @status.status }, status: 422
-            else
-              render json: { status: @status.status, progress: @status.progress * 100 }
-            end
-          end
-
-          format.html
-        end
-      end
 
       def new
         @file = Para::Library::File.new
@@ -33,9 +15,8 @@ module Para
 
         if @file.save
           job = @importer.perform_later(@file)
-          @status = ActiveJob::Status.get(job)
 
-          render 'show'
+          track_job(job)
         else
           render 'new'
         end

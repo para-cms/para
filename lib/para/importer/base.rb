@@ -1,12 +1,6 @@
 module Para
   module Importer
-    class Base < ActiveJob::Base
-      include ActiveJob::Status
-      # Used to store import errors on the object
-      include ActiveModel::Validations
-      # Used to translate importer name with rails default `activemodel` i18n keys
-      extend  ActiveModel::Naming
-
+    class Base < Para::Job::Base
       rescue_from Exception, with: :rescue_exception
 
       class_attribute :allows_import_errors
@@ -16,12 +10,11 @@ module Para
       def perform(file, options = {})
         @file = file
         @sheet = Roo::Spreadsheet.open(file.attachment_path, options)
-        progress.total = sheet.last_row - 1
 
         ActiveRecord::Base.transaction do
           (2..(sheet.last_row)).each do |index|
             begin
-              progress.increment
+              progress!
               import_from_row(sheet.row(index))
             rescue ActiveRecord::RecordInvalid => error
               if allows_import_errors?
@@ -33,10 +26,14 @@ module Para
           end
         end
 
-        status.update(errors: errors.full_messages)
+        save_errors!
       end
 
       private
+
+      def progress_total
+        sheet.last_row - 1
+      end
 
       def import_from_row(row)
         raise '#import_from_row(row) must be defined'

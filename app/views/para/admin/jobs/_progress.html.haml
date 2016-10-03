@@ -1,0 +1,5 @@
+= modal.body do
+  %p= t("para.jobs.#{ job.model_name.i18n_key }.progressing")
+
+  .progress{ data: { :'async-progress' => 'import' } }
+    .progress-bar.progress-bar-striped.active{ role: "progressbar", style: "width: #{ status.progress.nan? ? 100 : (status.progress * 100) }%" }
