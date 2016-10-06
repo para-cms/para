@@ -83,8 +83,10 @@ module Para
     end
 
     initializer 'Configure ActiveJob' do
-      if ActiveSupport::Cache::NullStore === ActiveJob::Status.store
-        ActiveJob::Status.store = :memory_store
+      if ActiveSupport::Cache::NullStore === ActiveJob::Status.store ||
+         ActiveSupport::Cache::MemoryStore === ActiveJob::Status.store
+      then
+        ActiveJob::Status.store = Para.config.jobs_store
       end
 
       Para::Logging::ActiveJobLogSubscriber.attach_to :active_job

@@ -57,6 +57,7 @@ module Para
     autoload :Routes
     autoload :Plugins
     autoload :Breadcrumbs
+    autoload :Cache
     autoload :Logging
   end
 

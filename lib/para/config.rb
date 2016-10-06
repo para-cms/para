@@ -31,6 +31,27 @@ module Para
     mattr_accessor :page_actions
     @@page_actions = {}
 
+    # Allows changing default cache store used by Para to store jobs through
+    # the ActiveJob::Status gem
+    #
+    def self.jobs_store=(store)
+      @@jobs_store = store
+      ActiveJob::Status.store = store
+    end
+
+    # Default to use Para::Cache::DatabaseStore, allowing cross process and
+    # app instances job status sharing
+    #
+    def self.jobs_store
+      @@jobs_store ||= Para::Cache::DatabaseStore.new
+    end
+
+    # The DatabaseStore cache system tries to clean up old keys when reaching
+    # that limit after writing new keys
+    #
+    mattr_accessor :database_cache_store_max_items
+    @@database_cache_store_max_items = 10000
+
     # Allows accessing plugins root module to configure them through a method
     # from the Para::Config class.
     #
