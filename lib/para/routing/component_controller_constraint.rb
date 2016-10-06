@@ -16,7 +16,7 @@ module Para
 
       def matches?(request)
         component = component_for(request.params[:component_id])
-        return false unless component
+        return false unless component && component.controller
         component.controller.to_sym == controller
       end
 

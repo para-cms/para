@@ -3,16 +3,9 @@ require 'csv'
 module Para
   module Exporter
     class Csv < Base
-      def render
-        Tempfile.new([name, extension]).tap do |file|
-          file.write(generate_csv)
-          file.rewind
-        end
-      end
-
       protected
 
-      def generate_csv
+      def generate
         CSV.generate do |csv|
           csv << headers
 

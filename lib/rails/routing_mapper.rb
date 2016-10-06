@@ -15,7 +15,7 @@ module ActionDispatch
       end
 
       def component(component_name, options = {}, &block)
-        as, controller, endpoint = component_informations_from(
+        as, controller, component, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -24,19 +24,24 @@ module ActionDispatch
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
-        namespace :admin do
-          resource endpoint, controller: controller, as: as
 
-          scope(endpoint, as: component_name) do
-            instance_eval(&block) if block
-            add_extensions_for(:component)
-
-            scope ':importer' do
-              resources :imports, controller: imports_controller
+        constraints Para::Routing::ComponentNameConstraint.new(component) do
+          namespace :admin do
+            defaults(component: component) do
+              resource endpoint, controller: controller, as: as
             end
 
-            scope ':exporter' do
-              resources :exports, controller: exports_controller
+            scope(endpoint, as: component_name, defaults: { component: component }) do
+              instance_eval(&block) if block
+              add_extensions_for(:component)
+
+              scope ':importer' do
+                resources :imports, controller: imports_controller
+              end
+
+              scope ':exporter' do
+                resources :exports, controller: exports_controller
+              end
             end
           end
         end
@@ -49,7 +54,7 @@ module ActionDispatch
           options[:scope] ||= ':model'
         end
 
-        as, controller, endpoint = component_informations_from(
+        as, controller, component, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -60,30 +65,32 @@ module ActionDispatch
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
-        namespace :admin do
+        constraints Para::Routing::ComponentNameConstraint.new(component) do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
-            scope endpoint, as: as do
-              scope options[:scope] do
-                resources :resources, controller: controller do
-                  collection do
-                    patch :order
-                    patch :tree
+            namespace :admin do
+              scope(endpoint, as: as, defaults: { component: component }) do
+                scope options[:scope] do
+                  resources :resources, controller: controller do
+                    collection do
+                      patch :order
+                      patch :tree
+                    end
+
+                    member do
+                      post :clone
+                    end
+
+                    instance_eval(&block) if block
+                    add_extensions_for(:crud_component)
                   end
 
-                  member do
-                    post :clone
+                  scope ':importer' do
+                    resources :imports, controller: imports_controller
                   end
 
-                  instance_eval(&block) if block
-                  add_extensions_for(:crud_component)
-                end
-
-                scope ':importer' do
-                  resources :imports, controller: imports_controller
-                end
-
-                scope ':exporter' do
-                  resources :exports, controller: exports_controller
+                  scope ':exporter' do
+                    resources :exports, controller: exports_controller
+                  end
                 end
               end
             end
@@ -98,7 +105,7 @@ module ActionDispatch
           options[:scope] ||= ':model'
         end
 
-        as, _, endpoint = component_informations_from(
+        as, _, component, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -106,19 +113,21 @@ module ActionDispatch
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
-        namespace :admin do
+        constraints Para::Routing::ComponentNameConstraint.new(component) do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
-            scope endpoint, as: as do
-              resource :resource, controller: controller, only: [:show, :create, :update] do
-                add_extensions_for(:form_component)
-              end
+            namespace :admin do
+              scope(endpoint, as: as, defaults: { component: component }) do
+                resource :resource, controller: controller, only: [:show, :create, :update] do
+                  add_extensions_for(:form_component)
+                end
 
-              scope ':importer' do
-                resources :imports, controller: imports_controller
-              end
+                scope ':importer' do
+                  resources :imports, controller: imports_controller
+                end
 
-              scope ':exporter' do
-                resources :exports, controller: exports_controller
+                scope ':exporter' do
+                  resources :exports, controller: exports_controller
+                end
               end
             end
           end
@@ -137,12 +146,12 @@ module ActionDispatch
       end
 
       def component_informations_from(component_name, options)
-        path = options.fetch(:path, component_name.to_s)
+        component = options.fetch(:component, component_name.to_s)
         as = options.fetch(:as, component_name)
         controller = options.fetch(:controller, "#{ component_name }_component")
-        endpoint = "#{ path }/:component_id"
+        endpoint = ":component/:component_id"
 
-        [as, controller, endpoint]
+        [as, controller, component, endpoint]
       end
 
       def add_extensions_for(type)

@@ -14,7 +14,7 @@ module Para
 
         template(
           "#{ base_exporter_template_name_for(format) }_exporter.rb",
-          "app/exporters/#{ format }/#{ plural_file_name }_exporter.rb"
+          "app/exporters/#{ plural_file_name }_exporter.rb"
         )
       end
     end
@@ -23,10 +23,6 @@ module Para
 
     def model_exporter_name
       Para::Exporter.model_exporter_name(class_name)
-    end
-
-    def format_module_name_for(format)
-      Para::Exporter.format_exporter_name(format)
     end
 
     def base_exporter_template_name_for(format)

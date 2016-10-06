@@ -25,6 +25,24 @@ module Para
 
       private
 
+      def render
+        Tempfile.new([name, extension]).tap do |file|
+          file.binmode if binary?
+          file.write(generate)
+          file.rewind
+        end
+      end
+
+      def generate
+        fail NotImplementedError
+      end
+
+      # Default to writing string data to the exported file, allowing
+      # subclasses to write binary data if needed
+      def binary?
+        false
+      end
+
       def total_progress
         resources.length
       end

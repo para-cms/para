@@ -3,5 +3,6 @@ module Para
     extend ActiveSupport::Autoload
 
     autoload :ComponentControllerConstraint
+    autoload :ComponentNameConstraint
   end
 end
