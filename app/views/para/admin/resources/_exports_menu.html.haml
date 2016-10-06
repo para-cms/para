@@ -1,12 +1,19 @@
 - if component.exportable?
-  - component.exports.each do |export|
+  - if component.exporters.length == 1
+    - exporter = component.exporters.first
+
+    = link_to component.path(namespace: :exports, exporter: exporter.name, q: params[:q]), class: 'btn btn-default', method: :post, remote: true, data: { :'job-tracker-button' => true } do
+      = fa_icon 'download'
+      = exporter.model_name.human
+
+  - else
     .btn-group
-      %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
-        %i.fa.fa-download
-        = export_name_for(model, export)
+      %button.btn.btn-default{ type: 'button', data: { toggle: 'dropdown' } }
+        = fa_icon 'download'
+        = t('para.export.name')
         %span.caret
-      %ul.dropdown-menu{:role => "menu"}
-        - export[:formats].each do |format|
+      %ul.dropdown-menu
+        - component.exporters.each do |exporter|
           %li
-            = link_to component.relation_path(model.model_name.route_key, action: :export, format: format) do
-              = t('para.export.as', extension: format)
+            = link_to component.path(namespace: :exports, exporter: exporter.name, q: params[:q]), method: :post, remote: true, data: { :'job-tracker-button' => true } do
+              = exporter.model_name.human

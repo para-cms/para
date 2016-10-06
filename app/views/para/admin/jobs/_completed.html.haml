@@ -1,7 +1,7 @@
 = modal.body do
   - if status[:errors].try(:any?)
     .alert.alert-warning
-      = t("para.jobs.#{ job.model_name.i18n_key }.success_with_errors")
+      = model_translate(:success_with_errors, scope: "para.jobs", model: job)
 
       %ul
         - status[:errors].each do |message|
@@ -9,7 +9,7 @@
 
   - else
     .alert.alert-success
-      = t("para.jobs.#{ job.model_name.i18n_key }.success")
+      = model_translate(:success, scope: "para.jobs", model: job)
 
 = modal.footer do
   %button.btn.btn-default{ data: { dismiss: 'modal' } }

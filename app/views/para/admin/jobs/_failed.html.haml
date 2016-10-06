@@ -1,6 +1,6 @@
 = modal.body do
   .alert.alert-danger
-    = t("para.jobs.#{ job.model_name.i18n_key }.error")
+    = model_translate(:error, scope: "para.jobs", model: job)
 
 = modal.footer do
   %button.btn.btn-default{ data: { dismiss: 'modal' } }

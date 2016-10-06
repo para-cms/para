@@ -1,0 +1,11 @@
+= modal.body do
+  .alert.alert-success
+    = model_translate(:success, scope: "para.jobs", model: job)
+
+  = javascript_tag do
+    :plain
+      window.location.href = '#{ job.file.attachment.url }';
+
+= modal.footer do
+  %button.btn.btn-default{ data: { dismiss: 'modal' } }
+    = t('para.shared.close')

@@ -3,8 +3,8 @@
     = @job.model_name.human
 
   - if @status.failed?
-    = render partial: 'failed', locals: { modal: modal, job: @job }
+    = render partial: find_partial_for(@job, :failed, partial_dir: 'admin/jobs'), locals: { modal: modal, job: @job }
   - elsif @status.completed?
-    = render partial: 'completed', locals: { modal: modal, job: @job, status: @status }
+    = render partial: find_partial_for(@job, :completed, partial_dir: 'admin/jobs'), locals: { modal: modal, job: @job, status: @status }
   - else
-    = render partial: 'progress', locals: { modal: modal, job: @job, status: @status }
+    = render partial: find_partial_for(@job, :progress, partial_dir: 'admin/jobs'), locals: { modal: modal, job: @job, status: @status }

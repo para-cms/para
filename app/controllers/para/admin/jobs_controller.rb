@@ -44,6 +44,10 @@ module Para
 
           format.html do
             @job = @status[:job_type].constantize.new
+            # Assign job id to allow status to be retrieved, which in our case
+            # allows data persistence though the `#store` method
+            @job.job_id = params[:id]
+
             render layout: false
           end
         end

@@ -25,6 +25,11 @@ fr:
         other_errors: "<br>Et <b>%{count}</b> autres erreurs ..."
         error: "Le fichier choisi contient des erreurs et n'a pu être importé"
 
+      para/exporter/base:
+        progressing: "Le fichier est en cours d'export, merci de patienter quelques instants ..."
+        success: "Le fichier d'export a été généré, son téléchargement va démarrer ..."
+        error: "Erreur lors de la génération du fichier d'export ..."
+
     admin:
       title: "Administration"
       toggle_navigation: "Open navigation"
@@ -60,7 +65,7 @@ fr:
       empty: "Aucune entrée créée pour le moment. Créez une nouvelle entrée avec le bouton suivant :"
 
     export:
-      name: "Export %{name}"
+      name: "Exporter"
       as: "Exporter (.%{extension})"
 
     import:
@@ -118,7 +123,9 @@ fr:
       settings_rails/form:
         one: "Configuration"
         other: "Configuration"
-
+      para/exporter/base:
+        one: "Export des données"
+        other: "Exports des données"
   date:
     formats:
       admin: '%d/%m/%Y'

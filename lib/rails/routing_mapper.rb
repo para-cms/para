@@ -47,6 +47,7 @@ module ActionDispatch
         #
         controller = options.fetch(:controller, '/para/admin/crud_resources')
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
+        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
         namespace :admin do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
@@ -56,7 +57,6 @@ module ActionDispatch
                   collection do
                     patch :order
                     patch :tree
-                    get :export
                   end
 
                   member do
@@ -69,6 +69,10 @@ module ActionDispatch
 
                 scope ':importer' do
                   resources :imports, controller: imports_controller
+                end
+
+                scope ':exporter' do
+                  resources :exports, controller: exports_controller
                 end
               end
             end

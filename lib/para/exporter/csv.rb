@@ -3,31 +3,26 @@ require 'csv'
 module Para
   module Exporter
     class Csv < Base
-      register_base_exporter :csv, self
-
-      def extension
-        'csv'
-      end
-
-      def mime_type
-        'text/csv'
-      end
-
-      def export_type
-        :excel
-      end
-
       def render
-        CSV.generate do |csv|
+        data = CSV.generate do |csv|
           csv << headers
 
           resources.each do |resource|
             csv << row_for(resource)
           end
         end
+
+        Tempfile.new([name, extension]).tap do |file|
+          file.write(data)
+          file.rewind
+        end
       end
 
       private
+
+      def extension
+        '.csv'
+      end
 
       def headers
         fields.map do |field|

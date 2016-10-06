@@ -48,20 +48,6 @@ module Para
         end
       end
 
-      def export
-        if @component.exportable?
-          exporter = Para::Exporter.for(
-            resource_model.name, params[:format]
-          ).new(@component.resources.search(params[:q]).result.uniq)
-
-          send_data exporter.render, type: exporter.mime_type,
-                                     disposition: exporter.disposition,
-                                     filename: exporter.file_name
-        else
-          redirect_to @component.path
-        end
-      end
-
       private
 
       def resource_model
