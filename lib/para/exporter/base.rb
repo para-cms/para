@@ -25,6 +25,10 @@ module Para
 
       private
 
+      def total_progress
+        resources.length
+      end
+
       # Allow passing a `:resources` option or a ransack search hash to filter
       # exported resources
       #

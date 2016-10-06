@@ -2,7 +2,7 @@ module Para
   module Admin
     module ResourceControllerConcerns
       def resource_model
-        @resource_model ||= @component.model
+        @resource_model ||= @component.try(:model)
       end
 
       def resource

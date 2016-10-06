@@ -4,21 +4,24 @@ module Para
   module Exporter
     class Csv < Base
       def render
-        data = CSV.generate do |csv|
-          csv << headers
-
-          resources.each do |resource|
-            csv << row_for(resource)
-          end
-        end
-
         Tempfile.new([name, extension]).tap do |file|
-          file.write(data)
+          file.write(generate_csv)
           file.rewind
         end
       end
 
-      private
+      protected
+
+      def generate_csv
+        CSV.generate do |csv|
+          csv << headers
+
+          resources.each do |resource|
+            csv << row_for(resource)
+            progress!
+          end
+        end
+      end
 
       def extension
         '.csv'

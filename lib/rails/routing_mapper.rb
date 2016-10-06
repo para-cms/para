@@ -21,12 +21,23 @@ module ActionDispatch
 
         actions = options.fetch(:actions, [:show])
 
+        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
+        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
+
         namespace :admin do
           resource endpoint, controller: controller, as: as
 
           scope(endpoint, as: component_name) do
             instance_eval(&block) if block
             add_extensions_for(:component)
+
+            scope ':importer' do
+              resources :imports, controller: imports_controller
+            end
+
+            scope ':exporter' do
+              resources :exports, controller: exports_controller
+            end
           end
         end
       end
@@ -92,12 +103,22 @@ module ActionDispatch
         )
 
         controller = options.fetch(:controller, '/para/admin/form_resources')
+        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
+        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
         namespace :admin do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
             scope endpoint, as: as do
               resource :resource, controller: controller, only: [:show, :create, :update] do
                 add_extensions_for(:form_component)
+              end
+
+              scope ':importer' do
+                resources :imports, controller: imports_controller
+              end
+
+              scope ':exporter' do
+                resources :exports, controller: exports_controller
               end
             end
           end

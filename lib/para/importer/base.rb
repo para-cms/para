@@ -27,9 +27,9 @@ module Para
         save_errors!
       end
 
-      private
+      protected
 
-      def progress_total
+      def total_progress
         sheet.last_row - 1
       end
 

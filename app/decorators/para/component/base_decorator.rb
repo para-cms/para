@@ -4,8 +4,8 @@ module Para
       include Rails.application.routes.mounted_helpers
       include ActionDispatch::Routing::PolymorphicRoutes
 
-      def path(options = {})
-        find_path([:admin, self], options)
+      def path(namespace: nil, **options)
+        find_path([:admin, self, namespace].compact, options)
       end
 
       def relation_path(controller_or_resource, options = {})

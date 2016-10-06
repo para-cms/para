@@ -7,7 +7,7 @@ module Para
 
       def create
         job = @exporter.perform_later(
-          model_name: @component.model.name,
+          model_name: @component.try(:model).try(:name),
           search: params[:q]
         )
 
