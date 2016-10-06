@@ -1,8 +1,6 @@
 module Para
   module Importer
     class Base < Para::Job::Base
-      rescue_from Exception, with: :rescue_exception
-
       class_attribute :allows_import_errors
 
       attr_reader :file, :sheet
@@ -67,30 +65,6 @@ module Para
 
       def headers
         @headers ||= sheet.row(1)
-      end
-
-      def rescue_exception(exception)
-        status.update(status: :failed)
-
-        tag_logger(self.class.name, self.job_id) do
-          ActiveSupport::Notifications.instrument "failed.active_job",
-              adapter: self.class.queue_adapter, job: self, exception: exception
-        end
-
-        if defined?(ExceptionNotifier)
-          ExceptionNotifier.notify_exception(
-            exception, data: {
-              importer: self.class.name,
-              payload: {
-                file_type: file.class,
-                file_id: file.id,
-                file_name: file.attachment_file_name
-              }
-            }
-          )
-        end
-
-        raise exception
       end
     end
   end

@@ -23,6 +23,8 @@ module Para
         if job.arguments.any?
           ' with arguments: ' +
             job.arguments.map { |arg| format(arg).inspect }.join(', ')
+        else
+          ''
         end
       end
 
