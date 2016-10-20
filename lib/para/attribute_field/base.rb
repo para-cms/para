@@ -71,6 +71,10 @@ module Para
         instance.send(name)
       end
 
+      def excerptable_value?
+        true
+      end
+
       #
       def searchable?
         options[:searchable] != false && (

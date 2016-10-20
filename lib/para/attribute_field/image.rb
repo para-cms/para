@@ -13,6 +13,10 @@ module Para
         end
       end
 
+      def excerptable_value?
+        false
+      end
+
       private
 
       def attachment_thumb_style_for(instance)

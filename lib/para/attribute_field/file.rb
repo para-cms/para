@@ -14,6 +14,10 @@ module Para
         end
       end
 
+      def excerptable_value?
+        false
+      end
+
       def wrapper_name
         :horizontal_file_input
       end
