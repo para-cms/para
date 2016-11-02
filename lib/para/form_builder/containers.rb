@@ -49,7 +49,20 @@ module Para
       end
 
       def para_submit_and_edit_button
-        button(:submit, ::I18n.t('para.shared.save_and_edit'), name: '_save_and_edit', class: 'btn-primary')
+        # Create a hidden field that will hold the last tab used by the user,
+        # allowing redirection and re-rendering to display it directly
+        current_anchor_tag = template.hidden_field_tag(
+          :_current_anchor, template.params[:_current_anchor],
+          data: { :'current-anchor' => true }
+        )
+
+        button_tag = button(
+          :submit,
+          ::I18n.t('para.shared.save_and_edit'),
+          name: '_save_and_edit', class: 'btn-primary'
+        )
+
+        current_anchor_tag + button_tag
       end
 
       def para_submit_and_add_another_button

@@ -1,21 +1,29 @@
 # Tabs hash management adapted from SO answer :
 #   http://stackoverflow.com/a/21443271/685925
 #
-class Para.Tabs
-  constructor: (options = {}) ->
-    @$el = $(options.el)
+class Para.Tabs extends Vertebra.View
+  events:
+    'shown.bs.tab a[data-toggle="tab"]': 'onTabShown'
+
+  initialize: (options = {}) ->
+    @$anchorInput = options.$anchorInput
     @showActiveTab()
-    @$('a[data-toggle="tab"]').on('shown.bs.tab', @onTabShown)
 
   showActiveTab: ->
-    @$('a[href="' + location.hash + '"]').tab('show') if location.hash isnt ''
+    console.log 'showActiveTab', location.hash, ' -- ', @$anchorInput?.val()
+    if (hash = location.hash or @$anchorInput?.val())
+      console.log 'hash : ', hash
+      @$('a[href="' + hash + '"]').tab('show')
 
   onTabShown: (e) =>
     tabHash = $(e.target).attr('href').substr(1)
     history.pushState(null, null, "##{ tabHash }")
+    @updateAnchorInput(tabHash)
 
-  $: (args...) ->
-    $.fn.find.apply(@$el, args)
+  updateAnchorInput: ->
+    @$anchorInput.val(location.hash) if @$anchorInput.length
+
 
 $(document).on 'page:change turbolinks:load', ->
-  $('[data-form-tabs]').each (i, el) -> new Para.Tabs(el: el)
+  $('[data-form-tabs]').each (i, el) ->
+    new Para.Tabs(el: el, $anchorInput: $('[data-current-anchor]'))

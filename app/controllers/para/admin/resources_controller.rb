@@ -77,7 +77,7 @@ module Para
 
       def after_form_submit_path
         if params[:_save_and_edit]
-          { action: 'edit', id: resource.id }
+          { action: 'edit', id: resource.id, anchor: current_anchor }
         elsif params[:_save_and_add_another]
           { action: 'new' }
         else
@@ -164,6 +164,12 @@ module Para
           resources.each_with_object({}) do |resource, hash|
             hash[resource.id.to_s] = resource
           end
+        end
+      end
+
+      def current_anchor
+        @current_anchor ||= if (current_anchor = params[:_current_anchor]).presence
+          current_anchor.gsub(/^\#/, '')
         end
       end
     end
