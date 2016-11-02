@@ -10,7 +10,7 @@ module Para
       def generate_form
         template(
           "section.rb.erb",
-          "app/models/page_section/#{ plural_namespaced_path }.rb"
+          "app/models/page_section/#{ singular_namespaced_path }.rb"
         )
       end
 
