@@ -1,7 +1,10 @@
 module Para
   module Exporter
+    extend ActiveSupport::Autoload
+
+    autoload :Base
+    autoload :Table
+    autoload :Csv
+    autoload :Xls
   end
 end
-
-require 'para/exporter/base'
-require 'para/exporter/csv'

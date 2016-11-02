@@ -2,7 +2,7 @@ require 'csv'
 
 module Para
   module Exporter
-    class Csv < Base
+    class Csv < Table
       protected
 
       def generate
@@ -18,22 +18,6 @@ module Para
 
       def extension
         '.csv'
-      end
-
-      def headers
-        fields.map do |field|
-          encode(model.human_attribute_name(field))
-        end
-      end
-
-      def row_for(resource)
-        fields.map do |field|
-          encode(resource.send(field))
-        end
-      end
-
-      def encode(string)
-        string.presence && string.to_s.encode('UTF-8')
       end
     end
   end

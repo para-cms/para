@@ -59,6 +59,10 @@ module Para
           model.all
         end
       end
+
+      def encode(string)
+        string.presence && string.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?')
+      end
     end
   end
 end

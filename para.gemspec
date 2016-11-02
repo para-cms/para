@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'request_store'
   s.add_dependency 'truncate_html'
   s.add_dependency 'roo'
+  s.add_dependency 'roo-xls'
+  s.add_dependency 'spreadsheet'
   s.add_dependency 'activejob-status'
 
   s.add_dependency 'bootstrap-sass', '~> 3.2.0'

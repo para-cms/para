@@ -28,7 +28,7 @@ class Para.JobTracker extends RemoteModalForm
 
   onFinalModalLoaded: (response) =>
     @formSuccess(null, response)
-    @refreshOnClose = true
+    @refreshOnClose = !(@$link?.data('refresh-on-close') is false)
 
   modalHide: ->
     super()
