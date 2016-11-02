@@ -74,7 +74,11 @@ module Para
 
     initializer 'Load page sections' do |app|
       app.config.to_prepare do
-        Para::Page::Section.eager_load!
+        begin
+          Para::Page::Section.eager_load!
+        rescue ActiveRecord::StatementInvalid => e
+          puts "[Warning] Eager loading application raised #{ e.class.name } : #{ e.message }"
+        end
       end
     end
 
