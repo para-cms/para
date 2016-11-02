@@ -10,9 +10,7 @@ class Para.Tabs extends Vertebra.View
     @showActiveTab()
 
   showActiveTab: ->
-    console.log 'showActiveTab', location.hash, ' -- ', @$anchorInput?.val()
     if (hash = location.hash or @$anchorInput?.val())
-      console.log 'hash : ', hash
       @$('a[href="' + hash + '"]').tab('show')
 
   onTabShown: (e) =>

@@ -157,7 +157,6 @@ module Para
 
       def resources_hash
         @resources_hash ||= begin
-
           ids = resources_data.map { |resource| resource[:id] }
 
           resources = resource_model.where(id: ids)
