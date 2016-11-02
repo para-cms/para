@@ -21,4 +21,5 @@ SimpleForm::FormBuilder.class_eval do
   include Para::FormBuilder::Tabs
 end
 
+# Map IP Address fields to string
 SimpleForm::FormBuilder.map_type(:inet, to: SimpleForm::Inputs::StringInput)
