@@ -72,16 +72,6 @@ module Para
       end
     end
 
-    initializer 'Load page sections' do |app|
-      app.config.to_prepare do
-        begin
-          Para::Page::Section.eager_load!
-        rescue ActiveRecord::StatementInvalid => e
-          puts "[Warning] Eager loading application raised #{ e.class.name } : #{ e.message }"
-        end
-      end
-    end
-
     initializer 'Check for extensions installation' do
       Para::PostgresExtensionsChecker.check_all
     end
