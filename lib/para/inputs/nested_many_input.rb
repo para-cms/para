@@ -26,7 +26,8 @@ module Para
             dom_identifier: dom_identifier,
             resources: resources,
             nested_locals: locals,
-            subclass: subclass
+            subclass: subclass,
+            subclasses: subclasses
           }
         )
       end
@@ -49,10 +50,12 @@ module Para
       end
 
       def subclass
-        @subclass ||= options.fetch(
-          :subclass,
-          model.respond_to?(:descendants) && model.descendants.length > 0
-        )
+        @subclass ||= options.fetch(:subclass, subclasses.presence)
+      end
+
+      def subclasses
+        options.fetch(:subclasses, model.try(:descendants) || [])
+          .sort_by { |m| m.model_name.human }
       end
     end
   end
