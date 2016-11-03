@@ -3,7 +3,7 @@
 #= require turbolinks
 #= require bootstrap
 #= require vertebra
-#= require jasny.bootstrap.min
+#= require jasny-bootstrap
 #= require simple_form_extension
 #= require jquery.scrollto
 #= require html5-sortable

@@ -174,3 +174,177 @@ body, html
   100%
     opacity: 0.0
 
+
+
+
+
+@import "compass/css3/box-shadow"
+@import "compass/css3/transition"
+
+
+.animated
+  animation-duration: 100ms
+
+// More button style
+
+@mixin tab-focus()
+  outline: none
+  outline-offset: 0
+
+@mixin button-hover-focus-active($color-border, $color-bg)
+  position: relative
+  +box-shadow(0px 2px darken($color-border, 10%))
+  +single-transition(none)
+  &:hover
+    top: 1px
+    +box-shadow(0px 1px darken($color-border, 10%))
+    background-color: $color-bg
+    border-color: $color-border
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    background-color: darken($color-bg, 7%)
+    top: 2px
+    +box-shadow(0px 0 darken($color-border, 10%))
+    border-color: $color-border
+    &:hover
+      background-color: darken($color-bg, 7%)
+
+@mixin button-variant-inverse($color-border, $color-bg)
+  color: $color-border
+  background-color: transparent
+  +box-shadow(none)
+  +single-transition(all, .2s, linear)
+  &:hover
+    box-shadow: none
+    top: 0
+    color: #fff
+    background-color: $color-bg
+    outline: none
+    outline: 0
+  &:focus,
+  &:active,
+  &.active,
+  .open &.dropdown-toggle
+    +box-shadow(none)
+    top: 0
+    color: #fff
+    background-color: darken($color-bg, 7%)
+    outline: none
+    outline: 0
+
+.btn,
+input,
+textarea,
+select,
+button
+  +single-transition(all, .1s, linear)
+  &,
+  &:active,
+  &.active
+    &:focus
+      +tab-focus()
+  &:hover,
+  &:focus
+    +tab-focus()
+
+
+.btn-default
+  +button-hover-focus-active($btn-default-border, $btn-default-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-default-border, $btn-default-bg)
+    color: $btn-default-color
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open &.dropdown-toggle
+      color: $btn-default-color
+
+.btn-primary
+  +button-hover-focus-active($btn-primary-border, $btn-primary-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-primary-border, $btn-primary-bg)
+
+.btn-warning
+  +button-hover-focus-active($btn-warning-border, $btn-warning-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-warning-border, $btn-warning-bg)
+
+.btn-success
+  +button-hover-focus-active($btn-success-border, $btn-success-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-success-border, $btn-success-bg)
+
+.btn-danger
+  +button-hover-focus-active($btn-danger-border, $btn-danger-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-danger-border, $btn-danger-bg)
+
+.btn-info
+  +button-hover-focus-active($btn-info-border, $btn-info-bg)
+  &.btn-inverse
+    +button-variant-inverse($btn-info-border, $btn-info-bg)
+
+// Badge
+.label-primary,
+.badge-primary
+  background-color: $brand-primary
+
+.label-success,
+.badge-success
+  background-color: $brand-success
+
+.label-info,
+.badge-info
+  background-color: $brand-info
+
+.label-warning,
+.badge-warning
+  background-color: $brand-warning
+
+.label-danger,
+.badge-danger
+  background-color: $brand-danger
+
+// Table
+.para-component-relation-table
+  td > img
+    height: 50px
+
+.pull-right.btn-group
+  min-width: 146px
+  text-align: right
+  > .btn
+    float: none
+    
+// Form
+.input-group-btn
+  .btn,
+  .btn:hover,
+  .btn:focus,
+  .btn:active,
+    top: 0
+    +box-shadow(none)
+
+.form-group-separated
+  &:after
+    clear: both
+    content: " "
+    display: table
+
+.block.form-inputs
+  margin-bottom: 0
+  padding: 0px 10px
+  background-color: $body-bg
+
+.form-actions
+  padding-top: 20px
+  padding-left: 0
+  padding-bottom: 15px
+  padding-right: 15px
+  border-top: 1px dashed $gray
+  background-color: $body-bg
+  .btn
+    margin-bottom: 15px

@@ -121,3 +121,69 @@
     height: 100% !important
     overflow: auto !important
 
+
+
+
+
+
+
+@media (max-width: $screen-xs-max)
+  .control-label
+    margin-top: 10px
+    margin-bottom: 0
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min)
+  legend
+    margin-left: 25%
+
+  .form-inputs > legend
+    margin-left: 24%
+    padding-left: 12px
+
+  .form-fixed-actions
+    margin-bottom: 90px
+
+  .form-horizontal .control-label
+    padding-top: 15px
+
+  .form-group-separated
+    .form-group
+      padding-right: 25px
+    .collapse
+      .form-group
+        padding-right: 0
+
+@media (min-width: $screen-md-min)
+  
+/*
+ * Medium devices (desktops, 1025px and up)
+ * Note : Breakpoint defined by the theme for the sidebar to fix on top
+ */
+@media (min-width: 1025px)
+  .form-fixed-actions
+    .form-actions
+      width: calc(100% - 270px)
+
+/* Medium high devices (desktops, 1200px and up) */
+@media (min-width: 1200px)
+  .form-group-separated
+    .form-group
+      padding-right: 150px
+    .collapse
+      .form-group
+        padding-right: 0
+
+  .form-inputs > legend
+    margin-left: 21%      
+
+/* Large devices (large desktops, 1400px and up) */
+@media (min-width: 1500px)
+  .form-group-separated
+    .form-group
+      padding-right: 250px
+    .collapse
+      .form-group
+        padding-right: 0  
+
+
