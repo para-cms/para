@@ -6,7 +6,8 @@ module Para
       say 'Creating default admin...'
 
       email =    ask('Email    [admin@example.com] : ').presence || 'admin@example.com'
-      password = ask('Password [password]          : ').presence || 'password'
+      password = ask('Password [password]          : ', echo: false).presence || 'password'
+      print "\n" # echo: false doesn't print a newline so we manually add it
 
       AdminUser.create! email: email, password: password
 
