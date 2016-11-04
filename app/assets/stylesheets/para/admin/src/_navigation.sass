@@ -34,14 +34,14 @@
   border-bottom: 0
   height: $navbar-height
   a
+    background-color: $navbar-default-brand-color
     color: #fff !important
+    display: block
     font-size: 1.4em
     font-weight: 400
-    display: block
     height: $navbar-height
-    background-color: $navbar-default-brand-color
-    padding: 15px
     line-height: 20px
+    padding: 15px
     .fa
       color: $navbar-icon-brand-color !important
     &:hover,
@@ -73,7 +73,7 @@
   .component-section-item
     border-bottom: 1px solid $navbar-default-border
 
-  .component-section-title 
+  .component-section-title
     display: block
     float: left
     width: 100%
@@ -89,7 +89,6 @@
       color: $gray-darker 
       cursor: default
       text-decoration: none
-
 
   .component-item
     a, button
@@ -118,14 +117,13 @@
           padding-left: 15px
 
 
-// Horizontal Navbar
+//** Horizontal Navbar
 .navigation-horizontal
   height: $navbar-height
   background: $navbar-default-bg
   .ul-navbar
     &.list-inline
       margin-left: 0
-
     .brand-logo a
       border-bottom: 0
       width: $left-menu-width-open
@@ -138,18 +136,21 @@
         color: $navbar-default-link-color
         +text-shadow(none)
         display: block
-        
+
         &:hover
           background: $navbar-default-link-hover-bg
           text-decoration: none
           .fa, .glyphicon
             color: $navbar-icon-color
+
         .fa, .glyphicon
           color: $navbar-default-link-color
+
         &.navbar-toggle  
           padding: 9px 10px
           border-bottom: 1px solid $navbar-default-toggle-border-color
           display: none
+
       .brand-logo a
         background-color: $navbar-default-brand-color
       &.active > a,
@@ -182,7 +183,6 @@
         margin: 0
     
     > li
-      
       &.xn-profile
         padding: 0
         border-bottom: 1px solid #273541
@@ -225,5 +225,3 @@
       bottom: auto
       right: 1px
       top: 5px
-
-

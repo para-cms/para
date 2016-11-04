@@ -58,26 +58,28 @@
         border-top: 2px solid $brand-primary
         background: #FFF
         +border-radius( 3px 3px 0 0)
-  &.nav-justified >
-    li > a
-      border: 0
-      border-top: 2px solid transparent
-      +border-radius( 0)
-      color: #333
-      +single-transition(all 200ms ease)
-      &:hover
-        border-color: $brand-primary
-        background: 0 0
-    .active > a
-      border: 0
-      border-top: 2px solid $brand-primary
-      background: #FFF
-      +border-radius( 3px 3px 0 0)
-      &:focus, &:hover
+  &.nav-justified
+    >
+      li
+        > a
+          border: 0
+          border-top: 2px solid transparent
+          +border-radius( 0)
+          color: #333
+          +single-transition(all 200ms ease)
+          &:hover
+            border-color: $brand-primary
+            background: 0 0
+      .active > a
         border: 0
         border-top: 2px solid $brand-primary
         background: #FFF
         +border-radius( 3px 3px 0 0)
+        &:focus, &:hover
+          border: 0
+          border-top: 2px solid $brand-primary
+          background: #FFF
+          +border-radius( 3px 3px 0 0)
   a
     .caret, &:hover .caret
       color: $brand-primary
