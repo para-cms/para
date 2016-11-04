@@ -8,17 +8,17 @@
 
   = render_breadcrumbs
 
-  %ul.nav.navbar-nav.navbar-right
+  %ul.nav.navbar-nav.pull-right
     %li
-      = link_to root_path, target: "_blank" do
+      = link_to root_path, target: "_blank", class: 'btn-home' do
         %i.fa.fa-home
-        %span.text-hidden
+        %span.hidden
           = t('para.admin.back_to_app')
 
     %li
-      = link_to destroy_admin_user_session_path, method: :delete do
+      = link_to destroy_admin_user_session_path, method: :delete, class: 'btn-power-off' do
         %i.fa.fa-power-off
-        %span.text-hidden
+        %span.hidden
           = t('para.admin.sign_out')
 
     

@@ -58,6 +58,7 @@
       padding: 0
       margin: 0  
 
+
     .component-section-title
       width: 100%
       font-weight: bold
@@ -94,8 +95,19 @@
 //== Top navbar
 //
 //##
+
 .navbar-default
   border: none
+  .nav > li > a
+    padding-right: 10px
+    padding-left: 10px
+
+    &.btn-home
+      background-color: $blue-darker
+
+    &.btn-power-off  
+      background-color: $brand-danger
+      color: $text-color
 
 .navbar-fixed-top
   padding-left: 0

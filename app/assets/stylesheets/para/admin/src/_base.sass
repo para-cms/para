@@ -2,6 +2,8 @@
 
 @import "variables"
 
+@import "compass/css3/border-radius"
+
 html *
   outline: 0!important
 
@@ -18,3 +20,29 @@ body, html
 
 body
   padding: $navbar-height 0 0 0
+  background: url('tangram-mosaic.png') repeat top left
+  background-size: 128px 128px
+
+.collapsing
+  +default-transition
+
+
+//== Page content
+//
+//## 
+
+.page-title
+  background-color: #fff
+  padding: 15px 25px
+  +box-shadow(0 3px 6px rgba(32,36,45,0.05), 0 3px 6px rgba(32,36,45,0.1))
+  h1
+    margin: 0
+    font-weight: 300
+
+.page-content-wrap
+  background-color: #fff
+  margin: 25px 10px
+  +border-radius(2px)
+  +material-box-shadow
+  padding: 25px
+

@@ -2,7 +2,7 @@ module Para
   module Admin
     module PageHelper
       def page_top_bar(options = {})
-        content_tag(:div, class: 'page-title') do
+        content_tag(:div, class: 'page-title row') do
           content_tag(:h1, options[:title]) +
 
           if (actions = actions_for(options[:type]))
