@@ -6,19 +6,18 @@
 @import "compass/css3/border-radius"
 
 .page-sidebar 
-  position: fixed
-  height: 100%
-  bottom: 0
-  overflow: auto
   background-color: $navbar-default-bg
-  width: $left-menu-width-open
+  bottom: 0
   float: left
+  height: 100%
+  overflow: auto
+  position: fixed
+  width: $left-menu-width-open
   z-index: 3
-  +box-shadow(2px 0 5px #fafafa)
   &.navbar-collapse
     padding: 0
 
-.navbar-toggle  
+.navbar-toggle
   border-color: $navbar-default-toggle-border-color
   margin-left: 10px
   .icon-bar
@@ -38,10 +37,11 @@
     color: #fff !important
     display: block
     font-size: 1.4em
-    font-weight: 400
+    font-weight: 300
     height: $navbar-height
     line-height: 20px
     padding: 15px
+    text-transform: uppercase
     .fa
       color: $navbar-icon-brand-color !important
     &:hover,
@@ -61,7 +61,6 @@
   display: block
   z-index: 3
   background-color: $navbar-default-bg
-  +box-shadow(0 2px 5px #fafafa)
   .ul-navbar li
     float: left
     display: block
@@ -80,13 +79,11 @@
     font-weight: bold
     text-transform: uppercase
     background-color: $gray-lighter
-    color: $gray-darker
-    padding: 15px
+    color: $gray
+    padding: 30px 15px 15px 15px
     line-height: 19px
     &:hover,
-    &:focus 
-      background-color: $gray-lighter
-      color: $gray-darker 
+    &:focus
       cursor: default
       text-decoration: none
 
@@ -98,29 +95,26 @@
       line-height: 19px
       color: $navbar-default-link-color
       font-weight: 400
-      padding: 10px 15px
+      padding: 11px 25px
       text-decoration: none
       transition: all 200ms ease
       &:hover,
       &:focus
         color: $navbar-default-link-hover-color
         background-color: $navbar-default-link-hover-bg
-        padding-left: 25px
+        padding-left: 35px
 
     &.active    
       a, button
         color: $navbar-default-link-active-color
         background-color: $navbar-default-link-active-bg
-        border-right: 4px solid $navbar-default-link-active-color
-        &:hover,
-        &:focus
-          padding-left: 15px
+        border-left: 2px solid $brand-primary
+        padding-left: 23px
 
-
-//** Horizontal Navbar
+//** Horizontal navbar
 .navigation-horizontal
   height: $navbar-height
-  background: $navbar-default-bg
+  background: $horizontal-navbar-default-bg
   .ul-navbar
     &.list-inline
       margin-left: 0
@@ -130,13 +124,12 @@
     li
       background-color: #fff
       > a, button
-        padding: 10px 15px
         border-bottom: 0
-        line-height: 19px
         color: $navbar-default-link-color
-        +text-shadow(none)
         display: block
-
+        line-height: 19px
+        padding: 20px 15px
+        +text-shadow(none)
         &:hover
           background: $navbar-default-link-hover-bg
           text-decoration: none
@@ -163,7 +156,6 @@
         position: absolute
         overflow: visible
         +border-radius(3px)
-        +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
         z-index: 3
         li
           width: 100%
