@@ -4,216 +4,106 @@
 @import "compass/css3/transition"
 @import "compass/css3/text-shadow"
 @import "compass/css3/border-radius"
+@import "compass/css3/transform"
 
-.page-sidebar 
+//== Sidebar right
+//
+//## 
+
+.navmenu
   background-color: $navbar-default-bg
-  bottom: 0
-  float: left
-  height: 100%
-  overflow: auto
-  position: fixed
   width: $left-menu-width-open
-  z-index: 3
-  &.navbar-collapse
-    padding: 0
+  overflow: hidden
 
-.navbar-toggle
-  border-color: $navbar-default-toggle-border-color
-  margin-left: 10px
-  .icon-bar
-    background-color: $navbar-default-toggle-icon-bar-bg
-  &:hover,
-  &:focus
-    background-color: $navbar-default-toggle-hover-bg  
+.navmenu-default
+  background-color: #fff
+  border: none
 
-.brand-logo
-  width: 100%
-  text-align: center
-  padding: 0
-  border-bottom: 0
-  height: $navbar-height
-  a
-    background-color: $navbar-default-brand-color
-    color: #fff !important
-    display: block
+  .navmenu-brand
+    background-color: $blue-darker
+    margin: 0
+    padding: 20px
     font-size: 1.4em
     font-weight: 300
-    height: $navbar-height
     line-height: 20px
-    padding: 15px
     text-transform: uppercase
-    .fa
-      color: $navbar-icon-brand-color !important
-    &:hover,
-    &:focus,
-    &:active
-      background-color: $navbar-default-brand-hover-bg !important 
-      text-decoration: none
-
-.sidebar-navigation,
-.sidebar-navigation ul,
-.navigation-horizontal
-  width: 100%
-  padding: 0
-  margin: 0
-  float: left
-  list-style: none
-  display: block
-  z-index: 3
-  background-color: $navbar-default-bg
-  .ul-navbar li
-    float: left
+    text-align: center
+    color: #fff
     display: block
-    width: 100%
-    padding: 0
-    margin: 0
-    position: relative
-
-  .component-section-item
-    border-bottom: 1px solid $navbar-default-border
-
-  .component-section-title
-    display: block
-    float: left
-    width: 100%
-    font-weight: bold
-    text-transform: uppercase
-    background-color: $gray-lighter
-    color: $gray
-    padding: 30px 15px 15px 15px
-    line-height: 19px
     &:hover,
     &:focus
-      cursor: default
-      text-decoration: none
+      background-color: $blue-darker
+      color: #fff
 
-  .component-item
-    a, button
-      display: block
-      float: left
-      width: 100%
-      line-height: 19px
-      color: $navbar-default-link-color
-      font-weight: 400
-      padding: 11px 25px
-      text-decoration: none
-      transition: all 200ms ease
+  .navmenu-nav  
+    height: 100%
+    width: $left-menu-width-open + 15px
+    padding: 0
+    margin: 0
+    display: block
+    overflow-x: hidden
+    overflow-y: scroll
+    z-index: $zindex-navbar-fixed + 1
+    list-style: none
+
+    //** overriding jasny
+    > li > a
+      color: $gray
       &:hover,
       &:focus
-        color: $navbar-default-link-hover-color
-        background-color: $navbar-default-link-hover-bg
-        padding-left: 35px
+        color: $gray
+        background-color: $gray-lighter
 
-    &.active    
+    //** Para components
+    .component-section-list-items
+      list-style: none
+      padding: 0
+      margin: 0  
+
+    .component-section-title
+      width: 100%
+      font-weight: bold
+      text-transform: uppercase
+      background-color: $gray-lighter
+      padding: 30px 15px 15px 15px
+      line-height: 19px
+      &:hover,
+      &:focus
+        cursor: default
+        text-decoration: none
+      &.collapsed
+        .fa
+          +rotate(180deg)
+
+    .component-item
       a, button
-        color: $navbar-default-link-active-color
-        background-color: $navbar-default-link-active-bg
-        border-left: 2px solid $brand-primary
-        padding-left: 23px
-
-//** Horizontal navbar
-.navigation-horizontal
-  height: $navbar-height
-  background: $horizontal-navbar-default-bg
-  .ul-navbar
-    &.list-inline
-      margin-left: 0
-    .brand-logo a
-      border-bottom: 0
-      width: $left-menu-width-open
-    li
-      background-color: #fff
-      > a, button
-        border-bottom: 0
-        color: $navbar-default-link-color
         display: block
         line-height: 19px
-        padding: 20px 15px
-        +text-shadow(none)
-        &:hover
-          background: $navbar-default-link-hover-bg
-          text-decoration: none
-          .fa, .glyphicon
-            color: $navbar-icon-color
+        color: $text-color
+        font-weight: 400
+        padding: 11px 25px 11px 23px
+        text-decoration: none
+        border-left: 2px solid #fff
+        &:hover,
+        &:focus
+          background-color: $gray-lighter
 
-        .fa, .glyphicon
-          color: $navbar-default-link-color
+      &.active    
+        a, button
+          background-color: $navbar-default-link-active-bg
+          border-color: $brand-primary
 
-        &.navbar-toggle  
-          padding: 9px 10px
-          border-bottom: 1px solid $navbar-default-toggle-border-color
-          display: none
+//== Top navbar
+//
+//##
+.navbar-default
+  border: none
 
-      .brand-logo a
-        background-color: $navbar-default-brand-color
-      &.active > a,
-      &.active > button
-        background: $navbar-default-link-active-bg
-        .fa, .glyphicon
-          color: $navbar-icon-color
-      ul
-        width: $left-menu-width-open
-        position: absolute
-        overflow: visible
-        +border-radius(3px)
-        z-index: 3
-        li
-          width: 100%
-        
-    li
-      width: auto
-      position: relative
-      &.active > ul
-        display: block
-    
-    .xn-icon-button > a,
-    .xn-icon-button > button
-      padding: 15px 10px
-      text-align: center
-      width: 50px
-      .fa, .glyphicon
-        margin: 0
-    
-    > li
-      &.xn-profile
-        padding: 0
-        border-bottom: 1px solid #273541
-        .profile-mini
-          display: none
-          width: 50px
-          padding: 7px
-          img
-            width: 36px
-            border: 2px solid #FFF
-            +border-radius(50%)
-    .informer
-      font-size: 11px
-      position: absolute
-      line-height: 20px
-      text-align: center
-      padding: 0 5px
-      background: #BBB
-      right: 10px
-      top: 15px
-      color: #FFF
-      +border-radius(3px)
-      &.pulsate
-        animation: pulsate 1s ease-out
-        animation-iteration-count: infinite
-      &.informer-primary
-        background: $brand-primary
-      &.informer-success
-        background: $brand-success
-      &.informer-info
-        background: $brand-info
-      &.informer-warning
-        background: $brand-warning
-      &.informer-danger
-        background: $brand-danger
-    li li .informer
-      top: 12px
-    .xn-icon-button .informer
-      left: auto
-      bottom: auto
-      right: 1px
-      top: 5px
+.navbar-fixed-top
+  padding-left: 0
+
+//** Btn menu toggle  
+.navbar-toggle  
+  float: left
+  display: block
+

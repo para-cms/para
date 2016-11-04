@@ -29,7 +29,7 @@ $brand-danger:          #FB9678 !default;
 //** Background color for `<body>`.
 $body-bg:               #eee !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$text-color:            #3F4352 !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -369,9 +369,9 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             #4F5467 !default;
-$navbar-default-bg:                #fff !default;
-$navbar-default-border:            #eee !default;
+$navbar-default-color:             #fff !default;
+$navbar-default-bg:                #4F5467 !default;
+$navbar-default-border:            #4F5467 !default;
 
 // Navbar links
 $navbar-default-link-color:                $navbar-default-color !default;
@@ -383,14 +383,14 @@ $navbar-default-link-disabled-color:       $navbar-default-border !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
-$navbar-default-brand-color:               #3F4352 !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
-$navbar-default-brand-hover-bg:            transparent !default;
+$navbar-default-brand-color:               #fff !default;
+$navbar-default-brand-hover-color:         $navbar-default-brand-color !default;
+$navbar-default-brand-hover-bg:            $text-color !default;
 
 // Navbar toggle
-$navbar-default-toggle-hover-bg:           #ddd !default;
-$navbar-default-toggle-icon-bar-bg:        #888 !default;
-$navbar-default-toggle-border-color:       #ddd !default;
+$navbar-default-toggle-hover-bg:           $navbar-default-bg !default;
+$navbar-default-toggle-icon-bar-bg:        #fff !default;
+$navbar-default-toggle-border-color:       $navbar-default-bg !default;
 
 
 //=== Inverted navbar
@@ -792,10 +792,10 @@ $badge-border-radius:         10px !default;
 //
 //##
 
-$breadcrumb-padding-vertical:   8px !default;
-$breadcrumb-padding-horizontal: 15px !default;
+$breadcrumb-padding-vertical:   20px !default;
+$breadcrumb-padding-horizontal: 25px !default;
 //** Breadcrumb background color
-$breadcrumb-bg:                 $navbar-default-color !default;
+$breadcrumb-bg:                 $navbar-default-bg !default;
 //** Breadcrumb text color
 $breadcrumb-color:              #fff !default;
 //** Text color of current page in the breadcrumb
