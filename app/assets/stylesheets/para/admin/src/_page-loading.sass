@@ -1,0 +1,24 @@
+@import 'variables'
+
+$spinner-size: 32px
+
+.loading-overlay
+  position: fixed
+  width: calc(100% - #{$left-menu-width-open})
+  height: calc(100% - #{$navbar-height})
+  top: $navbar-height
+  left: $left-menu-width-open
+  z-index: 999
+  opacity: .5
+  background: white
+
+.loading-spinner
+  position: fixed
+  top: 50%
+  left: 50%
+  margin-left: ($left-menu-width-open / 2) - ($spinner-size / 2)
+  margin-top: $navbar-height - $spinner-size
+  width: $spinner-size
+  height: $spinner-size
+  z-index: 1000
+  background: image-url('para/admin/loading-spinner.gif')

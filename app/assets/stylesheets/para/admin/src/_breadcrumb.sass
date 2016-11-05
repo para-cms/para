@@ -1,0 +1,19 @@
+@import 'variables'
+
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+
+.breadcrumb
+  border: none
+  +border-radius(0)
+  margin: 0
+  float: left
+  li
+    a
+      color: $breadcrumb-color
+      font-size: 1em
+      font-weight: 300
+      text-decoration: none
+    &.active
+      a
+        color: $breadcrumb-active-color

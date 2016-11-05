@@ -1,0 +1,153 @@
+@import 'variables'
+
+@import "compass/css3/box-shadow"
+@import "compass/css3/transition"
+@import "compass/css3/border-radius"
+
+.tabs
+  float: left
+  width: 100%
+  position: relative
+  margin-top: 40px
+
+.nav-tabs
+  border-bottom: 0
+  margin-bottom: 0
+  margin-top: -40px
+  padding: 0 5px
+  &.nav-justified
+    border-bottom: 0
+    margin-bottom: 0
+    margin-top: -40px
+    padding: 0 5px
+
+.block-head .nav-tabs
+  border-bottom: 0
+
+.nav-tabs
+  >
+    li
+      margin-bottom: 0
+      > a
+        margin-right: 5px
+        border: 0
+        font-size: 14px
+        border-top: 2px solid transparent
+        +border-radius(0)
+        color: #333
+        +single-transition(all 200ms ease)
+        background: $btn-default-bg
+        padding: 9px 15px
+      &:first-child > a
+        +border-radius(5px 0 0)
+      > a:hover
+        border-color: transparent
+        background: #FFF
+    .dropdown.active.open > a:hover
+      border: 0
+      border-top: 2px solid $brand-primary
+      background: #FFF
+      +border-radius( 3px 3px 0 0)
+    li.active > a
+      border: 0
+      border-top: 2px solid $brand-primary
+      background: #FFF
+      +border-radius( 3px 3px 0 0)
+      &:focus, &:hover
+        border: 0
+        border-top: 2px solid $brand-primary
+        background: #FFF
+        +border-radius( 3px 3px 0 0)
+  &.nav-justified
+    >
+      li
+        > a
+          border: 0
+          border-top: 2px solid transparent
+          +border-radius( 0)
+          color: #333
+          +single-transition(all 200ms ease)
+          &:hover
+            border-color: $brand-primary
+            background: 0 0
+      .active > a
+        border: 0
+        border-top: 2px solid $brand-primary
+        background: #FFF
+        +border-radius( 3px 3px 0 0)
+        &:focus, &:hover
+          border: 0
+          border-top: 2px solid $brand-primary
+          background: #FFF
+          +border-radius( 3px 3px 0 0)
+  a
+    .caret, &:hover .caret
+      color: $brand-primary
+
+.nav-tabs-vertical
+  .tabs
+    margin-top: 0
+  .nav-tabs
+    margin-top: 0
+    float: left
+    width: 150px
+    position: absolute
+    left: 0
+    border-bottom: 0
+    padding: 0
+    >
+      li
+        width: 100%
+        > a
+          width: 100%
+          +border-radius( 0)
+          border-top: 0
+          border-left: 2px solid transparent
+          background: #FFF
+          &:hover
+            border-left-color: $brand-primary
+            background: 0 0
+      .dropdown.active.open > a:hover
+        border-top: 0
+        border-left: 2px solid $brand-primary
+        background: $btn-default-bg
+      li
+        &.active > a
+          border-top: 0
+          border-left: 2px solid $brand-primary
+          background: $btn-default-bg
+          &:focus, &:hover
+            border-top: 0
+            border-left: 2px solid $brand-primary
+            background: $btn-default-bg
+        &:first-child > a
+          +border-top-left-radius(3px)
+        &:last-child > a
+          +border-bottom-left-radius(3px)
+  .tab-content
+    width: auto
+    margin-left: 150px
+  .panel-body
+    padding-top: 10px
+
+.form-tabs
+  .navbar
+    margin-bottom: 0
+    +border-radius( 0)
+    .nav li
+      border-top: none
+      &.active
+        border-top-color: $navbar-inverse-link-hover-color
+        margin-bottom: 0
+        
+@media (min-width: $screen-md-min)
+  .form-tabs
+    .navbar
+      .nav li
+        border-top: 4px solid transparent
+        &.active
+          border-top-color: $navbar-inverse-link-hover-color
+          border-bottom: 1px solid #fff
+          margin-bottom: -1px
+        > a
+          padding-top: 12.5px

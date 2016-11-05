@@ -18,15 +18,12 @@
     = csrf_meta_tags
 
   %body
-    .page-container.page-navigation-top-fixed
+    = render partial: 'para/admin/shared/navigation'
+    = render partial: 'para/admin/shared/header'
 
-      .page-sidebar.collapse.navbar-collapse#menu-sidebar
-        = render partial: 'para/admin/shared/navigation'
+    .container-fluid.page-content
+      = display_admin_flash
 
-      .page-content
-        = render partial: 'para/admin/shared/header'
-        = display_admin_flash
-
-        = yield
+      = yield
 
     = javascript_include_tag 'para/admin', :'data-turbolinks-eval' => false

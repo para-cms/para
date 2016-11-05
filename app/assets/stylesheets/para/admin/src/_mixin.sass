@@ -1,0 +1,25 @@
+@import "compass/css3/transition"
+@import "compass/css3/box-shadow"
+
+=clearfix()
+  &:before,
+  &:after 
+    content: " "
+    display: table
+  &:after
+    clear: both
+
+=default-transition($time: 0.3s)
+  +transition(all $time cubic-bezier(.25,.8,.25,1))
+
+=material-box-shadow($depth: 1)
+  @if $depth == 1
+    +box-shadow(0 1px 3px rgba(32,36,45,0.12), 0 1px 2px rgba(32,36,45,0.24))
+  @if $depth == 2
+    +box-shadow(0 3px 6px rgba(32,36,45,0.16), 0 3px 6px rgba(32,36,45,0.23))
+  @if $depth == 3
+    +box-shadow(0 10px 20px rgba(32,36,45,0.19), 0 6px 6px rgba(32,36,45,0.23))
+  @if $depth == 4
+    +box-shadow(0 14px 28px rgba(32,36,45,0.25), 0 10px 10px rgba(32,36,45,0.22))
+  @if $depth == 5
+    +box-shadow(0 19px 38px rgba(32,36,45,0.30), 0 15px 12px rgba(32,36,45,0.22))

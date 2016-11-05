@@ -1,0 +1,263 @@
+@import "variables"
+
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/inline-block"
+@import "compass/css3/transition"
+@import "compass/css3/transform"
+
+.panel
+  float: left
+  width: 100%
+  +border-radius($panel-border-radius)
+  border: 0
+  border-top: 2px solid $panel-default-border
+  margin-bottom: 20px
+  position: relative
+  +box-shadow(0 1px 1px 0 rgba(0, 0, 0, 0.2))
+  &.panel-default
+    border-top-color: $panel-default-border
+    border-top-width: 1px
+  &.panel-primary
+    border-top-color: $brand-primary
+  &.panel-success
+    border-top-color: $brand-success
+  &.panel-info
+    border-top-color: $brand-info
+  &.panel-warning
+    border-top-color: $brand-warning
+  &.panel-danger
+    border-top-color: $brand-danger
+
+  .panel-heading
+    .panel-title-image
+      float: left
+      width: 30px
+      border: 2px solid $gray-lighter
+      +border-radius(50%)
+      margin-right: 5px
+    .panel-title
+      margin-left: 7px
+    .panel-title-box
+      float: left
+      h2,h3
+        font-size: 14px
+        font-weight: 600
+        line-height: 18px
+        color: $title-color
+        padding: 0
+        margin: 0
+      span
+        font-size: 12px
+        color: #a7adb5
+        font-weight: 400
+        line-height: 12px
+    .order-anchor
+      margin-top: 8px
+
+  .panel-body, .panel-footer, .panel-heading
+    float: left
+    width: 100%
+
+  .panel-body
+    position: relative
+    &.scroll
+      padding-right: 0
+    &.panel-body-map
+      padding: 5px
+    &.panel-body.panel-body-table
+      padding: 0
+      h1, h2, h3, h4, h5, h6
+        padding-left: 10px
+        margin-bottom: 10px
+      .table
+        margin-bottom: 0
+        border: 0
+        tr
+          > td:first-child, th:first-child
+            border-left: 0
+          td:last-child, th:last-child
+            border-right: 0
+        > tbody > tr:last-child > td
+          border-bottom: 0
+      td, th
+        padding: 8px 10px
+    &.panel-body-image
+      padding: 0
+      margin-bottom: 10px
+      position: relative
+      img
+        +border-radius(5px 5px 0 0)
+        width: 100%
+      .panel-body-inform
+        width: 30px
+        height: 30px
+        position: absolute
+        bottom: -15px
+        left: 50%
+        background: $brand-info
+        color: #FFF
+        +border-radius(5px)
+        margin-left: -15px
+        text-align: center
+        line-height: 30px
+        padding-left: 1px
+        padding-top: 1px
+        +rotate(45deg)
+        &.inform-primary
+          background: $brand-primary
+        &.inform-success
+          background: $brand-success
+        &.inform-warning
+          background: $brand-warning
+        &.inform-danger
+          background: $brand-danger
+        .fa
+          font-size: 16px
+          color: #FFF
+          +rotate(-45deg)
+    &.list-group
+      padding: 0
+    &.profile
+      +border-radius(5px 5px 0 0)
+    &.panel-body-search
+      padding: 5px
+    &.panel-body-half .panel-body
+      width: 50%
+      height: 100%
+      &:nth-child(2n)
+        padding-left: 25px
+      &.panel-body-image
+        margin-bottom: 0
+        .panel-body-inform
+          bottom: auto
+          left: auto
+          right: -15px
+          top: 50%
+          margin-left: 0
+          margin-top: -15px
+
+  .panel-title
+    font-size: $font-size-h4
+    font-weight: 400
+    line-height: 30px
+    display: block
+    float: left
+    color: $title-color
+
+  .panel-footer
+    background: $panel-footer-bg
+    border: 0
+    border-top: 1px solid #E3E3E3
+    line-height: 30px
+    padding: 10px
+
+.panel-danger .panel-heading,
+.panel-default .panel-heading,
+.panel-info .panel-heading,
+.panel-primary .panel-heading,
+.panel-success .panel-heading,
+.panel-warning .panel-heading
+  border-color: $panel-default-border
+
+.panel-group
+  float: left
+  width: 100%
+  .panel-heading + .panel-collapse > .panel-body
+    border-top: 0
+
+.panel-title > a
+  text-decoration: none
+
+ul.panel-controls
+  padding: 0
+  margin: 0
+  list-style: none
+  position: relative
+  > li
+    float: left
+    margin: 0 2px
+    max-width: 500px
+    > a:not(.btn)
+      display: block
+      float: left
+      width: 30px
+      height: 30px
+      text-align: center
+      line-height: 28px
+      color: $breadcrumb-active-color
+      border: 1px solid #BBB
+      +border-radius(50%)
+      margin-left: 3px
+      +single-transition(all, 200ms, ease)
+      &.control-primary
+        color: $brand-primary
+        border-color: $brand-primary
+      &.control-success
+        color: $brand-success
+        border-color: $brand-success
+      &.control-info
+        color: $brand-info
+        border-color: $brand-info
+      &.control-warning
+        color: $brand-warning
+        border-color: $brand-warning
+      &.control-danger
+        color: $brand-danger
+        border-color: $brand-danger
+      &:hover
+        border-color: $gray-darker
+        color: $title-color
+
+.label-form
+  +inline-block
+  font-size: 11px
+  padding: 5px 10px
+  line-height: 12px
+  margin-top: 4px
+
+.panel-heading .label
+  line-height: 16px
+  padding: 4px 10px
+  margin: 3px 0 3px 5px
+  font-size: 12px
+  +inline-block
+  +border-radius(3px)
+  &.pulsate
+    animation: pulsate 1s ease-out
+    animation-iteration-count: infinite
+
+// Refresh layer system
+.panel-refresh-layer
+  position: absolute
+  left: 0
+  top: 0
+  background: #FFF
+  opacity: .5
+  z-index: 3
+  font-size: 21px
+  img
+    position: absolute
+    left: 50%
+    top: 50%
+    margin-left: -16px
+    margin-top: -16px
+
+// Panel hidden system
+.panel-group.accordion .panel-body
+  display: none
+  &.panel-body-open
+    display: block
+
+.panel-hidden-controls
+  ul.panel-controls > li > a
+    opacity: 0
+  &:hover ul.panel-controls > li > a
+    opacity: .8
+    &:hover
+      opacity: 1
+
+// Toggle panel
+.panel-toggled
+  .panel-body, .panel-footer
+    display: none

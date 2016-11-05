@@ -1,23 +1,24 @@
-%ul.sidebar-navigation.collapse.navbar-collapse#menu-sidebar
-  %li.brand-logo
-    = link_to admin_path do
-      = t('para.admin.title')
+.navmenu.navmenu-default.navmenu-fixed-left.offcanvas-sm
+  = link_to admin_path, class: 'navmenu-brand' do
+    = t('para.admin.brand').html_safe
 
-  - if admin_component_sections.any?
-    - admin_component_sections.each do |component_section|
-      - next unless component_section.components.any? { |component| can?(:manage, component) }
+  %ul.nav.navmenu-nav
+    - if admin_component_sections.any?
+      - admin_component_sections.each_with_index do |component_section, index|
+        - next unless component_section.components.any? { |component| can?(:manage, component) }
 
+        %li.component-section-item
+          = link_to "#collapse-section-#{index}", class: 'component-section-title', data: { toggle: 'collapse' } do
+            = component_section.name
+            = fa_icon 'angle-up', class: 'pull-right'
+
+          %ul.component-section-list-items.collapse.in{ id: "collapse-section-#{index}" }
+            - component_section.components.each do |component|
+              - if can? :manage, component
+                %li.component-item{ class: (@component == component) && 'active' }
+                  = link_to component.name, component.path
+
+    - else
       %li.component-section-item
-        = link_to "#", class: 'component-section-title' do
-          = component_section.name
-
-        %ul.component-section-list-items
-          - component_section.components.each do |component|
-            - if can? :manage, component
-              %li.component-item{ class: (@component == component) && 'active' }
-                = link_to component.name, component.path
-
-  - else
-    %li.component-section-item
-      .component-section-title
-        = t('para.component.none_created')
+        .component-section-title
+          = t('para.component.none_created')
