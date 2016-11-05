@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  mount Para::Engine => "/para"
+  para_at '/'
+  devise_for :admin_users
+
+  root to: 'home#index'
 end
