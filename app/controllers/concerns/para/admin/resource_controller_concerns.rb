@@ -6,7 +6,13 @@ module Para
       end
 
       def resource
-        @resource ||= instance_variable_get(:"@#{ resource_name }")
+        @resource ||= begin
+          resource = instance_variable_get(:"@#{ resource_name }")
+          # We ensure that the fetched resource is not a relation, which could
+          # happen for uncountable resource names (like "news") and would make
+          # code depending on the `resource` getter to fail unexpectedly
+          resource unless ActiveRecord::Relation === resource
+        end
       end
 
       def resource_name
