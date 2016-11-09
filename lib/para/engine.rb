@@ -49,9 +49,9 @@ module Para
     end
 
     initializer 'Add resource name methods to simple form extension' do
-      ::SimpleFormExtension.name_methods = (
-        ::SimpleFormExtension.resource_name_methods +
-          Para.resource_name_methods
+      ::SimpleFormExtension.resource_name_methods = (
+        Para.config.resource_name_methods + 
+          ::SimpleFormExtension.resource_name_methods
       ).uniq
     end
 
