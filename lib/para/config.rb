@@ -18,8 +18,13 @@ module Para
     mattr_accessor :resource_name_methods
     @@resource_name_methods = [:admin_name, :admin_title, :name, :title]
 
-    mattr_accessor :plugins
-    @@plugins = []
+    mattr_reader :plugins
+    @@plugins = Para::Plugins::Set.new
+
+    def self.plugins=(array)
+      # Add each item in array to the existing plugins set
+      array.each(&plugins.method(:<<))
+    end
 
     # Hidden from initializer on purpose.
     #
