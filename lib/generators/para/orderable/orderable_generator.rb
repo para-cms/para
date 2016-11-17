@@ -20,7 +20,7 @@ module Para
     end
 
     def add_orderable_to_model
-      class_definition = "class #{ class_name } < ActiveRecord::Base\n"
+      class_definition = /class #{ class_name } < (ActiveRecord::Base|ApplicationRecord)\n/
 
       inject_into_file "app/models/#{ singular_namespaced_path }.rb", after: class_definition do
         "  acts_as_orderable\n"
