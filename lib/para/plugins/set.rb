@@ -5,7 +5,7 @@ module Para
 
       attr_accessor :items
 
-      delegate :<<, :each, to: :items
+      delegate :+, :<<, :each, to: :items
 
       def initialize
         @items = []
