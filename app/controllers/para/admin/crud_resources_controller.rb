@@ -8,8 +8,8 @@ module Para
       before_filter :load_and_authorize_crud_resource
       before_filter :add_breadcrumbs, only: [:show, :index, :edit, :new]
 
-      after_filter :attach_resource_to_component, only: [:create]
-      after_filter :remove_resource_from_component, only: [:destroy]
+      after_action :attach_resource_to_component, only: [:create]
+      after_action :remove_resource_from_component, only: [:destroy]
 
       def clone
         new_resource = resource.deep_clone include: resource.class.cloneable_associations

@@ -7,6 +7,9 @@
       = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
     - if resources.length > 0
+      = panel.body class: 'page-entries-info' do
+        = page_entries(resources)
+
       = panel.body class: '' do
         = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
