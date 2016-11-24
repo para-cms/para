@@ -8,7 +8,7 @@
 
     - if resources.length > 0
       = panel.body class: 'page-entries-info' do
-        = page_entries_info(resources)
+        = page_entries(resources)
 
       = panel.body class: '' do
         = table_for(resources: resources, model: model, component: component, attributes: attributes)
