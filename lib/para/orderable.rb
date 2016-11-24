@@ -3,7 +3,7 @@ module Para
     extend ActiveSupport::Concern
 
     included do
-      scope :ordered, -> { order('position ASC') }
+      scope :ordered, -> { order("#{ table_name }.position ASC") }
       before_create :orderable_assign_position
     end
 
@@ -11,7 +11,7 @@ module Para
       return if attribute_present?(:position)
 
       last_resource = self.class.unscoped
-        .order('position DESC')
+        .ordered
         .where.not(position: nil)
         .select(:position)
         .first
