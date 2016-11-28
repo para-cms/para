@@ -1,11 +1,16 @@
 = page_top_bar(title: t('para.dashboard.title'), type: 'dashboard/show')
 
-.page-content-wrap
-  - ordered_components.each_slice(3) do |components|
-    .row
-      - components.each do |component|
-        .col-md-4
-          = link_to component.path, class: 'panel panel-default' do
-            .panel-body
-              = component.name
+- ordered_components.each_slice(3) do |components|
+  - components.each do |component|
+    .col-md-4.m-t-lg
+      = link_to component.path, class: 'statcard statcard-icon' do
+        %i.icon-rounded.bg-primary
+          = component.name[0,1]
+        .startcard-body  
+          %h2.statcard-title
+            = component.name
+          %span.text-muted
+            = t('para.dashboard.statcard.ressources_count', count: '')
 
+      = link_to '#', class: 'thumbtack-link' do
+        = fa_icon 'thumb-tack'

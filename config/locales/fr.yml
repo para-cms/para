@@ -46,6 +46,8 @@ fr:
 
     dashboard:
       title: "Tableau de bord"
+      statcard:
+        ressources_count: "Nombre d'entrée(s) : %{count}"
 
     form:
       shared:

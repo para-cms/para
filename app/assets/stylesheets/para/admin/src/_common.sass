@@ -2,54 +2,221 @@
 
 @import "compass/css3/border-radius"
 @import "compass/css3/box-shadow"
+@import "compass/css3/text-shadow"
 
-// Typographi
+.icon-rounded
+  width: 32px
+  height: 32px
+  text-align: center
+  font-size: 17px
+  line-height: 32px
+  font-weight: 700
+  font-style: normal
+  +border-radius(100%)
+
+.thumbtack-link
+  position: absolute
+  top: $spacer-y * 1.5
+  right: $spacer-x * 3
+  z-index: 100
+  &:hover,
+  &.active
+    .fa-thumb-tack
+      color: $purple
+      +text-shadow(none)        
+
+.fa-thumb-tack
+  +rotate(-45deg)
+  font-size: 30px  
+  color: #fff
+  +text-shadow()    
+  +default-transition
+
+.text-muted
+  font-weight: 300
+
+// Positioning
 // -------------------------
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
-  color: $title-color
-  padding: 0
-  margin: 0
+.pos-r 
+  position: relative !important
 
-.h1, h1
-  margin-top: 15px
-  margin-bottom: 15px
-  font-size: $font-size-h1
-  font-weight: 400
+.pos-a 
+  position: absolute !important
 
-.h2, h2
-  margin-bottom: 15px
-  font-size: $font-size-h2
-  font-weight: 400
+.pos-f 
+  position: fixed !important
 
-.h3, h3
-  margin-bottom: 10px
-  font-size: $font-size-h3
-  font-weight: 600
+// Margin and padding
+// -------------------------
+//** Margin
+.m-a-0
+  margin:        0 !important
+.m-t-0
+  margin-top:    0 !important
+.m-r-0
+  margin-right:  0 !important
+.m-b-0
+  margin-bottom: 0 !important
+.m-l-0
+  margin-left:   0 !important
 
-.h3 small, h3 small
-  line-height: 19px
+.m-a
+  margin:        $spacer !important
+.m-t
+  margin-top:    $spacer-y !important
+.m-r
+  margin-right:  $spacer-x !important
+.m-b
+  margin-bottom: $spacer-y !important
+.m-l
+  margin-left:   $spacer-x !important
+.m-x
+  margin-right:  $spacer-x !important
+  margin-left: $spacer-x !important
+.m-y
+  margin-top:    $spacer-y !important
+  margin-bottom: $spacer-y !important
+.m-x-auto
+  margin-right: auto !important
+  margin-left: auto !important
 
-.h4, h4
-  margin-bottom: 10px
-  font-size: $font-size-h4
-  font-weight: 400
+.m-a-md
+  margin:        ($spacer-y * 1.5) !important
+.m-t-md
+  margin-top:    ($spacer-y * 1.5) !important
+.m-r-md
+  margin-right:  ($spacer-y * 1.5) !important
+.m-b-md
+  margin-bottom: ($spacer-y * 1.5) !important
+.m-l-md
+  margin-left:   ($spacer-y * 1.5) !important
+.m-x-md
+  margin-right:  ($spacer-x * 1.5) !important
+  margin-left:   ($spacer-x * 1.5) !important
+.m-y-md
+  margin-top:    ($spacer-y * 1.5) !important
+  margin-bottom: ($spacer-y * 1.5) !important
 
-.h5, h5
-  margin-bottom: 10px
-  margin-top: 5px
-  font-size: $font-size-h5
-  font-weight: 400
+.m-a-lg
+  margin:        ($spacer-y * 3) !important
+.m-t-lg
+  margin-top:    ($spacer-y * 3) !important
+.m-r-lg
+  margin-right:  ($spacer-y * 3) !important
+.m-b-lg
+  margin-bottom: ($spacer-y * 3) !important
+.m-l-lg
+  margin-left:   ($spacer-y * 3) !important
+.m-x-lg
+  margin-right:  ($spacer-x * 3) !important
+  margin-left:   ($spacer-x * 3) !important
+.m-y-lg
+  margin-top:    ($spacer-y * 3) !important
+  margin-bottom: ($spacer-y * 3) !important
 
-.h6, h6
-  margin-bottom: 5px
-  font-size: $font-size-h6
-  font-weight: 600
+//** Padding
+.p-a-0
+  padding:        0 !important
+.p-t-0
+  padding-top:    0 !important
+.p-r-0
+  padding-right:  0 !important
+.p-b-0
+  padding-bottom: 0 !important
+.p-l-0
+  padding-left:   0 !important
 
-.page-title
-  float: left
-  width: 100%
-  padding: 0px 25px
-  h2, h1, h3
-    float: left
-    line-height: 30px
+.p-a
+  padding:        $spacer !important
+.p-t
+  padding-top:    $spacer-y !important
+.p-r
+  padding-right:  $spacer-x !important
+.p-b
+  padding-bottom: $spacer-y !important
+.p-l
+  padding-left:   $spacer-x !important
+.p-x
+  padding-right:  $spacer-x !important
+  padding-left:   $spacer-x !important
+.p-y
+  padding-top:    $spacer-y !important
+  padding-bottom: $spacer-y !important
+
+.p-a-md
+  padding:        ($spacer-y * 1.5) !important
+.p-t-md
+  padding-top:    ($spacer-y * 1.5) !important
+.p-r-md
+  padding-right:  ($spacer-y * 1.5) !important
+.p-b-md
+  padding-bottom: ($spacer-y * 1.5) !important
+.p-l-md
+  padding-left:   ($spacer-y * 1.5) !important
+.p-x-md
+  padding-right:  ($spacer-x * 1.5) !important
+  padding-left:   ($spacer-x * 1.5) !important
+.p-y-md
+  padding-top:    ($spacer-y * 1.5) !important
+  padding-bottom: ($spacer-y * 1.5) !important
+
+.p-a-lg
+  padding:        ($spacer-y * 3) !important
+.p-t-lg
+  padding-top:    ($spacer-y * 3) !important
+.p-r-lg
+  padding-right:  ($spacer-y * 3) !important
+.p-b-lg
+  padding-bottom: ($spacer-y * 3) !important
+.p-l-lg
+  padding-left:   ($spacer-y * 3) !important
+.p-x-lg
+  padding-right:  ($spacer-x * 3) !important
+  padding-left:   ($spacer-x * 3) !important
+.p-y-lg
+  padding-top:    ($spacer-y * 3) !important
+  padding-bottom: ($spacer-y * 3) !important
+
+
+// // Typographi
+// // -------------------------
+// .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6
+//   color: $title-color
+//   padding: 0
+//   margin: 0
+
+// .h1, h1
+//   margin-top: 15px
+//   margin-bottom: 15px
+//   font-size: $font-size-h1
+//   font-weight: 400
+
+// .h2, h2
+//   margin-bottom: 15px
+//   font-size: $font-size-h2
+//   font-weight: 400
+
+// .h3, h3
+//   margin-bottom: 10px
+//   font-size: $font-size-h3
+//   font-weight: 600
+
+// .h3 small, h3 small
+//   line-height: 19px
+
+// .h4, h4
+//   margin-bottom: 10px
+//   font-size: $font-size-h4
+//   font-weight: 400
+
+// .h5, h5
+//   margin-bottom: 10px
+//   margin-top: 5px
+//   font-size: $font-size-h5
+//   font-weight: 400
+
+// .h6, h6
+//   margin-bottom: 5px
+//   font-size: $font-size-h6
+//   font-weight: 600
 

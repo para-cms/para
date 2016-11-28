@@ -1,0 +1,36 @@
+@import "variables"
+
+@import "compass/css3/border-radius"
+@import "compass/css3/transform"
+
+.statcard
+  position: relative
+  display: block
+  padding: 15px
+  background-color: #fff
+  +border-radius($border-radius-small)
+  +clearfix
+  +default-transition
+  +material-box-shadow
+  &:hover,
+  &:focus
+    +material-box-shadow(2)
+    text-decoration: none
+
+  &.statcard-icon
+    .icon-rounded
+      float: left
+    .startcard-body  
+      padding-left: 15px
+      float: left
+
+.statcard-title
+  color: $text-color
+  font-size: $font-size-base
+  font-weight: 500
+  margin: 0
+
+
+
+
+  
