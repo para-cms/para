@@ -2,21 +2,56 @@
 
 @import "compass/css3/box-shadow"
 
-.form-control
-  +box-shadow(none)
-  -webkit-appearance: none
-  &:focus
-    +box-shadow(none)
-    border-color: $input-border-focus
-    background: #FFF
-  &[disabled], &[readonly]
-    color: $gray-dark
-  &[disabled]:focus, &[readonly]:focus
-    background: $input-bg-disabled
-    color: $gray-dark
-    border-color: $gray-lighter
+// Legends
+// -------------------------
 
-// File input
+legend
+  font-weight: 600
+  padding: 0
+  margin-bottom: 15px
+  border: none
+
+// Labels
+// -------------------------
+label
+  font-weight: 300
+
+// Inputs
+// -------------------------
+
+//** Inputs outline
+.forms-outline
+  
+  .form-control
+    padding: 6px 0
+    +outline-input-form
+    &[disabled], &[readonly]
+      color: $gray-dark
+    &[disabled]:focus, &[readonly]:focus
+      background: $input-bg-disabled
+      color: $gray-dark
+      border-color: $gray-lighter
+
+  //** Redactor
+  .redactor-editor
+    padding-top: 15px 0 6px 0
+    +outline-input-form
+  .redactor-toolbar
+    border: none
+    border-bottom: 1px solid $input-border
+    background-color: $gray-lighter
+    +border-radius(0)
+
+  //** Selectize
+  .selectize-input, 
+  .selectize-input.full
+    +outline-input-form
+
+  .selectize-control.multi .selectize-input.has-items
+    padding-right: 0
+    padding-left: 0
+
+//** File input
 .fileinput
   &.fileinput-new
     .fileinput-placeholder
@@ -25,49 +60,28 @@
     .fileinput-placeholder
       display: none
 
-.input-group-addon
-  font-size: 13px
-  padding: 0 10px
-  line-height: 28px
-  vertical-align: bottom
 
-.input-group-btn
-  vertical-align: bottom
+// .form-group:last-child
+//   margin-bottom: 0
 
-.form-group:last-child
-  margin-bottom: 0
 
-// Form separated
-.form-group-separated
-  border-top: 1px dashed $gray
-  .form-group
-    border-bottom: 1px dashed $gray
-    margin-bottom: 0px
+// Fixed actions
+// -------------------------
+.form-fixed-actions
+  margin-bottom: 150px
+  .form-actions
+    position: fixed
+    bottom: 0px
+    right: 0px
+    left: $left-menu-width-open
+    padding: 25px 50px
+    z-index: $zindex-navbar-fixed
+    background-color: #fff
+    border-top: 1px solid $gray
 
-    [class^="col-md-"],
-    [class^="col-sm-"]
-      border-left: 1px dashed $gray
-      padding: 12px 10px
-      &:first-child
-        border-left: 0px
+    
 
-    .control-label
-      border-left: none
-
-  .panel-body.form-inputs
-    padding: 0 10px
-
-  .collapse
-    .form-group:last-child
-      border-bottom: none
-
-.form-group-separated.panel-body
-  padding: 0px
-
-.help-block
-  color: $help-block-color
-  margin-bottom: 0
-
+//** Input group addons
 .input-group-btn:first-child >
   .btn, .btn-group
     margin-right: -2px
@@ -84,9 +98,17 @@
   &:active, &:focus, &:hover
     z-index: 0
 
-.form-control-feedback
-  top: 20px
+// .input-group-addon
+//   font-size: 13px
+//   padding: 0 10px
+//   line-height: 28px
+//   vertical-align: bottom
 
+// .input-group-btn
+//   vertical-align: bottom
+
+
+//** input with error
 .has-success
   .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
     color: $brand-success
@@ -106,45 +128,5 @@
 .bootstrap-select.error > button, .form-control.error, .has-error .form-control
   border-color: $brand-danger
 
-label
-  font-weight: 600
-  &.error, &.valid
-    color: $brand-danger
-    margin-bottom: 0
-    margin-top: 3px
-    font-size: 11px
-    font-weight: 400
-    width: 100%
-
 .bootstrap-select.valid > button, .form-control.valid
   border-color: $brand-success
-
-label.valid
-  color: $brand-success
-
-.control-label.text-left
-  text-align: left
-
-.label
-  font-weight: 500
-
-legend
-  font-weight: 600
-  padding: 15px 12px 15px 12px
-  margin-bottom: 0
-  width: auto
-  margin-left: 0
-
-.form-inputs > legend
-  padding-left: 0
-
-.form-fixed-actions
-  margin-bottom: 150px
-  .form-actions
-    position: fixed
-    bottom: 0
-    margin: 0
-    z-index: 2
-    padding-bottom: 0
-    border-bottom: 0
-    // Width defined in responsive stylesheet

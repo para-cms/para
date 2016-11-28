@@ -3,7 +3,7 @@ module Para
     def para_form_for(resource, options = {}, &block)
       default_options = {
         as: :resource,
-        wrapper: :horizontal_form,
+        wrapper: :vertical_form,
         html: { class: '', data: { :'para-form' => true } }
       }
 
@@ -11,7 +11,7 @@ module Para
 
       options[:html][:class] = [
         options[:html][:class].presence,
-        'form-horizontal form-group-separated'
+        'form-vertical forms-outline'
       ].compact.join(' ')
 
       unless options.key?(:url)

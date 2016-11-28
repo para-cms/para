@@ -1,6 +1,33 @@
 @import "compass/css3/transition"
 @import "compass/css3/box-shadow"
 
+=fontAwesome
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  /* sprites.less reset */
+  display: inline-block
+  width: auto
+  height: auto
+  line-height: normal
+  vertical-align: baseline
+  background-image: none
+  background-position: 0% 0%
+  background-repeat: repeat
+  margin-top: 0
+
+=outline-input-form
+  -webkit-appearance: none
+  +box-shadow(none)
+  +border-radius(0)
+  border: none
+  border-bottom: 1px solid $input-border
+  &:focus
+    +box-shadow(0px 1px 0px $input-border-focus)
+    border-color: $input-border-focus
+
 =clearfix()
   &:before,
   &:after 

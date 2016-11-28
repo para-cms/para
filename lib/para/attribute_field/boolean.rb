@@ -10,7 +10,7 @@ module Para
       end
 
       def wrapper_name
-        :horizontal_radio_and_checkboxes
+        :vertical_radio_and_checkboxes
       end
     end
   end

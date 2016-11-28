@@ -2,11 +2,9 @@ module Para
   module FormBuilder
     module Containers
       def fieldset(options = {}, &block)
-        template.content_tag(:div, class: 'block form-inputs') do
+        template.content_tag(:div, class: 'form-inputs') do
           buffer = if (title = options[:title])
-            template.content_tag(:div, class: 'form-group') do
-              template.content_tag(:legend, title)
-            end
+            template.content_tag(:legend, title)
           else
             ''.html_safe
           end
@@ -16,16 +14,14 @@ module Para
       end
 
       def actions(options = {}, &block)
-        template.content_tag(:div, class: 'block form-actions form-group') do
-          template.content_tag(:div, class: 'col-sm-9 col-sm-offset-3') do
-            if block
-              template.capture(&block)
-            else
-              if options.empty?
-                options[:only] = template.instance_variable_get(:@component).default_form_actions
-              end
-              actions_buttons_for(options).join("\n").html_safe
+        template.content_tag(:div, class: 'form-actions') do
+          if block
+            template.capture(&block)
+          else
+            if options.empty?
+              options[:only] = template.instance_variable_get(:@component).default_form_actions
             end
+            actions_buttons_for(options).join("\n").html_safe
           end
         end
       end
