@@ -9,8 +9,12 @@
         .startcard-body  
           %h2.statcard-title
             = component.name
+
           %span.text-muted
-            = t('para.dashboard.statcard.ressources_count', count: '')
+            - if component.type == "Para::Component::Crud"      
+              = t('para.dashboard.statcard.ressources_count', count: component.resources.count)
+            - else
+              = t('para.dashboard.statcard.component_form_ressource')
 
       = link_to '#', class: 'thumbtack-link' do
         = fa_icon 'thumb-tack'

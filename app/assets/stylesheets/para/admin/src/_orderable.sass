@@ -5,41 +5,41 @@
 @import "compass/css3/inline-block"
 
 .order-anchor
-  float: left
-  margin-right: 10px
-  color: $gray-darker
+  color: $text-color
   cursor: move
   outline: 0
-  +single-transition(all, .2s, ease-out)
+  font-size: 20px
+  line-height: 20px
+  +inline-block
+  +default-transition
   &:hover
     color: $gray-darker
   &:focus,
   &:active
     cursor: move
+    +border-radius($border-radius-base)
+    width: 30px
+    height: 30px
+    margin: 0
+    background-color: $gray
     color: $gray-darker
+    text-align: center
 
-.table
-  .sortable-dragging
-    .btn-group
-      display: none
-    .order-anchor
-      +inline-block
-      position: relative  
-
-.panel
-  .collapsed
-    .caret
-      +rotate(270deg)
-
-.nested-many-field
-  &.orderable
-    .sortable-placeholder
-      margin-bottom: 20px
-    .form-fields
-      +clearfix
-      float: none
-    
 .sortable-placeholder
-  border: 1px dashed $gray-lighter
+  border: 1px dashed $gray
   width: 100%
-  background-color: $input-bg
+  background-color: $gray-lighter
+
+
+
+// .table
+//   .sortable-dragging
+//     .btn-group
+//       display: none
+//     .order-anchor
+//       +inline-block
+//       position: relative  
+
+
+
+    

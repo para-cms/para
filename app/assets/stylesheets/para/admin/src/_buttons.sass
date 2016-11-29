@@ -1,27 +1,40 @@
-@import 'variables'
+@import "variables"
 
+@import "compass/css3/border-radius"
+
+=btn-outline($brand: default)
+  background-color: transparent
+  border: 1px solid $brand
+  color: $brand
+  +default-transition
+  &:hover,
+  &:focus
+    background-color: $brand
+    color: #fff
+  
+//** Btns
 .btn
-  .fa, .glyphicon
-    font-size: 14px
-    margin-right: 3px
-
+  .fa
+    font-size: 15px
+    margin-right: 5px
     &.fa-stack-2x
-      font-size: 2em
+      font-size: 20px
       margin-right: inherit
 
-  // Social network color
-  &.btn-twitter
-    background: #1AB2E8
-    border-color: #1AB2E8
-    &.active, &:active, &:focus, &:hover
-      background: #15a1d3
-  &.btn-facebook
-    background: #3C599B
-    border-color: #3C599B
-    &.active, &:active, &:focus, &:hover
-      background: #354e89
-  &.btn-google
-    background: #E04A39
-    border-color: #E04A39
-    &.active, &:active, &:focus, &:hover
-      background: #dd3623
+.btn-xs    
+  .fa
+    font-size: 12px
+
+//** Btn outline
+.btn-default-outline
+  +btn-outline($brand-danger)
+.btn-primary-outline  
+  +btn-outline($brand-primary)
+.btn-success-outline
+  +btn-outline($brand-success)
+.btn-info-outline
+  +btn-outline($brand-info)
+.btn-warning-outline
+  +btn-outline($brand-warning)
+.btn-danger-outline
+  +btn-outline($brand-danger)

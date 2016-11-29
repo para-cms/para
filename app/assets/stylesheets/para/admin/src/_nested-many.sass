@@ -1,4 +1,16 @@
-@import 'variables'
+@import "variables"
+
+@import "compass/css3/box-shadow"
+
+
+
 .nested-many-field
   .panel
     z-index: 1
+    
+  &.orderable
+    .sortable-placeholder
+      margin-bottom: 20px
+    .form-fields
+      +clearfix
+      float: none

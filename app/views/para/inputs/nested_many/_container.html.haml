@@ -7,11 +7,9 @@
     %h3.panel-title
       = link_to "##{ form.nested_resource_dom_id }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
         = form.nested_resource_name
-        %span.caret
+        = fa_icon 'angle-down'
 
     = form.remove_association_button
-
-    .clearfix
 
   .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
     = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)

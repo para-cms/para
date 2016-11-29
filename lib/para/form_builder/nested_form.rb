@@ -34,11 +34,11 @@ module Para
       def remove_association_button
         return "" unless allow_destroy?
 
-        template.content_tag(:div, class: 'panel-btns pull-right') do
+        template.content_tag(:div, class: 'panel-btns') do
           template.link_to_remove_association(
-            self, wrapper_class: 'form-fields', class: 'btn btn-danger'
+            self, wrapper_class: 'form-fields', class: 'btn btn-danger-outline btn-xs'
           ) do
-            template.content_tag(:i, '', class: 'fa fa-trash') +
+            template.content_tag(:i, '', class: 'fa fa-fw fa-times') +
             ::I18n.t('para.form.nested.remove')
           end
         end

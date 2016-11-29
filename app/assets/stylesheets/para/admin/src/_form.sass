@@ -2,6 +2,17 @@
 
 @import "compass/css3/box-shadow"
 
+
+=outline-input-form
+  -webkit-appearance: none
+  +box-shadow(none)
+  +border-radius(0)
+  border: none
+  border-bottom: 1px solid $input-border
+  &:focus
+    +box-shadow(0px 1px 0px $input-border-focus)
+    border-color: $input-border-focus
+
 // Legends
 // -------------------------
 
@@ -13,8 +24,9 @@ legend
 
 // Labels
 // -------------------------
-label
+.control-label
   font-weight: 300
+  font-size: 12px
 
 // Inputs
 // -------------------------
@@ -25,6 +37,7 @@ label
   .form-control
     padding: 6px 0
     +outline-input-form
+    margin-bottom: 30px
     &[disabled], &[readonly]
       color: $gray-dark
     &[disabled]:focus, &[readonly]:focus
@@ -47,7 +60,8 @@ label
   .selectize-input.full
     +outline-input-form
 
-  .selectize-control.multi .selectize-input.has-items
+  .selectize-control.multi .selectize-input.has-items,
+  .selectize-control .selectize-input
     padding-right: 0
     padding-left: 0
 
@@ -75,7 +89,7 @@ label
     right: 0px
     left: $left-menu-width-open
     padding: 25px 50px
-    z-index: $zindex-navbar-fixed
+    z-index: $zindex-navbar-fixed - 10
     background-color: #fff
     border-top: 1px solid $gray
 
