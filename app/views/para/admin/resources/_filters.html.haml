@@ -1,9 +1,8 @@
 = search_form_for @q, builder: SimpleForm::FormBuilder, url: @component.path, html: { data: { :'filters-form' => true } } do |form|
-  .input-group
-    %span.input-group-addon
-      %i.fa.fa-search
-
+  .input-group.filter-form
     = form.input_field fulltext_search_param_for(attributes), as: :string, placeholder: t('para.shared.search'), class: 'form-control'
 
     %span.input-group-btn
-      = form.submit t('para.shared.search'), class: 'btn btn-default'
+      %button.btn{  type: 'submit'}
+        %i.fa.fa-search
+

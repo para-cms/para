@@ -9,7 +9,7 @@ module Para
     end
 
     def actions(resource)
-      content_tag(:div, class: 'pull-right btn-group') do
+      content_tag(:div, class: 'btn-group') do
         edit_button(resource) + delete_button(resource)
       end
     end

@@ -1,31 +1,33 @@
 @import "variables"
 
-.table >
-  tbody
-    > tr
-      > td, th
-        border-width: 1px
-        vertical-align: middle
-  tfoot
-    > tr
-      > td, th
-        border-width: 1px
-  thead
-    > tr
-      > td, th
-        border-width: 1px
-
 .table > thead > tr > th
-  background: $table-heading-bg
-  color: $table-heading-color
-  font-size: 12px
+  font-weight: 300
 
-.table
-  &.table-actions td
-    line-height: 28px
-  .progress-small
-    margin: 7px 0 8px
+.table > tbody > tr > td > img
+  max-width: 250px
 
-.panel-body
-  &.page-entries-info
-    padding: 0 20px
+.table-row-actions
+  min-width: 145px
+
+.table-row-actions-slide
+  position: relative
+  vertical-align: middle
+  .btn-group
+    position: absolute
+    top: 0
+    bottom: 0
+    right: -200px
+    width: 200px
+    background-color: $gray-lighter
+    +default-transition
+    +vCenter
+    +hCenter
+
+.table-hover > tbody > tr
+  +default-transition
+  &:hover
+    +material-box-shadow(2)
+    .table-row-actions-slide  .btn-group
+      right: 0
+    > td
+      border-top-color: $gray-lighter

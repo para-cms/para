@@ -2,7 +2,7 @@
 
 - ordered_components.each_slice(3) do |components|
   - components.each do |component|
-    .col-md-4.m-t-lg
+    .col-sm-6.col-md-6.col-lg-4.m-t-lg
       = link_to component.path, class: 'statcard statcard-icon' do
         %i.icon-rounded.bg-primary
           = component.name[0,1]

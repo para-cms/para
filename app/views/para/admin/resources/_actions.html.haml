@@ -1,6 +1,8 @@
-%ul.panel-controls
+%ul.actions-control.pull-left
   %li
     = add_button_for(component, relation,  model) if allow_adding_resource
+
+%ul.actions-control.pull-right
   %li  
     = render partial: find_partial_for(relation, :exports_menu), locals: { component: component, model: model }
   %li  

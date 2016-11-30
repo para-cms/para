@@ -1,6 +1,7 @@
 @import "variables"
 
 @import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
 
 =btn-outline($brand: default)
   background-color: transparent
@@ -12,8 +13,20 @@
     background-color: $brand
     color: #fff
   
+=btn-icon($brand: default)
+  color: $brand !important
+
 //** Btns
 .btn
+  +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
+  +default-transition
+  &:hover
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
+  &:focus,
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
+  &:active:focus
+  &.active
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
   .fa
     font-size: 15px
     margin-right: 5px
@@ -21,9 +34,61 @@
       font-size: 20px
       margin-right: inherit
 
+.btn-group.open .dropdown-toggle
+  +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
+
 .btn-xs    
   .fa
     font-size: 12px
+
+//** Override default comportement of bootstrap
+.btn-default
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-default-bg !important
+    border-color: $btn-default-border !important
+
+.btn-primary
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-primary-bg !important
+    border-color: $btn-primary-border !important
+
+.btn-success
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-success-bg !important
+    border-color: $btn-success-border !important
+
+.btn-danger
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-danger-bg !important
+    border-color: $btn-danger-border !important
+
+.btn-info
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-info-bg !important
+    border-color: $btn-info-border !important  
+
+.btn-warning
+  &:hover,
+  &:focus,
+  &:active:focus,
+  &.active
+    background-color: $btn-warning-bg !important
+    border-color: $btn-warning-border !important            
 
 //** Btn outline
 .btn-default-outline
@@ -38,3 +103,17 @@
   +btn-outline($brand-warning)
 .btn-danger-outline
   +btn-outline($brand-danger)
+
+//** Btn icon
+.btn-icon-default
+  +btn-icon($brand-danger)
+.btn-icon-primary  
+  +btn-icon($brand-primary)
+.btn-icon-success
+  +btn-icon($brand-success)
+.btn-icon-info
+  +btn-icon($brand-info)
+.btn-icon-warning
+  +btn-icon($brand-warning)
+.btn-icon-danger
+  +btn-icon($brand-danger)  

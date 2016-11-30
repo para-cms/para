@@ -44,7 +44,7 @@ module Para
         # Append cells
         cells << capture { block.call }
         # Append actions empty cell
-        cells << content_tag(:th, '', class: 'actions', width: 1) if actions
+        cells << content_tag(:th, '', class: 'table-row-actions') if actions
 
         # Output full header
         content_tag(:thead) do
@@ -131,8 +131,8 @@ module Para
       end
 
       def actions_cell(resource)
-        content_tag(:td) do
-          content_tag(:div, class: 'pull-right btn-group') do
+        content_tag(:td, class: 'table-row-actions table-row-actions-slide') do
+          content_tag(:div, class: 'btn-group') do
             actions.map do |type|
               send(:"#{ type }_button", resource)
             end.compact.join.html_safe
@@ -149,7 +149,7 @@ module Para
 
         options = {
           method: :post,
-          class: 'btn btn-info'
+          class: 'btn btn-default btn-icon-info'
         }
 
         view.link_to(path, options) do
@@ -162,7 +162,7 @@ module Para
           resource, action: :edit, return_to: view.request.fullpath
         )
 
-        view.link_to(path, class: 'btn btn-primary') do
+        view.link_to(path, class: 'btn btn-default btn-icon-primary') do
           content_tag(:i, '', class: 'fa fa-pencil')
         end
       end
@@ -175,7 +175,7 @@ module Para
           data: {
             confirm: ::I18n.t('para.list.delete_confirmation')
           },
-          class: 'btn btn-danger'
+          class: 'btn btn-default btn-icon-danger'
         }
 
         view.link_to(path, options) do

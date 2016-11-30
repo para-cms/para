@@ -1,7 +1,7 @@
 @import "variables"
 
 @import "compass/css3/box-shadow"
-
+@import "compass/css3/user-interface"
 
 =outline-input-form
   -webkit-appearance: none
@@ -30,6 +30,8 @@ legend
 
 // Inputs
 // -------------------------
+.form-group:last-child
+  margin-bottom: 0
 
 //** Inputs outline
 .forms-outline
@@ -75,9 +77,27 @@ legend
       display: none
 
 
-// .form-group:last-child
-//   margin-bottom: 0
-
+// Search form filter
+// -------------------------
+.filter-form
+  .form-control
+    +input-placeholder
+      color: $gray  
+  .form-control,
+  .input-group-btn
+    background-color: $gray-lighter
+    border: none
+    +border-left-radius(20px)
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12) inset, 0px 1px 2px 0px rgba(32,36,45, .24) inset)
+  .input-group-btn
+    overflow: hidden
+    +border-left-radius(0)
+    +border-right-radius(20px)
+  .btn
+    background-color: transparent
+    color: $gray  
+    &:hover
+      color: $gray-dark
 
 // Fixed actions
 // -------------------------
@@ -94,8 +114,8 @@ legend
     border-top: 1px solid $gray
 
     
-
-//** Input group addons
+// Input group addons
+// -------------------------
 .input-group-btn:first-child >
   .btn, .btn-group
     margin-right: -2px
@@ -112,17 +132,8 @@ legend
   &:active, &:focus, &:hover
     z-index: 0
 
-// .input-group-addon
-//   font-size: 13px
-//   padding: 0 10px
-//   line-height: 28px
-//   vertical-align: bottom
-
-// .input-group-btn
-//   vertical-align: bottom
-
-
-//** input with error
+// Input with error
+// -------------------------
 .has-success
   .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
     color: $brand-success

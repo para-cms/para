@@ -2,138 +2,38 @@
 
 @import "compass/css3/border-radius"
 
-// List with progress bar
-.progress-list
-  float: left
-  width: 100%
-  padding: 0 5px
-  font-size: 11px
-  .progress
-    clear: both
-    margin-top: 20px
 
-// List with tags
-.list-tags
-  float: left
-  width: 100%
+.actions-control
   list-style: none
   padding: 0
   margin: 0
-  li
-    float: left
-    display: block
-    position: relative
-    a
-      display: block
-      float: left
-      background: $btn-default-bg
-      border: 1px solid $gray-lighter
-      +border-radius(3px)
-      line-height: 23px
-      font-size: 11px
-      margin: 0 5px 5px 0
-      padding: 0 8px
-      color: $breadcrumb-active-color
-      &:hover
-        text-decoration: none
-        background: #F0F0F0
 
-// Basic list group
-.list-group
-  margin: 0
-  .list-group-item
-    line-height: 20px
-    .fa
-      margin-right: 10px
-    .btn .fa
-      margin-right: 0
-    .progress
-      margin: 5px 0
-    &.active .badge
-      color: $breadcrumb-active-color
-    &:last-child
-      border-bottom: 0
-  &.list-group-simple
-    border: 0
-    background: 0 0
-    .list-group-item
-      border: 0
-      background: 0 0
-      padding: 5px 10px
-  &.border-bottom .list-group-item:last-child
-    border-bottom: 1px solid $list-group-border
-  &.list-group-navigation
-    border: 0
-    float: left
-    width: 100%
-    .list-group-item
-      border-left: 0
-      border-right: 0
-      +border-radius(0)
+.flextable
+  display: table
+  width: 100%
+  .flextable-item
+    display: table-cell
+    white-space: nowrap
+    vertical-align: middle
+    width: 1%
+    .flextable-primary
+      width: 99%
 
-.padding-0 .list-group
-  border: 0
-  .list-group-item
-    border-width: 1px 0 0
-    +border-radius(0)
-    &:first-child
-      border-top: 0
+.page-list
+  .page-list-heading,
+  .page-list-body,
+  .page-list-footer  
+    padding: 15px 0
+    +clearfix
+  .page-entries-info
+    padding: 5px 0  
 
-.list-group-item
-  &.active
-    background: $brand-primary
-    border-color: $brand-primary
-    &:focus, &:hover
-      background: $brand-primary
-      border-color: $brand-primary
-  border-color: $list-group-border
+  .page-list-heading:first-child,
+  .page-list-body:first-child
+    padding-top: 0
 
-a.list-group-item
-  &:focus, &:hover
-    background: $list-group-hover-bg
+  .page-list-heading
+    border-bottom: 1px solid $gray-light
 
-// List group for contact
-.list-group-contacts .list-group-item
-  padding: 10px
-  img
-    border: 2px solid $btn-default-bg
-    +border-radius(50%)
-    width: 40px
-    margin-right: 10px
-  .contacts-title
-    font-size: $font-size-h6
-    font-weight: 600
-    line-height: 20px
-  p
-    margin-bottom: 0
-    line-height: 20px
-  &.active
-    background: $btn-default-bg
-    border-color: $list-group-border
-    color: $breadcrumb-active-color
-
-.list-group-controls
-  position: absolute
-  right: 10px
-  top: 15px
-
-.list-group-status
-  float: left
-  margin-right: 10px
-  height: 40px
-  width: 10px
-  position: relative
-  &:after
-    position: absolute
-    left: 0
-    top: 15px
-    width: 10px
-    height: 10px
-    +border-radius(50%)
-    content: " "
-  &.status-online:after
-    background: $brand-success
-  &.status-away:after
-    background: $brand-warning
-  &.status-offline:after
-    background: $gray
+  .page-list-footer
+    border-top: 1px solid $gray-light

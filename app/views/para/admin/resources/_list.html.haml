@@ -1,28 +1,28 @@
 .page-content-wrap
-  = panel do |panel|
-    = panel.header do
+  .page-list
+    .page-list-heading  
       = render partial: find_partial_for(relation, :actions), locals: { relation: relation, component: component, model: model, allow_adding_resource: allow_adding_resource }
 
-    = panel.body do
-      = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
+    .page-list-heading  
+      .flextable
+        .flextable-item.flextable-primary
+          = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
     - if resources.length > 0
-      = panel.body class: 'page-entries-info' do
+      .page-entries-info
         = page_entries_info(resources)
-
-      = panel.body class: '' do
+      .page-list-body
         = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
     - else
-      = panel.body do
-        = alert class: 'no-results no-margin-bottom', dismissable: false do
-          - if filtered?(attributes)
-            = t('para.list.no_results')
-          - else
-            = t('para.list.empty')
+      = alert class: 'no-results', dismissable: false do
+        - if filtered?(attributes)
+          = t('para.list.no_results')
+        - else
+          = t('para.list.empty')
 
-          = add_button_for(component, relation, model) if allow_adding_resource
+        = add_button_for(component, relation, model) if allow_adding_resource
 
     - if resources.total_count > resources.length
-      = panel.footer do
+      .page-list-footer
         = paginate resources, theme: Para.config.pagination_theme
