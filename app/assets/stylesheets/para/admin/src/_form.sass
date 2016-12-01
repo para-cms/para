@@ -30,8 +30,10 @@ legend
 
 // Inputs
 // -------------------------
-.form-group:last-child
-  margin-bottom: 0
+.form-group
+  margin-bottom: 30px
+  &:last-child
+    margin-bottom: 0
 
 //** Inputs outline
 .forms-outline
@@ -39,7 +41,6 @@ legend
   .form-control
     padding: 6px 0
     +outline-input-form
-    margin-bottom: 30px
     &[disabled], &[readonly]
       color: $gray-dark
     &[disabled]:focus, &[readonly]:focus

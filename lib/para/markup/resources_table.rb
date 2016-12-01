@@ -44,7 +44,7 @@ module Para
         # Append cells
         cells << capture { block.call }
         # Append actions empty cell
-        cells << content_tag(:th, '', class: 'table-row-actions') if actions
+        cells << content_tag(:th, '', class: 'table-row-actions table-row-actions-slide') if actions
 
         # Output full header
         content_tag(:thead) do

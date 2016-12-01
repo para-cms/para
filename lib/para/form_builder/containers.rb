@@ -41,7 +41,7 @@ module Para
       end
 
       def para_submit_button(options = {})
-        button(:submit, ::I18n.t('para.shared.save'), name: '_save', class: 'btn-success')
+        button(:submit, ::I18n.t('para.shared.save'), name: '_save', class: 'btn-success btn-shadow')
       end
 
       def para_submit_and_edit_button
@@ -55,21 +55,21 @@ module Para
         button_tag = button(
           :submit,
           ::I18n.t('para.shared.save_and_edit'),
-          name: '_save_and_edit', class: 'btn-primary'
+          name: '_save_and_edit', class: 'btn-primary btn-shadow'
         )
 
         current_anchor_tag + button_tag
       end
 
       def para_submit_and_add_another_button
-        button(:submit, ::I18n.t('para.shared.save_and_add_another_button'), name: '_save_and_add_another', class: 'btn-primary')
+        button(:submit, ::I18n.t('para.shared.save_and_add_another_button'), name: '_save_and_add_another', class: 'btn-primary btn-shadow')
       end
 
       def para_cancel_button
         template.link_to(
           ::I18n.t('para.shared.cancel'),
           return_to_path,
-          class: 'btn btn-danger'
+          class: 'btn btn-danger btn-shadow'
         )
       end
 

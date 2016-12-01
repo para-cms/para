@@ -1,7 +1,7 @@
-.btn-group.add-button
-  %button.btn.btn-primary.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false }}
+.btn-group.add-button.dropdown
+  %button.btn.btn-primary.btn-shadow.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false }}
     = t('para.shared.add')
-    %span.caret
+    %i.fa.fa-angle-down
 
   %ul.dropdown-menu
     - component.subclass_names.each do |subclass|

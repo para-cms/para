@@ -16,8 +16,35 @@
 =btn-icon($brand: default)
   color: $brand !important
 
+@each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
+  .btn-shadow.btn-#{$class}
+    &:hover,
+    &:focus,
+    &:active:focus,
+    &.active
+      background-color: $bg !important
+      border-color: $border !important 
+
 //** Btns
 .btn
+  text-transform: uppercase
+  .fa
+    font-size: 15px
+    margin-right: 5px
+    &.fa-stack-2x
+      font-size: 20px
+      margin-right: inherit
+
+.btn-group.open .dropdown-toggle,
+.dropdown.open .dropdown-toggle
+  +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
+
+.btn-xs    
+  .fa
+    font-size: 12px
+
+//** Override default comportement of bootstrap with btn shadow
+.btn-shadow
   +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
   +default-transition
   &:hover
@@ -27,68 +54,8 @@
   &:active:focus
   &.active
     +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
-  .fa
-    font-size: 15px
-    margin-right: 5px
-    &.fa-stack-2x
-      font-size: 20px
-      margin-right: inherit
+  // +btn-shadow($primary)
 
-.btn-group.open .dropdown-toggle
-  +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
-
-.btn-xs    
-  .fa
-    font-size: 12px
-
-//** Override default comportement of bootstrap
-.btn-default
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-default-bg !important
-    border-color: $btn-default-border !important
-
-.btn-primary
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-primary-bg !important
-    border-color: $btn-primary-border !important
-
-.btn-success
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-success-bg !important
-    border-color: $btn-success-border !important
-
-.btn-danger
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-danger-bg !important
-    border-color: $btn-danger-border !important
-
-.btn-info
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-info-bg !important
-    border-color: $btn-info-border !important  
-
-.btn-warning
-  &:hover,
-  &:focus,
-  &:active:focus,
-  &.active
-    background-color: $btn-warning-bg !important
-    border-color: $btn-warning-border !important            
 
 //** Btn outline
 .btn-default-outline

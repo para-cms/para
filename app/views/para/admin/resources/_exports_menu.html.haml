@@ -2,16 +2,16 @@
   - if component.exporters.length == 1
     - exporter = component.exporters.first
 
-    = link_to component.path(namespace: :exports, exporter: exporter.name, q: params[:q]), class: 'btn btn-default', method: :post, remote: true, data: { :'job-tracker-button' => true, :'refresh-on-close' => false } do
+    = link_to component.path(namespace: :exports, exporter: exporter.name, q: params[:q]), class: 'btn btn-default btn-shadow', method: :post, remote: true, data: { :'job-tracker-button' => true, :'refresh-on-close' => false } do
       = fa_icon 'download'
       = exporter.model_name.human
 
   - else
-    .btn-group
-      %button.btn.btn-default{ type: 'button', data: { toggle: 'dropdown' } }
+    .btn-group.dropdown
+      %button.btn.btn-default.btn-shadow{ type: 'button', data: { toggle: 'dropdown' } }
         = fa_icon 'download'
         = t('para.export.name')
-        %span.caret
+        %i.fa.fa-angle-down
       %ul.dropdown-menu
         - component.exporters.each do |exporter|
           %li

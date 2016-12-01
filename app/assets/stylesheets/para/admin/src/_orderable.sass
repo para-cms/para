@@ -15,11 +15,13 @@
   &:hover
     color: $gray-darker
   &:focus,
-  &:active
+  &:active,
+  &:focus:active
     cursor: move
     +border-radius($border-radius-base)
     width: 30px
     height: 30px
+    line-height: 30px
     margin: 0
     background-color: $gray
     color: $gray-darker
@@ -30,16 +32,3 @@
   width: 100%
   background-color: $gray-lighter
 
-
-
-// .table
-//   .sortable-dragging
-//     .btn-group
-//       display: none
-//     .order-anchor
-//       +inline-block
-//       position: relative  
-
-
-
-    

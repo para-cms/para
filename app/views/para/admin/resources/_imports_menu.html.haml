@@ -2,16 +2,16 @@
   - if component.importers.length == 1
     - importer = component.importers.first
 
-    = link_to component.path(namespace: :import, action: :new, importer: importer.model_name.singular_route_key), class: 'btn btn-default', remote: true, data: { :'job-tracker-button' => true } do
+    = link_to component.path(namespace: :import, action: :new, importer: importer.model_name.singular_route_key), class: 'btn btn-default btn-shadow', remote: true, data: { :'job-tracker-button' => true } do
       = fa_icon 'upload'
       = importer.model_name.human
 
   - else
-    .btn-group
-      %button.btn.btn-default{ type: 'button', data: { toggle: 'dropdown' } }
+    .btn-group.dropdown
+      %button.btn.btn-default.btn-shadow{ type: 'button', data: { toggle: 'dropdown' } }
         = fa_icon 'upload'
         = t('para.import.name')
-        %span.caret
+        %i.fa.fa-angle-down
       %ul.dropdown-menu
         - component.importers.each do |importer|
           %li

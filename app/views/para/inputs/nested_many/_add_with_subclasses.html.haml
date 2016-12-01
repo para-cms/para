@@ -1,8 +1,8 @@
 .add-button.dropdown
-  %button.btn.btn-primary{ type: 'button', data: { toggle: 'dropdown' } }
+  %button.btn.btn-primary.btn-shadow{ type: 'button', data: { toggle: 'dropdown' } }
     %i.fa.fa-plus
     = t('para.form.nested.add')
-    %span.caret
+    %i.fa.fa-angle-down
   %ul.dropdown-menu
     - subclasses.each do |submodel|
       %li

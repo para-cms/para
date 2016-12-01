@@ -14,11 +14,13 @@ module Para
       end
 
       def build_action(action)
-        link_to(action[:url], class: 'btn btn-default') do
-          (
-            (fa_icon(action[:icon]) if action[:icon]) +
-            action[:label]
-          ).html_safe
+        content_tag(:div, class: 'actions-control pull-right') do  
+          link_to(action[:url], class: 'btn btn-default btn-shadow') do
+            (
+              (fa_icon(action[:icon]) if action[:icon]) +
+              action[:label]
+            ).html_safe
+          end
         end
       end
 
