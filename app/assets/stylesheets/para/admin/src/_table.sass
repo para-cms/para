@@ -1,16 +1,28 @@
+//
+// Variables
+// --------------------------------------------------
 @import "variables"
 
-.table
-  overflow: hidden
+// All table style
+//
+//##
 
 .table > thead > tr > th
   font-weight: 300
 
-.table > tbody > tr > td > img
+//** img dont destroy the table and don't create horizontal scroll
+.table > tbody > tr > td > img.max-width
   max-width: 250px
+
+//** Table hidden because of .table-row-actions-slide systeme add margin in right
+
+.table
+  overflow: hidden
 
 .table-row-actions
   min-width: 145px
+
+//** Create sliding actions table on right 
 
 .table-row-actions-slide
   position: relative

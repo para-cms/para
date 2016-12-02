@@ -1,0 +1,17 @@
+//
+// Imports variables & Compass
+// --------------------------------------------------
+@import "variables"
+
+@import "compass/css3/border-radius"
+
+//== Alerts
+//
+//## 
+
+//** Remove border top & margin if is the default placement alert
+.page-content
+  +first-child()
+    .alert
+      margin-bottom: 0
+      +border-top-radius(0)

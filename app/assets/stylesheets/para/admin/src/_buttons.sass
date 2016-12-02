@@ -1,7 +1,15 @@
+//
+// Variables
+// --------------------------------------------------
 @import "variables"
 
 @import "compass/css3/border-radius"
 @import "compass/css3/box-shadow"
+
+
+//== Buttons mixin
+//
+//## buttons mixin is here because is doest have to be share
 
 =btn-outline($brand: default)
   background-color: transparent
@@ -25,7 +33,7 @@
       background-color: $bg !important
       border-color: $border !important 
 
-//** Btns
+//** Override bootstrap btns
 .btn
   text-transform: uppercase
   .fa
@@ -35,6 +43,7 @@
       font-size: 20px
       margin-right: inherit
 
+//** Override boostrap active btns if here is in dropdown
 .btn-group.open .dropdown-toggle,
 .dropdown.open .dropdown-toggle
   +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
@@ -54,8 +63,6 @@
   &:active:focus
   &.active
     +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
-  // +btn-shadow($primary)
-
 
 //** Btn outline
 .btn-default-outline
@@ -84,3 +91,4 @@
   +btn-icon($brand-warning)
 .btn-icon-danger
   +btn-icon($brand-danger)  
+  

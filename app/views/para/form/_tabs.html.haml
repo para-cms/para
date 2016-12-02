@@ -1,11 +1,10 @@
 .form-tabs{ data: { :'form-tabs' => true } }
-  %nav.navbar.navbar-inverse
-    %ul.nav.navbar-nav{ role: 'tablist' }
-      - tabs.each_with_index do |tab, index|
-        %li{ class: ('active' if index == 0), role: 'presentation' }
-          = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
-            %i.fa{ class: "fa-#{ tab.icon }" }
-            = tab.title
+  %ul.nav.nav-tabs{ role: 'tablist' }
+    - tabs.each_with_index do |tab, index|
+      %li{ class: ('active' if index == 0), role: 'presentation' }
+        = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
+          %i.fa{ class: "fa-#{ tab.icon }" }
+          = tab.title
 
   .tab-content
     - tabs.each_with_index do |tab, index|

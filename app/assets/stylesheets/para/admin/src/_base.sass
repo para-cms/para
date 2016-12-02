@@ -1,8 +1,16 @@
-@import url('//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
-
+//
+// Imports variables & Compass
+// --------------------------------------------------
 @import "variables"
 
 @import "compass/css3/border-radius"
+
+//** Import google font
+@import url('//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
+
+//== Layout
+//
+//## 
 
 html *
   outline: 0!important
@@ -20,12 +28,8 @@ body, html
 
 body
   padding: $navbar-height 0 0 0
-  background: url('tangram-mosaic.png') repeat top left
+  background: image_url('tangram-mosaic.png') repeat top left
   background-size: 128px 128px
-
-.collapsing
-  +default-transition
-
 
 //== Page content
 //

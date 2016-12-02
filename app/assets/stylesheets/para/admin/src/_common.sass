@@ -1,9 +1,24 @@
+//
+// Variables
+// --------------------------------------------------
 @import "variables"
 
 @import "compass/css3/border-radius"
 @import "compass/css3/box-shadow"
 @import "compass/css3/text-shadow"
 
+//== Common
+//
+//##
+
+//** Override bootstrap 
+.text-muted
+  font-weight: 300
+
+.collapsing
+  +default-transition
+
+//** icons
 .icon-rounded
   width: 32px
   height: 32px
@@ -14,6 +29,7 @@
   font-style: normal
   +border-radius(100%)
 
+//** Thumbtack in statcard
 .thumbtack-link
   position: absolute
   top: $spacer-y * 1.5
@@ -32,11 +48,10 @@
   +text-shadow()    
   +default-transition
 
-.text-muted
-  font-weight: 300
+//== Positioning
+//
+//##
 
-// Positioning
-// -------------------------
 .pos-r 
   position: relative !important
 
@@ -46,8 +61,10 @@
 .pos-f 
   position: fixed !important
 
-// Margin and padding
-// -------------------------
+//== Margin and padding spacer
+//
+//##
+
 //** Margin
 .m-a-0
   margin:        0 !important
