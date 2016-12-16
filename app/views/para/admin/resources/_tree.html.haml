@@ -1,15 +1,13 @@
-.page-content-wrap
-  = panel do |panel|
-    = panel.header do
+.page-content-wrap  
+  .page-list
+    .page-list-heading
       = render partial: find_partial_for(relation, :actions), locals: { relation: relation, component: component, model: model, allow_adding_resource: allow_adding_resource }
 
     - if resources.length > 0
-      = panel.body do
-        %ul.tree.root-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree), :"max-depth" => max_depth_for(model) } }
-          = render partial: find_partial_for(model, 'tree_item'), collection: resources.roots, as: :root, locals: { model: model}
+      %ul.tree.root-tree{ data: { url: component.relation_path(model.model_name.route_key, action: :tree), :"max-depth" => max_depth_for(model) } }
+        = render partial: find_partial_for(model, 'tree_item'), collection: resources.roots, as: :root, locals: { model: model}
 
     - else
-      = panel.body do
-        = alert class: 'no-margin-bottom', dismissable: false do
-          = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
+      = alert class: '', dismissable: false do
+        = filtered?(attributes) ? t('para.list.no_results') : t('para.list.empty')
 

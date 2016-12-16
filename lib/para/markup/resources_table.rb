@@ -19,6 +19,7 @@ module Para
         merge_class!(options, 'table')
         merge_class!(options, 'para-component-relation-table')
         merge_class!(options, 'table-hover') if options.fetch(:hover, true)
+        merge_class!(options, 'table-row-actions-slide') if options.fetch(:'actions-slide', true)
 
         if orderable
           merge_class!(options, 'orderable')
@@ -44,7 +45,7 @@ module Para
         # Append cells
         cells << capture { block.call }
         # Append actions empty cell
-        cells << content_tag(:th, '', class: 'table-row-actions table-row-actions-slide') if actions
+        cells << content_tag(:th, '', class: 'table-row-actions') if actions
 
         # Output full header
         content_tag(:thead) do
@@ -131,7 +132,7 @@ module Para
       end
 
       def actions_cell(resource)
-        content_tag(:td, class: 'table-row-actions table-row-actions-slide') do
+        content_tag(:td, class: 'table-row-actions') do
           content_tag(:div, class: 'btn-group') do
             actions.map do |type|
               send(:"#{ type }_button", resource)

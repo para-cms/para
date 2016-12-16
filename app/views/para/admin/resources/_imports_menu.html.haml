@@ -3,13 +3,13 @@
     - importer = component.importers.first
 
     = link_to component.path(namespace: :import, action: :new, importer: importer.model_name.singular_route_key), class: 'btn btn-default btn-shadow', remote: true, data: { :'job-tracker-button' => true } do
-      = fa_icon 'upload'
+      %i.fa.fa-upload.fa-fw
       = importer.model_name.human
 
   - else
     .btn-group.dropdown
       %button.btn.btn-default.btn-shadow{ type: 'button', data: { toggle: 'dropdown' } }
-        = fa_icon 'upload'
+        %i.fa.fa-upload.fa-fw
         = t('para.import.name')
         %i.fa.fa-angle-down
       %ul.dropdown-menu

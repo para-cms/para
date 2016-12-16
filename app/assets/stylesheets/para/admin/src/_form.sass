@@ -20,8 +20,9 @@
     +box-shadow(0px 1px 0px $input-border-focus)
     border-color: $input-border-focus
 
-// Legends
-// -------------------------
+//== Legends
+//
+//##
 
 legend
   font-weight: 600
@@ -29,20 +30,27 @@ legend
   margin-bottom: 15px
   border: none
 
-// Labels
-// -------------------------
+//== Labels
+//
+//##
+
 .control-label
   font-weight: 300
   font-size: 12px
 
-// Inputs
-// -------------------------
-.form-group
-  margin-bottom: 30px
-  &:last-child
-    margin-bottom: 0
+//== Inputs
+//
+//##
+.form-inputs >
+  .form-group
+    margin-bottom: 30px
+    &:last-child
+      margin-bottom: 0
 
-//** Inputs outline
+//== Inputs outline
+//
+//## Styled inputs with juste a border bottom 
+
 .forms-outline
   
   .form-control
@@ -50,6 +58,7 @@ legend
     +outline-input-form
     &[disabled], &[readonly]
       color: $gray-dark
+      padding-left: 10px
     &[disabled]:focus, &[readonly]:focus
       background: $input-bg-disabled
       color: $gray-dark
@@ -75,7 +84,21 @@ legend
     padding-right: 0
     padding-left: 0
 
-//** File input
+  .selectize-control.single .selectize-input
+    &:after,
+    &:before
+      right: 10px
+
+  //** Adding padding-left if select is under panel
+  .panel-heading
+    .selectize-control.multi .selectize-input.has-items,
+    .selectize-control .selectize-input
+      padding-left: 10px
+
+
+//== File input
+//
+//## 
 .fileinput
   &.fileinput-new
     .fileinput-placeholder
@@ -84,9 +107,16 @@ legend
     .fileinput-placeholder
       display: none
 
+//== File input
+//
+//## Override z-index because of Fixed actions container
+.selectize-dropdown, 
+.selectize-dropdown.form-control
+  z-index: $zindex-navbar-fixed + 20
 
-// Search form filter
-// -------------------------
+//== Search form filter
+//
+//## 
 .filter-form
   .form-control
     +input-placeholder
@@ -107,8 +137,9 @@ legend
     &:hover
       color: $gray-dark
 
-// Fixed actions
-// -------------------------
+//== Fixed actions
+//
+//## 
 .form-fixed-actions
   margin-bottom: 150px
   .form-actions
@@ -122,8 +153,9 @@ legend
     border-top: 1px solid $gray
 
     
-// Input group addons
-// -------------------------
+//== Input group addons
+//
+//## 
 .input-group-btn:first-child >
   .btn, .btn-group
     margin-right: -2px
@@ -140,8 +172,9 @@ legend
   &:active, &:focus, &:hover
     z-index: 0
 
-// Input with error
-// -------------------------
+//== Input with error
+//
+//## 
 .has-success
   .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
     color: $brand-success

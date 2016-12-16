@@ -10,7 +10,7 @@
         %li.component-section-item
           = link_to "#collapse-section-#{index}", class: 'component-section-title', data: { toggle: 'collapse' } do
             = component_section.name
-            = fa_icon 'angle-up', class: 'pull-right'
+            %i.fa.fa-angle-up.pull-right
 
           %ul.component-section-list-items.collapse.in{ id: "collapse-section-#{index}" }
             - component_section.components.each do |component|

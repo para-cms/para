@@ -11,6 +11,7 @@
     margin-bottom: 20px
   .tree
     padding-left: 40px
+
     .sortable-dragging
       .placeholder,
       .btn-group
@@ -25,22 +26,15 @@
   padding-bottom: 5px
   .node-row
     padding: 5px
+    +default-transition
     &:hover
-      background-color: $table-bg-hover
+      +material-box-shadow
+
   .handle
-    cursor: move
-    padding: 5px
-    text-align: center
-    width: 32px
-    +inline-block
-    margin-top: 3px
-    &:focus,
-    &:active,
-    &:hover
-      cursor: move
+    margin-top: 7px
 
   .node-name
-    margin-top: 3px
+    margin-top: 7px
     +inline-block
 
   .placeholder
@@ -52,29 +46,3 @@
   list-style: none
   .node:last-child
     margin-bottom: 20px
-
-.table >
-  tbody
-    > tr
-      > td, th
-        border-width: 1px
-        vertical-align: middle
-  tfoot
-    > tr
-      > td, th
-        border-width: 1px
-  thead
-    > tr
-      > td, th
-        border-width: 1px
-
-.table > thead > tr > th
-  background: $table-heading-bg
-  color: $table-heading-color
-  font-size: 12px
-
-.table
-  &.table-actions td
-    line-height: 28px
-  .progress-small
-    margin: 7px 0 8px

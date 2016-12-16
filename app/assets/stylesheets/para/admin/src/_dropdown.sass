@@ -6,8 +6,9 @@
 @import "compass/css3/box-shadow"
 
 .dropdown-menu
+  z-index: $zindex-navbar-fixed + 20
   font-size: 12px
-  +box-shadow(0 2px 1px 0 rgba(0, 0, 0, 0.1))
+  +material-box-shadow(2)
   border: 1px solid $dropdown-border
   padding: 0
   margin: 8px 0 0
@@ -45,11 +46,3 @@
   border-bottom: 1px solid $dropdown-border
   color: $dropdown-header-color
 
-.dropdown-menu
-  .fa
-    margin-right: 5px
-  .divider
-    background: $dropdown-divider-bg
-    margin: 0
-    padding: 15px 0 0
-    border-bottom: 1px solid $dropdown-border

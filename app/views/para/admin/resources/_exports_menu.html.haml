@@ -3,13 +3,13 @@
     - exporter = component.exporters.first
 
     = link_to component.path(namespace: :exports, exporter: exporter.name, q: params[:q]), class: 'btn btn-default btn-shadow', method: :post, remote: true, data: { :'job-tracker-button' => true, :'refresh-on-close' => false } do
-      = fa_icon 'download'
+      %i.fa.fa-download.fa-fw
       = exporter.model_name.human
 
   - else
     .btn-group.dropdown
       %button.btn.btn-default.btn-shadow{ type: 'button', data: { toggle: 'dropdown' } }
-        = fa_icon 'download'
+        %i.fa.fa-download.fa-fw
         = t('para.export.name')
         %i.fa.fa-angle-down
       %ul.dropdown-menu

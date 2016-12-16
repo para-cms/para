@@ -24,4 +24,11 @@ $spinner-size: 32px
   width: $spinner-size
   height: $spinner-size
   z-index: 1000
-  background: image-url('para/admin/loading-spinner.gif')
+  font-size: 32px
+  // background: image-url('para/admin/loading-spinner.gif')
+  &:before
+    +fontAwesome
+    content: '\f1ce'
+    -webkit-animation: fa-spin 2s infinite linear
+    animation: fa-spin 2s infinite linear
+

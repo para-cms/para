@@ -3,12 +3,19 @@
 // --------------------------------------------------
 @import "variables"
 
+@import "compass/css3/inline-block"
+
 // All table style
 //
 //##
 
 .table > thead > tr > th
   font-weight: 300
+
+.table > tbody > tr > td
+  .label
+    +inline-block
+    margin-bottom: 4px
 
 //** img dont destroy the table and don't create horizontal scroll
 .table > tbody > tr > td > img.max-width
@@ -17,7 +24,8 @@
 //** Table hidden because of .table-row-actions-slide systeme add margin in right
 
 .table
-  overflow: hidden
+  &.table-row-actions-slide
+    overflow: hidden
 
 .table-row-actions
   min-width: 145px
@@ -25,26 +33,31 @@
 //** Create sliding actions table on right 
 
 .table-row-actions-slide
-  position: relative
-  vertical-align: middle
-  min-width: 1px
-  width: 1px
-  .btn-group
-    position: absolute
-    top: 0
-    bottom: 0
-    right: -200px
-    width: 200px
-    background-color: $gray-lighter
-    +default-transition
-    +vCenter
-    +hCenter
+  .table-row-actions
+    position: relative
+    vertical-align: middle
+    min-width: 1px
+    width: 1px
+    .btn-group
+      position: absolute
+      top: 0
+      bottom: 0
+      right: -200px
+      width: 200px
+      background-color: $gray-lighter
+      +default-transition
+      +vCenter
+      +hCenter
 
 .table-hover > tbody > tr
   +default-transition
   &:hover
     +material-box-shadow(2)
-    .table-row-actions-slide  .btn-group
-      right: 0
     > td
       border-top-color: $gray-lighter
+
+.table-row-actions-slide > tbody > tr
+  &:hover
+    .table-row-actions .btn-group
+      right: 0
+

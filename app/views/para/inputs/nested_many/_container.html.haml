@@ -7,14 +7,15 @@
     %h3.panel-title
       = link_to "##{ form.nested_resource_dom_id }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
         = form.nested_resource_name
-        = fa_icon 'angle-down'
+        %i.fa.fa-angle-down
 
     = form.remove_association_button
 
-  .panel-body.form-inputs.collapse{ id: form.nested_resource_dom_id }
-    = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
+  .panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id }
+    .panel-body
+      = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
 
-    -# Add inheritance column field if needed
-    = form.hidden_field form.object.class.inheritance_column if form.object.class.column_names.include?(form.object.class.inheritance_column)
+      -# Add inheritance column field if needed
+      = form.hidden_field form.object.class.inheritance_column if form.object.class.column_names.include?(form.object.class.inheritance_column)
 
   .clearfix
