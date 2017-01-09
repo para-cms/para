@@ -9,10 +9,17 @@ GIT
 PATH
   remote: .
   specs:
+<<<<<<< HEAD
     para (0.6.4)
       active_decorator
       activejob-status
       bootstrap-sass (~> 3.3.0)
+=======
+    para (0.6.6)
+      active_decorator
+      activejob-status
+      bootstrap-sass (~> 3.2)
+>>>>>>> 1cb301dc9269e58624d7b82ed287ac7c09b33c76
       cancancan (~> 1.9)
       cocoon
       coffee-rails
@@ -35,7 +42,11 @@ PATH
       rspec-core
       sass-rails
       simple_form (~> 3.1)
+<<<<<<< HEAD
       simple_form_extension
+=======
+      simple_form_extension (>= 1.4.5)
+>>>>>>> 1cb301dc9269e58624d7b82ed287ac7c09b33c76
       spreadsheet
       truncate_html
       turbolinks
@@ -89,9 +100,12 @@ GEM
     autoprefixer-rails (6.5.1.1)
       execjs
     bcrypt (3.1.11)
+<<<<<<< HEAD
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
+=======
+>>>>>>> 1cb301dc9269e58624d7b82ed287ac7c09b33c76
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -258,7 +272,7 @@ GEM
     simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    simple_form_extension (1.4.3)
+    simple_form_extension (1.4.5)
       rails (>= 3.1)
       redactor-rails
       selectize-rails

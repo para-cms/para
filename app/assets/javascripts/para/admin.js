@@ -3,7 +3,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require vertebra
-//= require jasny.bootstrap
+//= require jasny-bootstrap
 //= require simple_form_extension
 //= require jquery.scrollto
 //= require html5-sortable
@@ -13,7 +13,7 @@
 //= require_tree ./lib
 //= require_tree ./inputs
 //= require_tree ./admin
-<% Para.config.plugins.javascript_includes.each { |path| require_asset(path) } %>
+//= require ./plugins-includes
 //= require admin/app
 
 // Initialize scope
