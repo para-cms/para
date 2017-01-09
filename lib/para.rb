@@ -30,6 +30,7 @@ require 'para/postgres_extensions_checker'
 
 require 'para/ext'
 require 'para/errors'
+require 'para/plugins'
 require 'para/config'
 require 'para/model_field_parsers'
 require 'para/attribute_field'
@@ -57,7 +58,6 @@ module Para
     autoload :Generators
     autoload :Routing
     autoload :Routes
-    autoload :Plugins
     autoload :Breadcrumbs
     autoload :Cache
     autoload :Logging

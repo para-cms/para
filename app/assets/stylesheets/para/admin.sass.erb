@@ -7,4 +7,5 @@
 //= require selectize.bootstrap3
 //= require_tree ./lib
 //= require ./admin/main
+<% Para.config.plugins.stylesheet_includes.each { |path| require_asset(path) } %>
 //= require admin/app

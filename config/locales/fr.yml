@@ -148,6 +148,7 @@ fr:
       truncate: "&hellip;"
   helpers:
     page_entries_info:
+      number_per_page: Nombre d'entrées par page
       one_page:
         display_entries:
           zero: "Aucune entrée trouvée"

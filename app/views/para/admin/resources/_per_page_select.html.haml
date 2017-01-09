@@ -1,0 +1,10 @@
+\.
+= t('helpers.page_entries_info.number_per_page')
+\:
+%span.dropdown
+  %button.btn.btn-default.btn-xs{ data: { toggle: 'dropdown' } }
+    = current_per_page
+    %span.caret
+  %ul.dropdown-menu
+    - count_with_url.each do |count, url|
+      %li= link_to count, url

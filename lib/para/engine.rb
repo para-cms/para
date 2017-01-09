@@ -48,12 +48,11 @@ module Para
       end
     end
 
-    initializer 'Extend simple form extension selectize input' do
-      ActiveSupport.on_load(:active_record) do
-        ::SimpleFormExtension::Inputs::SelectizeInput.send(
-          :include, Para::Ext::SimpleFormExtension::SelectizeInput
-        )
-      end
+    initializer 'Add resource name methods to simple form extension' do
+      ::SimpleFormExtension.resource_name_methods = (
+        Para.config.resource_name_methods + 
+          ::SimpleFormExtension.resource_name_methods
+      ).uniq
     end
 
     initializer 'Extend active job status\' status class' do

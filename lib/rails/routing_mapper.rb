@@ -138,11 +138,14 @@ module ActionDispatch
 
       def draw_plugin_routes(identifier)
         routes = [
+          '',
           Para::Plugins.module_name_for(identifier),
           'Routes'
         ].join('::').constantize
 
         routes.new(self).draw
+      # If the plugin does not define a Routes module, continue
+      rescue NameError
       end
 
       def component_informations_from(component_name, options)
