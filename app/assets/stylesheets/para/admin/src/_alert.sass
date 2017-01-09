@@ -11,7 +11,9 @@
 
 //** Remove border top & margin if is the default placement alert
 .page-content
-  +first-child()
-    .alert
+  .alert
+    +first-child()
+      margin-right: -15px
+      margin-left: -15px
       margin-bottom: 0
-      +border-top-radius(0)
+      +border-radius(0)

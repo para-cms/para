@@ -13,9 +13,18 @@
   font-weight: 300
 
 .table > tbody > tr > td
+  vertical-align: middle
   .label
     +inline-block
     margin-bottom: 4px
+
+//** Hoverride table hover
+.table-hover > tbody > tr
+  +default-transition
+  &:hover
+    +material-box-shadow(2)
+    > td
+      border-top-color: $gray-lighter
 
 //** img dont destroy the table and don't create horizontal scroll
 .table > tbody > tr > td > img.max-width
@@ -48,13 +57,6 @@
       +default-transition
       +vCenter
       +hCenter
-
-.table-hover > tbody > tr
-  +default-transition
-  &:hover
-    +material-box-shadow(2)
-    > td
-      border-top-color: $gray-lighter
 
 .table-row-actions-slide > tbody > tr
   &:hover
