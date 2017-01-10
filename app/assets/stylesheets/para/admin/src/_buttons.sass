@@ -23,6 +23,9 @@
   
 =btn-icon($brand: default)
   color: $brand !important
+  &:hover,
+  &:focus
+    background-color: #fff !important
 
 @each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
   .btn-shadow.btn-#{$class}

@@ -27,8 +27,15 @@
 legend
   font-weight: 600
   padding: 0
+  margin-top: 15px
   margin-bottom: 15px
   border: none
+
+//** Remove margin top form first legend because of page-content-wrap padding-top
+.page-content-wrap .form-inputs
+  +first-child
+    legend
+      margin-top: 0
 
 //== Labels
 //
@@ -41,6 +48,7 @@ legend
 //== Inputs
 //
 //##
+
 .form-inputs >
   .form-group
     margin-bottom: 30px
