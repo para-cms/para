@@ -13,7 +13,7 @@
 //= require_tree ./lib
 //= require_tree ./inputs
 //= require_tree ./admin
-<% Para.config.plugins.javascript_includes.each { |path| require_asset(path) } %>
+//= require ./plugins-includes
 //= require admin/app
 
 // Initialize scope
