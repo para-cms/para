@@ -14,6 +14,7 @@ require 'roo'
 require 'roo-xls'
 require 'activejob-status'
 require 'deep_cloneable'
+require 'closure_tree'
 
 require 'sass-rails'
 require 'selectize-rails'
