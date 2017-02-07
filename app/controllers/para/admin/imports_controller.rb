@@ -25,7 +25,7 @@ module Para
       private
 
       def load_importer
-        importer_name = params[:importer]&.camelize
+        importer_name = params[:importer] && params[:importer].camelize
 
         @importer = @component.importers.find do |importer|
           importer.name == importer_name
