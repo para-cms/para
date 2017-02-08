@@ -18,48 +18,16 @@
     +inline-block
     margin-bottom: 4px
 
-//** Hoverride table hover
-.table-hover > tbody > tr
-  +default-transition
-  &:hover
-    +material-box-shadow(2)
-    > td
-      border-top-color: $gray-lighter
+.table > thead > tr > th
+  border-bottom: 1px solid #A6AFBB
+
+//** Actions with 3 btn at least
+.table-row-actions
+  min-width: 150px
+  text-align: right
+  .btn
+    margin: 0 3px
 
 //** img dont destroy the table and don't create horizontal scroll
 .table > tbody > tr > td > img.max-width
   max-width: 250px
-
-//** Table hidden because of .table-row-actions-slide systeme add margin in right
-
-.table
-  &.table-row-actions-slide
-    overflow: hidden
-
-.table-row-actions
-  min-width: 145px
-
-//** Create sliding actions table on right 
-
-.table-row-actions-slide
-  .table-row-actions
-    position: relative
-    vertical-align: middle
-    min-width: 1px
-    width: 1px
-    .btn-group
-      position: absolute
-      top: 0
-      bottom: 0
-      right: -200px
-      width: 200px
-      background-color: $gray-lighter
-      +default-transition
-      +vCenter
-      +hCenter
-
-.table-row-actions-slide > tbody > tr
-  &:hover
-    .table-row-actions .btn-group
-      right: 0
-

@@ -4,38 +4,24 @@
 @import 'variables'
 
 @import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
 
 .dropdown-menu
-  z-index: $zindex-navbar-fixed + 20
-  font-size: 12px
-  +material-box-shadow(2)
-  border: 1px solid $dropdown-border
+  border: none
   padding: 0
   margin: 8px 0 0
+  z-index: $zindex-navbar-fixed + 20
+  +material-box-shadow(3)
+  +border-radius(2px 10px 10px 10px)
   > li
     > a
-      padding: 8px 15px
-      border-bottom: 1px solid #E9E9E9
-      line-height: 20px
+      line-weight: 300
+      padding: 8px 12px
+      border-bottom: 1px solid $gray-light
     &:last-child > a
       border-bottom: 0
   &:after, &:before
-    bottom: 100%
-    left: 50%
-    border: solid transparent
-    content: " "
-    height: 0
-    width: 0
-    position: absolute
-    pointer-events: none
-  &:after
-    border-color: transparent transparent $dropdown-bg
-    border-width: 5px
-    margin-left: -5px
-  &:before
-    border-color: transparent transparent $dropdown-border
-    border-width: 6px
-    margin-left: -6px
+    display: none
 
 .dropup .dropdown-menu
   &:after, &:before

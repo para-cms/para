@@ -22,10 +22,12 @@
     color: #fff
   
 =btn-icon($brand: default)
-  color: $brand !important
+  color: $btn-default-color
+  background-color: $btn-default-bg
   &:hover,
   &:focus
-    background-color: #fff !important
+    color: $brand !important
+    background-color: $btn-default-bg
 
 @each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
   .btn-shadow.btn-#{$class}
@@ -39,19 +41,34 @@
 //** Override bootstrap btns
 .btn
   text-transform: uppercase
+  &:active,
+  &:active:focus,
+  &.active
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
   .fa
     font-size: 15px
     &.fa-stack-2x
       font-size: 20px
+
+.btn-sm
+  .fa
+    font-size: 13px
+
+.btn-xs    
+  .fa
+    font-size: 12px
 
 //** Override boostrap active btns if here is in dropdown
 .btn-group.open .dropdown-toggle,
 .dropdown.open .dropdown-toggle
   +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
 
-.btn-xs    
-  .fa
-    font-size: 12px
+
+//** Override the default btn of bootstrap
+.btn-default
+  &:hover
+    background-color: darken($btn-default-bg, 1%)
+    border-color: darken($btn-default-border, 1%)
 
 //** Override default comportement of bootstrap with btn shadow
 .btn-shadow
@@ -61,7 +78,8 @@
     +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
   &:focus,
     +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
-  &:active:focus
+  &:active:focus,
+  &:active,
   &.active
     +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
 

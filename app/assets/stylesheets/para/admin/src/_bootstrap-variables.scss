@@ -136,11 +136,11 @@ $table-bg:                      transparent !default;
 //** Background color used for `.table-striped`.
 $table-bg-accent:               #f9f9f9 !default;
 //** Background color used for `.table-hover`.
-$table-bg-hover:                transparent !default;
+$table-bg-hover:                #f5f5f5 !default;
 $table-bg-active:               $gray-lighter !default;
 
 //** Border color for table and cell borders.
-$table-border-color:            $gray !default;
+$table-border-color:            $gray-light !default;
 
 
 //== Buttons
@@ -150,8 +150,8 @@ $table-border-color:            $gray !default;
 $btn-font-weight:                normal !default;
 
 $btn-default-color:              $text-color !default;
-$btn-default-bg:                 #fff !default;
-$btn-default-border:             $gray !default;
+$btn-default-bg:                 #fafafa !default;
+$btn-default-border:             $btn-default-bg !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
@@ -248,14 +248,14 @@ $dropdown-divider-bg:            #e5e5e5 !default;
 //** Dropdown link text color.
 $dropdown-link-color:            $gray-dark !default;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-color:      $brand-primary !default;
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-hover-bg:         transparent !default;
 
 //** Active dropdown menu item text color.
-$dropdown-link-active-color:     $component-active-color !default;
+$dropdown-link-active-color:     $dropdown-link-hover-color !default;
 //** Active dropdown menu item background color.
-$dropdown-link-active-bg:        $component-active-bg !default;
+$dropdown-link-active-bg:        $dropdown-link-hover-bg !default;
 
 //** Disabled dropdown menu item background color.
 $dropdown-link-disabled-color:   $gray-light !default;
@@ -452,21 +452,21 @@ $nav-pills-active-link-hover-color:         $component-active-color !default;
 //
 //##
 
-$pagination-color:                     $link-color !default;
+$pagination-color:                     $text-color !default;
 $pagination-bg:                        #fff !default;
-$pagination-border:                    #ddd !default;
+$pagination-border:                    $gray-light !default;
 
-$pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-border:              #ddd !default;
+$pagination-hover-color:               $brand-danger !default;
+$pagination-hover-bg:                  $pagination-bg !default;
+$pagination-hover-border:              $pagination-border !default;
 
 $pagination-active-color:              #fff !default;
-$pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border:             $brand-primary !default;
+$pagination-active-bg:                 $brand-danger !default;
+$pagination-active-border:             $brand-danger !default;
 
-$pagination-disabled-color:            $gray-light !default;
+$pagination-disabled-color:            $gray !default;
 $pagination-disabled-bg:               #fff !default;
-$pagination-disabled-border:           #ddd !default;
+$pagination-disabled-border:           $pagination-border !default;
 
 
 //== Pager

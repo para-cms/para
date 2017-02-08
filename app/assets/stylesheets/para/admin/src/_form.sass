@@ -43,7 +43,7 @@ legend
 
 .control-label
   font-weight: 300
-  font-size: 12px
+  font-size: 1.07em
 
 //== Inputs
 //
@@ -51,9 +51,13 @@ legend
 
 .form-inputs >
   .form-group
-    margin-bottom: 30px
+    margin-bottom: 35px
     &:last-child
       margin-bottom: 0
+
+.form-control
+  font-size: 0.93em
+
 
 //== Inputs outline
 //
@@ -115,12 +119,22 @@ legend
     .fileinput-placeholder
       display: none
 
-//== File input
+//== Selectize
 //
-//## Override z-index because of Fixed actions container
+//##
+//** Override z-index because of Fixed actions container
 .selectize-dropdown, 
 .selectize-dropdown.form-control
+  border: none
+  margin: 8px 0 0 0
   z-index: $zindex-navbar-fixed + 20
+  +material-box-shadow(3)
+
+.selectize-dropdown 
+  [data-selectable]
+    border-bottom: 1px solid $gray-light
+    line-weight: 300
+    padding: 8px 12px
 
 //== Search form filter
 //

@@ -5,7 +5,7 @@
     %span.node-name
       = root.name
 
-    .pull-right.btn-group
+    .pull-right
       = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-default btn-icon-primary" do
         %i.fa.fa-pencil
 

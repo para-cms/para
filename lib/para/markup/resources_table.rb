@@ -19,7 +19,6 @@ module Para
         merge_class!(options, 'table')
         merge_class!(options, 'para-component-relation-table')
         merge_class!(options, 'table-hover') if options.fetch(:hover, true)
-        merge_class!(options, 'table-row-actions-slide') if options.fetch(:'actions-slide', true)
 
         if orderable
           merge_class!(options, 'orderable')
@@ -133,11 +132,9 @@ module Para
 
       def actions_cell(resource)
         content_tag(:td, class: 'table-row-actions') do
-          content_tag(:div, class: 'btn-group') do
-            actions.map do |type|
-              send(:"#{ type }_button", resource)
-            end.compact.join.html_safe
-          end
+          actions.map do |type|
+            send(:"#{ type }_button", resource)
+          end.compact.join.html_safe
         end
       end
 
@@ -150,7 +147,7 @@ module Para
 
         options = {
           method: :post,
-          class: 'btn btn-default btn-icon-info'
+          class: 'btn btn-sm btn-icon-info'
         }
 
         view.link_to(path, options) do
@@ -163,7 +160,7 @@ module Para
           resource, action: :edit, return_to: view.request.fullpath
         )
 
-        view.link_to(path, class: 'btn btn-default btn-icon-primary') do
+        view.link_to(path, class: 'btn btn-sm btn-icon-primary') do
           content_tag(:i, '', class: 'fa fa-pencil')
         end
       end
@@ -176,11 +173,11 @@ module Para
           data: {
             confirm: ::I18n.t('para.list.delete_confirmation')
           },
-          class: 'btn btn-default btn-icon-danger'
+          class: 'btn btn-sm btn-icon-danger'
         }
 
         view.link_to(path, options) do
-          content_tag(:i, '', class: 'fa fa-trash')
+          content_tag(:i, '', class: 'fa fa-times')
         end
       end
 

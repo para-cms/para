@@ -9,9 +9,7 @@ module Para
     end
 
     def actions(resource)
-      content_tag(:div, class: 'btn-group') do
-        edit_button(resource) + delete_button(resource)
-      end
+      edit_button(resource) + delete_button(resource)
     end
 
     def edit_button(resource)
@@ -19,7 +17,7 @@ module Para
         component.relation_path(
           resource, action: :edit, return_to: view.request.fullpath
         ),
-        class: 'btn btn-primary'
+        class: 'btn btn-sm btn-icon-primary'
       ) do
         content_tag(:i, '', class: 'fa fa-pencil')
       end
@@ -32,9 +30,9 @@ module Para
         data: {
           confirm: ::I18n.t('para.list.delete_confirmation')
         },
-        class: 'btn btn-danger'
+        class: 'btn btn-sm btn-icon-danger'
       ) do
-        content_tag(:i, '', class: 'fa fa-trash')
+        content_tag(:i, '', class: 'fa fa-times')
       end
     end
   end
