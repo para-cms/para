@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 4.0', '<= 6.0'
   s.add_dependency 'rails-i18n'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'turbolinks'
   s.add_dependency 'devise', '>= 3.0', '< 5.0'
   s.add_dependency 'simple_form', '~> 3.1'
   s.add_dependency 'simple_form_extension', '>= 1.4.5'

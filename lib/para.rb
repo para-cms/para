@@ -16,6 +16,8 @@ require 'activejob-status'
 require 'deep_cloneable'
 require 'closure_tree'
 
+require 'jquery-rails'
+require 'turbolinks'
 require 'sass-rails'
 require 'selectize-rails'
 require 'bootstrap-sass'
