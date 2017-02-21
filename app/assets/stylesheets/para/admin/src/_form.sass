@@ -69,17 +69,23 @@ legend
     padding: 6px 0
     +outline-input-form
     &[disabled], &[readonly]
-      color: $gray-dark
+      color: $gray
       padding-left: 10px
     &[disabled]:focus, &[readonly]:focus
       background: $input-bg-disabled
-      color: $gray-dark
+      color: $gray
       border-color: $gray-lighter
+
+  .input-group-addon
+    background-color: transparent
+    border-color: transparent
 
   //** Redactor
   .redactor-editor
     padding-top: 15px 0 6px 0
+    background-color: $gray-lighter
     +outline-input-form
+
   .redactor-toolbar
     border: none
     border-bottom: 1px solid $input-border
@@ -101,23 +107,44 @@ legend
     &:before
       right: 10px
 
+  //** Spinner
+  .spinbox 
+    .btn.btn-default
+      color: $gray
+      background-color: transparent
+      border-color: transparent
+      &.spinbox-up
+        padding: 0px 9px 4px 9px
+      &.spinbox-down
+        padding: 6px 9px 0px 9px
+        margin-top: 0
+      &:hover,
+      &:focus
+        color: $gray-darker
+      &:active,
+      &.active,
+      &:active:focus
+        +box-shadow(none)
+
+  // Datepicker
+  .datetimepicker-trigger.btn-default
+    color: $gray
+    background-color: transparent
+    border-color: transparent
+    &:hover,
+    &:focus
+      color: $gray-darker
+    &:active,
+    &.active,
+    &:active:focus
+      +box-shadow(none)
+
   //** Adding padding-left if select is under panel
   .panel-heading
     .selectize-control.multi .selectize-input.has-items,
     .selectize-control .selectize-input
       padding-left: 10px
 
-
-//== File input
-//
-//## 
-.fileinput
-  &.fileinput-new
-    .fileinput-placeholder
-      display: block
-  &.fileinput-exists
-    .fileinput-placeholder
-      display: none
 
 //== Selectize
 //

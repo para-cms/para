@@ -45,8 +45,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'font-awesome-sass', '~> 4.7.0'
   s.add_dependency 'compass-rails'
 
-  s.add_dependency 'jquery-rails'
-  s.add_dependency 'turbolinks'
   s.add_dependency 'coffee-rails'
 
   s.add_dependency 'vertebra'

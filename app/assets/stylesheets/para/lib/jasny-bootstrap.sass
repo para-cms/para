@@ -1,14 +1,62 @@
-@import "para/admin/src/bootstrap-variables"
+//
+// Variables
+// --------------------------------------------------
+@import "para/admin/src/variables"
+@import "para/admin/src/mixin"
+
+@import "compass/css3/box-shadow"
 
 /* Jasny Bootstrap Fileupload overrides */
-
 
 
 .fileinput
   margin-bottom: 0
   display: block
+  &.fileinput-new
+    .fileinput-placeholder
+      display: block
+  &.fileinput-exists
+    .fileinput-placeholder
+      display: none
+
   .uneditable-input
     background-color: $input-bg-disabled    
+  
+  //** Override btn color for feeting to the design    
+  .btn-file
+    color: #fff
+    background-color: $btn-primary-bg
+    border-color: $btn-primary-border
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
+    +default-transition
+    &:hover
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
+    &:focus,
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
+    &:active:focus,
+    &:active,
+    &.active
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:focus,
+    &.active
+      background-color: $btn-primary-bg !important
+      border-color: $btn-primary-border !important 
+      color: #fff  
+
+  .btn-danger  
+    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
+    +default-transition
+    &:hover
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
+    &:focus,
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
+    &:active:focus,
+    &:active,
+    &.active
+      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset)   
 
 .fileinput-new.input-group .btn-file
 .fileinput.input-group .btn-file
