@@ -18,10 +18,6 @@ module Para
         options[:url] = @component.relation_path(resource)
       end
 
-      if options.fetch(:fixed_actions, true)
-        default_options[:html][:class] << ' form-fixed-actions'
-      end
-
       simple_form_for(resource, options) do |form|
         capture { block.call(form) }.tap do |content|
           # Append hidden field with type if resource is subclassable

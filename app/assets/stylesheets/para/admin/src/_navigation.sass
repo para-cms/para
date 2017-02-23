@@ -85,16 +85,16 @@
         line-height: 19px
         color: $text-color
         font-weight: 400
-        padding: 11px 15px 11px 13px
+        padding: 11px 13px 11px 15px
         text-decoration: none
-        border-left: 2px solid #fff
+        border-right: 2px solid #fff
         &:hover,
         &:focus
           background-color: $gray-lighter
 
       &.active    
         a, button
-          background-color: $navbar-default-link-active-bg
+          background-color: $gray-light
           border-color: $brand-primary
 
 //== Top navbar
@@ -106,7 +106,8 @@
   .nav > li > a
     padding-right: 10px
     padding-left: 10px
-
+    width: 60px
+    text-align: center
     &.btn-home
       background-color: $blue-darker
 

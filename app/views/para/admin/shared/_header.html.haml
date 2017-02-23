@@ -10,15 +10,11 @@
 
   %ul.nav.navbar-nav.pull-right
     %li
-      = link_to root_path, target: "_blank", class: 'btn-home' do
+      = link_to root_path, target: "_blank", class: 'hint--bottom-left btn-home', aria: { label: t('para.admin.back_to_app') } do
         %i.fa.fa-home
-        %span.hidden
-          = t('para.admin.back_to_app')
-
+        
     %li
-      = link_to destroy_admin_user_session_path, method: :delete, class: 'btn-power-off' do
-        %i.fa.fa-power-off
-        %span.hidden
-          = t('para.admin.sign_out')
+      = link_to destroy_admin_user_session_path, method: :delete, class: 'hint--bottom-left btn-power-off', aria: { label: t('para.admin.sign_out') } do
+        %i.fa.fa-sign-out
 
     

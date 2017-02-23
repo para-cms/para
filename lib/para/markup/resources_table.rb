@@ -147,7 +147,7 @@ module Para
 
         options = {
           method: :post,
-          class: 'btn btn-sm btn-icon-info'
+          class: 'btn btn-sm btn-icon-info btn-shadow'
         }
 
         view.link_to(path, options) do
@@ -160,7 +160,7 @@ module Para
           resource, action: :edit, return_to: view.request.fullpath
         )
 
-        view.link_to(path, class: 'btn btn-sm btn-icon-primary') do
+        view.link_to(path, class: 'btn btn-sm btn-icon-primary btn-shadow') do
           content_tag(:i, '', class: 'fa fa-pencil')
         end
       end
@@ -173,7 +173,7 @@ module Para
           data: {
             confirm: ::I18n.t('para.list.delete_confirmation')
           },
-          class: 'btn btn-sm btn-icon-danger'
+          class: 'btn btn-sm btn-icon-danger btn-shadow'
         }
 
         view.link_to(path, options) do

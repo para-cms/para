@@ -3,6 +3,15 @@
 @import "compass/css3/box-shadow"
 @import "compass/css3/border-radius"
 
+.selectize-input
+  padding-right: 35px
+
+.selectize-control.single .selectize-input:after
+  right: 13px
+
+.selectize-control.form-control
+  line-height: 0
+
 .selectize-dropdown, 
 .selectize-dropdown.form-control
   +border-radius($border-radius-base)
@@ -48,8 +57,6 @@
     background-color: $gray
     border-color: #f7f7f7
     color: #fff
-
-    
 
 .selectize-dropdown-content
   padding: 0

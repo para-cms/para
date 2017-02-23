@@ -17,7 +17,7 @@ module Para
         component.relation_path(
           resource, action: :edit, return_to: view.request.fullpath
         ),
-        class: 'btn btn-sm btn-icon-primary'
+        class: 'btn btn-sm btn-icon-primary btn-shadow'
       ) do
         content_tag(:i, '', class: 'fa fa-pencil')
       end
@@ -30,7 +30,7 @@ module Para
         data: {
           confirm: ::I18n.t('para.list.delete_confirmation')
         },
-        class: 'btn btn-sm btn-icon-danger'
+        class: 'btn btn-sm btn-icon-danger btn-shadow'
       ) do
         content_tag(:i, '', class: 'fa fa-times')
       end

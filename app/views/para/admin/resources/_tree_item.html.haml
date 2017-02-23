@@ -6,10 +6,10 @@
       = root.name
 
     .pull-right
-      = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-default btn-icon-primary" do
+      = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-default btn-icon-primary btn-shadow btn-sm" do
         %i.fa.fa-pencil
 
-      = link_to @component.relation_path(root), method: :delete, data: { confirm: ::I18n.t('para.list.delete_confirmation') }, class: 'btn btn-default btn-icon-danger' do
+      = link_to @component.relation_path(root), method: :delete, data: { confirm: ::I18n.t('para.list.delete_confirmation') }, class: 'btn btn-default btn-icon-danger btn-shadow btn-sm' do
         %i.fa.fa-trash
 
     .clearfix

@@ -49,11 +49,13 @@ legend
 //
 //##
 
-.form-inputs >
-  .form-group
-    margin-bottom: 35px
-    &:last-child
-      margin-bottom: 0
+.form-inputs 
+  +clearfix
+  >
+    .form-group
+      margin-bottom: 35px
+      &:last-child
+        margin-bottom: 0
 
 .form-control
   font-size: 0.93em
@@ -167,15 +169,20 @@ legend
 //
 //## 
 .filter-form
+  width: 100%
+  background-color: $gray-lighter
+  +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12) inset, 0px 1px 2px 0px rgba(32,36,45, .24) inset)
+  +border-radius(20px)
   .form-control
     +input-placeholder
       color: $gray  
+    &:focus
+      +box-shadow(none)  
   .form-control,
   .input-group-btn
-    background-color: $gray-lighter
+    background-color: transparent
     border: none
     +border-left-radius(20px)
-    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12) inset, 0px 1px 2px 0px rgba(32,36,45, .24) inset)
   .input-group-btn
     overflow: hidden
     +border-left-radius(0)

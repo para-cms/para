@@ -5,12 +5,11 @@
 
     .page-list-heading  
       .flextable
-        .flextable-item.flextable-primary
-          = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
+        = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
     - if resources.length > 0
       .page-entries-info
-        = page_entries_info(resources)
+        = page_entries(resources)
       .page-list-body
         = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
