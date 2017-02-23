@@ -147,7 +147,10 @@ module Para
 
         options = {
           method: :post,
-          class: 'btn btn-sm btn-icon-info btn-shadow'
+          class: 'btn btn-sm btn-icon-info btn-shadow hint--left',
+          aria: {
+            label: ::I18n.t('para.shared.copy')
+          }
         }
 
         view.link_to(path, options) do
@@ -160,7 +163,7 @@ module Para
           resource, action: :edit, return_to: view.request.fullpath
         )
 
-        view.link_to(path, class: 'btn btn-sm btn-icon-primary btn-shadow') do
+        view.link_to(path, class: 'btn btn-sm btn-icon-primary btn-shadow hint--left', aria: { label: ::I18n.t('para.shared.edit') }) do
           content_tag(:i, '', class: 'fa fa-pencil')
         end
       end
@@ -173,7 +176,10 @@ module Para
           data: {
             confirm: ::I18n.t('para.list.delete_confirmation')
           },
-          class: 'btn btn-sm btn-icon-danger btn-shadow'
+          class: 'btn btn-sm btn-icon-danger btn-shadow hint--left',
+          aria: {
+            label: ::I18n.t('para.shared.destroy')  
+          }
         }
 
         view.link_to(path, options) do

@@ -17,7 +17,10 @@ module Para
         component.relation_path(
           resource, action: :edit, return_to: view.request.fullpath
         ),
-        class: 'btn btn-sm btn-icon-primary btn-shadow'
+        class: 'btn btn-sm btn-icon-primary btn-shadow hint--left',
+        aria: {
+          label: ::I18n.t('para.shared.edit')  
+        }
       ) do
         content_tag(:i, '', class: 'fa fa-pencil')
       end
@@ -30,7 +33,10 @@ module Para
         data: {
           confirm: ::I18n.t('para.list.delete_confirmation')
         },
-        class: 'btn btn-sm btn-icon-danger btn-shadow'
+        class: 'btn btn-sm btn-icon-danger btn-shadow hint--left',
+        aria: {
+          label: ::I18n.t('para.shared.destroy')  
+        }
       ) do
         content_tag(:i, '', class: 'fa fa-times')
       end
