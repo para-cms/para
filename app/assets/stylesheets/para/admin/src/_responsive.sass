@@ -16,208 +16,86 @@
 
   //== Top navbar
   //
-  //##
+  //## See navigation.sass
   .navbar-fixed-top
     padding-left: $left-menu-width-open
 
   .navbar-toggle
     display: none
-    
+  
+  //== Loader
+  //
+  //## See page_loading.sass
+  .loading-overlay
+    width: calc(100% - #{$left-menu-width-open})
+    left: $left-menu-width-open
+
+  .loading-spinner
+    margin-left: ($left-menu-width-open / 2) - ($spinner-size / 2)
+
+  //== Fixed actions
+  //
+  //## See form.sass
+  .form-fixed-actions
+    .form-actions
+      left: $left-menu-width-open
+      padding-bottom: 25px
+      .btn
+        margin-bottom: 0
+
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) 
 
 
-
+//== Max width
+//
+//## 
 @media (max-width: $screen-xs-max) 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) 
-@media (min-width: $screen-md-min) and (max-width: $screen-md-max) 
-@media (min-width: $screen-lg-min) 
+  body
+    padding-top: 0
+
+  //== Top navbar
+  //
+  //## See navigation.sass
+  .navbar-fixed-top
+    position: relative
+
+  .navbar-toggle
+    margin-top: 3px
+    margin-bottom: 3px
 
 
-// @media (max-width: $screen-xs)
-//   .form-fixed-actions .form-actions  
-//     margin: 0
-//     right: 0
-//     left: 0
-//     padding-right: 0
-//     [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-']
-//       margin-bottom: 0
-//     input[type="submit"],
-//     a
-//       width: 49%
-//       white-space: normal
-//       vertical-align: top
-      
+  .navbar-default .nav > li > a
+    padding: 10px
+    width: 40px
+    i
+      font-size: 14px
 
-// @media (max-width: $screen-sm)
-//   span.text-hidden
-//     display: none
+  .navbar-nav
+    margin: 0
+    > li
+      float: left
 
-//   .form-group-separated .form-group 
-//     [class^="col-md-"], [class^="col-sm-"]
-//       border-left: none
+  .breadcrumb
+    padding: 10px
 
-//   [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-']
-//     margin-bottom: 10px
+  .form-fixed-actions
+    margin-bottom: 250px
+    .form-actions
+      padding-right: 15px
+      padding-left: 15px
+      .btn
+        width: 100%
 
-//   .login-container
-//     padding: 0px 10px
-//     .login-box
-//       padding-top: 10px
-//       width: 100%
+@media (max-width: $screen-sm-max) 
+  //== page list panel
+  //
+  //## See panel.sass
+  .page-list-heading
+    [class^='col-xs-'], [class^='col-sm-'], [class^='col-md-'], [class^='col-lg-'],
+    .flextable-item
+      margin-bottom: 10px
 
-//   .tocify
-//     display: none
-    
-//   .timeline.timeline-right
-//     &:before
-//       left: 60px
-//     .timeline-item
-//       padding-left: 110px
-//       &.timeline-main
-//         width: 60px
-//       .timeline-item-icon
-//         left: 40px
-//       .timeline-item-info
-//         top: 45px
-//         width: 70px
-//         left: 25px
-//         padding: 7px 0px
-
-// @media (max-width: $screen-md)
-//   .navigation-horizontal 
-//     .brand-logo a
-//       width: auto
-
-//   .page-container
-//     .navbar-toggle 
-//       display: block !important
-//     .page-sidebar
-//       position: fixed
-//       top: $navbar-height
-//       bottom: auto
-//       width: 100%
-//       max-height: 337px
-//       float: none
-//       overflow: auto
-
-//       .brand-logo
-//         display: none
-
-//       .sidebar-navigation 
-//         .component-item.active 
-//           a, 
-//           button
-//             border-right: none
-//             border-left: 4px solid $navbar-default-link-active-color
-
-//     .page-content
-//       margin-left: 0px
-//       .content-frame
-//         .content-frame-left, .content-frame-right
-//           width: 100%
-//           display: none
-//         .content-frame-body
-//           margin-left: 0px
-//           margin-right: 0px
-//           &.content-frame-body-left
-//             margin-right: 0px
-        
-//     &.page-mode-rtl .page-content
-//       margin-right: 0px
-   
-//   .form-fixed-actions .form-actions  
-//     margin: 0
-//     right: 0
-//     left: 0
-//     padding-right: 0
-
-//   .icons-list li
-//     width: 100%
-//   .gallery .gallery-item
-//     width: 50%
-
-//   .timeline .timeline-item
-//     .timeline-item-content
-//       width: 90%
-//       &:before, &:after
-//         left: 90%
-//     &.timeline-item-right .timeline-item-content
-//       &:before, &:after
-//         right: 90%
-//   .error-container
-//     width: 100%
-
-
-
-// @media (min-width: $screen-md)
-//   .page-sidebar.navbar-collapse.collapse
-//     height: 100% !important
-//     overflow: auto !important
-
-
-
-
-
-
-
-// @media (max-width: $screen-xs-max)
-//   .control-label
-//     margin-top: 10px
-//     margin-bottom: 0
-
-// /* Small devices (tablets, 768px and up) */
-// @media (min-width: $screen-sm-min)
-//   legend
-//     margin-left: 25%
-
-//   .form-inputs > legend
-//     margin-left: 24%
-//     padding-left: 12px
-
-//   .form-fixed-actions
-//     margin-bottom: 90px
-
-//   .form-horizontal .control-label
-//     padding-top: 15px
-
-//   .form-group-separated
-//     .form-group
-//       padding-right: 25px
-//     .collapse
-//       .form-group
-//         padding-right: 0
-
-// @media (min-width: $screen-md-min)
-  
-// /*
-//  * Medium devices (desktops, 1025px and up)
-//  * Note : Breakpoint defined by the theme for the sidebar to fix on top
-//  */
-// @media (min-width: 1025px)
-//   .form-fixed-actions
-//     .form-actions
-//       width: calc(100% - 270px)
-
-// /* Medium high devices (desktops, 1200px and up) */
-// @media (min-width: 1200px)
-//   .form-group-separated
-//     .form-group
-//       padding-right: 150px
-//     .collapse
-//       .form-group
-//         padding-right: 0
-
-//   .form-inputs > legend
-//     margin-left: 21%      
-
-// /* Large devices (large desktops, 1400px and up) */
-// @media (min-width: 1500px)
-//   .form-group-separated
-//     .form-group
-//       padding-right: 250px
-//     .collapse
-//       .form-group
-//         padding-right: 0  
-
-
+    //** disable lasted margin-bottom on flextable-item & col-* to get the proper padding
+    .flextable  
+      margin-bottom: -10px

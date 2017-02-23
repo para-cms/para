@@ -6,9 +6,7 @@ module Para
           content_tag(:h1, options[:title]) +
 
           if (actions = actions_for(options[:type]))
-            content_tag(:div, class: 'page-actions') do
-              actions.map(&method(:build_action)).join('').html_safe
-            end
+            actions.map(&method(:build_action)).join('').html_safe
           end
         end
       end

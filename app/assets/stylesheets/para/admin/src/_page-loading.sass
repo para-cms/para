@@ -7,11 +7,11 @@ $spinner-size: 32px
 
 .loading-overlay
   position: fixed
-  width: calc(100% - #{$left-menu-width-open})
+  width: 100%
   height: calc(100% - #{$navbar-height})
   top: $navbar-height
-  left: $left-menu-width-open
-  z-index: 999
+  left: 0
+  z-index: $zindex-navbar-fixed + 10
   opacity: .5
   background: white
 
@@ -19,11 +19,11 @@ $spinner-size: 32px
   position: fixed
   top: 50%
   left: 50%
-  margin-left: ($left-menu-width-open / 2) - ($spinner-size / 2)
+  margin-left: ($spinner-size / 2)
   margin-top: $navbar-height - $spinner-size
   width: $spinner-size
   height: $spinner-size
-  z-index: 1000
+  z-index: $zindex-navbar-fixed + 11
   font-size: 32px
   // background: image-url('para/admin/loading-spinner.gif')
   &:before
