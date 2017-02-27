@@ -1,6 +1,6 @@
 # Default simple form bootstrap initializer mechanism
 module Para
-  module SimpleForm
+  module SimpleFormConfig
     def self.wrapper_mappings
       {
         check_boxes: :para_vertical_radio_and_checkboxes,
@@ -15,7 +15,7 @@ module Para
 
     def self.configure
       # Use this setup block to configure all options available in SimpleForm.
-      ::SimpleForm.setup do |config|
+      SimpleForm.setup do |config|
         config.error_notification_class = 'alert alert-danger'
         config.button_class = 'btn'
         config.boolean_label_class = nil

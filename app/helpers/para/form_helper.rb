@@ -4,7 +4,7 @@ module Para
       default_options = {
         as: :resource,
         wrapper: :vertical_form,
-        wrapper_mappings: Para::SimpleForm.wrapper_mappings,
+        wrapper_mappings: Para::SimpleFormConfig.wrapper_mappings,
         html: { class: '', data: { :'para-form' => true } }
       }
 

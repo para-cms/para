@@ -76,7 +76,7 @@ module Para
     end
 
     initializer 'Initialize simple form wrappers' do
-      Para::SimpleForm.configure
+      Para::SimpleFormConfig.configure
     end
 
     initializer 'Configure ActiveJob' do
