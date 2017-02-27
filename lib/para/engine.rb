@@ -50,7 +50,7 @@ module Para
 
     initializer 'Add resource name methods to simple form extension' do
       ::SimpleFormExtension.resource_name_methods = (
-        Para.config.resource_name_methods + 
+        Para.config.resource_name_methods +
           ::SimpleFormExtension.resource_name_methods
       ).uniq
     end
@@ -73,6 +73,10 @@ module Para
 
     initializer 'Check for extensions installation' do
       Para::PostgresExtensionsChecker.check_all
+    end
+
+    initializer 'Initialize simple form wrappers' do
+      Para::SimpleForm.configure
     end
 
     initializer 'Configure ActiveJob' do

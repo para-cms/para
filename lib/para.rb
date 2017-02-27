@@ -59,6 +59,7 @@ module Para
     autoload :Config
     autoload :Component
     autoload :Generators
+    autoload :SimpleForm
     autoload :Routing
     autoload :Routes
     autoload :Breadcrumbs
