@@ -6,6 +6,9 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/inline-block"
 
+//== Page liste
+//
+//## 
 
 .actions-control
   list-style: none
@@ -47,3 +50,16 @@
 
   .page-list-footer
     border-top: 1px solid $gray-light
+
+
+//** Design selectize inside list heading because selectize is always a filter
+.page-list-heading
+  .selectize-control .selectize-input
+    +filter-style
+    line-height: 22px
+    &.full
+      font-size: 0.9em
+    
+.page-entries-info
+  font-weight: 300    
+  

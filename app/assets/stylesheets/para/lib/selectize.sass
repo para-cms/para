@@ -1,13 +1,22 @@
 @import "para/admin/src/variables"
+@import "para/admin/src/mixin"
 
 @import "compass/css3/box-shadow"
+@import "compass/css3/transform"
 @import "compass/css3/border-radius"
+@import "compass/css3/user-interface"
 
 .selectize-input
-  padding-right: 35px
+  padding-right: 30px
 
 .selectize-control.single .selectize-input:after
-  right: 13px
+  right: 12px
+  +fontAwesome
+  content: "\f107"
+  border: none
+  margin-top: -6px
+  color: $gray
+  
 
 .selectize-control,
 .selectize-control.form-control
@@ -26,6 +35,15 @@
     +box-shadow(none)
   &.dropdown-active
     +border-radius($input-border-radius)
+    &:after
+      border: none
+      +transform(rotate(180deg))
+      margin-top: -6px
+
+.selectize-control.single .selectize-input,
+  &.dropdown-active
+    &:after
+      margin-top: -6px
 
 .selectize-dropdown, 
 .selectize-input, 
@@ -40,6 +58,11 @@
 .selectize-input.full,
 .selectize-input.not-full  
   background: $input-bg
+
+.selectize-input.not-full input
+  +input-placeholder
+    color: $input-color-placeholder
+    font-size: 0.9em
 
 .selectize-dropdown 
   [data-selectable]
