@@ -17,12 +17,12 @@
   margin-bottom: 0
   +border-radius(0)
   +clearfix
-
   > li 
+    +inline-block
     > a,
     > span  
-      margin: 0 3px
-      +border-radius(2px)
+      margin: 0
+      +border-radius($border-radius-small)
       border-color: $pagination-border
       +inline-block
       float: none
@@ -30,4 +30,4 @@
   > li:first-child 
     > a,
     > span
-      +border-radius(2px)
+      +border-radius($border-radius-small)

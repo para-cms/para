@@ -15,7 +15,7 @@ $gray:                   #A6AFBB !default;
 $gray-light:             #EEEEEE !default;
 $gray-lighter:           #FAFAFA !default;
 
-$brand-primary:         #03A9F3 !default;
+$brand-primary:         lighten(#4F5467, 20%) !default; //#03A9F3
 $brand-success:         #00C292 !default;
 $brand-info:            #01C0C8 !default;
 $brand-warning:         #FDC006 !default;
@@ -109,7 +109,7 @@ $line-height-small:         1.5 !default;
 
 $border-radius-base:        4px !default;
 $border-radius-large:       6px !default;
-$border-radius-small:       3px !default;
+$border-radius-small:       2px !default;
 
 //** Global color for active items (e.g., navs or dropdowns).
 $component-active-color:    #fff !default;
@@ -186,7 +186,7 @@ $btn-border-radius-small:        $border-radius-small !default;
 //##
 
 //** `<input>` background color
-$input-bg:                       #fff !default;
+$input-bg:                       $gray-lighter !default;
 //** `<input disabled>` background color
 $input-bg-disabled:              $gray-lighter !default;
 

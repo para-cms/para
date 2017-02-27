@@ -11,13 +11,13 @@
 //## Form mixin is there because is doesnt have to be share
 
 =outline-input-form
+  padding: 6px 10px
   -webkit-appearance: none
   +box-shadow(none)
-  +border-radius(0)
+  +border-radius($border-radius-small)
   border: none
   border-bottom: 1px solid $input-border
   &:focus
-    +box-shadow(0px 1px 0px $input-border-focus)
     border-color: $input-border-focus
 
 //== Legends
@@ -42,8 +42,9 @@ legend
 //##
 
 .control-label
-  font-weight: 300
-  font-size: 1.07em
+  font-weight: 500
+  font-size: 0.85em
+  color: $gray
 
 //== Inputs
 //
@@ -68,11 +69,9 @@ legend
 .forms-outline
   
   .form-control
-    padding: 6px 0
     +outline-input-form
     &[disabled], &[readonly]
       color: $gray
-      padding-left: 10px
     &[disabled]:focus, &[readonly]:focus
       background: $input-bg-disabled
       color: $gray
@@ -84,8 +83,6 @@ legend
 
   //** Redactor
   .redactor-editor
-    padding-top: 15px 0 6px 0
-    background-color: $gray-lighter
     +outline-input-form
 
   .redactor-toolbar
@@ -98,11 +95,6 @@ legend
   .selectize-input, 
   .selectize-input.full
     +outline-input-form
-
-  .selectize-control.multi .selectize-input.has-items,
-  .selectize-control .selectize-input
-    padding-right: 0
-    padding-left: 0
 
   .selectize-control.single .selectize-input
     &:after,
@@ -140,12 +132,6 @@ legend
     &.active,
     &:active:focus
       +box-shadow(none)
-
-  //** Adding padding-left if select is under panel
-  .panel-heading
-    .selectize-control.multi .selectize-input.has-items,
-    .selectize-control .selectize-input
-      padding-left: 10px
 
 
 //== Selectize

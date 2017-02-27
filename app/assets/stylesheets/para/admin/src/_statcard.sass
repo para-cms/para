@@ -26,6 +26,13 @@
     .startcard-body  
       padding-left: 15px
       float: left
+      /** truncat title if is to long **/
+      width: calc(100% - 60px)
+      .statcard-title
+        width: 100%
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
 
 .statcard-title
   color: $text-color
