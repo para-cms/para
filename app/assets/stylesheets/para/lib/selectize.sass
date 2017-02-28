@@ -6,21 +6,42 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/user-interface"
 
-.selectize-input
-  padding-right: 30px
 
-.selectize-control.single .selectize-input:after
-  right: 12px
-  +fontAwesome
-  content: "\f107"
-  border: none
-  margin-top: -6px
-  color: $gray
-  
+//== Selectize
+// 
+//## Override default style
 
+
+
+//** Debug gosht margin bottom 
 .selectize-control,
 .selectize-control.form-control
   line-height: 0
+
+
+//** Multi
+
+
+//** Single
+.selectize-control
+  &.single
+    .selectize-input
+      padding-right: 30px
+      //** Caret by para 
+      &:after
+        right: 12px
+        +fontAwesome
+        content: "\f107"
+        border: none
+        margin-top: -6px
+        color: $gray
+
+//** Dropdown
+
+//** Active system
+
+
+//** Dropdown active
 
 .selectize-dropdown, 
 .selectize-dropdown.form-control
@@ -40,7 +61,7 @@
       +transform(rotate(180deg))
       margin-top: -6px
 
-.selectize-control.single .selectize-input,
+.selectize-control.single .selectize-input
   &.dropdown-active
     &:after
       margin-top: -6px
@@ -89,3 +110,20 @@
 .selectize-dropdown-content
   padding: 0
     
+
+//== Selectize
+//
+//##
+//** Override z-index because of Fixed actions container
+.selectize-dropdown, 
+.selectize-dropdown.form-control
+  border: none
+  margin: 8px 0 0 0
+  z-index: $zindex-navbar-fixed + 20
+  +material-box-shadow(3)
+
+.selectize-dropdown 
+  [data-selectable]
+    border-bottom: 1px solid $gray-light
+    line-weight: 300
+    padding: 8px 12px    

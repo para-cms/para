@@ -92,7 +92,6 @@ legend
 
   .redactor-toolbar
     border: none
-    border-bottom: 1px solid $input-border
     background-color: $gray-lighter
     +border-radius(0)
 
@@ -100,6 +99,10 @@ legend
   .selectize-input, 
   .selectize-input.full
     +outline-input-form
+
+  .selectize-control.multi .selectize-input.has-items
+    +outline-input-form
+    padding: 3px 0px    
 
   //** Spinner
   .spinbox 
@@ -132,24 +135,6 @@ legend
     &.active,
     &:active:focus
       +box-shadow(none)
-
-
-//== Selectize
-//
-//##
-//** Override z-index because of Fixed actions container
-.selectize-dropdown, 
-.selectize-dropdown.form-control
-  border: none
-  margin: 8px 0 0 0
-  z-index: $zindex-navbar-fixed + 20
-  +material-box-shadow(3)
-
-.selectize-dropdown 
-  [data-selectable]
-    border-bottom: 1px solid $gray-light
-    line-weight: 300
-    padding: 8px 12px
 
 //== Search form filter
 //
