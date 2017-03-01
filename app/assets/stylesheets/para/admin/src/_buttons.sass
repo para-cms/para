@@ -12,14 +12,11 @@
 //## buttons mixin is here because is doest have to be share
 
 =btn-outline($brand: default)
-  background-color: transparent
-  border: 1px solid $brand
-  color: $brand
+  background-color: $brand
+  color: $gray-lighter
   +default-transition
   &:hover,
-  &:focus
-    background-color: $brand
-    color: #fff
+    color: $gray-lighter
   
 =btn-icon($brand: default)
   color: $btn-default-color

@@ -708,7 +708,7 @@ $list-group-link-heading-color: #333 !default;
 //##
 
 $panel-bg:                    #fff !default;
-$panel-body-padding:          30px !default;
+$panel-body-padding:          25px !default;
 $panel-heading-padding:       15px 30px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
 $panel-border-radius:         $border-radius-base !default;
@@ -719,7 +719,7 @@ $panel-footer-bg:             $gray-lighter !default;
 
 $panel-default-text:          $text-color !default;
 $panel-default-border:        #ddd !default;
-$panel-default-heading-bg:    $gray-light !default;
+$panel-default-heading-bg:    $gray-lighter !default;
 
 $panel-primary-text:          #fff !default;
 $panel-primary-border:        $brand-primary !default;
@@ -834,8 +834,8 @@ $close-text-shadow:           0 1px 0 #fff !default;
 //
 //##
 
-$code-color:                  #c7254e !default;
-$code-bg:                     #f9f2f4 !default;
+$code-color:                  #fb9678 !default;
+$code-bg:                     #fff5f2 !default;
 
 $kbd-color:                   #fff !default;
 $kbd-bg:                      #333 !default;

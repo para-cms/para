@@ -36,9 +36,8 @@ module Para
 
         template.content_tag(:div, class: 'panel-btns') do
           template.link_to_remove_association(
-            self, wrapper_class: 'form-fields', class: 'btn btn-danger-outline btn-xs'
+            self, wrapper_class: 'form-fields', class: 'btn btn-danger-outline btn-sm'
           ) do
-            template.content_tag(:i, '', class: 'fa fa-fw fa-trash') +
             ::I18n.t('para.form.nested.remove')
           end
         end
