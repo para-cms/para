@@ -12,7 +12,6 @@
 //## Override default style
 
 
-
 //** Debug gosht margin bottom 
 .selectize-control,
 .selectize-control.form-control
@@ -97,15 +96,17 @@
     color: $dropdown-link-active-color
 
 .selectize-control.multi .selectize-input > div
-  background-color: transparent
-  border: 1px solid $gray
-  color: $gray
+  background-color: $gray-light
+  +border-radius(2px)
+  color: $text-color
   &:hover,
   &:focus,
   &.active
-    background-color: $gray
-    border-color: #f7f7f7
-    color: #fff
+    background-color: $navbar-default-bg
+    color: $gray-lighter
+  .remove
+    &:hover
+      background-color: $blue-darker
 
 .selectize-dropdown-content
   padding: 0

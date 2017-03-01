@@ -5,6 +5,7 @@
 
 @import "compass/css3/box-shadow"
 @import "compass/css3/user-interface"
+@import "compass/css3/transition"
 
 //== Form
 //
@@ -45,11 +46,14 @@ legend
   color: $gray
   font-weight: 700
   font-size: 0.85em
+  margin-bottom: 0
   text-transform: uppercase
-
-.form-group.is-focused
+  +transition(color ease-in-out 0.15s)
+  
+.form-group.focused
   .control-label
     color: $brand-primary
+    +transition(color ease-in-out 0.15s)
 
 //== Inputs
 //
