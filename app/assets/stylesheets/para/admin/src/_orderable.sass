@@ -16,7 +16,7 @@
   color: $text-color
   cursor: move
   outline: 0
-  font-size: 20px
+  font-size: 14px
   line-height: 20px
   +inline-block
   +default-transition
@@ -27,16 +27,13 @@
   &:focus:active
     cursor: move
     +border-radius($border-radius-base)
-    width: 30px
-    height: 30px
-    line-height: 30px
     margin: 0
     background-color: $gray
     color: $gray-darker
     text-align: center
 
 .sortable-placeholder
-  border: 1px dashed $gray
+  border: 1px dotted $gray 
   width: 100%
   background-color: $gray-lighter
 
