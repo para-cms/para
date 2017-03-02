@@ -15,6 +15,7 @@ require 'roo-xls'
 require 'activejob-status'
 require 'deep_cloneable'
 require 'closure_tree'
+require 'friendly_id'
 
 require 'jquery-rails'
 require 'turbolinks'
