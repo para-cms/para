@@ -6,27 +6,23 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/user-interface"
 
-
 //== Selectize
-// 
+//
 //## Override default style
 
-
-//** Debug ghost margin bottom 
+//** Debug ghost margin bottom
 .selectize-control,
 .selectize-control.form-control
   line-height: 0
 
-
 //** Multi
-
 
 //** Single
 .selectize-control
   &.single
     .selectize-input
       padding-right: 30px
-      //** Caret by para 
+      //** Caret by para
       &:after
         right: 12px
         +fontAwesome
@@ -39,10 +35,9 @@
 
 //** Active system
 
-
 //** Dropdown active
 
-.selectize-dropdown, 
+.selectize-dropdown,
 .selectize-dropdown.form-control
   +border-radius($border-radius-base)
 
@@ -52,7 +47,6 @@
   +border-radius($input-border-radius)
   &.focus
     border-color: $input-border-focus
-    +box-shadow(none)
   &.dropdown-active
     +border-radius($input-border-radius)
     &:after
@@ -65,8 +59,8 @@
     &:after
       margin-top: -6px
 
-.selectize-dropdown, 
-.selectize-input, 
+.selectize-dropdown,
+.selectize-input,
 .selectize-input input
   color: $input-color
 
@@ -74,9 +68,9 @@
 .selectize-control.single .selectize-input.input-active
   background: $input-bg
 
-.selectize-input,  
+.selectize-input,
 .selectize-input.full,
-.selectize-input.not-full  
+.selectize-input.not-full
   background: $input-bg
 
 .selectize-input.not-full input
@@ -84,7 +78,7 @@
     color: $input-color-placeholder
     font-size: 0.9em
 
-.selectize-dropdown 
+.selectize-dropdown
   [data-selectable]
     background-color: $dropdown-bg
     color: $dropdown-link-color
@@ -110,21 +104,20 @@
 
 .selectize-dropdown-content
   padding: 0
-    
 
-//== Selectize
+//== Selectize Dropdown
 //
 //##
 //** Override z-index because of Fixed actions container
-.selectize-dropdown, 
+.selectize-dropdown,
 .selectize-dropdown.form-control
   border: none
   margin: 8px 0 0 0
   z-index: $zindex-navbar-fixed + 20
   +material-box-shadow(2)
 
-.selectize-dropdown 
+.selectize-dropdown
   [data-selectable]
     border-bottom: 1px solid $gray-light
     line-weight: 300
-    padding: 8px 12px    
+    padding: 8px 12px
