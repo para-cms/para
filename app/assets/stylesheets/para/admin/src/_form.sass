@@ -77,7 +77,6 @@ legend
 //## Styled inputs with juste a border bottom 
 
 .forms-outline
-  
   .form-control
     +outline-input-form
     &[disabled], &[readonly]
@@ -90,6 +89,10 @@ legend
   .input-group-addon
     background-color: transparent
     border-color: transparent
+
+  //** Textarea
+  .form-control.text
+    resize: vertical
 
   //** Redactor
   .redactor-editor
@@ -169,7 +172,7 @@ legend
 //
 //## 
 .form-fixed-actions
-  margin-bottom: 150px
+  margin-bottom: 110px
   .form-actions
     position: fixed
     bottom: 0px
