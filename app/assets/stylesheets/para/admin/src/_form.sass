@@ -1,6 +1,7 @@
 //
 // Variables
 // --------------------------------------------------
+
 @import "variables"
 
 @import "compass/css3/box-shadow"
@@ -19,11 +20,7 @@
   border: none
   border-bottom: 1px solid $input-border
   +default-transition
-  &:focus
-    +box-shadow(0px 1px 0px $input-border-focus)
-    border-color: $input-border-focus
-    +default-transition
-  &.focus
+  &:focus, &.focus
     +box-shadow(0px 1px 0px $input-border-focus)
     border-color: $input-border-focus
     +default-transition
@@ -178,6 +175,7 @@ legend
 //== Fixed actions
 //
 //##
+
 .form-fixed-actions
   margin-bottom: 110px
   .form-actions
@@ -191,10 +189,10 @@ legend
     .btn
       margin-bottom: 10px
 
-
 //== Input group addons
 //
 //##
+
 .input-group-btn:first-child >
   .btn, .btn-group
     margin-right: -2px
@@ -214,6 +212,7 @@ legend
 //== Input with error
 //
 //##
+
 .has-success
   .checkbox, .checkbox-inline, .control-label, .form-control-feedback, .help-block, .radio, .radio-inline
     color: $brand-success
