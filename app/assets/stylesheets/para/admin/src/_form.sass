@@ -67,7 +67,8 @@ legend
 .nested-one-field,
 .tab-pane
   +clearfix
-  .form-group:last-of-type
+  .form-group:last-of-type,
+  .form-group:only-child
     margin-bottom: 0
 
 .form-control
@@ -96,10 +97,7 @@ legend
 
   //** Remove margin because input have just bottom border
   .control-label
-    &:not(.image),
-    &:not(.boolean),
-    &:not(.radio_buttons),
-    &:not(.check_boxes)
+    &.string, &.selectize, &.select, &.text, &.datetime, &.date, &.time  
       margin-bottom: 0
 
   //** Textarea
