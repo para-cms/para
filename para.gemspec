@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'cancancan', '~> 1.9'
   s.add_dependency 'kaminari'
   s.add_dependency 'ransack'
-  s.add_dependency 'friendly_id'
   s.add_dependency 'deep_cloneable', '~> 2.2.1'
   s.add_dependency 'request_store'
   s.add_dependency 'truncate_html'
