@@ -1,5 +1,5 @@
 //
-// Variables
+// Compass & variables
 // --------------------------------------------------
 
 @import "variables"
@@ -97,7 +97,17 @@ legend
 
   //** Remove margin because input have just bottom border
   .control-label
-    &.string, &.selectize, &.select, &.text, &.datetime, &.date, &.time  
+    &.country,
+    &.date,
+    &.datetime,
+    &.email,
+    &.integer,
+    &.select,
+    &.selectize,
+    &.string,
+    &.tel,
+    &.text,
+    &.time
       margin-bottom: 0
 
   //** Textarea
@@ -185,6 +195,7 @@ legend
 .form-fixed-actions
   margin-bottom: 105px
   .form-actions
+    +border-radius(2px)
     position: fixed
     bottom: 0px
     left: 0

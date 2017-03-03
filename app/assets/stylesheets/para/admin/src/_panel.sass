@@ -20,8 +20,8 @@
 
   //** Panel with collapse element
   .collapsed
-    .fa-angle-down
-      +rotate(270deg)
+    .fa-angle-up
+      +rotate(180deg)
 
   //** Panel is orderable
   .order-anchor
@@ -33,6 +33,7 @@
 .panel-heading
   padding: 10px 30px
   border: none
+  +border-radius(2px)
   +clearfix
   //** Do not destroy panel heading if image is inside
   img

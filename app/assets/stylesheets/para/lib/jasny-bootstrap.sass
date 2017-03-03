@@ -1,13 +1,15 @@
 //
-// Variables
+// Compass, mixin & variables
 // --------------------------------------------------
+
 @import "para/admin/src/variables"
 @import "para/admin/src/mixin"
 
 @import "compass/css3/box-shadow"
 
-/* Jasny Bootstrap Fileupload overrides */
-
+//== Jasny Bootstrap
+//
+//## Fileupload overrides
 
 .fileinput
   margin-bottom: 0
@@ -20,9 +22,9 @@
       display: none
 
   .uneditable-input
-    background-color: $input-bg-disabled    
-  
-  //** Override btn color for feeting to the design    
+    background-color: $input-bg-disabled
+
+  //** Override btn color for feeting to the design
   .btn-file
     color: #fff
     background-color: $btn-primary-bg
@@ -36,13 +38,13 @@
     &:active:focus,
     &.active
       background-color: $btn-primary-bg !important
-      border-color: $btn-primary-border !important 
-      color: #fff  
+      border-color: $btn-primary-border !important
+      color: #fff
     &:active,
     &.active
       +material-box-shadow(2)
 
-  .btn-danger  
+  .btn-danger
     +material-box-shadow(1)
     +default-transition
     &:hover,
@@ -52,11 +54,13 @@
     &:active:focus,
     &.active
       background-color: $btn-danger-bg !important
-      border-color: $btn-danger-border !important 
-      color: #fff  
+      border-color: $btn-danger-border !important
+      color: #fff
     &:active,
     &.active
       +material-box-shadow(2)
+    &.fileinput-exists
+      margin-left: 10px
 
 .fileinput-new.input-group .btn-file
 .fileinput.input-group .btn-file
@@ -81,10 +85,11 @@
   min-height: 80px
   max-height: 500px
   margin-bottom: 0
-  margin-top: 5px
-  background-color: $input-bg
+  margin-top: 10px
+  background-color: $gray-light
+  border: none
 
-  .empty-thumbnail  
-    width: 250px
-    height: 200px
-    background-color: $input-bg
+  .empty-thumbnail
+    width: 72px
+    height: 72px
+    background-color: $gray-light

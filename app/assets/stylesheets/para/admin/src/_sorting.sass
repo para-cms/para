@@ -1,11 +1,14 @@
 //
 // Variables
 // --------------------------------------------------
+
 @import "variables"
 
 .sort_link, .sort_link_asc, .sort_link_desc
   position: relative
   cursor: pointer
+  &:hover
+    text-decoration: none
 
 .sort_link:before, .sort_link.asc:before, .sort_link.desc:before
   position: absolute
@@ -20,7 +23,7 @@
 .sort_link:before
   content: "\f0dc"
   opacity: .3
-  
+
 .sort_link.asc:before
   content: "\f0d7"
 
