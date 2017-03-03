@@ -12,12 +12,14 @@
 //## buttons mixin is here because is doest have to be share
 
 =btn-outline($brand: default)
-  background-color: $brand
-  color: $gray-lighter
+  border: 1px solid $brand
+  background-color: transparent
+  color: $brand
   +default-transition
   &:hover,
   &:focus
-    color: $gray-lighter
+    background-color: $brand
+    color: #fff
   
 =btn-icon($brand: default)
   color: $btn-default-color
@@ -41,10 +43,6 @@
 .btn
   padding: 6px 16px
   text-transform: uppercase
-  &:active,
-  &:active:focus,
-  &.active
-    +material-box-shadow(2)
   .fa
     font-size: 15px
     &.fa-stack-2x
@@ -75,16 +73,11 @@
 
 //** Override default comportement of bootstrap with btn shadow
 .btn-shadow
-  +material-box-shadow
+  +material-box-shadow(1)
   +default-transition
-  &:hover
-    // +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
-  &:focus,
-    // +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
-  &:active:focus,
   &:active,
   &.active
-    // +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
+    +material-box-shadow(2)
 
 //** Btn outline
 .btn-default-outline

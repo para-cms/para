@@ -27,36 +27,36 @@
     color: #fff
     background-color: $btn-primary-bg
     border-color: $btn-primary-border
-    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
+    +material-box-shadow(1)
     +default-transition
-    &:hover
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
-    &:focus,
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
-    &:active:focus,
-    &:active,
-    &.active
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset) 
     &:hover,
     &:focus,
     &:active,
+    &:active:hover,
     &:active:focus,
     &.active
       background-color: $btn-primary-bg !important
       border-color: $btn-primary-border !important 
       color: #fff  
-
-  .btn-danger  
-    +box-shadow(0px 1px 3px 0px rgba(32,36,45, .12), 0px 1px 2px 0px rgba(32,36,45, .24))
-    +default-transition
-    &:hover
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06), 0px 1px 2px 0px rgba(32,36,45, .12))
-    &:focus,
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .03), 0px 1px 2px 0px rgba(32,36,45, .06))  
-    &:active:focus,
     &:active,
     &.active
-      +box-shadow(0px 1px 3px 0px rgba(32,36,45, .06) inset , 0px 1px 2px 0px rgba(32,36,45, .12) inset)   
+      +material-box-shadow(2)
+
+  .btn-danger  
+    +material-box-shadow(1)
+    +default-transition
+    &:hover,
+    &:focus,
+    &:active,
+    &:active:hover,
+    &:active:focus,
+    &.active
+      background-color: $btn-danger-bg !important
+      border-color: $btn-danger-border !important 
+      color: #fff  
+    &:active,
+    &.active
+      +material-box-shadow(2)
 
 .fileinput-new.input-group .btn-file
 .fileinput.input-group .btn-file

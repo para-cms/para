@@ -53,8 +53,6 @@ legend
   margin-bottom: 8px
   text-transform: uppercase
   +transition(color ease-in-out 0.15s)
-  &.string, &.selectize, &.select, &.text
-    margin-bottom: 0
 
 .form-group.focused
   .control-label
@@ -65,12 +63,12 @@ legend
 //
 //##
 
-.form-inputs
+.form-inputs,
+.nested-one-field,
+.tab-pane
   +clearfix
-  >
-    .form-group
-      &:last-child
-        margin-bottom: 0
+  .form-group:last-of-type
+    margin-bottom: 0
 
 .form-control
   font-size: 14px
@@ -85,6 +83,8 @@ legend
     +outline-input-form
     &[disabled], &[readonly]
       color: $gray
+      padding-right: 6px
+      padding-left: 6px
     &[disabled]:focus, &[readonly]:focus
       background: $input-bg-disabled
       color: $gray
@@ -93,6 +93,14 @@ legend
   .input-group-addon
     background-color: transparent
     border-color: transparent
+
+  //** Remove margin because input have just bottom border
+  .control-label
+    &:not(.image),
+    &:not(.boolean),
+    &:not(.radio_buttons),
+    &:not(.check_boxes)
+      margin-bottom: 0
 
   //** Textarea
   .form-control.text
@@ -177,17 +185,24 @@ legend
 //##
 
 .form-fixed-actions
-  margin-bottom: 110px
+  margin-bottom: 105px
   .form-actions
     position: fixed
     bottom: 0px
-    right: 0px
     left: 0
-    padding: 25px 50px 15px 50px
+    right: 50px
+    padding: 15px 15px 5px 15px
     z-index: $zindex-navbar-fixed - 10
     background-color: $gray-lighter
+    +material-box-shadow(3)
+    margin-bottom: 15px
+    text-align: center
     .btn
       margin-bottom: 10px
+      margin-right: 0px
+      &:last-child
+        margin-right: 0
+        margin-bottom: 0
 
 //== Input group addons
 //
