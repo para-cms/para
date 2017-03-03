@@ -6,6 +6,11 @@
 @import "compass/css3/box-shadow"
 @import "compass/css3/border-radius"
 
+.dropdown
+  &.open
+    .fa
+      +rotate(180deg)
+
 .dropdown-menu
   border: none
   padding: 0
@@ -31,4 +36,3 @@
   padding: 10px 15px
   border-bottom: 1px solid $dropdown-border
   color: $dropdown-header-color
-
