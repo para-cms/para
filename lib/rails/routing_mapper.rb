@@ -15,12 +15,13 @@ module ActionDispatch
       end
 
       def component(component_name, options = {}, &block)
-        as, controller, component, endpoint = component_informations_from(
+        as, component, endpoint = component_informations_from(
           component_name, options
         )
 
         actions = options.fetch(:actions, [:show])
 
+        controller = options.fetch(:controller, "#{ component_name }_component")
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
@@ -54,7 +55,7 @@ module ActionDispatch
           options[:scope] ||= ':model'
         end
 
-        as, controller, component, endpoint = component_informations_from(
+        as, component, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -105,7 +106,7 @@ module ActionDispatch
           options[:scope] ||= ':model'
         end
 
-        as, _, component, endpoint = component_informations_from(
+        as, component, endpoint = component_informations_from(
           component_name, options
         )
 
@@ -151,10 +152,9 @@ module ActionDispatch
       def component_informations_from(component_name, options)
         component = options.fetch(:component, component_name.to_s)
         as = options.fetch(:as, component_name)
-        controller = options.fetch(:controller, "#{ component_name }_component")
         endpoint = ":component/:component_id"
 
-        [as, controller, component, endpoint]
+        [as, component, endpoint]
       end
 
       def add_extensions_for(type)
