@@ -11,7 +11,7 @@
 //
 //##
 
-//** Override bootstrap 
+//** Override bootstrap
 .text-muted
   font-weight: 300
 
@@ -33,7 +33,7 @@
 
 [class*="hint--"]:after
   text-transform: lowercase
-  +text-shadow(none)  
+  +text-shadow(none)
 
 //** icons
 .icon-rounded
@@ -49,33 +49,33 @@
 //** Thumbtack in statcard
 .thumbtack-link
   position: absolute
-  top: $spacer-y * 1.5
+  top: $spacer-y * 2
   right: $spacer-x * 3
   z-index: 100
   &:hover,
   &.active
     .fa-thumb-tack
       color: $purple
-      +text-shadow(none)        
+      +text-shadow(none)
 
 .fa-thumb-tack
   +rotate(-45deg)
-  font-size: 30px  
+  font-size: 25px
   color: #fff
-  +text-shadow()    
+  +text-shadow()
   +default-transition
 
 //== Positioning
 //
 //##
 
-.pos-r 
+.pos-r
   position: relative !important
 
-.pos-a 
+.pos-a
   position: absolute !important
 
-.pos-f 
+.pos-f
   position: fixed !important
 
 //== Margin and padding spacer
@@ -134,7 +134,7 @@
 .m-a-lg
   margin:        ($spacer-y * 3) !important
 .m-t-lg
-  margin-top:    ($spacer-y * 3) !important
+  margin-top:    ($spacer-y * 2.5) !important
 .m-r-lg
   margin-right:  ($spacer-y * 3) !important
 .m-b-lg
@@ -210,4 +210,3 @@
 .p-y-lg
   padding-top:    ($spacer-y * 3) !important
   padding-bottom: ($spacer-y * 3) !important
-

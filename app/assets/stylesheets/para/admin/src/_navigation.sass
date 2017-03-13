@@ -4,11 +4,11 @@
 @import "variables"
 
 @import "compass/css3/box-shadow"
-@import "compass/css3/transform"
+@import "compass/css3/transition"
 
 //== Sidebar right
 //
-//## 
+//##
 
 .navmenu
   background-color: $navbar-default-bg
@@ -39,7 +39,7 @@
     > b
       font-weight: 700
 
-  .navmenu-nav  
+  .navmenu-nav
     height: calc(100% - 60px)
     width: $left-menu-width-open
     padding: 0
@@ -61,7 +61,7 @@
     .component-section-list-items
       list-style: none
       padding: 0
-      margin: 0  
+      margin: 0
 
 
     .component-section-title
@@ -76,7 +76,7 @@
         cursor: default
         text-decoration: none
       .fa
-        margin-right: -15px  
+        margin-right: -15px
       &.collapsed
         .fa
           +rotate(180deg)
@@ -90,14 +90,17 @@
         padding: 11px 13px 11px 15px
         text-decoration: none
         border-right: 2px solid #fff
+        +default-transition
         &:hover,
         &:focus
           background-color: $gray-lighter
+          padding-left: 25px
 
-      &.active    
+      &.active
         a, button
           background-color: $gray-light
           border-color: $brand-primary
+          padding-left: 25px
 
 //== Top navbar
 //
@@ -115,17 +118,16 @@
       background-color: $blue-darker
       color: $gray-lighter
 
-    &.btn-power-off  
+    &.btn-power-off
       background-color: $brand-danger
       color: $gray-lighter
-      
+
 .navbar-fixed-top
   padding-left: 0
   &.navbar
     margin-bottom: 0
 
-//** Btn menu toggle  
-.navbar-toggle  
+//** Btn menu toggle
+.navbar-toggle
   float: left
   display: block
-

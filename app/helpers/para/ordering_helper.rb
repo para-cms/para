@@ -12,7 +12,7 @@ module Para
       end
 
       content_tag(:span, options) do
-        content_tag(:i, '', class: 'fa fa-arrows-v') +
+        content_tag(:i, '', class: 'fa fa-arrows') +
         field
       end
     end
