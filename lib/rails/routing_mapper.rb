@@ -19,12 +19,9 @@ module ActionDispatch
           component_name, options
         )
 
-        actions = options.fetch(:actions, [:show])
-
         controller = options.fetch(:controller, "#{ component_name }_component")
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
-
 
         constraints Para::Routing::ComponentNameConstraint.new(component) do
           namespace :admin do
