@@ -14,6 +14,7 @@ module Para
           scope module: :para do
             namespace :admin do
               get '/' => 'main#index'
+              get '/search' => 'search#index', as: :search
             end
 
             # Components are namespaced into :admin in their respective methods

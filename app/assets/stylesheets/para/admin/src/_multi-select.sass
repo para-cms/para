@@ -1,0 +1,39 @@
+//
+// Multi select
+// --------------------------------------------------
+
+//== Compass & variables
+//
+//##
+
+@import "variables"
+@import "compass/css3/box-shadow"
+
+//== Main styles
+//
+//##
+
+.multi-select-field
+  .input-group.filter-form
+    margin-bottom: 15px
+    input
+      padding-left: 12px
+
+  .panel-heading
+    padding: 5px 15px
+    .panel-title
+      color: $gray
+      font-size: 12px
+      font-weight: 700
+      text-transform: uppercase
+
+  .panel
+    +box-shadow(none)
+
+    &.available-items
+      .selected-item
+        display: none
+        
+      tr.selected
+        td
+          background-color: $gray-lighter

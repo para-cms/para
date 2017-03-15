@@ -4,6 +4,7 @@ module Para
 
     autoload :NestedOneInput
     autoload :NestedManyInput
+    autoload :MultiSelectInput
     autoload :HasOneInput
   end
 end

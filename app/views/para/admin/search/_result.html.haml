@@ -1,0 +1,12 @@
+%tr.available-item{ data: { :'available-item-id' => result.id, :available => true } }
+  %td= result.name
+  %td
+    = button_tag type: :button, class: 'btn btn-xs btn-success btn-block', data: { :'add-item' => true } do
+      = fa_icon 'angle-right'
+
+// Used for rendering in JS: Will be appended to selected panel
+%tr.selected-item{ data: { :'selected-item-id' => result.id, :selected => true } }
+  %td= result.name
+  %td
+    = button_tag type: :button, class: 'btn btn-xs btn-danger btn-block', data: { :'remove-item' => true } do
+      = fa_icon 'angle-left'

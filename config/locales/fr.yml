@@ -61,12 +61,30 @@ fr:
         add: "Ajouter"
         remove: "Supprimer"
         new: "Nouveau"
+      multi_select:
+        available:
+          title: "Disponibles"
+          no_items: |
+            Recherchez des éléments avec la barre de recherche ci-dessus
+          add_all: "Tout rajouter"
+        selected:
+          title: "Ajoutés"
+          no_items: |
+            Utilisez le formulaire de recherche sur la gauche afin d'ajouter
+            des éléments.
+          remove_all: "Tout retirer"
+
 
     list:
       search_title: "Recherche"
-      delete_confirmation: "Êtes vous sûr de bien vouloir supprimer cette entrée ?"
-      no_results: "Aucun résultat pour cette recherche, merci d'essayer avec d'autres critères ou de créer une nouvelle entrée avec le bouton suivant :"
-      empty: "Aucune entrée créée pour le moment. Créez une nouvelle entrée avec le bouton suivant :"
+      delete_confirmation: |
+        Êtes vous sûr de bien vouloir supprimer cette entrée ?
+      no_results: |
+        Aucun résultat pour cette recherche, merci d'essayer avec d'autres
+        critères ou de créer une nouvelle entrée avec le bouton suivant :
+      empty: |
+        Aucune entrée créée pour le moment. Créez une nouvelle entrée avec le
+        bouton suivant :
 
     export:
       name: "Exporter"
