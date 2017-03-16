@@ -1,4 +1,5 @@
-%tr.selected-item{ data: { :'selected-item-id' => result.id, :selected => true } }
+%tr.selected-item{ data: { :'selected-item-id' => result.id } }
+  %td.reorder-anchor-cell= reorder_anchor
   %td= result.name
   %td
     = button_tag type: :button, class: 'btn btn-xs btn-default', data: { :'remove-item' => true } do

@@ -1,6 +1,6 @@
-.multi-select-field{ data: { :'multi-select-input' => true, :'search-url' => admin_search_path(model_name: model.name) } }
+.multi-select-field{ class: ('orderable' if orderable), data: { :'multi-select-input' => true, :'search-url' => admin_search_path(model_name: model.name), orderable: orderable } }
   = form.hidden_field attribute_name, value: resources.map(&:id).join(', '), data: { :'multi-select-input-field' => true }
-  =# form.hidden_field '_multi_select_field', value: attribute_name
+  = form.hidden_field '_multi_select_field', value: attribute_name
 
   .row
     .col-md-6
@@ -21,6 +21,7 @@
               = t('para.form.multi_select.available.add_all')
 
         %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
+          %tbody
 
     .col-md-6
       .panel.panel-default.selected-items
@@ -32,5 +33,6 @@
               = t('para.form.multi_select.selected.remove_all')
 
         %table.table{ data: { :'selected-items' => true, :'no-selected-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: false }) } }
-          - if resources.length > 0
-            = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result
+          %tbody
+            - if resources.length > 0
+              = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result

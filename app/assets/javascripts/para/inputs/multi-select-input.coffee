@@ -6,20 +6,20 @@ class Para.MultiSelectInput extends Vertebra.View
 
   initialize: ->
     @$searchField = @$('[data-search-field]')
-    @$selectedItems = @$('[data-selected-items]')
+    @$selectedItems = @$('[data-selected-items] tbody')
     @$availableItems = @$('[data-available-items]')
     @$input = @$('[data-multi-select-input-field]')
 
     @searchURL = @$el.data('search-url')
+    @orderable = @$el.is('[data-orderable]')
 
-    @noSelectedItemsTemplate = @$('[data-no-selected-items]').attr('data-no-selected-items')
-    @noAvailableItemsTemplate = @$('[data-no-available-items]').attr('data-no-available-items')
+    @noSelectedItemsTemplate = @$('[data-no-selected-items]').data('no-selected-items')
+    @noAvailableItemsTemplate = @$('[data-no-available-items]').data('no-available-items')
 
     @availableItems = []
     @selectedItems = (@buildSelectedItem(el) for el in @$selectedItems.find('[data-selected-item-id]'))
     @refreshSelectedItems()
-
-    @noItemsHint(@noAvailableItemsTemplate, @$availableItems)
+    @showEmptyListHint(@noAvailableItemsTemplate, @$availableItems)
 
   onSearchKeyUp: ->
     @searchFor(@$searchField.val())
@@ -30,12 +30,12 @@ class Para.MultiSelectInput extends Vertebra.View
     $.get(@searchURL, search: terms).done(@onSearchReturn)
 
   onSearchReturn: (results) =>
-    @$('[data-available-items]').html(results)
+    @$('[data-available-items] tbody').html(results)
 
     item.destroy() for item in @availableItems
     @availableItems = (@buildAvailableItem(el) for el in @$('[data-available-items] tr'))
 
-    @noItemsHint(@noAvailableItemsTemplate, @$availableItems) unless @availableItems.length
+    @showEmptyListHint(@noAvailableItemsTemplate, @$availableItems) unless @availableItems.length
 
   buildAvailableItem: (el) ->
     availableItem = new Para.MultiSelectAvailableItem(el: el)
@@ -70,9 +70,12 @@ class Para.MultiSelectInput extends Vertebra.View
     selectedItemIds = (selectedItem.id for selectedItem in @selectedItems).join(', ')
     @$input.val(selectedItemIds)
 
-    @noItemsHint(@noSelectedItemsTemplate, @$selectedItems) unless @selectedItems.length
+    if @selectedItems.length
+      @initializeOrderable()
+    else
+      @showEmptyListHint(@noSelectedItemsTemplate, @$selectedItems)
 
-  noItemsHint: (template, appendTo) ->
+  showEmptyListHint: (template, appendTo) ->
     $(template).appendTo(appendTo)
 
   onItemRemoved: (selectedItem) =>
@@ -96,6 +99,29 @@ class Para.MultiSelectInput extends Vertebra.View
     @refreshSelectedItems()
 
     item.setSelected(false) for item in @availableItems
+
+  initializeOrderable: ->
+    return unless @orderable
+
+    columnsCount = @$selectedItems.find('> tr > td').length
+
+    @$selectedItems.sortable
+      handle: '.order-anchor'
+      forcePlaceholderSize: true
+      placeholder: "<tr><td colspan='#{ columnsCount }'></td></tr>"
+
+    @$selectedItems.on('sortupdate', @selectedItemsSorted)
+
+  selectedItemsSorted: =>
+    indices = {}
+    indices[$(el).data('selected-item-id')] = index for el, index in @$selectedItems.find('[data-selected-item-id]')
+
+    @selectedItems.sort (a, b) =>
+      aIndex = indices[a.id]
+      bIndex = indices[b.id]
+      if aIndex > bIndex then 1 else -1
+
+    @refreshSelectedItems()
 
 
 class Para.MultiSelectAvailableItem extends Vertebra.View
