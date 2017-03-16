@@ -1,0 +1,5 @@
+%tr.selected-item{ data: { :'selected-item-id' => result.id, :selected => true } }
+  %td= result.name
+  %td
+    = button_tag type: :button, class: 'btn btn-xs btn-default', data: { :'remove-item' => true } do
+      = fa_icon 'angle-left'

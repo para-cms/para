@@ -1,17 +1,25 @@
 class Para.MultiSelectInput extends Vertebra.View
   events:
     'keyup [data-search-field]': 'onSearchKeyUp'
+    'click [data-add-all]': 'onAllItemsAdded'
+    'click [data-remove-all]': 'onAllItemsRemoved'
 
   initialize: ->
     @$searchField = @$('[data-search-field]')
     @$selectedItems = @$('[data-selected-items]')
+    @$availableItems = @$('[data-available-items]')
     @$input = @$('[data-multi-select-input-field]')
 
     @searchURL = @$el.data('search-url')
 
+    @noSelectedItemsTemplate = @$('[data-no-selected-items]').attr('data-no-selected-items')
+    @noAvailableItemsTemplate = @$('[data-no-available-items]').attr('data-no-available-items')
+
     @availableItems = []
     @selectedItems = (@buildSelectedItem(el) for el in @$selectedItems.find('[data-selected-item-id]'))
     @refreshSelectedItems()
+
+    @noItemsHint(@noAvailableItemsTemplate, @$availableItems)
 
   onSearchKeyUp: ->
     @searchFor(@$searchField.val())
@@ -27,6 +35,8 @@ class Para.MultiSelectInput extends Vertebra.View
     item.destroy() for item in @availableItems
     @availableItems = (@buildAvailableItem(el) for el in @$('[data-available-items] tr'))
 
+    @noItemsHint(@noAvailableItemsTemplate, @$availableItems) unless @availableItems.length
+
   buildAvailableItem: (el) ->
     availableItem = new Para.MultiSelectAvailableItem(el: el)
     availableItem.setSelected(true) for selectedItem in @selectedItems when selectedItem.id is availableItem.id
@@ -35,7 +45,6 @@ class Para.MultiSelectInput extends Vertebra.View
 
   onItemAdded: (item) =>
     @selectItem(item)
-    item.setSelected(true)
 
   buildSelectedItem: (el) ->
     selectedItem = new Para.MultiSelectSelectedItem(el: el)
@@ -44,7 +53,9 @@ class Para.MultiSelectInput extends Vertebra.View
 
   selectItem: (item) ->
     return if @alreadySelected(item)
-    selectedItem = @buildSelectedItem(item.$el.next().clone()[0])
+
+    item.setSelected(true)
+    selectedItem = @buildSelectedItem(item.$el.attr('data-selected-item-template'))
     @selectedItems.push(selectedItem)
     @refreshSelectedItems()
 
@@ -59,6 +70,11 @@ class Para.MultiSelectInput extends Vertebra.View
     selectedItemIds = (selectedItem.id for selectedItem in @selectedItems).join(', ')
     @$input.val(selectedItemIds)
 
+    @noItemsHint(@noSelectedItemsTemplate, @$selectedItems) unless @selectedItems.length
+
+  noItemsHint: (template, appendTo) ->
+    $(template).appendTo(appendTo)
+
   onItemRemoved: (selectedItem) =>
     itemIndex = index for item, index in @selectedItems when item.id is selectedItem.id
     @selectedItems.splice(itemIndex, 1)
@@ -67,6 +83,19 @@ class Para.MultiSelectInput extends Vertebra.View
 
     availableItem = item for item in @availableItems when item.id is selectedItem.id
     availableItem.setSelected(false) if availableItem
+
+  onAllItemsAdded: ->
+    return unless @availableItems.length
+
+    @selectItem(availableItem) for availableItem in @availableItems
+
+  onAllItemsRemoved: ->
+    return unless @selectedItems.length
+
+    @selectedItems = []
+    @refreshSelectedItems()
+
+    item.setSelected(false) for item in @availableItems
 
 
 class Para.MultiSelectAvailableItem extends Vertebra.View

@@ -67,6 +67,7 @@ fr:
           no_items: |
             Recherchez des éléments avec la barre de recherche ci-dessus
           add_all: "Tout rajouter"
+          already_selected: "Ajouté"
         selected:
           title: "Ajoutés"
           no_items: |

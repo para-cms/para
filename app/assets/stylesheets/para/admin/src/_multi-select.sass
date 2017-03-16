@@ -21,6 +21,9 @@
 
   .panel-heading
     padding: 5px 15px
+    border-bottom: 1px solid $gray-light
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
     .panel-title
       color: $gray
       font-size: 12px
@@ -31,9 +34,32 @@
     +box-shadow(none)
 
     &.available-items
-      .selected-item
-        display: none
-        
-      tr.selected
+      .available-item
+        height: 53px
+        .btn
+          +material-box-shadow(1)
+          color: $brand-success
+          float: right
+          width: 22px
+        .badge
+          display: none
+
+      .selected
         td
           background-color: $gray-lighter
+        .btn
+          display: none
+        .badge
+          display: inline
+          color: $gray
+          background-color: transparent
+          float: right
+          text-transform: uppercase
+
+    &.selected-items
+      .selected-item
+        .btn
+          +material-box-shadow(1)
+          color: $brand-danger
+          float: right
+          width: 22px
