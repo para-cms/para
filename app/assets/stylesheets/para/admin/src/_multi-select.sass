@@ -43,11 +43,6 @@
     &.available-items
       .available-item
         height: 53px
-        .btn
-          +material-box-shadow(1)
-          color: $brand-success
-          float: right
-          width: 22px
         .badge
           display: none
 
@@ -63,10 +58,29 @@
           float: right
           text-transform: uppercase
 
-    &.selected-items
-      .selected-item
-        .btn
-          +material-box-shadow(1)
-          color: $brand-danger
-          float: right
-          width: 22px
+//== Buttons
+//
+//##
+
+.remove-button-cell, .add-button-cell
+  padding-right: 15px !important
+  .btn
+    +material-box-shadow(1)
+    float: right
+    width: 22px
+
+.add-button-cell
+  .btn
+    color: $brand-success
+    &:hover
+      background-color: $brand-success
+      border-color: $brand-success
+      color: $gray-lighter
+
+.remove-button-cell
+  .btn
+    color: $brand-danger
+    &:hover
+      background-color: $brand-danger
+      border-color: $brand-danger
+      color: $gray-lighter

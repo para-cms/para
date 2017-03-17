@@ -1,6 +1,6 @@
 %tr.selected-item{ data: { :'selected-item-id' => result.id } }
   %td.reorder-anchor-cell= reorder_anchor
   %td= result.name
-  %td
+  %td.remove-button-cell
     = button_tag type: :button, class: 'btn btn-xs btn-default', data: { :'remove-item' => true } do
       = fa_icon 'angle-left'
