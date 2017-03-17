@@ -105,6 +105,8 @@ class Para.MultiSelectInput extends Vertebra.View
 
     columnsCount = @$selectedItems.find('> tr > td').length
 
+    @$selectedItems.sortable('destroy')
+
     @$selectedItems.sortable
       handle: '.order-anchor'
       forcePlaceholderSize: true

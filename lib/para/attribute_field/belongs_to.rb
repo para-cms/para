@@ -19,7 +19,7 @@ module Para
         reflection.klass.all
       end
 
-      def parse_input(params)
+      def parse_input(params, resource)
         if (id = params[reflection.foreign_key].presence) && !reflection.klass.exists?(id: id)
           on_the_fly_creation(id) do |resource|
             params[reflection.foreign_key] = resource.id

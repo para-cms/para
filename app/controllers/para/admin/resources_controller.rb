@@ -113,7 +113,7 @@ module Para
 
       def parse_resource_params(hash)
         model_field_mappings(resource_model).fields.each do |field|
-          field.parse_input(hash)
+          field.parse_input(hash, resource)
         end
 
         hash

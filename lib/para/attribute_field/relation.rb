@@ -1,8 +1,6 @@
 module Para
   module AttributeField
     class RelationField < AttributeField::Base
-      private
-
       def reflection
         @reflection ||= model.reflect_on_association(name)
       end
@@ -15,6 +13,20 @@ module Para
         end
       end
 
+      def through_relation
+        @through_relation ||= reflection.options[:through]
+      end
+
+      def through_reflection
+        @through_reflection ||= through_relation && model.reflect_on_association(through_relation)
+      end
+
+      def through_relation_source_foreign_key
+        @through_relation_source_foreign_key ||= reflection.source_reflection.foreign_key
+      end
+
+      private
+      
       def resource_name(resource)
         Para.config.resource_name_methods.each do |method|
           return resource.send(method) if resource.respond_to?(method)

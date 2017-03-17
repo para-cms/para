@@ -36,7 +36,7 @@ module Para
               remove_counter_cache_column!(name, reflection)
 
               fields_hash[name] = AttributeField::HasManyField.new(
-                model, name: name, type: 'has_many', field_type: 'selectize'
+                model, name: name, type: 'has_many', field_type: 'multi_select'
               )
             elsif !reflection.options[:through]
               fields_hash[name] = AttributeField::BelongsToField.new(
