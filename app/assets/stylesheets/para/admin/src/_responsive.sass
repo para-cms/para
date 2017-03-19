@@ -1,16 +1,15 @@
 //
-// Variables
+// Responsive
 // --------------------------------------------------
-@import 'variables'
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: $screen-sm-min) 
+@media (min-width: $screen-sm-min)
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: $screen-md-min) 
+@media (min-width: $screen-md-min)
   body
     padding: $navbar-height 0 0 $left-menu-width-open
 
@@ -22,7 +21,7 @@
 
   .navbar-toggle
     display: none
-  
+
   //== Loader
   //
   //## See page_loading.sass
@@ -45,13 +44,13 @@
         margin-right: 5px
 
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: $screen-lg-min) 
+@media (min-width: $screen-lg-min)
 
 
 //== Max width
 //
-//## 
-@media (max-width: $screen-xs-max) 
+//##
+@media (max-width: $screen-xs-max)
   body
     padding-top: 0
 
@@ -88,7 +87,7 @@
       .btn
         width: 100%
 
-@media (max-width: $screen-sm-max) 
+@media (max-width: $screen-sm-max)
   //== page list panel
   //
   //## See panel.sass
@@ -98,5 +97,5 @@
       margin-bottom: 10px
 
     //** disable lasted margin-bottom on flextable-item & col-* to get the proper padding
-    .flextable  
+    .flextable
       margin-bottom: -10px

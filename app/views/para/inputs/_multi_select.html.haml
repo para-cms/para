@@ -7,7 +7,7 @@
       .input-group.filter-form
         = text_field_tag :search, nil, class: 'string required form-control', data: { :'search-field' => true }
         %span.input-group-btn
-          = button_tag class: 'btn' do
+          = button_tag type: 'button', class: 'btn' do
             = fa_icon 'search'
 
   .row

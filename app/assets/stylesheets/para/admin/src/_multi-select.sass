@@ -2,21 +2,13 @@
 // Multi select
 // --------------------------------------------------
 
-//== Compass & variables
-//
-//##
-
-@import "variables"
-@import "compass/css3/box-shadow"
-
-//== Main styles
+//== Main style
 //
 //##
 
 .multi-select-field
   .reorder-anchor-cell
     display: none
-
   &.orderable
     .reorder-anchor-cell
       display: block
@@ -27,7 +19,7 @@
       padding-left: 12px
 
   .panel-heading
-    padding: 5px 15px
+    padding: 5px 8px 5px 15px
     border-bottom: 1px solid $gray-light
     border-bottom-left-radius: 0
     border-bottom-right-radius: 0
@@ -39,12 +31,15 @@
 
   .panel
     +box-shadow(none)
-
     &.available-items
       .available-item
         height: 53px
         .badge
+          background-color: transparent
+          color: $gray
           display: none
+          float: right
+          text-transform: uppercase
 
       .selected
         td
@@ -53,34 +48,12 @@
           display: none
         .badge
           display: inline
-          color: $gray
-          background-color: transparent
-          float: right
-          text-transform: uppercase
 
 //== Buttons
 //
 //##
 
 .remove-button-cell, .add-button-cell
-  padding-right: 15px !important
   .btn
-    +material-box-shadow(1)
     float: right
     width: 22px
-
-.add-button-cell
-  .btn
-    color: $brand-success
-    &:hover
-      background-color: $brand-success
-      border-color: $brand-success
-      color: $gray-lighter
-
-.remove-button-cell
-  .btn
-    color: $brand-danger
-    &:hover
-      background-color: $brand-danger
-      border-color: $brand-danger
-      color: $gray-lighter
