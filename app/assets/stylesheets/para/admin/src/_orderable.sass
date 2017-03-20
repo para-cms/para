@@ -10,6 +10,8 @@
 .handle
   color: $text-color
   cursor: move
+  cursor: -webkit-grab
+  cursor: grab
   outline: 0
   font-size: 14px
   line-height: 20px
@@ -21,6 +23,8 @@
   &:active,
   &:focus:active
     cursor: move
+    cursor: -webkit-grabbing
+    cursor: grabbing
     +border-radius($border-radius-base)
     margin: 0
     background-color: $gray
