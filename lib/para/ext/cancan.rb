@@ -6,6 +6,7 @@ module Para
 
         included do
           alias_method_chain :assign_attributes, :parent_missing_management
+          alias_method_chain :params_method, :bypass_assignation
         end
 
         # Todo : Document why this extension was added ?
@@ -19,6 +20,19 @@ module Para
           end
 
           resource
+        end
+
+        # Remove automatic params assignation and let our controllers do it
+        # manually, letting our attribute fields to parse the params with a
+        # reference to the current resource.
+        #
+        # Before this override, some attribute fields raised during #parse_input
+        # because of the controller resource that was missing at the time it
+        # was called (during the resource instanciation ...)
+        #
+        def params_method_with_bypass_assignation
+          return if @options[:bypass_params_assignation]
+          params_method_without_bypass_assignation
         end
       end
     end

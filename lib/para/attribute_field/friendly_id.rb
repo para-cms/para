@@ -5,7 +5,7 @@ module Para
 
       # Set empty string as nil to allow default friendly id methods to
       # generate the slug when the field is empty
-      def parse_input(params)
+      def parse_input(params, resource)
         params[slug_column] = nil if slug_column && params[slug_column] == ''
       end
 

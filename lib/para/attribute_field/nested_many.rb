@@ -3,7 +3,7 @@ module Para
     class NestedManyField < AttributeField::HasManyField
       register :nested_many, self
 
-      def parse_input(params)
+      def parse_input(params, resource)
         if (nested_attributes = params[nested_attributes_key])
           nested_attributes.each do |index, attributes|
             nested_model_mappings.fields.each do |field|
@@ -13,7 +13,7 @@ module Para
             params[nested_attributes_key][index] = attributes
           end
         else
-          super(params)
+          super
         end
       end
 

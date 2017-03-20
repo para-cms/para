@@ -1,0 +1,85 @@
+//
+// Multi select
+// --------------------------------------------------
+
+//== Main style
+//
+//##
+
+.multi-select-field
+  .reorder-anchor-cell
+    display: none
+  &.orderable
+    .reorder-anchor-cell
+      display: table-cell
+      padding: 0 0 0 15px
+      vertical-align: middle
+      width: 10%
+
+  .input-group.filter-form
+    margin-bottom: 15px
+    input
+      padding-left: 12px
+    .btn
+      cursor: default
+      &:hover
+        color: $gray
+      &:active
+        +box-shadow(none)
+
+  .panel-heading
+    padding: 5px 8px 5px 15px
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+    .panel-title
+      color: $gray
+      font-size: 12px
+      font-weight: 700
+      text-transform: uppercase
+
+  .panel
+    +box-shadow(none)
+    .panel-body
+      max-height: 318px
+      overflow: auto
+      padding: 0
+
+    &.available-items
+      .available-item
+        height: 53px
+        &:hover
+          background-color: $gray-lighter
+          color: $brand-primary
+        .badge
+          background-color: transparent
+          color: $gray
+          display: none
+          float: right
+          padding-right: 0
+          text-transform: uppercase
+
+      .selected
+        td
+          background-color: $gray-lighter
+          color: $gray
+        .btn
+          display: none
+        .badge
+          display: inline
+
+    &.selected-items
+      .selected-item
+        height: 53px
+        &:hover
+          background-color: $gray-lighter
+          color: $brand-primary
+
+    .no-items
+      background-color: $gray-lighter
+      color: $gray
+      padding: 15px
+
+  .remove-button-cell, .add-button-cell
+    .btn
+      float: right
+      width: 22px

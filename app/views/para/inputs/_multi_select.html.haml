@@ -1,0 +1,39 @@
+.multi-select-field{ class: ('orderable' if orderable), data: { :'multi-select-input' => true, :'search-url' => admin_search_path(model_name: model.name), orderable: orderable } }
+  = form.hidden_field attribute_name, value: resources.map(&:id).join(', '), data: { :'multi-select-input-field' => true }
+  = form.hidden_field '_multi_select_field', value: attribute_name
+
+  .row
+    .col-md-6
+      .input-group.filter-form
+        = text_field_tag :search, nil, class: 'string required form-control', autocomplete: 'off', data: { :'search-field' => true }
+        %span.input-group-btn
+          = button_tag type: 'button', class: 'btn' do
+            = fa_icon 'search'
+
+  .row
+    .col-md-6
+      .panel.panel-default.available-items
+        .panel-heading
+          %span.panel-title
+            = t('para.form.multi_select.available.title')
+          .panel-btns
+            = button_tag type: 'button', class: 'btn btn-success btn-xs', data: { :'add-all' => true } do
+              = t('para.form.multi_select.available.add_all')
+
+        .panel-body
+          %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
+            %tbody
+
+    .col-md-6
+      .panel.panel-default.selected-items
+        .panel-heading
+          %span.panel-title
+            = t('para.form.multi_select.selected.title')
+          .panel-btns
+            = button_tag type: 'button', class: 'btn btn-danger btn-xs', data: { :'remove-all' => true } do
+              = t('para.form.multi_select.selected.remove_all')
+        .panel-body
+          %table.table{ data: { :'selected-items' => true, :'no-selected-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: false }) } }
+            %tbody
+              - if resources.length > 0
+                = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result

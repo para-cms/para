@@ -1,11 +1,6 @@
 //
-// Variables
+// Buttons
 // --------------------------------------------------
-@import "variables"
-
-@import "compass/css3/border-radius"
-@import "compass/css3/box-shadow"
-
 
 //== Buttons mixin
 //
@@ -20,7 +15,7 @@
   &:focus
     background-color: $brand
     color: #fff
-  
+
 =btn-icon($brand: default)
   color: $btn-default-color
   background-color: $btn-default-bg
@@ -37,7 +32,7 @@
     &:active:focus,
     &.active
       background-color: $bg !important
-      border-color: $border !important 
+      border-color: $border !important
 
 //** Override bootstrap btns
 .btn
@@ -55,7 +50,7 @@
 
 
 .btn-xs
-  padding: 1px 5px  
+  padding: 1px 5px
   .fa
     font-size: 12px
 
@@ -82,7 +77,7 @@
 //** Btn outline
 .btn-default-outline
   +btn-outline($gray)
-.btn-primary-outline  
+.btn-primary-outline
   +btn-outline($brand-primary)
 .btn-success-outline
   +btn-outline($brand-success)
@@ -96,7 +91,7 @@
 //** Btn icon
 .btn-icon-default
   +btn-icon($gray)
-.btn-icon-primary  
+.btn-icon-primary
   +btn-icon($brand-primary)
 .btn-icon-success
   +btn-icon($brand-success)
@@ -105,5 +100,4 @@
 .btn-icon-warning
   +btn-icon($brand-warning)
 .btn-icon-danger
-  +btn-icon($brand-danger)  
-  
+  +btn-icon($brand-danger)

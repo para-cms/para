@@ -1,15 +1,10 @@
 //
-// Variables
+// Pagination
 // --------------------------------------------------
-@import "variables"
-
-@import "compass/css3/transition"
-@import "compass/css3/border-radius"
-@import "compass/css3/inline-block"
 
 //== Overiding bootstrap pagination theme
 //
-//## 
+//##
 
 .pagination
   display: block
@@ -17,17 +12,17 @@
   margin-bottom: 0
   +border-radius(0)
   +clearfix
-  > li 
+  > li
     +inline-block
     > a,
-    > span  
+    > span
       margin: 0
       +border-radius($border-radius-small)
       border-color: $pagination-border
       +inline-block
       float: none
 
-  > li:first-child 
+  > li:first-child
     > a,
     > span
       +border-radius($border-radius-small)

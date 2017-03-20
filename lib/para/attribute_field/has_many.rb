@@ -13,20 +13,55 @@ module Para
         end.join(', ')
       end
 
-      def parse_input(params)
+      def parse_input(params, resource)
         if (ids = params[plural_foreign_key].presence) && String === ids
           # Format selectize value for Rails
-          ids = params[plural_foreign_key] = ids.split(',')
+          ids = params[plural_foreign_key] = ids.split(',').map(&:to_i)
 
-          on_the_fly_creation(ids) do |resource, value|
+          on_the_fly_creation(ids) do |res, value|
             params[plural_foreign_key].delete(value)
-            params[plural_foreign_key] << resource.id
+            params[plural_foreign_key] << res.id
           end
+        end
+
+        if params[:_multi_select_field] == plural_foreign_key
+          assign_multi_select_field(params, resource)
         end
       end
 
       def plural_foreign_key
         foreign_key.to_s.pluralize
+      end
+
+      def assign_multi_select_field(params, resource)
+        params.delete(:_multi_select_field)
+        ids = params.delete(plural_foreign_key)
+
+        if through_reflection && through_reflection.klass.orderable?
+          assign_ordered_through_reflection_ids(through_reflection, resource, ids)
+        else
+          resource.assign_attributes(plural_foreign_key => ids)
+        end
+      end
+
+      def assign_ordered_through_reflection_ids(reflection, resource, ids)
+        association = resource.association(reflection.name)
+        join_resources = association.load_target
+
+        return association.replace([]) if ids.empty?
+
+        new_resources = ids.each_with_index.map do |id, position|
+          join_resource = join_resources.find { |res| res.send(through_relation_source_foreign_key) == id }
+
+          unless join_resource
+            join_resource = association.build(through_relation_source_foreign_key => id)
+          end
+
+          join_resource.position = position
+          join_resource
+        end
+
+        association.replace(new_resources)
       end
     end
   end

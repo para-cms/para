@@ -3,7 +3,7 @@ module Para
     class NestedOneField < AttributeField::BelongsToField
       register :nested_one, self
 
-      def parse_input(params)
+      def parse_input(params, resource)
         if (nested_attributes = params[nested_attributes_key])
           nested_model_mappings.fields.each do |field|
             field.parse_input(nested_attributes)
@@ -11,7 +11,7 @@ module Para
 
           params[nested_attributes_key] = nested_attributes
         else
-          super(params)
+          super
         end
       end
 

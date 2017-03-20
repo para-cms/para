@@ -12,7 +12,7 @@ module Para
         nil
       end
 
-      def parse_input(params)
+      def parse_input(params, resource)
         params[name] = params[name].presence
       end
     end

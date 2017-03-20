@@ -17,6 +17,11 @@ module Para
         # Assign component the resource belongs to it
         resource.component = @component if resource.respond_to?(:component=)
 
+        # We overriden Cancan so it does not try to assign our params during the
+        # create action, allowing our attribute fields to parse them with an
+        # actual resource.
+        resource.assign_attributes(resource_params)
+
         if resource.save
           flash_message(:success, resource)
           redirect_to after_form_submit_path
@@ -113,7 +118,7 @@ module Para
 
       def parse_resource_params(hash)
         model_field_mappings(resource_model).fields.each do |field|
-          field.parse_input(hash)
+          field.parse_input(hash, resource)
         end
 
         hash

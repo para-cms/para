@@ -1,20 +1,17 @@
 //
-// Variables
+// Orderable
 // --------------------------------------------------
-@import "variables"
-
-@import "compass/css3/transition"
-@import "compass/css3/transform"
-@import "compass/css3/inline-block"
 
 //== Re-ordered & handle barre styles
 //
-//## 
+//##
 
 .order-anchor,
 .handle
   color: $text-color
   cursor: move
+  cursor: -webkit-grab
+  cursor: grab
   outline: 0
   font-size: 14px
   line-height: 20px
@@ -26,6 +23,8 @@
   &:active,
   &:focus:active
     cursor: move
+    cursor: -webkit-grabbing
+    cursor: grabbing
     +border-radius($border-radius-base)
     margin: 0
     background-color: $gray
@@ -33,7 +32,6 @@
     text-align: center
 
 .sortable-placeholder
-  border: 1px dotted $gray 
+  border: 1px dotted $gray
   width: 100%
   background-color: $gray-lighter
-

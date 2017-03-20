@@ -86,7 +86,7 @@ module Para
       # it can be easy to edit them according to some field type specific
       # behavior
       #
-      def parse_input(params); end
+      def parse_input(params, resource); end
 
       def field_options
         self.class._field_options.each_with_object({}) do |params, hash|
