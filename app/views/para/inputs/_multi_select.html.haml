@@ -20,8 +20,9 @@
             = button_tag type: 'button', class: 'btn btn-success btn-xs', data: { :'add-all' => true } do
               = t('para.form.multi_select.available.add_all')
 
-        %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
-          %tbody
+        .panel-body
+          %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
+            %tbody
 
     .col-md-6
       .panel.panel-default.selected-items
@@ -31,8 +32,8 @@
           .panel-btns
             = button_tag type: 'button', class: 'btn btn-danger btn-xs', data: { :'remove-all' => true } do
               = t('para.form.multi_select.selected.remove_all')
-
-        %table.table{ data: { :'selected-items' => true, :'no-selected-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: false }) } }
-          %tbody
-            - if resources.length > 0
-              = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result
+        .panel-body
+          %table.table{ data: { :'selected-items' => true, :'no-selected-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: false }) } }
+            %tbody
+              - if resources.length > 0
+                = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result
