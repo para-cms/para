@@ -7,7 +7,7 @@ module Para
         if (nested_attributes = params[nested_attributes_key])
           nested_attributes.each do |index, attributes|
             nested_model_mappings.fields.each do |field|
-              field.parse_input(attributes)
+              field.parse_input(attributes, resource)
             end
 
             params[nested_attributes_key][index] = attributes
