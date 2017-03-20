@@ -19,7 +19,7 @@ module Para
       def load_and_authorize_form
         loader = self.class.cancan_resource_class.new(
           self, :resource, parent: false, class: resource_model.name,
-          singleton: true, through: :component
+          singleton: true, through: :component, bypass_params_assignation: true
         )
 
         loader.load_and_authorize_resource

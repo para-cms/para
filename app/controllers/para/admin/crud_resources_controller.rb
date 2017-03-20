@@ -61,7 +61,8 @@ module Para
 
       def load_and_authorize_crud_resource
         loader = self.class.cancan_resource_class.new(
-          self, resource_name, parent: false, class: resource_model.name, find_by: :id
+          self, resource_name, parent: false, class: resource_model.name,
+          find_by: :id, bypass_params_assignation: true
         )
 
         loader.load_and_authorize_resource
