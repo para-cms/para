@@ -16,7 +16,7 @@ module Para
           locals: {
             form: @builder,
             model: model,
-            attribute_name: reflection.foreign_key.pluralize,
+            attribute_name: foreign_key,
             orderable: orderable?,
             resources: resources
           }
@@ -33,6 +33,10 @@ module Para
 
       def reflection
         @reflection ||= parent_model.reflect_on_association(attribute_name)
+      end
+
+      def foreign_key
+        :"#{ reflection.name.to_s.singularize }_ids"
       end
 
       def attribute_field
