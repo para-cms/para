@@ -16,3 +16,31 @@
     .form-fields
       +clearfix
       float: none
+
+  &.nested-many-field-inset
+    .panel
+      border: 1px dashed #ccc
+      +box-shadow(none)
+
+      .panel-heading
+        background-color: transparent
+        border-color: transparent
+
+    .add-button
+      .btn
+        display: block
+        width: 100%
+        padding: 30px
+
+      .open > .dropdown-menu
+        display: block
+        width: 100%
+
+      .dropdown-menu > li
+        display: block
+        float: left
+        width: 33.333333%
+        padding: 20px
+        border: none
+        text-align: center
+        font-size: 1.2em

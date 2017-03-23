@@ -11,7 +11,7 @@
 
     = form.remove_association_button
 
-  .panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id }
+  .panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id, class: ('in' if inset) }
     .panel-body
       = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
 

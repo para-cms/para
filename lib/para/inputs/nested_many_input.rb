@@ -27,7 +27,8 @@ module Para
             resources: resources,
             nested_locals: locals,
             subclass: subclass,
-            subclasses: subclasses
+            subclasses: subclasses,
+            inset: inset?
           }
         )
       end
@@ -58,6 +59,10 @@ module Para
           :subclasses,
           (model.try(:descendants) || []).sort_by { |m| m.model_name.human }
         )
+      end
+
+      def inset?
+        options.fetch(:inset, false)
       end
     end
   end
