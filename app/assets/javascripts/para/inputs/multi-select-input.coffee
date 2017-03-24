@@ -150,11 +150,10 @@ class Para.MultiSelectSelectedItem extends Vertebra.View
   renderTo: ($container) ->
     @$el.appendTo($container)
     @bindEvents()
-    # @delegateEvents()
 
   removeItem: (e) =>
     @trigger('remove', this)
 
 
-$(document).on 'page:change turbolinks:load', ->
+$.simpleForm.onDomReady ->
   $('[data-multi-select-input]').each (i, el) -> new Para.MultiSelectInput(el: el)

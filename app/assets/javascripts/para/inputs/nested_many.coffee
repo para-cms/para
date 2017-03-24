@@ -33,14 +33,7 @@ class Para.NestedManyField
       @initializeOrderable()
       @sortUpdate()
 
-    if ($redactor = $element.find('[data-redactor]')).length
-      $redactor.simpleFormRedactor()
-
-    if ($selectize = $element.find('[data-selectize]'))
-      $selectize.simpleFormSelectize()
-
-    if ($slider = $element.find('[data-slider]'))
-      $slider.simpleFormSlider()
+    $element.simpleForm()
 
   openInsertedField: ($field) ->
     $target = $($field.attr('href'))
@@ -54,5 +47,5 @@ class Para.NestedManyField
     $target.find('input, textarea, select').eq('0').focus()
 
 
-$(document).on 'page:change turbolinks:load', ->
+$.simpleForm.onDomReady ->
   $('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))
