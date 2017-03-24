@@ -4,6 +4,11 @@ module Para
 
     attr_reader :model, :fields_hash, :whitelist_attributes, :mappings
 
+    # The mappings hash is a form provided hash of attributes and input types
+    # mapping that are automatically generated in the form builder and that
+    # allows our model field parsers to spot unregistered fields and process
+    # them when needed.
+    #
     def initialize(model, whitelist_attributes: nil, mappings: nil)
       @model = model
       @whitelist_attributes = whitelist_attributes
