@@ -40,6 +40,7 @@ require 'para/errors'
 require 'para/plugins'
 require 'para/config'
 require 'para/model_field_parsers'
+require 'para/attributes_mappings_helper'
 require 'para/attribute_field'
 require 'para/attribute_field_mappings'
 require 'para/inputs'
@@ -62,6 +63,7 @@ module Para
   eager_autoload do
     autoload :Config
     autoload :Component
+    autoload :ControllerResource
     autoload :Generators
     autoload :SimpleFormConfig
     autoload :Routing

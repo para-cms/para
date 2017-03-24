@@ -38,16 +38,6 @@ module Para
       end
     end
 
-    initializer 'Extend cancan ControllerResource class' do
-      next unless Kernel.const_defined?('CanCan')
-
-      ActiveSupport.on_load(:active_record) do
-        ::CanCan::ControllerResource.send(
-          :include, Para::Ext::Cancan::ControllerResource
-        )
-      end
-    end
-
     initializer 'Add resource name methods to simple form extension' do
       ::SimpleFormExtension.resource_name_methods = (
         Para.config.resource_name_methods +

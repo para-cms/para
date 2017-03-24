@@ -4,7 +4,9 @@ module Para
       extend ActiveSupport::Concern
 
       included do
-        has_many :sections, -> { ordered }, class_name: '::Para::Page::Section', as: :page
+        has_many :sections, -> { ordered }, class_name: '::Para::Page::Section',
+                                            as: :page,
+                                            dependent: :destroy
         accepts_nested_attributes_for :sections, allow_destroy: true
       end
     end

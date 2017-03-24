@@ -4,9 +4,9 @@ module Para
       @registered_parsers ||= {}
     end
 
-    def self.parse!(model, fields_hash)
+    def self.parse!(model, fields_hash, mappings)
       registered_parsers.each do |_, parser_class|
-        parser = parser_class.new(model, fields_hash)
+        parser = parser_class.new(model, fields_hash, mappings)
         parser.parse! if parser.applicable?
       end
     end

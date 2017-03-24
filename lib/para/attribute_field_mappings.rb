@@ -2,11 +2,12 @@ module Para
   class AttributeFieldMappings
     UNEDITABLE_ATTRIBUTES = %w(id component_id created_at updated_at type)
 
-    attr_reader :model, :fields_hash, :whitelist_attributes
+    attr_reader :model, :fields_hash, :whitelist_attributes, :mappings
 
-    def initialize(model, whitelist_attributes: nil)
+    def initialize(model, whitelist_attributes: nil, mappings: nil)
       @model = model
       @whitelist_attributes = whitelist_attributes
+      @mappings = mappings || {}
 
       process_fields!
     end
@@ -52,7 +53,7 @@ module Para
         end
       end.with_indifferent_access
 
-      Para::ModelFieldParsers.parse!(model, fields_hash)
+      Para::ModelFieldParsers.parse!(model, fields_hash, mappings)
     end
 
     def build_field_for(attribute_name, type)

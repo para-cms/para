@@ -16,9 +16,17 @@ module Para
           # Remove foreign key, if existing, from fields
           fields_hash.delete(reflection.foreign_key.to_s)
 
+          # Do not process polymorphic belongs to for now ...
           if reflection.options[:polymorphic] == true
             fields_hash.delete(reflection.foreign_type.to_s)
             next
+          end
+
+          # Catch multi select inputs from form attributes mappings
+          find_attributes_for_mapping(:multi_select).each do |attribute|
+            fields_hash[name] = AttributeField::HasManyField.new(
+              model, name: attribute, type: 'has_many', field_type: 'multi_select'
+            )
           end
 
           if model.nested_attributes_options[name]

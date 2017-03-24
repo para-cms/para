@@ -75,8 +75,8 @@ class Para.MultiSelectInput extends Vertebra.View
     else
       @showEmptyListHint(@noSelectedItemsTemplate, @$selectedItems)
 
-  showEmptyListHint: (template, appendTo) ->
-    $(template).appendTo(appendTo)
+  showEmptyListHint: (template, $container) ->
+    $(template).appendTo($container)
 
   onItemRemoved: (selectedItem) =>
     itemIndex = index for item, index in @selectedItems when item.id is selectedItem.id
@@ -155,5 +155,5 @@ class Para.MultiSelectSelectedItem extends Vertebra.View
     @trigger('remove', this)
 
 
-$.simpleForm.onDomReady ->
-  $('[data-multi-select-input]').each (i, el) -> new Para.MultiSelectInput(el: el)
+$.simpleForm.onDomReady ($document) ->
+  $document.find('[data-multi-select-input]').each (i, el) -> new Para.MultiSelectInput(el: el)

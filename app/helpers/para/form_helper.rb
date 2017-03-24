@@ -26,6 +26,8 @@ module Para
           if @component.subclassable? && resource.new_record?
             content << form.hidden_field(:type, value: resource.type)
           end
+
+          content << form.attributes_mappings_field
         end
       end
     end

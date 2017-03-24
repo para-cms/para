@@ -1,4 +1,4 @@
-class DeviseCreateAdminUsers < ActiveRecord::Migration[5.0]
+class DeviseCreateAdminUsers < ActiveRecord::Migration
   def change
     create_table :admin_users do |t|
       ## Database authenticatable

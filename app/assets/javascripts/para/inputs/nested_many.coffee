@@ -47,5 +47,5 @@ class Para.NestedManyField
     $target.find('input, textarea, select').eq('0').focus()
 
 
-$.simpleForm.onDomReady ->
-  $('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))
+$.simpleForm.onDomReady ($document) ->
+  $document.find('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))

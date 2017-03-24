@@ -4,6 +4,7 @@ module Para
   module Admin
     class ResourcesController < Para::Admin::BaseController
       include Para::ModelHelper
+      include Para::AttributesMappingsHelper
 
       class_attribute :resource_name, :resource_class
       load_and_authorize_component
@@ -117,7 +118,7 @@ module Para
       end
 
       def parse_resource_params(hash)
-        model_field_mappings(resource_model).fields.each do |field|
+        model_field_mappings(resource_model, mappings: attributes_mappings_for(hash)).fields.each do |field|
           field.parse_input(hash, resource)
         end
 

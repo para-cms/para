@@ -1,5 +1,6 @@
 require 'simple_form/form_builder'
 
+require 'para/form_builder/attributes_mappings_tracker'
 require 'para/form_builder/containers'
 require 'para/form_builder/field_mappings'
 require 'para/form_builder/nested_form'
@@ -13,6 +14,7 @@ require 'para/form_builder/tabs'
 # explicitly
 #
 SimpleForm::FormBuilder.class_eval do
+  include Para::FormBuilder::AttributesMappingsTracker
   include Para::FormBuilder::Containers
   include Para::FormBuilder::FieldMappings
   include Para::FormBuilder::NestedForm

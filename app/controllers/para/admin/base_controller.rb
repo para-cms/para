@@ -27,6 +27,13 @@ module Para
 
       private
 
+      # Override cancan controlelr resource class to avoid attributes
+      # assignation issues with resources
+      #
+      def self.cancan_resource_class
+        Para::ControllerResource
+      end
+
       def authorize_admin_access
         authorize! :access, :admin
       end

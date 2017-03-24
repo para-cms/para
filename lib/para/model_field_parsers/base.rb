@@ -5,15 +5,20 @@ module Para
         ModelFieldParsers.registered_parsers[key] = parser
       end
 
-      attr_reader :model, :fields_hash
+      attr_reader :model, :fields_hash, :mappings
 
-      def initialize(model, fields_hash)
+      def initialize(model, fields_hash, mappings)
         @model = model
         @fields_hash = fields_hash
+        @mappings = mappings
       end
 
       def applicable?
         true
+      end
+
+      def find_attributes_for_mapping(type)
+        mappings.select { |k, v| v == type.to_s }.keys
       end
     end
   end

@@ -44,17 +44,22 @@ module Para
         end
       end
 
-      def assign_ordered_through_reflection_ids(reflection, resource, ids)
-        association = resource.association(reflection.name)
+      def assign_ordered_through_reflection_ids(through_reflection, resource, ids)
+        association = resource.association(through_reflection.name)
         join_resources = association.load_target
 
         return association.replace([]) if ids.empty?
 
         new_resources = ids.each_with_index.map do |id, position|
-          join_resource = join_resources.find { |res| res.send(through_relation_source_foreign_key) == id }
+          join_resource = join_resources.find do |res|
+            res.send(through_relation_source_foreign_key) == id &&
+              (!polymorphic_through_reflection? || res.send(reflection.foreign_type) == reflection.klass.name)
+          end
 
           unless join_resource
-            join_resource = association.build(through_relation_source_foreign_key => id)
+            attributes = { through_relation_source_foreign_key => id }
+            attributes[reflection.foreign_type] = reflection.klass.name if polymorphic_through_reflection?
+            join_resource = association.build(attributes)
           end
 
           join_resource.position = position

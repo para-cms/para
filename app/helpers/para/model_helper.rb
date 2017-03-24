@@ -5,11 +5,21 @@ module Para
       model_field_mappings(model).fields
     end
 
-    def model_field_mappings(model, attributes = nil)
+    # Second argument can be the whitelist_attributes array or keyword
+    # arguments. This is to ensure backwards compatibility with old plugins.
+    #
+    def model_field_mappings(model, options = {})
+      if Array == options
+        whitelist_attributes = options
+      else
+        whitelist_attributes = options.fetch(:whitelist_attributes, nil)
+        mappings = options.fetch(:mappings, {})
+      end
+
       store_key = ['model', 'mappings', model.name.underscore].join(':')
 
       Para.store[store_key] ||= Para::AttributeFieldMappings.new(
-        model, whitelist_attributes: attributes
+        model, whitelist_attributes: whitelist_attributes, mappings: mappings
       )
     end
 

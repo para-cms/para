@@ -9,6 +9,5 @@ module Para
   end
 end
 
-require 'para/ext/cancan'
 require 'para/ext/paperclip'
 require 'para/ext/active_job_status'

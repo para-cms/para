@@ -25,8 +25,12 @@ module Para
         @through_relation_source_foreign_key ||= reflection.source_reflection.foreign_key
       end
 
+      def polymorphic_through_reflection?
+        !!(through_relation && reflection.source_reflection.options[:polymorphic])
+      end
+
       private
-      
+
       def resource_name(resource)
         Para.config.resource_name_methods.each do |method|
           return resource.send(method) if resource.respond_to?(method)
