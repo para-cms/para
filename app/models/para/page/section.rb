@@ -23,7 +23,8 @@ module Para
         def _ensure_section_resources_relation
           return if @section_resources_already_initialized
 
-          has_many :section_resources, foreign_key: 'section_id',
+          has_many :section_resources, -> { ordered },
+                                       foreign_key: 'section_id',
                                        class_name: '::Para::Page::SectionResource',
                                        dependent: :destroy
           accepts_nested_attributes_for :section_resources, allow_destroy: true
