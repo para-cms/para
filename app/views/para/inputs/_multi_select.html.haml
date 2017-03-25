@@ -1,6 +1,5 @@
 .multi-select-field{ class: ('orderable' if orderable), data: { :'multi-select-input' => true, :'search-url' => admin_search_path(model_name: model.name), orderable: orderable } }
   = form.hidden_field attribute_name, value: resources.map(&:id).join(', '), data: { :'multi-select-input-field' => true }
-  = form.hidden_field '_multi_select_field', value: attribute_name
 
   .row
     .col-md-6

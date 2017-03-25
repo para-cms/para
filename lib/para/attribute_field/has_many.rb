@@ -24,17 +24,16 @@ module Para
           end
         end
 
-        if params[:_multi_select_field] == plural_foreign_key
-          assign_multi_select_field(params, resource)
-        end
+        assign_ids(params, resource)
       end
 
       def plural_foreign_key
         foreign_key.to_s.pluralize
       end
 
-      def assign_multi_select_field(params, resource)
-        params.delete(:_multi_select_field)
+      def assign_ids(params, resource)
+        return unless Array === params[plural_foreign_key]
+
         ids = params.delete(plural_foreign_key)
 
         if through_reflection && through_reflection.klass.orderable?
