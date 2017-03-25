@@ -18,7 +18,7 @@ module Para
 
       store_key = ['model', 'mappings', model.name.underscore].join(':')
 
-      Para.store[store_key] ||= Para::AttributeFieldMappings.new(
+      Para::AttributeFieldMappings.new(
         model, whitelist_attributes: whitelist_attributes, mappings: mappings
       )
     end

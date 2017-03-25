@@ -26,7 +26,7 @@ module Para
         model = nested_attributes[:type].try(:constantize) || reflection.klass
         mappings = attributes_mappings_for(nested_attributes)
 
-        @nested_model_mappings ||= AttributeFieldMappings.new(model, mappings: mappings)
+        AttributeFieldMappings.new(model, mappings: mappings)
       end
 
       def nested_attributes_key

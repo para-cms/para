@@ -31,8 +31,9 @@ module Para
 
       def fields_for_with_mappings_tracking(*args, options, &block)
         fields_for_without_mappings_tracking(*args, options) do |fields|
-          fields.attributes_mappings_field +
-          block.call(fields)
+          fields_html = @template.capture { block.call(fields) }
+
+          fields_html + fields.attributes_mappings_field
         end
       end
 
