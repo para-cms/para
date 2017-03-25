@@ -1,5 +1,6 @@
 %tr.available-item{ data: { :'available-item-id' => result.id, :available => true, :'selected-item-template' => render(:partial => 'para/inputs/multi_select/selected_item', :locals => { result: result }) } }
-  %td= result.name
+  %td= resource_name(result)
+
   %td.add-button-cell
     = button_tag type: :button, class: 'btn btn-xs btn-success', data: { :'add-item' => true } do
       = fa_icon 'arrow-right'

@@ -1,7 +1,7 @@
 module Para
   module AttributeField
     class NestedOneField < AttributeField::BelongsToField
-      include Para::AttributesMappingsHelper
+      include Para::Helpers::AttributesMappings
 
       register :nested_one, self
 

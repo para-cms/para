@@ -35,28 +35,6 @@ require 'rails/relation_length_validator'
 
 require 'para/postgres_extensions_checker'
 
-require 'para/ext'
-require 'para/errors'
-require 'para/plugins'
-require 'para/config'
-require 'para/model_field_parsers'
-require 'para/attributes_mappings_helper'
-require 'para/attribute_field'
-require 'para/attribute_field_mappings'
-require 'para/inputs'
-require 'para/cloneable'
-require 'para/orderable'
-require 'para/form_builder'
-require 'para/markup'
-require 'para/engine'
-require 'para/components_configuration'
-require 'para/job'
-require 'para/exporter'
-require 'para/importer'
-require 'para/sti'
-require 'para/page'
-require 'para/search'
-
 module Para
   extend ActiveSupport::Autoload
 
@@ -65,6 +43,7 @@ module Para
     autoload :Component
     autoload :ControllerResource
     autoload :Generators
+    autoload :Helpers
     autoload :SimpleFormConfig
     autoload :Routing
     autoload :Routes
@@ -93,3 +72,24 @@ module Para
     'para_'
   end
 end
+
+require 'para/ext'
+require 'para/errors'
+require 'para/plugins'
+require 'para/config'
+require 'para/model_field_parsers'
+require 'para/attribute_field'
+require 'para/attribute_field_mappings'
+require 'para/inputs'
+require 'para/cloneable'
+require 'para/orderable'
+require 'para/form_builder'
+require 'para/markup'
+require 'para/engine'
+require 'para/components_configuration'
+require 'para/job'
+require 'para/exporter'
+require 'para/importer'
+require 'para/sti'
+require 'para/page'
+require 'para/search'

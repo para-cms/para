@@ -4,7 +4,7 @@ module Para
   module Admin
     class ResourcesController < Para::Admin::BaseController
       include Para::ModelHelper
-      include Para::AttributesMappingsHelper
+      include Para::Helpers::AttributesMappings
 
       class_attribute :resource_name, :resource_class
       load_and_authorize_component

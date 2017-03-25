@@ -1,7 +1,7 @@
 module Para
   module AttributeField
     class NestedManyField < AttributeField::HasManyField
-      include Para::AttributesMappingsHelper
+      include Para::Helpers::AttributesMappings
 
       register :nested_many, self
 

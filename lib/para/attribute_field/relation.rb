@@ -1,6 +1,8 @@
 module Para
   module AttributeField
     class RelationField < AttributeField::Base
+      include Para::Helpers::ResourceName
+
       def reflection
         @reflection ||= model.reflect_on_association(name)
       end

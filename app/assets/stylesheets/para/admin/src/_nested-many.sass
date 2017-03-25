@@ -32,15 +32,25 @@
         width: 100%
         padding: 30px
 
-      .open > .dropdown-menu
-        display: block
-        width: 100%
+      &.open
+        > .dropdown-menu
+          display: block
+          width: 100%
 
-      .dropdown-menu > li
-        display: block
-        float: left
-        width: 33.333333%
-        padding: 20px
-        border: none
-        text-align: center
-        font-size: 1.2em
+          > li
+            display: block
+            float: left
+            width: 33.333333%
+            border: none
+            text-align: center
+
+            &:hover
+              background-color: $brand-primary
+              > a
+                color: white
+            > a
+              display: block
+              width: 100%
+              height: 100%
+              padding: 40px
+              border-bottom: none
