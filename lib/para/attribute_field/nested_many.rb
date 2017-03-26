@@ -23,7 +23,12 @@ module Para
       end
 
       def nested_model_mappings(nested_attributes)
-        model = nested_attributes[:type].try(:constantize) || reflection.klass
+        model = if (type = nested_attributes[:type]).present?
+          nested_attributes[:type].try(:constantize)
+        else
+          reflection.klass
+        end
+
         mappings = attributes_mappings_for(nested_attributes)
 
         AttributeFieldMappings.new(model, mappings: mappings)
@@ -49,14 +54,34 @@ module Para
         else
           parent.association(name).build(attributes.slice('type')).tap do |resource|
             attributes['id'] = "__#{ index }"
-            # Note : This hack could break if the current method is called
-            #        in a way it was not meant to (in a Para resource controller
-            #        assignation process) but seemed to be the only way not to
-            #        override Rails nested fields assignation, which is a
-            #        huge method that we cannot split and that raised in our
-            #        use case
-            resource.define_singleton_method(:id) { attributes['id'] }
+            temporarily_extend_new_resource(resource, attributes)
           end
+        end
+      end
+
+      # This method extends the current resource so its #id method returns a
+      # fake id based on the given attributes, but immediately returns to its
+      # standard behavior of returning nil as soon as the `#assign_attributes`
+      # method is called.
+      #
+      # During nested attributes assignation, the id of the resource is used
+      # to assign it its nested params. When it is nil, a new resource is
+      # created, but since we already need our resource to be created at the
+      # time we parse the input params, we fake the presence of an id while the
+      # nested attributes assignation is running, and remove that behavior as
+      # soon as we don't need it anymore.
+      #
+      def temporarily_extend_new_resource(resource, attributes)
+        resource.instance_variable_set(:@_waiting_for_attributes_assignation, true)
+
+        resource.define_singleton_method(:assign_attributes) do |*args|
+          super(*args).tap do
+            @_waiting_for_attributes_assignation = false
+          end
+        end
+
+        resource.define_singleton_method(:id) do
+          @_waiting_for_attributes_assignation ? attributes['id'] : read_attribute(:id)
         end
       end
     end
