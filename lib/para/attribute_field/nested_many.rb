@@ -75,9 +75,8 @@ module Para
         resource.instance_variable_set(:@_waiting_for_attributes_assignation, true)
 
         resource.define_singleton_method(:assign_attributes) do |*args|
-          super(*args).tap do
-            @_waiting_for_attributes_assignation = false
-          end
+          @_waiting_for_attributes_assignation = false
+          super(*args)
         end
 
         resource.define_singleton_method(:id) do
