@@ -36,6 +36,7 @@
       font-weight: 700
 
   .navmenu-nav
+    background-color: $gray-lighter
     height: calc(100% - 60px)
     width: $left-menu-width-open
     padding: 0
@@ -55,21 +56,25 @@
 
     //** Para components
     .component-section-list-items
+      background-color: white
       list-style: none
       padding: 0
       margin: 0
 
 
     .component-section-title
+      background-color: $gray-lighter
+      color: $text-color
       width: 100%
       font-weight: bold
       text-transform: uppercase
-      background-color: $gray-lighter
       padding: 30px 30px 15px 15px
       line-height: 19px
       &:hover,
       &:focus
-        cursor: default
+        background-color: $gray-lighter
+        color: $text-color
+        // cursor: default
         text-decoration: none
       .fa
         margin-right: -15px
