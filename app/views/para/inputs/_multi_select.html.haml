@@ -22,6 +22,7 @@
         .panel-body
           %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
             %tbody
+              = render partial: 'para/admin/search/result', collection: option_resources
 
     .col-md-6
       .panel.panel-default.selected-items

@@ -18,9 +18,18 @@ module Para
             model: model,
             attribute_name: foreign_key,
             orderable: orderable?,
-            resources: resources
+            resources: resources,
+            option_resources: option_resources
           }
         )
+      end
+
+      def option_resources
+        @option_resources ||= if model.orderable?
+          model.ordered
+        else
+          model.all.sort_by { |resource| resource_name(resource) }
+        end
       end
 
       def parent_model
