@@ -92,7 +92,7 @@ module Para
       end
 
       def resource_model
-        self.class.resource_model
+        @resource_model ||= self.class.resource_model
       end
 
       def resource

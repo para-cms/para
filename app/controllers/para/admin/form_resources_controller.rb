@@ -3,10 +3,12 @@ require_dependency "para/application_controller"
 module Para
   module Admin
     class FormResourcesController < Para::Admin::ResourcesController
-      include Para::Admin::ResourceControllerConcerns
-
       before_action :load_and_authorize_form
       after_action :attach_resource_to_component, only: [:create]
+
+      # Include after resource loading to allow the concern to use the resource
+      # in before_action hooks
+      include Para::Admin::ResourceControllerConcerns
 
       private
 
