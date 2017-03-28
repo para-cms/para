@@ -1,6 +1,18 @@
 module Para
   module Admin
     module ResourceControllerConcerns
+      extend ActiveSupport::Concern
+
+      included do
+        before_action :set_resource_model_from_resource
+      end
+
+      private
+
+      def set_resource_model_from_resource
+        @resource_model = resource.class if resource
+      end
+
       def resource_model
         @resource_model ||= @component.try(:model)
       end

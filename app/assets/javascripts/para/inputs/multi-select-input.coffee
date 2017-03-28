@@ -19,7 +19,7 @@ class Para.MultiSelectInput extends Vertebra.View
     @availableItems = []
     @selectedItems = (@buildSelectedItem(el) for el in @$selectedItems.find('[data-selected-item-id]'))
     @refreshSelectedItems()
-    @showEmptyListHint(@noAvailableItemsTemplate, @$availableItems)
+    @refreshAvailableItems()
 
   onSearchKeyUp: ->
     @searchFor(@$searchField.val())
@@ -31,10 +31,11 @@ class Para.MultiSelectInput extends Vertebra.View
 
   onSearchReturn: (results) =>
     @$('[data-available-items] tbody').html(results)
+    @refreshAvailableItems()
 
+  refreshAvailableItems: ->
     item.destroy() for item in @availableItems
     @availableItems = (@buildAvailableItem(el) for el in @$('[data-available-items] tr'))
-
     @showEmptyListHint(@noAvailableItemsTemplate, @$availableItems) unless @availableItems.length
 
   buildAvailableItem: (el) ->
