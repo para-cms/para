@@ -1,6 +1,8 @@
 module Para
   module Inputs
     class MultiSelectInput < SimpleForm::Inputs::Base
+      include Para::Helpers::ResourceName
+      
       attr_reader :resource
 
       def input(wrapper_options = nil)
