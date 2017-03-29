@@ -53,6 +53,13 @@ module Para
       end
     end
 
+    initializer 'Override ActiveRecord::NestedAttributes' do
+      ActiveSupport.on_load(:active_record) do
+        prepend Para::Ext::ActiveRecord::NestedAttributes
+        extend Para::Ext::ActiveRecord::NestedAttributesClassMethods
+      end
+    end
+
     initializer 'Build components tree' do |app|
       components_config_path = Rails.root.join('config', 'components.rb')
 

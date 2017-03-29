@@ -11,3 +11,4 @@ end
 
 require 'para/ext/paperclip'
 require 'para/ext/active_job_status'
+require 'para/ext/active_record_nested_attributes'
