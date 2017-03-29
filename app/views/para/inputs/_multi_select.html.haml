@@ -36,4 +36,5 @@
           %table.table{ data: { :'selected-items' => true, :'no-selected-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: false }) } }
             %tbody
               - if resources.length > 0
-                = render partial: 'para/inputs/multi_select/selected_item', collection: resources, as: :result
+                - resources.each do |resource|
+                  = selected_item_for(resource)
