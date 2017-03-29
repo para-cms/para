@@ -23,7 +23,7 @@ module Para
         # actual resource.
         resource.assign_attributes(resource_params)
 
-        if resource.save!
+        if resource.save
           flash_message(:success, resource)
           redirect_to after_form_submit_path
         else
