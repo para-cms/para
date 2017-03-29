@@ -32,9 +32,7 @@ module Para
       next unless Kernel.const_defined?('Paperclip')
 
       ActiveSupport.on_load(:active_record) do
-        ::Paperclip::HasAttachedFile.send(
-          :include, Para::Ext::Paperclip::HasAttachedFileMixin
-        )
+        ::Paperclip::HasAttachedFile.prepend Para::Ext::Paperclip::HasAttachedFileMixin
       end
     end
 

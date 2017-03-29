@@ -14,7 +14,8 @@ require 'para/form_builder/tabs'
 # explicitly
 #
 SimpleForm::FormBuilder.class_eval do
-  include Para::FormBuilder::AttributesMappingsTracker
+  prepend Para::FormBuilder::AttributesMappingsTracker
+
   include Para::FormBuilder::Containers
   include Para::FormBuilder::FieldMappings
   include Para::FormBuilder::NestedForm

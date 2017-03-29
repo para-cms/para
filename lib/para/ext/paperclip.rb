@@ -4,12 +4,8 @@ module Para
       module HasAttachedFileMixin
         extend ActiveSupport::Concern
 
-        included do
-          alias_method_chain :define, :removeable_management
-        end
-
-        def define_with_removeable_management
-          define_without_removeable_management
+        def define
+          super
           define_removeable
         end
 
