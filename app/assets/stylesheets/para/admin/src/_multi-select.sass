@@ -5,10 +5,15 @@
 //== Main style
 //
 //##
-
 .multi-select-field
   .reorder-anchor-cell
     display: none
+
+  &.loading
+    // Display FontAwesome spinner when loading results
+    .fa-search::before
+      content: "\f110"
+
   &.orderable
     .reorder-anchor-cell
       display: table-cell

@@ -16,20 +16,30 @@ class Para.MultiSelectInput extends Vertebra.View
     @noSelectedItemsTemplate = @$('[data-no-selected-items]').data('no-selected-items')
     @noAvailableItemsTemplate = @$('[data-no-available-items]').data('no-available-items')
 
+    @throttledTriggerSearch = throttle(@triggerSearch, 300, trailing: true)
+
     @availableItems = []
     @selectedItems = (@buildSelectedItem(el) for el in @$selectedItems.find('[data-selected-item-id]'))
     @refreshSelectedItems()
     @refreshAvailableItems()
 
   onSearchKeyUp: ->
+    @throttledTriggerSearch()
+
+  triggerSearch: =>
     @searchFor(@$searchField.val())
 
   searchFor: (terms) ->
+    terms = trim(terms)
     return if terms is @terms
     @terms = terms
-    $.get(@searchURL, search: terms).done(@onSearchReturn)
+    @setLoading(true)
+    @_currentSearchXHR?.abort()
+    @_currentSearchXHR = $.get(@searchURL, search: terms).done(@onSearchReturn)
 
-  onSearchReturn: (results) =>
+  onSearchReturn: (results, b, c) =>
+    @_currentSearchXHR = null
+    @setLoading(false)
     @$('[data-available-items] tbody').html(results)
     @refreshAvailableItems()
 
@@ -126,6 +136,9 @@ class Para.MultiSelectInput extends Vertebra.View
 
     @refreshSelectedItems()
 
+  setLoading: (state) ->
+    @$el.toggleClass('loading', state)
+    @$('.fa-search').toggleClass('fa-spin', state)
 
 class Para.MultiSelectAvailableItem extends Vertebra.View
   events:
