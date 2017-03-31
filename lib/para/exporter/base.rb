@@ -54,7 +54,7 @@ module Para
         @resources ||= if options[:resources]
           options[:resources]
         elsif options[:search]
-          model.search(options[:search]).result
+          model.ransack(options[:search]).result
         else
           model.all
         end

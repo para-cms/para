@@ -16,7 +16,7 @@ module Para
       after_action :remove_resource_from_component, only: [:destroy]
 
       def index
-        @q = @component.resources.search(params[:q])
+        @q = @component.resources.ransack(params[:q])
         @resources = distinct_search_results(@q).page(params[:page]).per(params[:per_page])
 
         # Sort collection for orderable and trees
