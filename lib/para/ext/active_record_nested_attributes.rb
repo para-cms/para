@@ -18,7 +18,9 @@ module Para
             if rejected && attributes['id'].to_s.match(/\A__/)
               records = association(association_name).target
 
-              if (record = records.find { |res| res.id == attributes['id'] })
+              if ::ActiveRecord::Base === records
+                records.destroy
+              elsif (record = records.find { |res| res.id == attributes['id'] })
                 records.delete(record)
               end
             end
