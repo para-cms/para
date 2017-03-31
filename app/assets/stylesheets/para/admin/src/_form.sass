@@ -226,6 +226,23 @@ legend
   &:active, &:focus, &:hover
     z-index: 0
 
+//== Tabs error
+//
+//##
+
+.nav-tabs
+  a
+    &.has-error
+      color: $brand-danger
+  > li.active
+    > a,
+    > a:hover,
+    > a:focus
+      &.has-error
+        color: $brand-danger
+        border-bottom-color: $brand-danger
+
+
 //== Input with error
 //
 //##

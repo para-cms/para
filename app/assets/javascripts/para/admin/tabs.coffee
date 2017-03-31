@@ -4,23 +4,40 @@
 class Para.Tabs extends Vertebra.View
   events:
     'shown.bs.tab a[data-toggle="tab"]': 'onTabShown'
+    'change .tab-pane': 'onFormInputUpdate'
 
   initialize: (options = {}) ->
     @$anchorInput = options.$anchorInput
     @showActiveTab()
+    @refreshTabsErrors()
 
   showActiveTab: ->
-    if (hash = location.hash or @$anchorInput?.val())
-      @$('a[href="' + hash + '"]').tab('show')
+    if (hash = (location.hash or @$anchorInput?.val()))
+      @findTab(hash).tab('show')
 
   onTabShown: (e) =>
-    tabHash = $(e.target).attr('href').substr(1)
-    history.pushState(null, null, "##{ tabHash }")
-    @updateAnchorInput(tabHash)
+    tabHash = $(e.target).attr('href')
+    history.pushState(null, null, tabHash)
+    @updateAnchorInput()
 
   updateAnchorInput: ->
     @$anchorInput.val(location.hash) if @$anchorInput.length
 
+  refreshTabsErrors: ->
+    @$('[data-toggle="tab"]').each (i, tab) =>
+      @refreshTabErrors($(tab))
+
+  refreshTabErrors: ($tab) ->
+    $panel = @$($tab.attr('href'))
+    $tab.addClass('has-error') if $panel.find('.has-error').length
+
+  onFormInputUpdate: (e) ->
+    $tab = @findTab($(e.currentTarget).attr('id'))
+    @refreshTabErrors($tab)
+
+  findTab: (id) ->
+    id = id.replace(/^\#/, '')
+    @$('a[href="' + id + '"]')
 
 $(document).on 'page:change turbolinks:load', ->
   $('[data-form-tabs]').each (i, el) ->
