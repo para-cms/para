@@ -28,7 +28,7 @@ module Para
       end
 
       def resource_name
-        resource_model.model_name.singular_route_key
+        resource_model.model_name.singular_route_key if resource_model
       end
     end
   end
