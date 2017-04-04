@@ -36,10 +36,6 @@
 
 //** Dropdown active
 
-.selectize-dropdown,
-.selectize-dropdown.form-control
-  +border-radius($border-radius-base)
-
 .selectize-input,
 .selectize-input.full
   border-color: $input-border
@@ -82,7 +78,7 @@
     background-color: $dropdown-bg
     color: $dropdown-link-color
   .active
-    background-color: $dropdown-link-hover-bg
+    background-color: $gray-lighter
     color: $dropdown-link-hover-color
   .selected
     background-color: $dropdown-link-active-bg
@@ -101,22 +97,18 @@
     &:hover
       background-color: $blue-darker
 
-.selectize-dropdown-content
-  padding: 0
-
 //== Selectize Dropdown
 //
-//##
-//** Override z-index because of Fixed actions container
+//## Override z-index because of Fixed actions container
+
 .selectize-dropdown,
 .selectize-dropdown.form-control
+  +material-box-shadow(2)
   border: none
   margin: 8px 0 0 0
   z-index: $zindex-navbar-fixed + 20
-  +material-box-shadow(2)
 
 .selectize-dropdown
   [data-selectable]
-    border-bottom: 1px solid $gray-light
     line-weight: 300
     padding: 8px 12px
