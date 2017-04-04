@@ -1,7 +1,7 @@
 %li.node{ data: { id: root.id } }
   .node-row
     %span.handle
-      %i.fa.fa-arrows.fa-fw
+      %i.sort-dots
     %span.node-name
       = root.name
 
@@ -16,4 +16,3 @@
   %ul.tree
     %li.placeholder{ class: "#{ 'hidden' unless needs_placeholder?(root) }"}
     = render partial: find_partial_for(model, 'tree_item'), collection: root.children.ordered, as: :root, locals: { model: model }
-
