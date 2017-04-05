@@ -23,12 +23,13 @@ module Para
         super(*args, options) do |fields|
           fields_html = @template.capture { block.call(fields) }
 
-          fields_html + fields.attributes_mappings_field
+          fields_html + fields.attributes_mappings_field_for(fields)
         end
       end
 
-      def attributes_mappings_field
-        hidden_field :_attributes_mappings, value: @attributes_mappings.to_json
+      def attributes_mappings_field_for(fields)
+        hidden_field :_attributes_mappings, value: @attributes_mappings.to_json,
+                     data: { :'attributes-mappings' => fields.options[:child_index] }
       end
 
       private

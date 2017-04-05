@@ -27,7 +27,7 @@ module Para
             content << form.hidden_field(:type, value: resource.type)
           end
 
-          content << form.attributes_mappings_field
+          content << form.attributes_mappings_field_for(form)
         end
       end
     end

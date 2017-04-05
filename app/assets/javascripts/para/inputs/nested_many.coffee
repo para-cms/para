@@ -23,6 +23,7 @@ class Para.NestedManyField
 
   initializeCocoon: ->
     @$fieldsList.on 'cocoon:after-insert', $.proxy(@afterInsertField, this)
+    @$fieldsList.on 'cocoon:before-remove', $.proxy(@beforeRemoveField, this)
 
   afterInsertField: (e, $element) ->
     if ($collapsible = $element.find('[data-open-on-insert="true"]')).length
@@ -34,6 +35,12 @@ class Para.NestedManyField
       @sortUpdate()
 
     $element.simpleForm()
+
+  beforeRemoveField: (e, $element) ->
+    $nextEl = $element.next()
+    # Remove attributes mappings field for new records since it will try to
+    # create an empty nested resource otherwise
+    $nextEl.remove() if $nextEl.is('[data-attributes-mappings]') and not $element.is('[data-persisted]')
 
   openInsertedField: ($field) ->
     $target = $($field.attr('href'))

@@ -1,6 +1,6 @@
 - nested_locals ||= {}
 
-.panel.panel-default.form-fields{ class: ('nested-many-inset-panel' if inset) }
+.panel.panel-default.form-fields{ class: ('nested-many-inset-panel' if inset), data: { :'persisted' => form.object.persisted? } }
   .panel-heading
     = form.reorder_anchor
 
