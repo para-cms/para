@@ -14,14 +14,18 @@
 .dropdown-menu
   border: none
   +border-radius(2px)
-  margin: 8px 0 0
+  margin: 10px 0 0
   z-index: $zindex-navbar-fixed + 20
   > li
     > a
+      border-bottom: 1px solid $gray-lighter
       line-weight: 300
       padding: 12px 12px
       &:hover
         background-color: $gray-lighter
+    &:first-child
+      > a
+        border-top: 1px solid $gray-lighter
   &:after, &:before
     display: none
 
