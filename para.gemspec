@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise', '>= 3.0', '< 5.0'
   s.add_dependency 'simple_form', '~> 3.1'
   s.add_dependency 'simple_form_extension', '>= 1.4.5'
-  s.add_dependency 'active_decorator'
+  s.add_dependency 'active_decorator', '~> 0.9'
   s.add_dependency 'cocoon'
   s.add_dependency 'paperclip', '~> 4.2'
   s.add_dependency 'cancancan', '~> 1.9'
