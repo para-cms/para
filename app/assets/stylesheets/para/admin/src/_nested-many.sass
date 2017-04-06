@@ -19,7 +19,7 @@
 
   &.nested-many-field-inset
     .nested-many-inset-panel
-      border: 1px dashed #ccc
+      border: 1px dashed $gray
       +box-shadow(none)
 
       .panel-heading
@@ -28,6 +28,10 @@
 
     .nested-many-inset-add-button
       .btn
+        +box-shadow(none)
+        background-color: $gray-lighter
+        border: 1px dashed $gray
+        color: $gray
         display: block
         width: 100%
         padding: 30px
@@ -35,12 +39,12 @@
       &.open
         > .dropdown-menu
           display: block
+          margin-bottom: 100px
           width: 100%
 
           > li
-            display: block
-            float: left
-            width: 33.333333%
+            display: inline-block
+            width: 33%
             border: none
             text-align: center
 
