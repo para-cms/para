@@ -24,15 +24,19 @@
     color: white !important
     background-color: $brand
 
-@each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
-  .btn-shadow.btn-#{$class}
-    &:hover,
-    &:focus,
-    &:active,
-    &:active:focus,
-    &.active
-      background-color: $bg !important
-      border-color: $border !important
+=btn-shadow
+  @each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
+    &.btn-#{$class}
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:focus,
+      &.active
+        background-color: $bg !important
+        border-color: $border !important
+
+.btn-shadow
+  +btn-shadow
 
 //** Override bootstrap btns
 .btn
