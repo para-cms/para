@@ -118,18 +118,26 @@
 .navbar-default
   border: none
   padding-right: 22px
-  .nav > li > a
-    padding: 6px 10px
-    text-align: center
-    margin: 14px 3px
-    +border-radius($border-radius-small)
-    &.btn-home
-      background-color: $blue-darker
-      color: $gray-lighter
+  .nav > li >   
+    button
+      -webkit-appearance: none
+      border: none
+    a,
+    button
+      padding: 6px 10px
+      text-align: center
+      margin: 14px 3px
+      color: inherit
+      +border-radius($border-radius-small)
+      i
+        line-height: 14px
+      &.btn-home
+        background-color: $blue-darker
+        color: $gray-lighter
 
-    &.btn-power-off
-      background-color: $brand-danger
-      color: $gray-lighter
+      &.btn-power-off
+        background-color: $brand-danger
+        color: $gray-lighter
 
 .navbar-fixed-top
   padding-left: 0
