@@ -54,12 +54,15 @@ module Para
       private
 
       def resource_model
-        @resource_model ||=
-          if params[:type] && @component.subclassable_with?(params[:type])
-            params[:type].constantize
+        @resource_model ||= begin
+          type = params[:type].presence || (params[:resource] && params[:resource][:type])
+
+          if type && @component.subclassable_with?(type)
+            type.constantize
           else
             super
           end
+        end
       end
 
       def load_and_authorize_crud_resource
