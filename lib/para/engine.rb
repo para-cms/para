@@ -84,6 +84,26 @@ module Para
       Para::Logging::ActiveJobLogSubscriber.attach_to :active_job
     end
 
+    # Allow any view or helper to check wether it is rendered inside the
+    # para admin by defaulting to false, and being overriden in
+    # Para::ApplicationController with true
+    #
+    initializer 'Add #admin? method to ActionController::Base' do
+      ActiveSupport.on_load(:action_controller) do
+        define_method(:admin?) { false }
+      end
+    end
+
+    initializer 'Include breadcrumbs manager in app ApplicationController' do
+      ActiveSupport.on_load(:action_controller) do
+        if Para.config.enable_app_breadcrumbs
+          include Para::Breadcrumbs::Controller
+        else
+          Para::ApplicationController.send(:include, Para::Breadcrumbs::Controller)
+        end
+      end
+    end
+
     # Allow generating resources in the gem without having all the unnecessary
     # files generated
     #

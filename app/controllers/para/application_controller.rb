@@ -1,7 +1,15 @@
 module Para
   class ApplicationController < ActionController::Base
-    include Para::Breadcrumbs::Controller
+    before_action :add_admin_home_breadcrumb
 
-    add_breadcrumb :home, :admin
+    def admin?
+      true
+    end
+
+    private
+
+    def add_admin_home_breadcrumb
+      add_breadcrumb :home, admin_path
+    end
   end
 end

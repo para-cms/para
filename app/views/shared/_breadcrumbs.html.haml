@@ -1,0 +1,4 @@
+%ul.breadcrumb
+  - breadcrumbs.each do |breadcrumb|
+    %li{ class: ('active' if breadcrumb.active?(request)) }
+      = link_to_unless breadcrumb.active?(request), breadcrumb.title, breadcrumb.path

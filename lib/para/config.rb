@@ -18,6 +18,9 @@ module Para
     mattr_accessor :resource_name_methods
     @@resource_name_methods = [:admin_name, :admin_title, :name, :title]
 
+    mattr_accessor :enable_app_breadcrumbs
+    @@enable_app_breadcrumbs = true
+
     mattr_reader :plugins
     @@plugins = Para::Plugins::Set.new
 

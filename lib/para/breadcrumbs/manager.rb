@@ -3,8 +3,16 @@ module Para
     class Manager
       include Enumerable
 
+      attr_reader :controller
+
+      delegate :length, to: :breadcrumbs
+
+      def initialize(controller)
+        @controller = controller
+      end
+
       def add(identifier, path = nil, *args)
-        breadcrumbs << Breadcrumb.new(identifier, path, *args)
+        breadcrumbs << Breadcrumb.new(identifier, path, controller, *args)
       end
 
       def breadcrumbs

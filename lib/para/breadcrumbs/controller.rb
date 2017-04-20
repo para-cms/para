@@ -6,6 +6,8 @@ module Para
       included do
         class_attribute :_class_level_breadcrumbs
 
+        before_action :build_breadcrumbs_manager
+
         helper_method :add_breadcrumb, :breadcrumbs
         helper ViewHelper
       end
@@ -15,11 +17,18 @@ module Para
       end
 
       def breadcrumbs
-        Para.store[:breadcrumbs] ||= begin
-          manager = Breadcrumbs::Manager.new
-          _class_level_breadcrumbs.each { |args| manager.add(*args) }
-          manager
-        end
+        build_breadcrumbs_manager
+      end
+
+      private
+
+      def build_breadcrumbs_manager
+        Para.store['para.breadcrumbs'] ||=
+          Breadcrumbs::Manager.new(self).tap do |manager|
+            if _class_level_breadcrumbs
+              _class_level_breadcrumbs.each { |args| manager.add(*args) }
+            end
+          end
       end
 
       module ClassMethods
@@ -30,8 +39,12 @@ module Para
       end
 
       module ViewHelper
+        # Render the breadcrumbs view depending wether it is in the admin or
+        # in front, allowing the front view to be overriden in app
+        #
         def render_breadcrumbs
-          render partial: 'para/admin/shared/breadcrumbs'
+          prefix = controller.admin? ? 'para/admin/' : ''
+          render partial: "#{ prefix }shared/breadcrumbs"
         end
       end
     end

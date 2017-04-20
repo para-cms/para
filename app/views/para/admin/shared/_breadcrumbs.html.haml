@@ -1,5 +1,4 @@
 %ul.breadcrumb.pull-left
   - breadcrumbs.each do |breadcrumb|
-    - active = breadcrumb.active?(request)
-    %li{ class: ('active' if active) }
+    %li{ class: ('active' if breadcrumb.active?(request)) }
       = link_to breadcrumb.title, breadcrumb.path
