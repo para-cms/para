@@ -1,7 +1,7 @@
 scrollToComponentSection = ($component, duration = 0) ->
   sectionOffset = $component.closest('.component-section-item').offset().top + $('.navmenu').scrollTop()
   headerHeight = $('.navmenu .navmenu-brand').outerHeight()
-  $('.navmenu').scrollTo(sectionOffset - headerHeight, duration: duration)
+  $('.navmenu-nav').scrollTo(sectionOffset - headerHeight, duration: duration)
 
 responsive_sidebar_navigation = ->
   # Scroll to active element's section on page change

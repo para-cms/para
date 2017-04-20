@@ -24,15 +24,19 @@
     color: white !important
     background-color: $brand
 
-@each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
-  .btn-shadow.btn-#{$class}
-    &:hover,
-    &:focus,
-    &:active,
-    &:active:focus,
-    &.active
-      background-color: $bg !important
-      border-color: $border !important
+=btn-shadow
+  @each $class, $bg, $border in (primary, $btn-primary-bg, $btn-primary-border), (danger, $btn-danger-bg, $btn-danger-border), (default, $btn-default-bg, $btn-default-border), (success, $btn-success-bg, $btn-success-border), (warning, $btn-warning-bg, $btn-warning-border), (info, $btn-info-bg, $btn-info-border)
+    &.btn-#{$class}
+      &:hover,
+      &:focus,
+      &:active,
+      &:active:focus,
+      &.active
+        background-color: $bg !important
+        border-color: $border !important
+
+.btn-shadow
+  +btn-shadow
 
 //** Override bootstrap btns
 .btn
@@ -57,7 +61,7 @@
 //** Override boostrap active btns if here is in dropdown
 .btn-group.open .dropdown-toggle,
 .dropdown.open .dropdown-toggle
-  +material-box-shadow(2)
+  +material-box-shadow-soft(2)
 
 
 //** Override the default btn of bootstrap
@@ -68,11 +72,11 @@
 
 //** Override default comportement of bootstrap with btn shadow
 .btn-shadow
-  +material-box-shadow(1)
+  +material-box-shadow-soft(1)
   +default-transition
   &:active,
   &.active
-    +material-box-shadow(2)
+    +material-box-shadow-soft(2)
 
 //** Btn outline
 .btn-default-outline

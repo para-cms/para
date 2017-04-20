@@ -1,7 +1,7 @@
 //
 // Selectize
 // --------------------------------------------------
-
+@import "compass/css3/user-interface"
 @import "para/admin/src/variables"
 @import "para/admin/src/mixins"
 
@@ -13,8 +13,6 @@
 .selectize-control,
 .selectize-control.form-control
   line-height: 0
-
-//** Multi
 
 //** Single
 .selectize-control
@@ -29,7 +27,7 @@
         border: none
         margin-top: -6px
         color: $gray
-
+    
 //** Dropdown
 
 //** Active system
@@ -103,7 +101,7 @@
 
 .selectize-dropdown,
 .selectize-dropdown.form-control
-  +material-box-shadow(2)
+  +material-box-shadow-soft(2)
   border: none
   margin: 8px 0 0 0
   z-index: $zindex-navbar-fixed + 20

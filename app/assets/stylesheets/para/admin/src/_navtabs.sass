@@ -7,11 +7,14 @@
 //##
 
 //** Add negative margin top if the nav tab is the frst content of the page
-.page-content-wrap
+.page-content-wrap 
   .nav-tabs
-    +first-child()
-      margin-top: -25px
-      +border-radius($border-radius-small)
+    margin-top: -25px
+    +border-radius($border-radius-small)
+  .form-inputs  
+    .nav-tabs
+      margin-top: 0
+      +border-radius(0)
 
 //** Override bootstrap nav tabs
 .nav-tabs

@@ -8,8 +8,6 @@
 
 .root-tree
   padding-left: 0
-  > .node
-    margin-bottom: 20px
   .tree
     padding-left: 40px
 
@@ -25,11 +23,15 @@
 .node
   border-left: 4px solid $gray-light
   padding-bottom: 5px
+  margin-top: 15px
   .node-row
-    padding: 5px
     +default-transition
+    border-bottom: 1px dashed $gray-light
+    padding: 5px
+    &:first-child
+      border-top: 1px dashed $gray-light
     &:hover
-      background-color: $gray-light
+      background-color: $gray-lighter
     .btn
       margin: 0 3px
 
@@ -42,11 +44,9 @@
     +inline-block
 
   .placeholder
+    border: dashed 1px $gray
     height: 30px
-    border: dotted 1px $gray
     margin-top: 5px
 
 .tree
   list-style: none
-  .node:last-child
-    margin-bottom: 20px

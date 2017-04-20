@@ -15,27 +15,27 @@
 .navmenu-default
   background-color: #fff
   border: none
-  +box-shadow(10px 0px 20px 0px rgba(32,36,45, .06), 6px 0px 6px 0px rgba(32,36,45, .10))
+  +material-box-shadow-soft(3)
 
   .navmenu-brand
+    // +background(linear-gradient(to top right, $brand-primary, $brand-info))
     background-color: $blue-darker
-    margin: 0
-    padding: 20px
+    color: white
+    display: block
     font-size: 1.4em
     font-weight: 300
     line-height: 20px
-    text-transform: uppercase
+    margin: 0
+    padding: 20px
     text-align: center
-    color: #fff
-    display: block
+    text-transform: uppercase
     &:hover,
     &:focus
       background-color: $blue-darker
-      color: #fff
-    > b
-      font-weight: 700
+      color: white
 
   .navmenu-nav
+    // background-color: $navbar-default-bg
     background-color: $gray-lighter
     height: calc(100% - 60px)
     width: $left-menu-width-open
@@ -51,30 +51,32 @@
       color: $gray
       &:hover,
       &:focus
-        color: $gray
-        background-color: $gray-lighter
+        // background-color: $navbar-default-bg
+        // color: white
+        background-color: $gray
+        color: $gray-lighter
 
     //** Para components
     .component-section-list-items
       background-color: white
       list-style: none
-      padding: 0
       margin: 0
-
+      padding: 0
 
     .component-section-title
+      // background-color: $navbar-default-bg
+      // color: white
       background-color: $gray-lighter
       color: $text-color
-      width: 100%
       font-weight: bold
-      text-transform: uppercase
-      padding: 30px 30px 15px 15px
       line-height: 19px
+      padding: 30px 30px 15px 15px
+      text-transform: uppercase
+      width: 100%
       &:hover,
       &:focus
         background-color: $gray-lighter
         color: $text-color
-        // cursor: default
         text-decoration: none
       .fa
         margin-right: -15px
@@ -84,23 +86,29 @@
 
     .component-item
       a, button
-        display: block
-        line-height: 19px
+        // background-color: $text-color
+        // color: $gray-light
         color: $text-color
+        display: block
         font-weight: 400
+        line-height: 19px
         padding: 11px 13px 11px 15px
         text-decoration: none
-        border-right: 2px solid #fff
+
         +default-transition
         &:hover,
         &:focus
+          // background-color: $navbar-default-bg
           background-color: $gray-lighter
           padding-left: 25px
 
       &.active
         a, button
+          // background-color: lighten($navbar-default-bg, 10%)
           background-color: $gray-light
           border-color: $brand-primary
+          border-left: 2px solid $brand-primary
+          // color: white
           padding-left: 25px
 
 //== Top navbar
@@ -110,18 +118,26 @@
 .navbar-default
   border: none
   padding-right: 22px
-  .nav > li > a
-    padding: 6px 10px
-    text-align: center
-    margin: 14px 3px
-    +border-radius($border-radius-small)
-    &.btn-home
-      background-color: $blue-darker
-      color: $gray-lighter
+  .nav > li >   
+    button
+      -webkit-appearance: none
+      border: none
+    a,
+    button
+      padding: 6px 10px
+      text-align: center
+      margin: 14px 3px
+      color: inherit
+      +border-radius($border-radius-small)
+      i
+        line-height: 14px
+      &.btn-home
+        background-color: $blue-darker
+        color: $gray-lighter
 
-    &.btn-power-off
-      background-color: $brand-danger
-      color: $gray-lighter
+      &.btn-power-off
+        background-color: $brand-danger
+        color: $gray-lighter
 
 .navbar-fixed-top
   padding-left: 0

@@ -19,7 +19,7 @@
 
   &.nested-many-field-inset
     .nested-many-inset-panel
-      border: 1px dashed #ccc
+      border: 1px dashed $gray
       +box-shadow(none)
 
       .panel-heading
@@ -28,6 +28,10 @@
 
     .nested-many-inset-add-button
       .btn
+        +box-shadow(none)
+        background-color: $gray-lighter
+        border: 1px dashed $gray
+        color: $gray
         display: block
         width: 100%
         padding: 30px
@@ -35,22 +39,31 @@
       &.open
         > .dropdown-menu
           display: block
+          margin: 0 0 100px 0
+          padding: 10px
           width: 100%
 
           > li
+            border: none
             display: block
             float: left
-            width: 33.333333%
-            border: none
+            padding: 10px
             text-align: center
+            width: 33.333333%
 
-            &:hover
-              background-color: $brand-primary
-              > a
-                color: $brand-primary
             > a
+              +border-radius(2px)
+              +default-transition
+              background: image_url('para/admin/template-section.svg') no-repeat center $gray-lighter
+              border: 1px dashed $gray
+              color: $gray
               display: block
-              width: 100%
+              font-weight: bold
               height: 100%
-              padding: 40px
-              border-bottom: none
+              padding: 75px 5px
+              text-transform: uppercase
+              width: 100%
+              white-space: normal
+              &:hover
+                +material-box-shadow-soft(3)
+                border: 1px dashed $gray-lighter
