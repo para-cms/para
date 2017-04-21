@@ -19,7 +19,11 @@ module Para
     end
 
     def method_missing(method, *args, &block)
-      component_for(method) || super
+      if (component = component_for(method))
+        component.tap(&ActiveDecorator::Decorator.instance.method(:decorate))
+      else
+        super
+      end
     end
 
     def section_for(identifier)
