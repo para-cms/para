@@ -57,5 +57,27 @@
     &.full
       font-size: 0.9em
 
+  .input-group
+    +filter-style
+    .form-control
+      &:focus
+        +box-shadow(none)
+    .form-control,
+    .input-group-btn
+      background-color: transparent
+      border: none
+      +border-left-radius(20px)
+    .input-group-btn
+      overflow: hidden
+      +border-left-radius(0)
+      +border-right-radius(20px)
+    .btn
+      background-color: transparent
+      color: $gray
+      border-color: transparent
+      &:hover
+        color: $gray-dark    
+
+
 .page-entries-info
   font-weight: 300

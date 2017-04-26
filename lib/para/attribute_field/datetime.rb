@@ -10,7 +10,7 @@ module Para
       end
 
       def wrapper_name
-        :horizontal_form
+        :vertical_form
       end
     end
   end
