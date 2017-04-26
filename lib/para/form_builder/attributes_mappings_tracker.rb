@@ -20,6 +20,8 @@ module Para
       end
 
       def fields_for(*args, options, &block)
+        options.reverse_merge!(track_attribute_mappings: options[:track_attribute_mappings])
+
         super(*args, options) do |fields|
           fields_html = @template.capture { block.call(fields) }
 
@@ -28,6 +30,8 @@ module Para
       end
 
       def attributes_mappings_field_for(fields)
+        return unless options[:track_attribute_mappings]
+
         hidden_field :_attributes_mappings, value: @attributes_mappings.to_json,
                      data: { :'attributes-mappings' => fields.options[:child_index] }
       end
