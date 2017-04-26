@@ -5,6 +5,7 @@ module Para
         as: :resource,
         wrapper: :vertical_form,
         wrapper_mappings: Para::SimpleFormConfig.wrapper_mappings,
+        track_attribute_mappings: true,
         html: { class: '', data: { :'para-form' => true } }
       }
 
