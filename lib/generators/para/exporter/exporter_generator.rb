@@ -14,15 +14,19 @@ module Para
 
         template(
           "#{ base_exporter_template_name_for(format) }_exporter.rb",
-          "app/exporters/#{ plural_file_name }_exporter.rb"
+          "app/exporters/#{ exporter_name }.rb"
         )
       end
     end
 
     private
 
-    def model_exporter_name
-      Para::Exporter.model_exporter_name(class_name)
+    def exporter_class_name
+      exporter_name.camelize
+    end
+
+    def exporter_name
+      [plural_file_name, 'exporter'].join('_')
     end
 
     def base_exporter_template_name_for(format)

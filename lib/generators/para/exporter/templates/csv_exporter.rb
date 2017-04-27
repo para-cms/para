@@ -1,4 +1,4 @@
-class <%= model_exporter_name %> < Para::Exporter::Csv
+class <%= exporter_class_name %> < Para::Exporter::Csv
   def name
     '<%= file_name %>'
   end

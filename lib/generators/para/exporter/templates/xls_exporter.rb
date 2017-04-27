@@ -1,4 +1,4 @@
-class <%= model_exporter_name %> < Para::Exporter::Xls
+class <%= exporter_class_name %> < Para::Exporter::Xls
   def name
     '<%= file_name %>'
   end
