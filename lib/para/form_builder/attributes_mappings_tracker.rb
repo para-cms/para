@@ -19,7 +19,8 @@ module Para
         super(attribute_name, options)
       end
 
-      def fields_for(*args, options, &block)
+      def fields_for(*args, &block)
+        options = args.extract_options!
         options.reverse_merge!(track_attribute_mappings: options[:track_attribute_mappings])
 
         super(*args, options) do |fields|
@@ -39,6 +40,8 @@ module Para
       private
 
       def store_attribute_mapping_for(attribute_name, options, &block)
+        return unless options[:track_attribute_mappings]
+
         input = find_input(attribute_name, options, &block)
         type = input.class.name.demodulize.underscore.gsub(/_input\z/, '')
 
