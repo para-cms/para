@@ -11,9 +11,28 @@ en:
         destroy:
           success: "%{model} deleted"
           error: "Could not delete %{model}"
+        clone:
+          success: "%{model} cloned"
+          error: "Could not clone %{model}"  
+    
+    jobs:
+      para/importer/base:
+        progressing: "The file is being imported, please wait a few moments ..."
+        success: "The import of the file was successfully completed"
+        success_with_errors: |
+          The import of the file was done, but some lines 
+          were not taken into account due to errors :
+        other_errors: "<br>And <b>%{count}</b> others errors ..."
+        error: "The selected file contains errors and could not be imported"
+
+      para/exporter/base:
+        progressing: "The file is being exported, please wait a few moments ..."
+        success: "The export file was generated, its download will start ..."
+        error: "Error generating the export file ..."
 
     admin:
-      title: "Admin"
+      title: Administration
+      brand: "<b>Admin</b>istration"
       toggle_navigation: "Open navigation"
       back_to_app: "Back to app"
       sign_out: "Sign out"
@@ -21,6 +40,9 @@ en:
     confirmation:
       shared:
         destroy: 'Are you sure that you want to delete %{model} ?'
+    
+    component:
+      none_created: "No components yet ..."
 
     component:
       create: "Create a component"
@@ -33,6 +55,9 @@ en:
 
     dashboard:
       title: "Dashboard"
+      statcard:
+        ressources_count: "Number of entries : %{count}"
+        component_form_ressource: "See page"
 
     component_section:
       add: "Add a component section"
@@ -49,6 +74,16 @@ en:
         add: "Add"
         remove: "Remove"
         new: "New"
+      multi_select:
+        available:
+          title: "Available"
+          no_items: "Search for items with the search bar above"
+          add_all: "Add all"
+          already_selected: "Add"
+        selected:
+          title: "Add"
+          no_items: "Use the search form on the left to add items."
+          remove_all: "Remove all"
 
     list:
       search_title: "Search"
@@ -58,13 +93,17 @@ en:
 
     export:
       name: "Export %{name}"
-      as: "Exporter (.%{extension})"
+      as: "Exporting (.%{extension})"
 
     import:
       name: Import
       select: "Select file"
       change: "Change file"
+      help_text: |
+        Select an Excel file (.xls, .xlsx) ou CSV (.csv) to import and
+        click the "Importing" button.
       placeholder: File format ( .csv .xlsx )
+      row_error_prefix: "Line %{number} :"
 
     shared:
       save: "Save"
@@ -73,6 +112,10 @@ en:
       search: "Search"
       save_and_edit: "Save and edit"
       save_and_add_another_button: "Save and create a other"
+      destroy: "Destroy"
+      edit: "Edit"
+      copy: "Duplicate"
+      close: "Close"
 
     types:
       boolean:
@@ -103,4 +146,24 @@ en:
         type: "Type"
         model_type: "Resource"
         namespaced: "Only list component's resources"
+  
+  activemodel:
+    models:
+      settings_rails/form:
+        one: "Configuration"
+        other: "Configuration"
+      para/exporter/base:
+        one: "Export of data"
+        other: "Exports of data"
+
+  helpers:
+    page_entries_info:
+      number_per_page: Number of entries per page
+      one_page:
+        display_entries:
+          zero: "No entries found"
+          one: "Display of entries <b>1&nbsp;-&nbsp;1</b> to <b>1</b> in total"
+          other: "Display of entries <b>1&nbsp;-&nbsp;%{count}</b> to <b>%{count}</b> in total"
+      more_pages:
+        display_entries: "Display of entries <b>%{first}&nbsp;-&nbsp;%{last}</b> to <b>%{total}</b> in total"
 
