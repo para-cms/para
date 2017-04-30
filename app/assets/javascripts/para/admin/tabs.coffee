@@ -15,8 +15,6 @@ class Para.Tabs extends Vertebra.View
     if (hash = (location.hash or @$anchorInput?.val()))
       @findTab(hash).tab('show')
 
-    console.log 'tab', hash, @findTab(hash)
-
   onTabShown: (e) =>
     tabHash = $(e.target).attr('href')
     history.pushState(null, null, tabHash)
