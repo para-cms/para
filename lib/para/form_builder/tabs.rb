@@ -51,6 +51,7 @@ module Para
 
         def dom_id
           @dom_id = [
+            'form-tab',
             builder.nested_resource_dom_id.presence,
             identifier.to_s.parameterize
           ].compact.join('-')
