@@ -18,9 +18,8 @@
   +material-box-shadow-soft(3)
 
   .navmenu-brand
-    // +background(linear-gradient(to top right, $brand-primary, $brand-info))
-    background-color: $blue-darker
-    color: white
+    +background(linear-gradient(to top right, $brand-primary, $brand-info))
+    color: #fff
     display: block
     font-size: 1.4em
     font-weight: 300
@@ -35,8 +34,7 @@
       color: white
 
   .navmenu-nav
-    // background-color: $navbar-default-bg
-    background-color: $gray-lighter
+    background-color: $navbar-default-bg
     height: calc(100% - 60px)
     width: $left-menu-width-open
     padding: 0
@@ -51,10 +49,8 @@
       color: $gray
       &:hover,
       &:focus
-        // background-color: $navbar-default-bg
-        // color: white
-        background-color: $gray
-        color: $gray-lighter
+        background-color: $navbar-default-bg
+        color: white
 
     //** Para components
     .component-section-list-items
@@ -64,10 +60,8 @@
       padding: 0
 
     .component-section-title
-      // background-color: $navbar-default-bg
-      // color: white
-      background-color: $gray-lighter
-      color: $text-color
+      background-color: $navbar-default-bg
+      color: white
       font-weight: bold
       line-height: 19px
       padding: 30px 30px 15px 15px
@@ -75,8 +69,6 @@
       width: 100%
       &:hover,
       &:focus
-        background-color: $gray-lighter
-        color: $text-color
         text-decoration: none
       .fa
         margin-right: -15px
@@ -86,29 +78,27 @@
 
     .component-item
       a, button
-        // background-color: $text-color
-        // color: $gray-light
-        color: $text-color
+        background-color: $text-color
         display: block
         font-weight: 400
         line-height: 19px
+        color: $gray-light
+        font-weight: 400
         padding: 11px 13px 11px 15px
         text-decoration: none
 
         +default-transition
         &:hover,
         &:focus
-          // background-color: $navbar-default-bg
-          background-color: $gray-lighter
           padding-left: 25px
+          background-color: $navbar-default-bg
 
       &.active
         a, button
-          // background-color: lighten($navbar-default-bg, 10%)
-          background-color: $gray-light
-          border-color: $brand-primary
           border-left: 2px solid $brand-primary
-          // color: white
+          background-color: lighten($navbar-default-bg, 10%)
+          border-color: $brand-primary
+          color: white
           padding-left: 25px
 
 //== Top navbar
