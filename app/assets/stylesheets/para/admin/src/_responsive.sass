@@ -7,6 +7,20 @@
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min)
+  //== Fixed actions
+  //
+  //## See form.sass
+  .form-fixed-actions
+    .form-actions
+      .btn
+        margin-bottom: 0
+        margin-right: 5px
+
+  //== Nested many
+  //
+  //## See neste_many.sass
+  .nested-many-field.nested-many-field-inset .nested-many-inset-add-button.open > .dropdown-menu > li
+    width: 50%
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min)
@@ -32,19 +46,21 @@
   .loading-spinner
     margin-left: ($left-menu-width-open / 2) - ($spinner-size / 2)
 
-  //== Fixed actions
+  //== Nested many
   //
-  //## See form.sass
-  .form-fixed-actions
-    .form-actions
-      // left: $left-menu-width-open + 50px
-      .btn
-        margin-bottom: 0
-        margin-right: 5px
+  //## See neste_many.sass
+  .nested-many-field.nested-many-field-inset .nested-many-inset-add-button.open > .dropdown-menu > li
+    width: 33.333333%
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min)
-
+  //== Nested many
+  //
+  //## See neste_many.sass
+  .nested-many-field.nested-many-field-inset .nested-many-inset-add-button.open > .dropdown-menu > li > a
+    background-position: center center
+    padding: 75px 5px
+    height: 100%
 
 //== Max width
 //
@@ -83,6 +99,7 @@
     .form-actions
       padding-right: 15px
       padding-left: 15px
+      left: 50px
       .btn
         width: 100%
 
