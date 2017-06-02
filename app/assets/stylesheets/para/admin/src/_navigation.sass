@@ -18,7 +18,7 @@
   +material-box-shadow-soft(3)
 
   .navmenu-brand
-    +background(linear-gradient(to top right, $brand-primary, $brand-info))
+    background-color: $blue-darker
     color: #fff
     display: block
     font-size: 1.4em
@@ -34,7 +34,7 @@
       color: white
 
   .navmenu-nav
-    background-color: $navbar-default-bg
+    background-color: $gray-lighter
     height: calc(100% - 60px)
     width: $left-menu-width-open
     padding: 0
@@ -49,8 +49,8 @@
       color: $gray
       &:hover,
       &:focus
-        background-color: $navbar-default-bg
-        color: white
+        background-color: $gray
+        color: $gray-lighter
 
     //** Para components
     .component-section-list-items
@@ -60,8 +60,8 @@
       padding: 0
 
     .component-section-title
-      background-color: $navbar-default-bg
-      color: white
+      background-color: $gray-lighter
+      color: $text-color
       font-weight: bold
       line-height: 19px
       padding: 30px 30px 15px 15px
@@ -69,6 +69,8 @@
       width: 100%
       &:hover,
       &:focus
+        background-color: $gray-lighter
+        color: $text-color
         text-decoration: none
       .fa
         margin-right: -15px
@@ -78,11 +80,11 @@
 
     .component-item
       a, button
-        background-color: $text-color
+        background-color: transparent
         display: block
         font-weight: 400
         line-height: 19px
-        color: $gray-light
+        color: $text-color
         font-weight: 400
         padding: 11px 13px 11px 15px
         text-decoration: none
@@ -91,14 +93,13 @@
         &:hover,
         &:focus
           padding-left: 25px
-          background-color: $navbar-default-bg
+          background-color: $gray-lighter
 
       &.active
         a, button
           border-left: 2px solid $brand-primary
-          background-color: lighten($navbar-default-bg, 10%)
-          border-color: $brand-primary
-          color: white
+          background-color: $gray-light
+          color: $text-color
           padding-left: 25px
 
 //== Top navbar
@@ -138,3 +139,35 @@
 .navbar-toggle
   float: left
   display: block
+
+//** Dark theme override
+//***********************
+.dark-theme.navmenu-default
+  .navmenu-brand
+    +background(linear-gradient(to top right, $brand-primary, $brand-info))
+  .navmenu-nav
+    background-color: $navbar-default-bg
+    > li > a
+      &:hover,
+      &:focus
+        background-color: $navbar-default-bg
+        color: white
+  .component-section-title
+    background-color: $navbar-default-bg
+    color: white
+    &:hover,
+    &:focus
+      background-color: transparent
+      color: white
+  .component-item
+    a, button
+      background-color: $text-color
+      color: $gray-lighter
+      &:hover,
+      &:focus
+        background-color: $navbar-default-bg
+    &.active
+      a, button  
+        background-color: lighten($navbar-default-bg, 10%)
+        border-color: $brand-primary
+        color: white

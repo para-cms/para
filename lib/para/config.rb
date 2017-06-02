@@ -39,6 +39,9 @@ module Para
     mattr_accessor :page_actions
     @@page_actions = {}
 
+    mattr_accessor :dark_theme
+    @@dark_theme = false
+
     # Allows changing default cache store used by Para to store jobs through
     # the ActiveJob::Status gem
     #

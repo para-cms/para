@@ -26,6 +26,10 @@ Para.config do |config|
   #
   # config.resource_name_methods += [:full_name]
 
+  # Configure the theme navigation bar color not gray but blue darker
+  # 
+  # config.dark_theme = true
+
   # Set if the Para::Breadcrumb::Controller module should be included into the
   # app, allowing easy breadcrumbs management in the app.
   #
