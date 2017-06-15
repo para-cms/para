@@ -20,10 +20,10 @@ module Para
       end
 
       def fields_for(*args, &block)
-        options = args.extract_options!
-        options.reverse_merge!(track_attribute_mappings: options[:track_attribute_mappings])
+        fields_options = args.extract_options!
+        fields_options.reverse_merge!(track_attribute_mappings: options[:track_attribute_mappings])
 
-        super(*args, options) do |fields|
+        super(*args, fields_options) do |fields|
           fields_html = @template.capture { block.call(fields) }
 
           fields_html + fields.attributes_mappings_field_for(fields)
@@ -39,10 +39,10 @@ module Para
 
       private
 
-      def store_attribute_mapping_for(attribute_name, options, &block)
+      def store_attribute_mapping_for(attribute_name, input_options, &block)
         return unless options[:track_attribute_mappings]
 
-        input = find_input(attribute_name, options, &block)
+        input = find_input(attribute_name, input_options, &block)
         type = input.class.name.demodulize.underscore.gsub(/_input\z/, '')
 
         @attributes_mappings[attribute_name] = type
