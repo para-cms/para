@@ -2,7 +2,9 @@ module Para
   module Inputs
     class MultiSelectInput < SimpleForm::Inputs::Base
       include Para::Helpers::ResourceName
-      
+      include Para::ModelHelper
+      include Para::SearchHelper
+
       attr_reader :resource
 
       def input(wrapper_options = nil)
@@ -21,16 +23,18 @@ module Para
             attribute_name: foreign_key,
             orderable: orderable?,
             resources: resources,
-            option_resources: option_resources
+            option_resources: option_resources,
+            search_param: search_param,
+            collection: collection
           }
         )
       end
 
       def option_resources
         @option_resources ||= if model.orderable?
-          model.ordered
+          collection.ordered
         else
-          model.all.sort_by { |resource| resource_name(resource) }
+          collection.sort_by { |resource| resource_name(resource) }
         end
       end
 
@@ -51,7 +55,22 @@ module Para
       end
 
       def attribute_field
-        @attribute_field ||= AttributeField::HasManyField.new(object.class, name: attribute_name)
+        @attribute_field ||= AttributeField::HasManyField.new(
+          object.class, name: attribute_name
+        )
+      end
+
+      def search_param
+        @search_param ||= options.fetch(:search_param) do
+          attributes = model_field_mappings(model).fields
+          fulltext_search_param_for(attributes)
+        end
+      end
+
+      def collection
+        @collection ||= options.fetch(:collection) do
+          model.all
+        end
       end
 
       def orderable?
@@ -65,13 +84,13 @@ module Para
       end
 
       def resource_position(resource)
-        if attribute_field.through_reflection
-          resource = join_resources.find do |res|
+        existing_resource = if attribute_field.through_reflection
+          join_resources.find do |res|
             res.send(attribute_field.through_relation_source_foreign_key) == resource.id
           end
         end
 
-        resource.position
+        existing_resource.position
       end
 
       def orderable_association

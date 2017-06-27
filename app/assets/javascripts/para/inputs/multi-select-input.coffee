@@ -12,6 +12,7 @@ class Para.MultiSelectInput extends Vertebra.View
 
     @searchURL = @$el.data('search-url')
     @orderable = @$el.is('[data-orderable]')
+    @searchParam = @$searchField.attr('name')
 
     @noSelectedItemsTemplate = @$('[data-no-selected-items]').data('no-selected-items')
     @noAvailableItemsTemplate = @$('[data-no-available-items]').data('no-available-items')
@@ -31,13 +32,14 @@ class Para.MultiSelectInput extends Vertebra.View
 
   searchFor: (terms) ->
     terms = trim(terms)
-    return if terms is @terms
+    return if terms is @terms or (!terms and !@terms)
     @terms = terms
     @setLoading(true)
     @_currentSearchXHR?.abort()
-    @_currentSearchXHR = $.get(@searchURL, search: terms).done(@onSearchReturn)
+    data = @$('[data-search-field-input]').serialize()
+    @_currentSearchXHR = $.get(@searchURL, data).done(@onSearchReturn)
 
-  onSearchReturn: (results, b, c) =>
+  onSearchReturn: (results) =>
     @_currentSearchXHR = null
     @setLoading(false)
     @$('[data-available-items] tbody').html(results)

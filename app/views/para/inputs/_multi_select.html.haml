@@ -4,7 +4,11 @@
   .row
     .col-md-6
       .input-group.filter-form
-        = text_field_tag :search, nil, class: 'string required form-control', autocomplete: 'off', data: { :'search-field' => true }
+        = text_field :q, search_param, class: 'string required form-control', autocomplete: 'off', data: { :'search-field' => true, :'search-field-input' => true }
+
+        -# Scope search results to the provided collection
+        = hidden_field_tag :'q[id_in]', collection.map(&:id).join(','), data: { :'search-field-input' => true } if collection
+
         %span.input-group-btn
           = button_tag type: 'button', class: 'btn' do
             = fa_icon 'search'
