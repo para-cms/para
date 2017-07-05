@@ -6,6 +6,7 @@ class @RemoteModalForm extends Vertebra.View
     'ajax:success form[data-remote]': 'formSuccess'
     'ajax:success a[data-remote]': 'pageLoaded'
     'ajax:error [data-remote]': 'formError'
+    'ajax:aborted:file [data-remote]': 'handleFormWithFiles'
     'hidden.bs.modal': 'modalHidden'
     'hide.bs.modal': 'modalHide'
 
@@ -24,6 +25,27 @@ class @RemoteModalForm extends Vertebra.View
     @replaceModalWith(jqXHR.responseText)
     @trigger('error')
 
+  # Intercept form jquery-ujs form submission when there are non-blank file
+  # inputs in the `remote` form, so we can submit the form through
+  # jquery.iframe-transport
+  #
+  handleFormWithFiles: (e) ->
+    @submitWithIframe($(e.currentTarget))
+    return false
+
+  submitWithIframe: ($form) ->
+    jqXHR = jQuery.ajax
+      url: $form.attr('action')
+      method: $form.attr('method')
+      files: $form.find(':file')
+      iframe: true
+      data: $form.find('input:not(:file), textarea, select').serializeArray()
+      processData: false
+
+    jqXHR
+      .done (data) => @formSuccess(null, data)
+      .fail (jqXHR) => @formError(null, jqXHR)
+
   pageLoaded: (e, response) ->
     @handleModalResponse(response)
 
@@ -35,7 +57,20 @@ class @RemoteModalForm extends Vertebra.View
 
   replaceModalWith: (modalMarkup) ->
     @hideModal()
-    @setElement($(modalMarkup).appendTo('body').modal())
+
+    # We try to find a modal in the returned elements from the server
+    $modal = $(modalMarkup).filter('.modal').eq(0)
+    # If there are no modal, we try to find a modal inside the returned elements
+    $modal = $modal.find('.modal') unless $modal.length
+    # If no modal is finally found, we return and don't do anything
+    return unless $modal.length
+
+    # Initialize the returned modal
+    $modal.appendTo('body')
+    $modal.modal()
+
+    # Configure the remote modal class to use the new modal and show it
+    @setElement($modal)
     @$el.data('remote-modal-form', this)
     @showModal()
 

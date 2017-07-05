@@ -50,6 +50,7 @@ module Para
     autoload :Breadcrumbs
     autoload :Cache
     autoload :Logging
+    autoload :IframeTransport
   end
 
   def self.config(&block)

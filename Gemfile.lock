@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    para (0.7.0)
+    para (0.7.1)
       active_decorator (~> 0.9)
       activejob-status
       bootstrap-sass (~> 3.3.0)
@@ -252,7 +252,7 @@ GEM
     ruby_parser (3.9.0)
       sexp_processor (~> 4.1)
     rubyzip (1.2.1)
-    sass (3.4.23)
+    sass (3.4.24)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)

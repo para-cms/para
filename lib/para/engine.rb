@@ -36,6 +36,14 @@ module Para
       end
     end
 
+    initializer 'Add IFrame transport support' do |app|
+      app.middleware.use Para::IframeTransport::Middleware
+
+      ActiveSupport.on_load(:action_controller) do
+        ActionDispatch::Request.prepend Para::Ext::Request::IFrameXHR
+      end
+    end
+
     initializer 'Add resource name methods to simple form extension' do
       ::SimpleFormExtension.resource_name_methods = (
         Para.config.resource_name_methods +
