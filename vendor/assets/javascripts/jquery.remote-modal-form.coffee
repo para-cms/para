@@ -6,6 +6,7 @@ class @RemoteModalForm extends Vertebra.View
     'ajax:success form[data-remote]': 'formSuccess'
     'ajax:success a[data-remote]': 'pageLoaded'
     'ajax:error [data-remote]': 'formError'
+    'ajax:aborted:file [data-remote]': 'handleFormWithFiles'
     'hidden.bs.modal': 'modalHidden'
     'hide.bs.modal': 'modalHide'
 
@@ -23,6 +24,27 @@ class @RemoteModalForm extends Vertebra.View
   formError: (e, jqXHR) ->
     @replaceModalWith(jqXHR.responseText)
     @trigger('error')
+
+  # Intercept form jquery-ujs form submission when there are non-blank file
+  # inputs in the `remote` form, so we can submit the form through
+  # jquery.iframe-transport
+  #
+  handleFormWithFiles: (e) ->
+    @submitWithIframe($(e.currentTarget))
+    return false
+
+  submitWithIframe: ($form) ->
+    jqXHR = jQuery.ajax
+      url: $form.attr('action')
+      method: $form.attr('method')
+      files: $form.find(':file')
+      iframe: true
+      data: $form.find('input:not(:file), textarea, select').serializeArray()
+      processData: false
+
+    jqXHR
+      .done (data) => @formSuccess(null, data)
+      .fail (jqXHR) => @formError(null, jqXHR)
 
   pageLoaded: (e, response) ->
     @handleModalResponse(response)

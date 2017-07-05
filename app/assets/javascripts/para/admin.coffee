@@ -9,6 +9,7 @@
 #= require html5-sortable
 #= require cocoon
 #= require jquery.remote-modal-form
+#= require jquery.iframe-transport
 #= require_self
 #= require_tree ./lib
 #= require_tree ./inputs

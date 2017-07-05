@@ -36,6 +36,12 @@ module Para
       end
     end
 
+    initializer 'Extend ActionDispatch::Request with xhr? method IFrame transport support' do
+      ActiveSupport.on_load(:action_controller) do
+        ActionDispatch::Request.prepend Para::Ext::Request::IFrameXHR
+      end
+    end
+
     initializer 'Add resource name methods to simple form extension' do
       ::SimpleFormExtension.resource_name_methods = (
         Para.config.resource_name_methods +
