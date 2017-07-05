@@ -36,7 +36,9 @@ module Para
       end
     end
 
-    initializer 'Extend ActionDispatch::Request with xhr? method IFrame transport support' do
+    initializer 'Add IFrame transport support' do |app|
+      app.middleware.use Para::IframeTransport::Middleware
+
       ActiveSupport.on_load(:action_controller) do
         ActionDispatch::Request.prepend Para::Ext::Request::IFrameXHR
       end

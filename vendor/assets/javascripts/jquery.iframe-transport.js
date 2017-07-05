@@ -217,19 +217,16 @@
               var doc = this.contentWindow ? this.contentWindow.document :
                 (this.contentDocument ? this.contentDocument : this.document),
                 root = doc.documentElement ? doc.documentElement : doc.body,
-                textarea = root.getElementsByTagName("textarea")[0],
-                type = textarea && textarea.getAttribute("data-type") || null,
-                status = textarea && textarea.getAttribute("data-status") || 200,
-                statusText = textarea && textarea.getAttribute("data-statusText") || "OK",
+                dataInput = $(root).find("[data-iframe-response-data]").remove()[0],
+                type = dataInput && dataInput.getAttribute("data-type") || null,
+                status = (dataInput && dataInput.getAttribute("data-status")) || 200,
+                statusText = dataInput && dataInput.getAttribute("data-statusText") || "OK",
                 content = {
                   html: root.innerHTML,
-                  text: type ?
-                    textarea.value :
-                    root ? (root.textContent || root.innerText) : null
+                  text: root ? (root.textContent || root.innerText) : null
                 };
 
-              if ($requestStatus = $(root).find('[data-request-status]')).length
-                status = $requestStatus.val()
+              jqXHR.responseText = content.html;
 
               cleanUp();
               completeCallback(status, statusText, content, type ?

@@ -57,7 +57,20 @@ class @RemoteModalForm extends Vertebra.View
 
   replaceModalWith: (modalMarkup) ->
     @hideModal()
-    @setElement($(modalMarkup).appendTo('body').modal())
+
+    # We try to find a modal in the returned elements from the server
+    $modal = $(modalMarkup).filter('.modal').eq(0)
+    # If there are no modal, we try to find a modal inside the returned elements
+    $modal = $modal.find('.modal') unless $modal.length
+    # If no modal is finally found, we return and don't do anything
+    return unless $modal.length
+
+    # Initialize the returned modal
+    $modal.appendTo('body')
+    $modal.modal()
+
+    # Configure the remote modal class to use the new modal and show it
+    @setElement($modal)
     @$el.data('remote-modal-form', this)
     @showModal()
 
