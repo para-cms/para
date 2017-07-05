@@ -28,7 +28,7 @@ class RemoteFileForm
       success: @success
       complete: @complete
       error: @error
-      crossDomain: $.rails.isCrossDomain(url)
+      crossDomain: $.rails.isCrossDomain?(url)
 
   buildXHR: =>
     xhr = $.ajaxSettings.xhr()
