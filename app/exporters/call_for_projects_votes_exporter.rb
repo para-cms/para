@@ -1,15 +1,38 @@
-class <%= exporter_class_name %> < Para::Exporter::Xls
+class CallForProjectsVotesExporter < Para::Exporter::Xls
+  attr_reader :call_for_projects
+
   def name
-    '<%= file_name %>'
+    'votes-appel-projets'
   end
 
   protected
 
+  def self.params_whitelist
+    [:call_for_projects_id]
+  end
+
+  def resources
+    resources = ActsAsVotable::Vote.joins(
+      "LEFT JOIN call_for_projects_applications " +
+        "ON call_for_projects_applications.id = votes.votable_id " +
+        "AND votes.votable_type = 'CallForProjectsApplication'"
+    ).includes(:voter, votable: :call_for_projects)
+
+    # Filter if available
+    resources = resources.where(
+      call_for_projects_applications: {
+        call_for_projects_id: params[:call_for_projects_id]
+      }
+    ) if params[:call_for_projects_id]
+
+    resources
+  end
+
   # Defining the fields that you want to export will export all those fields
   # directly to the XLS file
   #
-  def fields
-    [:id]
+  def headers
+    ['Appel à projets', 'Projet', 'E-mail', 'Nom', 'Prénom', 'Date du vote']
   end
 
   # If you need special behavior in the row generation (rendering associated
@@ -24,32 +47,16 @@ class <%= exporter_class_name %> < Para::Exporter::Xls
   #   fields = [...]
   #   fields.map!(&:encode)
   #
-  # def row_for(resource)
-  # end
-
-  # Whitelist params to be fetched from the controller and passed down to the
-  # exporter.
-  #
-  # For example, if you want to export posts for a given category, you
-  # can add the `:category_id` param to your export link, and whitelist
-  # this param here with :
-  #
-  #   def self.params_whitelist
-  #     [:category_id]
-  #   end
-  #
-  # It will be passed from the controller to the importer so it can be used
-  # to scope resources before exporting.
-  #
-  # Note that you'll manually need to scope the resources by overriding the
-  # #resources method.
-  #
-  # If you need automatic scoping, please use the `:q` param that accepts
-  # ransack search params and applies it to the resources.
-  #
-  # def self.params_whitelist
-  #   []
-  # end
+  def row_for(resource)
+    [
+      resource.votable.call_for_projects.title,
+      resource.votable.name,
+      resource.voter.email,
+      resource.voter.last_name,
+      resource.voter.first_name,
+      I18n.l(resource.created_at)
+    ]
+  end
 
   # If you need complete control over you XLS generation, use the following
   # method instead of the #fields or #row_for methods, and return a valid XLS

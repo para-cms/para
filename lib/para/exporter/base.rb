@@ -63,6 +63,34 @@ module Para
       def encode(string)
         string.presence && string.to_s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?')
       end
+
+      # Override in subclass to add a params whitelist that are fetched from
+      # the request before initializing the exporter
+      #
+      # For example, if you want to export posts for a given category, you
+      # can add the `:category_id` param to your export link, and whitelist
+      # this param here with :
+      #
+      #   def self.params_whitelist
+      #     [:category_id]
+      #   end
+      #
+      # It will be passed from the controller to the importer so it can be used
+      # to scope resources before exporting.
+      #
+      # Note that you'll manually need to scope the resources by overriding the
+      # #resources method.
+      #
+      # If you need automatic scoping, please use the `:q` param that accepts
+      # ransack search params and applies it to the resources.
+      #
+      def self.params_whitelist
+        []
+      end
+
+      def params
+        @params ||= options.delete(:params)
+      end
     end
   end
 end

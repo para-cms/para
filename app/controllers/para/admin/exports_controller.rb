@@ -8,7 +8,8 @@ module Para
       def create
         job = @exporter.perform_later(
           model_name: @component.try(:model).try(:name),
-          search: params[:q]
+          search: params[:q],
+          params: params.permit(@exporter.params_whitelist).to_h
         )
 
         track_job(job)
