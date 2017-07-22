@@ -49,7 +49,7 @@ module Para
       def destroy
         resource.destroy
         flash_message(:success, resource)
-        redirect_to @component.path
+        redirect_to after_form_submit_path
       end
 
       def order

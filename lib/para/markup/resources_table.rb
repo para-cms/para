@@ -169,7 +169,7 @@ module Para
       end
 
       def delete_button(resource)
-        path = component.relation_path(resource)
+        path = component.relation_path(resource, return_to: view.request.fullpath)
 
         options = {
           method: :delete,
@@ -178,7 +178,7 @@ module Para
           },
           class: 'btn btn-sm btn-icon-danger btn-shadow hint--left',
           aria: {
-            label: ::I18n.t('para.shared.destroy')  
+            label: ::I18n.t('para.shared.destroy')
           }
         }
 
