@@ -2,10 +2,19 @@
 # forms feature, without having to write any extra javascript
 #
 class @RemoteModalForm extends Vertebra.View
+  @setLoading = ($el) ->
+    $el?.data('loading-text', '<i class="fa fa-spinner fa-spin"></i>')
+        .button('loading')
+
+  @resetLoading = ($el) ->
+    $el?.button('reset')
+
   events:
     'ajax:success form[data-remote]': 'formSuccess'
     'ajax:success a[data-remote]': 'pageLoaded'
     'ajax:error [data-remote]': 'formError'
+    'ajax:beforeSend form[data-remote]': 'formBeforeSend'
+    'ajax:beforeSend a[data-remote]': 'linkBeforeSend'
     'ajax:aborted:file [data-remote]': 'handleFormWithFiles'
     'hidden.bs.modal': 'modalHidden'
     'hide.bs.modal': 'modalHide'
@@ -17,13 +26,14 @@ class @RemoteModalForm extends Vertebra.View
     @trigger('shown')
 
   formSuccess: (e, response) ->
-    @formDidSuccess = true
     @handleModalResponse(response)
     @trigger('success')
+    @formDidSuccess = true
 
   formError: (e, jqXHR) ->
     @replaceModalWith(jqXHR.responseText)
     @trigger('error')
+    @formDidSuccess = false
 
   # Intercept form jquery-ujs form submission when there are non-blank file
   # inputs in the `remote` form, so we can submit the form through
@@ -88,6 +98,12 @@ class @RemoteModalForm extends Vertebra.View
     @trigger('hide')
     @trigger('close') if @$el[0] is $(e.currentTarget)[0]
 
+  formBeforeSend: (e) ->
+    RemoteModalForm.setLoading(@$(':submit'))
+
+  linkBeforeSend: (e) ->
+    RemoteModalForm.setLoading($(e.currentTarget))
+
   refreshPage: ->
     Turbolinks.reloadPage() if @refreshOnClose and @formDidSuccess
 
@@ -98,5 +114,12 @@ class @RemoteModalForm extends Vertebra.View
 # Lazy initialization when the link target is loaded
 #
 $(document).on 'page:change turbolinks:load', ->
+  $('body').on 'ajax:beforeSend', '[data-remote-modal-form]', (e) ->
+    RemoteModalForm.setLoading($(e.currentTarget))
+
+  $('body').on 'ajax:error', '[data-remote-modal-form]', (e) ->
+    RemoteModalForm.resetLoading($(e.currentTarget))
+
   $('body').on 'ajax:success', '[data-remote-modal-form]', (e, response) ->
+    RemoteModalForm.resetLoading($(e.currentTarget))
     new RemoteModalForm(modalMarkup: response, $link: $(e.currentTarget))
