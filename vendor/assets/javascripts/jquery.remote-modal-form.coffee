@@ -3,10 +3,15 @@
 #
 class @RemoteModalForm extends Vertebra.View
   @setLoading = ($el) ->
-    $el?.data('loading-text', '<i class="fa fa-spinner fa-spin"></i>')
-        .button('loading')
+    return unless $el and $el.length
+
+    unless $el.data('loading-text')
+      $el.data('loading-text', '<i class="fa fa-spinner fa-spin"></i>')
+
+    $el.button('loading')
 
   @resetLoading = ($el) ->
+    return unless $el and $el.length
     $el?.button('reset')
 
   events:
