@@ -41,11 +41,18 @@ class @RemoteModalForm extends Vertebra.View
     @formDidSuccess = false
 
   # Intercept form jquery-ujs form submission when there are non-blank file
-  # inputs in the `remote` form, so we can submit the form through
-  # jquery.iframe-transport
+  # inputs in the `remote` form, so we can submit the form through FormData or
+  # jquery.iframe-transport depending on browser support.
+  #
+  # Note that iframe transport does not allow us to track upload progress.
   #
   handleFormWithFiles: (e) ->
-    @submitWithIframe($(e.currentTarget))
+    if RemoteFileForm?.supported
+      form = new RemoteFileForm(el: e.target)
+      form.on('progress', @onFormUploadProgress)
+    else
+      @submitWithIframe($(e.currentTarget))
+
     return false
 
   submitWithIframe: ($form) ->
@@ -60,6 +67,14 @@ class @RemoteModalForm extends Vertebra.View
     jqXHR
       .done (data) => @formSuccess(null, data)
       .fail (jqXHR) => @formError(null, jqXHR)
+
+  onFormUploadProgress: (e) =>
+    return unless e.originalEvent.lengthComputable
+    # Build rounded progress
+    progress = (e.originalEvent.loaded / e.originalEvent.total) 
+    progress = Math.round(progress * 100) / 100
+    # Display it in the submit button
+    @$(':submit').text(progress + '%')
 
   pageLoaded: (e, response) ->
     @handleModalResponse(response)
