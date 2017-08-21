@@ -72,7 +72,7 @@ class @RemoteModalForm extends Vertebra.View
     return unless e.originalEvent.lengthComputable
     # Build rounded progress
     progress = (e.originalEvent.loaded / e.originalEvent.total) 
-    progress = Math.round(progress * 100) / 100
+    progress = Math.round(progress * 10000) / 100
     # Display it in the submit button
     @$(':submit').text(progress + '%')
 
