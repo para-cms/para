@@ -36,7 +36,20 @@ module Para
 
         item.value = entry.value
         item.expires_at = options[:expires_in].try(:since)
-        item.save!
+
+        # Save chace item in its own thread, to get a clean 
+        # ActiveRecord::Base.connection.
+        #
+        # It allows cache to be saved inside transactions but without waiting 
+        # transactions to be committed to commit chache changes.
+        # 
+        # This is needed for checking progress of long running tasks, like 
+        # imports, that use the cache inside transactions but need other 
+        # processes to get their state in real time.
+        #
+        Thread.new do
+          item.save!
+        end.join
 
         # Ensure cached item in RequestStore is up to date
         RequestStore.store[cache_key_for(key)] = item
