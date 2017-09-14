@@ -17,7 +17,7 @@ module Para
 
       def result
         selects = build_selects
-        search.result.select(selects).uniq
+        search.result.select(selects).distinct
       end
 
       private
