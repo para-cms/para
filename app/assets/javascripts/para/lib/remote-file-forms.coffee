@@ -6,9 +6,10 @@
 # of original rails' remote form requests, to allow existing handling code
 # to run without any modification.
 #
-class RemoteFileForm
-  constructor: (options = {}) ->
-    @$el = $(options.el)
+class @RemoteFileForm extends Vertebra.View
+  @supported = FormData isnt undefined
+  
+  initialize: (options = {}) ->
     @submitForm() if $.rails.fire(@$el, 'ajax:before')
 
   submitForm: ->
@@ -50,10 +51,8 @@ class RemoteFileForm
   error: (xhr, status, error) =>
     @$el.trigger('ajax:error', [xhr, status, error])
 
-  # TODO : Implement an upload progress bar for heavy files
-  #
   progress: (e) =>
-    # console.log e.loaded, '/', e.total if e.lengthComputable
+    @trigger('progress', e)
 
 $(document).on 'ajax:aborted:file', (e) ->
   new RemoteFileForm(el: e.target)

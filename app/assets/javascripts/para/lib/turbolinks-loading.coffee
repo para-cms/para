@@ -22,4 +22,4 @@ $(document).on('page:fetch', Para.loadingManager.start)
 
 $(document).on 'page:change turbolinks:load', ->
   Para.loadingManager.stop()
-  $('body').on('submit', '[data-para-form]', Para.loadingManager.start)
+  $('body').on('submit', '[data-para-form]:not([data-remote])', Para.loadingManager.start)
