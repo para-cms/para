@@ -17,9 +17,9 @@
 
     = csrf_meta_tags
 
-  %body
-    = render partial: 'para/admin/shared/navigation'
-    = render partial: 'para/admin/shared/header'
+  %body{ class: admin_body_class }
+    = render partial: template_path_lookup('admin/shared/_navigation', 'para/admin/shared/_navigation')
+    = render partial: template_path_lookup('admin/shared/_header', 'para/admin/shared/_header')
 
     .container-fluid.page-content
       = display_admin_flash

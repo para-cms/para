@@ -12,6 +12,7 @@ module Para
       layout 'para/admin'
 
       helper_method :current_admin
+      helper_method :admin_body_class
 
       def current_admin
         @current_admin ||= if Para.config.current_admin_method
@@ -26,6 +27,10 @@ module Para
       end
 
       private
+
+      def admin_body_class
+        'admin'
+      end
 
       # Override cancan controlelr resource class to avoid attributes
       # assignation issues with resources

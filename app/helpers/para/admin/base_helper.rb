@@ -39,9 +39,8 @@ module Para
       end
 
       def template_path_lookup(*paths)
-        paths.find do |path|
-          lookup_context.find_all(path).any?
-        end
+        path = paths.find { |path| lookup_context.find_all(path).any? }
+        path&.gsub(/\/_([^\/]+)\z/, '/\1')
       end
 
       def resource_title_for(resource)
