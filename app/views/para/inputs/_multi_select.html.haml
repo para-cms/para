@@ -24,7 +24,7 @@
               = t('para.form.multi_select.available.add_all')
 
         .panel-body
-          %table.table{ data: { :'available-items' => true, :'no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) } }
+          %table.table{ :'data-available-items' => true, :'data-no-available-items' => render(partial: 'para/inputs/multi_select/no_items', locals: { available: true }) }
             %tbody
               = render partial: 'para/admin/search/result', collection: option_resources
 
