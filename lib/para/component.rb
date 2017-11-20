@@ -20,6 +20,7 @@ end
 require 'para/component/exportable'
 require 'para/component/importable'
 require 'para/component/subclassable'
+require 'para/component/history'
 
 # Require models
 require 'para/component/base'

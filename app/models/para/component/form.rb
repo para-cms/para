@@ -3,6 +3,8 @@ module Para
     class Form < Para::Component::Resource
       register :form, self
 
+      include Para::Component::History
+
       configurable_on :model_type
 
       has_one :component_resource, class_name: 'Para::ComponentResource',

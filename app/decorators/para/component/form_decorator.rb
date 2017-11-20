@@ -20,6 +20,12 @@ module Para
         find_path(data, options)
       end
 
+      def page_container_class
+        history? ? 'col-md-8' : super
+      end
+
+      private
+
       def action_option_for(options, nested: false)
         if !nested && options[:action].try(:to_sym) == :show
           nil

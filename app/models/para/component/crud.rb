@@ -6,6 +6,7 @@ module Para
       include Para::Component::Exportable
       include Para::Component::Importable
       include Para::Component::Subclassable
+      include Para::Component::History
 
       configurable_on :model_type
       configurable_on :namespaced

@@ -1,4 +1,8 @@
 = page_top_bar(title: @component.name, type: 'form/show')
 
-.page-content-wrap.form-fixed-actions
-  = render find_partial_for(resource, :form)
+.row
+  .page-content-wrap.form-fixed-actions{ class: page_container_class }
+    = render find_partial_for(resource, :form)
+
+  -# Render history module if configured to be displayed
+  = history_for(@component, action: :edit, resource: resource)

@@ -1,27 +1,32 @@
-.page-content-wrap
-  .page-list
-    .page-list-heading  
-      = render partial: find_partial_for(relation, :actions), locals: { relation: relation, component: component, model: model, allow_adding_resource: allow_adding_resource }
+.row.page-content-row
+  %div{ class: @component.page_container_class }
+    .page-content-wrap
+      .page-list
+        .page-list-heading
+          = render partial: find_partial_for(relation, :actions), locals: { relation: relation, component: component, model: model, allow_adding_resource: allow_adding_resource }
 
-    .page-list-heading  
-      .flextable
-        = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
+        .page-list-heading
+          .flextable
+            = render partial: find_partial_for(relation, :filters), locals: { attributes: attributes }
 
-    - if resources.length > 0
-      .page-entries-info
-        = page_entries(resources)
-      .page-list-body
-        = table_for(resources: resources, model: model, component: component, attributes: attributes)
+        - if resources.length > 0
+          .page-entries-info
+            = page_entries(resources)
+          .page-list-body
+            = table_for(resources: resources, model: model, component: component, attributes: attributes)
 
-    - else
-      = alert class: 'no-results', dismissable: false do
-        - if filtered?(attributes)
-          = t('para.list.no_results')
         - else
-          = t('para.list.empty')
+          = alert class: 'no-results', dismissable: false do
+            - if filtered?(attributes)
+              = t('para.list.no_results')
+            - else
+              = t('para.list.empty')
 
-        = add_button_for(component, relation, model) if allow_adding_resource
+            = add_button_for(component, relation, model) if allow_adding_resource
 
-    - if resources.total_count > resources.length
-      .page-list-footer
-        = paginate resources, theme: Para.config.pagination_theme
+        - if resources.total_count > resources.length
+          .page-list-footer
+            = paginate resources, theme: Para.config.pagination_theme
+
+  -# Render history module if configured to be displayed
+  = history_for(@component, action: :index, resources: resources, relation: relation)

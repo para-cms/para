@@ -28,6 +28,10 @@ module Para
         find_path(data, options)
       end
 
+      def page_container_class
+        history? ? 'col-md-8' : super
+      end
+
       private
 
       def extract_id_from(object)

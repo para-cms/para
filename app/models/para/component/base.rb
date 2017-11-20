@@ -39,6 +39,10 @@ module Para
         false
       end
 
+      def history?
+        false
+      end
+
       def self.model_name
         @model_name ||= ModelName.new(self)
       end

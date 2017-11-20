@@ -18,6 +18,10 @@ module Para
         find_path(components, options)
       end
 
+      def page_container_class
+        'col-xs-12'
+      end
+
       private
 
       # Try to find a polymorphic path for the given arguments

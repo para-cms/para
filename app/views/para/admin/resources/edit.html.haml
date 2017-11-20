@@ -1,4 +1,9 @@
 = page_top_bar(title: resource_title_for(resource), type: 'crud/edit')
 
-.page-content-wrap.form-fixed-actions
-  = render find_partial_for(resource, :form)
+.row.page-content-row
+  %div{ class: @component.page_container_class }
+    .page-content-wrap.form-fixed-actions
+      = render find_partial_for(resource, :form)
+
+  -# Render history module if configured to be displayed
+  = history_for(@component, action: :edit, resource: resource)
