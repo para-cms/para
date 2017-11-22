@@ -63,7 +63,7 @@ legend
   +clearfix
   .form-group:last-of-type,
   .form-group:only-child,
-  .nested-one-field:last-of-type  
+  .nested-one-field:last-of-type
     margin-bottom: 0
 
 .nested-one-field
@@ -164,6 +164,21 @@ legend
     &.active,
     &:active:focus
       +box-shadow(none)
+
+//== Color picker
+//
+//##
+
+.input-group
+  &.color
+    max-width: 300px
+    .input-group-addon
+      padding: 0
+      padding-left: 5px
+      i
+        border: 1px solid #ccc
+        width: 25px
+        height: 25px
 
 //== Search form filter
 //
