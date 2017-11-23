@@ -83,12 +83,20 @@ module Para
 
       def after_form_submit_path
         if params[:_save_and_edit]
-          { action: 'edit', id: resource.id, anchor: current_anchor }
+          host_redirect_params.merge(
+            action: 'edit',
+            id: resource.id,
+            anchor: current_anchor
+          )
         elsif params[:_save_and_add_another]
-          { action: 'new' }
+          host_redirect_params.merge(action: 'new')
         else
           params.delete(:return_to).presence || @component.path
         end
+      end
+
+      def host_redirect_params
+        { subdomain: request.subdomain, domain: request.domain }
       end
 
       def resource_model
