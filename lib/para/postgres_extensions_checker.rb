@@ -18,10 +18,12 @@ module Para
       private
 
       def extension_exists?(extname)
-        ActiveRecord::Base.connection.execute(
+        result = ActiveRecord::Base.connection.execute(
           "SELECT COUNT(*) FROM pg_catalog.pg_extension " +
           "WHERE extname = '#{ extname }'"
-        ).first['count'].to_i > 0
+        ).first
+
+        result && result['count'].to_i > 0
       rescue ActiveRecord::NoDatabaseError
         true # Do not issue warning when no database is installed
       end
