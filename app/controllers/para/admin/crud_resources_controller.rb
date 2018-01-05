@@ -28,7 +28,7 @@ module Para
       end
 
       def clone
-        new_resource = resource.deep_clone include: resource.class.cloneable_associations
+        new_resource = resource.deep_clone!
         new_resource.save!
 
         if new_resource.save
