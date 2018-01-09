@@ -50,10 +50,17 @@ module Para
       # Allow passing a `:resources` option or a ransack search hash to filter
       # exported resources
       #
+      # If the provided :search option is a string, we consider it to be a query
+      # string and try parsing it with Rack::Utils#parse_nested_query
+      #
       def resources
         @resources ||= if options[:resources]
           options[:resources]
         elsif options[:search]
+          if options[:search].is_a?(String)
+            options[:search] = Rack::Utils.parse_nested_query(options[:search])
+          end
+
           model.ransack(options[:search]).result
         else
           model.all
