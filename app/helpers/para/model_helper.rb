@@ -16,8 +16,6 @@ module Para
         mappings = options.fetch(:mappings, {})
       end
 
-      store_key = ['model', 'mappings', model.name.underscore].join(':')
-
       Para::AttributeFieldMappings.new(
         model, whitelist_attributes: whitelist_attributes, mappings: mappings
       )
