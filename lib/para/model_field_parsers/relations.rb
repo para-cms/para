@@ -11,10 +11,21 @@ module Para
           )
         end
 
-        # Catch multi select inputs from form attributes mappings
         find_attributes_for_mapping(:nested_many).each do |attribute|
           fields_hash[attribute] = AttributeField::NestedManyField.new(
             model, name: attribute, type: 'has_many', field_type: 'nested_many'
+          )
+        end
+
+        find_attributes_for_mapping(:nested_one).each do |attribute|
+          fields_hash[attribute] = AttributeField::NestedOneField.new(
+            model, name: attribute, type: 'has_one', field_type: 'nested_one'
+          )
+        end
+
+        find_attributes_for_mapping(:selectize).each do |attribute|
+          fields_hash[attribute] = AttributeField::BelongsToField.new(
+            model, name: name, type: 'belongs_to', field_type: 'selectize'
           )
         end
 
