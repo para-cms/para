@@ -25,7 +25,7 @@ module Para
 
         find_attributes_for_mapping(:selectize).each do |attribute|
           fields_hash[attribute] = AttributeField::BelongsToField.new(
-            model, name: name, type: 'belongs_to', field_type: 'selectize'
+            model, name: attribute, type: 'belongs_to', field_type: 'selectize'
           )
         end
 

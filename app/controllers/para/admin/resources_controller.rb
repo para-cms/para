@@ -89,7 +89,10 @@ module Para
             anchor: current_anchor
           )
         elsif params[:_save_and_add_another]
-          host_redirect_params.merge(action: 'new')
+          host_redirect_params.merge(
+            action: 'new',
+            type: resource.try(:type)
+          )
         else
           params.delete(:return_to).presence || @component.path
         end

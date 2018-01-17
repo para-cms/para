@@ -62,7 +62,12 @@ module Para
       end
 
       def para_submit_and_add_another_button
-        button(:submit, ::I18n.t('para.shared.save_and_add_another_button'), name: '_save_and_add_another', class: 'btn-primary btn-shadow')
+        button(
+          :submit,
+          ::I18n.t('para.shared.save_and_add_another_button'),
+          name: '_save_and_add_another',
+          class: 'btn-primary btn-shadow'
+        )
       end
 
       def para_cancel_button
