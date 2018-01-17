@@ -19,13 +19,16 @@ module Para
           end
         end
 
+        locals = options.fetch(:locals, {})
+
         template.render(
           partial: 'para/inputs/nested_one',
           locals: {
             form: @builder,
             model: model,
             resource: resource,
-            attribute_name: attribute_name
+            attribute_name: attribute_name,
+            nested_locals: locals
           }
         )
       end
