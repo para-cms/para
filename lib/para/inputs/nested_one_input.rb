@@ -12,6 +12,8 @@ module Para
         unless (resource = object.send(:"#{ attribute_name }"))
           # Build association without trying to save the new record
           resource = case association
+          when ActiveRecord::Associations::HasOneThroughAssociation
+            association.replace(model.new)
           when ActiveRecord::Associations::HasOneAssociation
             association.replace(model.new, false)
           else
