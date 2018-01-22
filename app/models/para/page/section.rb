@@ -5,7 +5,16 @@ module Para
 
       acts_as_orderable
 
-      belongs_to :page, polymorphic: true
+      page_relation_options = { polymorphic: true }
+
+      # Make Rails 5+ belongs_to relation optional for the parent page, to allow
+      # using sections in other contexts that directly included into pages
+      #
+      if ActiveRecord::Associations::Builder::BelongsTo.valid_options({}).include?(:optional)
+        page_relation_options[:optional] = true
+      end
+
+      belongs_to :page, page_relation_options
 
       def css_class
         @css_class ||= self.class.name.demodulize.underscore.gsub(/_/, '-')
