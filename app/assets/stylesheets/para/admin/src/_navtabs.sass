@@ -7,21 +7,34 @@
 //##
 
 //** Add negative margin top if the nav tab is the frst content of the page
-.page-content-wrap 
-  .nav-tabs
+.page-content-wrap
+  .nav-tabs-wrapper
     margin-top: -25px
+
+  .nav-tabs
     +border-radius($border-radius-small)
-  .form-inputs  
-    .nav-tabs
+
+    &.affix
       margin-top: 0
+      width: 100%
+      z-index: $zindex-navbar-fixed - 1
+      +material-box-shadow-soft(3)
+
+  .form-inputs
+    .nav-tabs-wrapper
+      margin-top: 0
+
+    .nav-tabs
       +border-radius(0)
 
 //** Override bootstrap nav tabs
-.nav-tabs
-  background-color: $gray-lighter
+.nav-tabs-wrapper
   margin-right: -25px
   margin-left: -25px
   margin-bottom: 25px
+
+.nav-tabs
+  background-color: $gray-lighter
 
   > li > a
     color: $text-color

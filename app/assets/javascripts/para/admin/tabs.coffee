@@ -10,6 +10,7 @@ class Para.Tabs extends Vertebra.View
     @$anchorInput = options.$anchorInput
     @showActiveTab()
     @refreshTabsErrors()
+    @initializeAffix()
 
   showActiveTab: ->
     if (hash = (location.hash or @$anchorInput?.val()))
@@ -30,6 +31,23 @@ class Para.Tabs extends Vertebra.View
   refreshTabErrors: ($tab) ->
     $panel = @$($tab.attr('href'))
     $tab.addClass('has-error') if $panel.find('.has-error').length
+
+  #
+  initializeAffix: ->
+    return unless (@$nav = @$('[data-tabs-nav-affix]')).length
+
+    headerHeight = $('[data-header]').outerHeight()
+    offsetTop = @$nav.offset().top - headerHeight
+    sidebarWidth = $('[data-admin-left-sidebar]').outerWidth()
+
+    @$nav.affix(offset: { top: offsetTop })
+         .css(top: headerHeight, left: sidebarWidth)
+
+    # Fix parent wrapper height to maintain the same scroll position when the
+    # nav tabs are fixed to top
+    @$nav.closest('[data-nav-tabs-wrapper]').height(@$nav.outerHeight())
+
+
 
   onFormInputUpdate: (e) ->
     $tab = @findTab($(e.currentTarget).attr('id'))

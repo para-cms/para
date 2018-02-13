@@ -1,10 +1,13 @@
 .form-tabs{ data: { :'form-tabs' => true } }
-  %ul.nav.nav-tabs{ role: 'tablist' }
-    - tabs.each_with_index do |tab, index|
-      %li{ class: ('active' if index == 0), role: 'presentation' }
-        = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
-          %i.fa{ class: "fa-#{ tab.icon }" }
-          = tab.title
+  -# The .nav-tabs-wrapper is used to maintain the tabs height when the tabs
+  -# are fixed to top
+  .nav-tabs-wrapper{ data: { :'nav-tabs-wrapper' => true } }
+    %ul.nav.nav-tabs.affix-no-mobile{ role: 'tablist', data: { :'tabs-nav-affix' => tabs_manager.affix? } }
+      - tabs.each_with_index do |tab, index|
+        %li{ class: ('active' if index == 0), role: 'presentation' }
+          = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
+            %i.fa{ class: "fa-#{ tab.icon }" }
+            = tab.title
 
   .tab-content
     - tabs.each_with_index do |tab, index|

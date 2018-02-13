@@ -1,20 +1,21 @@
 module Para
   module FormBuilder
     module Tabs
-      def tabs(&block)
-        manager = TabsManager.new(template, object, self)
+      def tabs(options = {}, &block)
+        manager = TabsManager.new(template, object, self, options)
         block.call(manager)
 
-        template.render partial: 'para/form/tabs', locals: { tabs: manager.tabs }
+        template.render partial: 'para/form/tabs', locals: { tabs_manager: manager, tabs: manager.tabs }
       end
 
       class TabsManager
-        attr_reader :template, :object, :builder
+        attr_reader :template, :object, :builder, :options
 
-        def initialize(template, object, builder)
+        def initialize(template, object, builder, options)
           @template = template
           @object = object
           @builder = builder
+          @options = options
         end
 
         def tab(identifier, options = {}, &block)
@@ -24,6 +25,10 @@ module Para
 
         def tabs
           @tabs ||= []
+        end
+
+        def affix?
+          options[:affix]
         end
       end
 
