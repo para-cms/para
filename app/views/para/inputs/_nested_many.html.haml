@@ -5,6 +5,6 @@
   -# Add button
   - if add_button
     - if subclass
-      = render partial: 'para/inputs/nested_many/add_with_subclasses', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, subclasses: subclasses, inset: inset }
+      = render partial: 'para/inputs/nested_many/add_with_subclasses', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, subclasses: subclasses, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class }
     - else
-      = render partial: 'para/inputs/nested_many/add', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, inset: inset }
+      = render partial: 'para/inputs/nested_many/add', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class }

@@ -1,6 +1,6 @@
 module Para
   module Inputs
-    class NestedOneInput < SimpleForm::Inputs::Base
+    class NestedOneInput < NestedBaseInput
       def input(wrapper_options = nil)
         input_html_options[:class] << "nested-one"
 

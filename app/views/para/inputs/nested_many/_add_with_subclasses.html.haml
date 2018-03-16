@@ -1,6 +1,6 @@
 .add-button.nested-many-inset-add-button.dropdown
-  %button.btn.btn-primary.btn-shadow.dropdown-toggle{ type: 'button', data: { toggle: 'dropdown' } }
-    = t('para.form.nested.add')
+  %button.btn.btn-shadow.dropdown-toggle{ class: add_button_class, type: 'button', data: { toggle: 'dropdown' } }
+    = add_button_label
     %i.fa.fa-angle-down
   %ul.dropdown-menu
     - subclasses.each do |submodel|

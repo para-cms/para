@@ -1,6 +1,6 @@
 module Para
   module Inputs
-    class NestedManyInput < SimpleForm::Inputs::Base
+    class NestedManyInput < NestedBaseInput
       attr_reader :resource
 
       def input(wrapper_options = nil)
@@ -15,22 +15,26 @@ module Para
 
         locals = options.fetch(:locals, {})
 
-        template.render(
-          partial: 'para/inputs/nested_many',
-          locals: {
-            form: @builder,
-            model: model,
-            attribute_name: attribute_name,
-            orderable: orderable,
-            add_button: add_button,
-            dom_identifier: dom_identifier,
-            resources: resources,
-            nested_locals: locals,
-            subclass: subclass,
-            subclasses: subclasses,
-            inset: inset?
-          }
-        )
+        with_global_nested_field do
+          template.render(
+            partial: 'para/inputs/nested_many',
+            locals: {
+              form: @builder,
+              model: model,
+              attribute_name: attribute_name,
+              orderable: orderable,
+              add_button: add_button,
+              dom_identifier: dom_identifier,
+              resources: resources,
+              nested_locals: locals,
+              subclass: subclass,
+              subclasses: subclasses,
+              inset: inset?,
+              add_button_label: add_button_label,
+              add_button_class: add_button_class
+            }
+          )
+        end
       end
 
       def parent_model
@@ -44,9 +48,10 @@ module Para
       def dom_identifier
         @dom_identifier ||= begin
           name = attribute_name
+          id = @builder.object.id || "_new_#{ parent_nested_field&.attribute_name }_"
           time = (Time.now.to_f * 1000).to_i
           random = (rand * 1000).to_i
-          [name, time, random].join('-')
+          [name, id, time, random].join('-')
         end
       end
 
@@ -63,6 +68,14 @@ module Para
 
       def inset?
         options.fetch(:inset, false)
+      end
+
+      def add_button_label
+        options.fetch(:add_button_label) { I18n.t('para.form.nested.add') }
+      end
+
+      def add_button_class
+        options.fetch(:add_button_class) { 'btn-primary' }
       end
     end
   end

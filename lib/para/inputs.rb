@@ -2,6 +2,7 @@ module Para
   module Inputs
     extend ActiveSupport::Autoload
 
+    autoload :NestedBaseInput
     autoload :NestedOneInput
     autoload :NestedManyInput
     autoload :MultiSelectInput
