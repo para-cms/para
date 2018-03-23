@@ -42,6 +42,7 @@ module Para
           has_one :section_resource, -> { ordered },
                   foreign_key: 'section_id',
                   class_name: '::Para::Page::SectionResource',
+                  inverse_of: :section,
                   dependent: :destroy
 
           accepts_nested_attributes_for :section_resource, allow_destroy: true
@@ -55,7 +56,9 @@ module Para
           has_many :section_resources, -> { ordered },
                                        foreign_key: 'section_id',
                                        class_name: '::Para::Page::SectionResource',
+                                       inverse_of: :section,
                                        dependent: :destroy
+
           accepts_nested_attributes_for :section_resources, allow_destroy: true
 
           @section_resources_already_initialized = true
