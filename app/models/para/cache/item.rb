@@ -17,6 +17,10 @@ module Para
         read_attribute(:expires_at).try(:past?) || false
       end
 
+      def mismatched?(_version = nil)
+        false
+      end
+
       # From ActiveSupport::Cache::Store::Entry
       # Seconds since the epoch when the entry will expire.
       def expires_at
