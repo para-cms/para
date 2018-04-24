@@ -3,13 +3,13 @@
   -# are fixed to top
   .nav-tabs-wrapper{ data: { :'nav-tabs-wrapper' => true } }
     %ul.nav.nav-tabs.affix-no-mobile{ role: 'tablist', data: { :'tabs-nav-affix' => tabs_manager.affix? } }
-      - tabs.each_with_index do |tab, index|
-        %li{ class: ('active' if index == 0), role: 'presentation' }
+      - tabs.each do |tab|
+        %li{ class: ('active' if tab.active?), role: 'presentation' }
           = link_to "##{ tab.dom_id }", role: 'tab', aria: { controls: 'settings' }, data: { toggle: 'tab' } do
             %i.fa{ class: "fa-#{ tab.icon }" }
             = tab.title
 
   .tab-content
-    - tabs.each_with_index do |tab, index|
-      .tab-pane{ id: tab.dom_id, class: ('active' if index == 0), role: 'tabpanel' }
+    - tabs.each do |tab|
+      .tab-pane{ id: tab.dom_id, class: ('active' if tab.active?), role: 'tabpanel' }
         = tab.content
