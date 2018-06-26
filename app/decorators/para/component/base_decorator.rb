@@ -9,12 +9,13 @@ module Para
       end
 
       def relation_path(controller_or_resource, options = {})
-        if Hash === controller_or_resource
+        if controller_or_resource.is_a?(Hash)
           options = controller_or_resource
           controller_or_resource = nil
         end
 
         components = [:admin, self, controller_or_resource].compact
+
         find_path(components, options)
       end
 
@@ -32,7 +33,7 @@ module Para
       #
       def find_path(path, options)
         safe_polymorphic_path(path, options).tap do |result|
-          raise result.class, result.message if Exception === result
+          raise result if result.is_a?(Exception)
         end
       end
 
