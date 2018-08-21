@@ -52,8 +52,6 @@ module ActionDispatch
         # namespacing issues in plugins and other module namespaced scenarios
         #
         controller = options.fetch(:controller, '/para/admin/crud_resources')
-        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
-        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
         constraints Para::Routing::ComponentNameConstraint.new(component) do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
@@ -94,8 +92,6 @@ module ActionDispatch
         )
 
         controller = options.fetch(:controller, '/para/admin/form_resources')
-        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
-        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
         constraints Para::Routing::ComponentNameConstraint.new(component) do
           constraints Para::Routing::ComponentControllerConstraint.new(controller) do
@@ -141,10 +137,11 @@ module ActionDispatch
       end
 
       def common_component_routes(options)
+        nested_forms_controller = options.fetch(:nested_forms_controller, '/para/admin/nested_forms')
         imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
         exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
-        get 'nested-form' => 'nested_forms#show'
+        resource 'nested_form', controller: nested_forms_controller, only: [:show]
 
         scope ':importer' do
           resources :imports, controller: imports_controller

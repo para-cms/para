@@ -18,9 +18,9 @@ module Para
             end
 
             # Components are namespaced into :admin in their respective methods
-            crud_component
-            form_component
-            component :settings
+            crud_component scoped_in_para: true
+            form_component scoped_in_para: true
+            component :settings, scoped_in_para: true
           end
 
           block.call if block
