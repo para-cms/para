@@ -59,7 +59,7 @@ module Para
       end
 
       def nested?
-        nested_attribute_name.present?
+        nested_attribute_name.present? && options[:parent_builder]
       end
 
       def nested_attribute_name
@@ -70,7 +70,7 @@ module Para
       end
 
       def parent_object
-        nested? && options[:parent_builder] && options[:parent_builder].object
+        nested? && options[:parent_builder].object
       end
 
       private
