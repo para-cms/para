@@ -20,8 +20,6 @@ module ActionDispatch
         )
 
         controller = options.fetch(:controller, "#{ component_name }_component")
-        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
-        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
 
         constraints Para::Routing::ComponentNameConstraint.new(component) do
           namespace :admin do
@@ -33,13 +31,7 @@ module ActionDispatch
               instance_eval(&block) if block
               add_extensions_for(:component)
 
-              scope ':importer' do
-                resources :imports, controller: imports_controller
-              end
-
-              scope ':exporter' do
-                resources :exports, controller: exports_controller
-              end
+              common_component_routes(options)
             end
           end
         end
@@ -82,13 +74,7 @@ module ActionDispatch
                     add_extensions_for(:crud_component)
                   end
 
-                  scope ':importer' do
-                    resources :imports, controller: imports_controller
-                  end
-
-                  scope ':exporter' do
-                    resources :exports, controller: exports_controller
-                  end
+                  common_component_routes(options)
                 end
               end
             end
@@ -119,13 +105,7 @@ module ActionDispatch
                   add_extensions_for(:form_component)
                 end
 
-                scope ':importer' do
-                  resources :imports, controller: imports_controller
-                end
-
-                scope ':exporter' do
-                  resources :exports, controller: exports_controller
-                end
+                common_component_routes(options)
               end
             end
           end
@@ -157,6 +137,21 @@ module ActionDispatch
       def add_extensions_for(type)
         Para.config.routes.routes_extensions_for(type).each do |extension|
           instance_eval(&extension)
+        end
+      end
+
+      def common_component_routes(options)
+        imports_controller = options.fetch(:imports_controller, '/para/admin/imports')
+        exports_controller = options.fetch(:exports_controller, '/para/admin/exports')
+
+        get 'nested-form' => 'nested_forms#show'
+
+        scope ':importer' do
+          resources :imports, controller: imports_controller
+        end
+
+        scope ':exporter' do
+          resources :exports, controller: exports_controller
         end
       end
     end

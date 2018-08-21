@@ -21,7 +21,15 @@ module Para
 
       def fields_for(*args, &block)
         fields_options = args.extract_options!
-        fields_options.reverse_merge!(track_attribute_mappings: options[:track_attribute_mappings])
+
+        track_attribute_mappings = (
+          fields_options[:track_attribute_mappings] != false &&
+          options[:track_attribute_mappings]
+        )
+
+        fields_options.reverse_merge!(
+          track_attribute_mappings: track_attribute_mappings
+        )
 
         super(*args, fields_options) do |fields|
           fields_html = @template.capture { block.call(fields) }

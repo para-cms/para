@@ -1,10 +1,10 @@
 .nested-many-field{ class: [('orderable' if orderable), ('nested-many-field-inset' if inset)] }
   .fields-list{ id: dom_identifier }
-    = form.simple_fields_for attribute_name, resources, nested_attribute_name: attribute_name, orderable: orderable do |nested_form|
-      = render partial: find_partial_for(model, 'nested_many/container', partial_dir: 'inputs'), locals: { form: nested_form, model: nested_form.object.class, subclass: subclass, nested_locals: nested_locals, inset: inset }
+    = form.simple_fields_for attribute_name, resources, nested_attribute_name: attribute_name, orderable: orderable, track_attribute_mappings: render_partial do |nested_form|
+      = render partial: find_partial_for(model, 'nested_many/container', partial_dir: 'inputs'), locals: { form: nested_form, model: nested_form.object.class, subclass: subclass, nested_locals: nested_locals, inset: inset, render_partial: render_partial }
   -# Add button
   - if add_button
     - if subclass
-      = render partial: 'para/inputs/nested_many/add_with_subclasses', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, subclasses: subclasses, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class }
+      = render partial: 'para/inputs/nested_many/add_with_subclasses', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, subclasses: subclasses, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class, render_partial: render_partial }
     - else
-      = render partial: 'para/inputs/nested_many/add', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class }
+      = render partial: 'para/inputs/nested_many/add', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, orderable: orderable, inset: inset, add_button_label: add_button_label, add_button_class: add_button_class, render_partial: render_partial }

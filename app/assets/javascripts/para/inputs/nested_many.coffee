@@ -48,11 +48,44 @@ class Para.NestedManyField
 
   collapseShown: (e) ->
     $target = $(e.target)
+
+    if $target.is("[data-rendered]") or $target.data("rendered")
+      @initializeCollapseContent($target)
+    else
+      @loadCollapseContent($target)
+      @scrollToTarget($target)
+
+  initializeCollapseContent: ($target) ->
+    @scrollToTarget($target)
+    @focusFirstField($target)
+
+  scrollToTarget: ($target) ->
     $field = @$field.find("[data-toggle='collapse'][href='##{ $target.attr('id') }']")
-    scrollOffset = -($('[data-header]').outerHeight() + 20)
+    scrollOffset = -($('[data-header]').outerHeight() + 30)
+
+    if ($affixNavTabs = $("[data-tabs-nav-affix]:eq(0)")).length
+      scrollOffset -= $affixNavTabs.outerHeight()
+
     $.scrollTo($field, 200, offset: scrollOffset)
+
+  focusFirstField: ($target) ->
     $target.find('input, textarea, select').eq('0').focus()
 
+  loadCollapseContent: ($target) ->
+    targetUrl = $target.data("render-path")
+
+    data = {
+      "id": $target.data("id")
+      "object_name": $target.data("object-name")
+      "model_name": $target.data("model-name")
+    }
+
+    $.get(targetUrl, data).then (resp) =>
+      $content = $(resp)
+      $target.find("[data-nested-form-container]:eq(0)").html($content)
+      $content.simpleForm()
+      @focusFirstField($target)
+      $target.data("rendered", true)
 
 $.simpleForm.onDomReady ($document) ->
   $document.find('.nested-many-field').each (i, el) -> new Para.NestedManyField($(el))

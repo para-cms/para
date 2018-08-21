@@ -6,7 +6,15 @@ module Para
         wrapper: :vertical_form,
         wrapper_mappings: Para::SimpleFormConfig.wrapper_mappings,
         track_attribute_mappings: true,
-        html: { class: '', data: { :'para-form' => true } }
+        html: {
+          class: '',
+          data: { :'para-form' => true },
+          # Force multipart forms to allow forms with no file input on creation
+          # to fetch nested fields with image inputs through the remote nested
+          # form loading system. Without this option, rails does not create a
+          # multipart form when there is no file input during the form creation.
+          multipart: true
+        }
       }
 
       options = default_options.deep_merge(options)

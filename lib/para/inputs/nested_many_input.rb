@@ -31,7 +31,8 @@ module Para
               subclasses: subclasses,
               inset: inset?,
               add_button_label: add_button_label,
-              add_button_class: add_button_class
+              add_button_class: add_button_class,
+              render_partial: render_partial?
             }
           )
         end
@@ -76,6 +77,10 @@ module Para
 
       def add_button_class
         options.fetch(:add_button_class) { 'btn-primary' }
+      end
+
+      def render_partial?
+        options[:render_partial] || object.errors.any? || (object.persisted? && inset?)
       end
     end
   end
