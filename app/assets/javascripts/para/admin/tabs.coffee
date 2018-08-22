@@ -17,7 +17,10 @@ class Para.Tabs extends Vertebra.View
       @findTab(hash).tab('show')
 
   onTabShown: (e) =>
-    tabHash = $(e.target).attr('href')
+    $tab = $(e.target)
+    return unless $tab.closest('[data-form-tabs]').is('[data-top-level-tabs]')
+
+    tabHash = $tab.attr('href')
     history.pushState(null, null, tabHash)
     @updateAnchorInput()
 
@@ -46,8 +49,6 @@ class Para.Tabs extends Vertebra.View
     # Fix parent wrapper height to maintain the same scroll position when the
     # nav tabs are fixed to top
     @$nav.closest('[data-nav-tabs-wrapper]').height(@$nav.outerHeight())
-
-
 
   onFormInputUpdate: (e) ->
     $tab = @findTab($(e.currentTarget).attr('id'))

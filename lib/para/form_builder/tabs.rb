@@ -82,9 +82,16 @@ module Para
         def dom_id
           @dom_id = [
             'form-tab',
+            object_name,
             builder.nested_resource_dom_id.presence,
             identifier.to_s.parameterize
           ].compact.join('-')
+        end
+
+        def object_name
+          if (name = builder.object_name.presence)
+            name.to_s.parameterize
+          end
         end
 
         def active?
