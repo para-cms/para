@@ -1,6 +1,6 @@
 - nested_form = nil
 
-- para_form_for(@object) do |form|
+- para_form_for(@object, url: "") do |form|
   - form.object_name = @object_name
   - nested_form = capture do
     = render(partial: find_partial_for(@model, :remote_nested_form), locals: { form: form, model: @model, object: @object, object_name: @object_name })
