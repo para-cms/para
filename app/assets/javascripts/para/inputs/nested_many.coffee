@@ -73,6 +73,7 @@ class Para.NestedManyField
 
   loadCollapseContent: ($target) ->
     targetUrl = $target.data("render-path")
+    return unless targetUrl
 
     data = {
       "id": $target.data("id")
