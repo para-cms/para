@@ -1,8 +1,10 @@
 module Para
   module AttributeField
     module NestedField
-      def nested_model_mappings(nested_attributes)
-        model = if (type = nested_attributes[:type]).present?
+      def nested_model_mappings(nested_attributes, resource)
+        model = if resource
+          resource.class
+        elsif (type = nested_attributes[:type]).present?
           nested_attributes[:type].try(:constantize)
         else
           reflection.klass

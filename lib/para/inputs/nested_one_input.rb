@@ -7,9 +7,11 @@ module Para
         parent_model = object.class
         association = object.association(attribute_name)
         relation = parent_model.reflect_on_association(attribute_name)
-        model = relation.klass
 
-        unless (resource = object.send(:"#{ attribute_name }"))
+        resource = object.send(attribute_name)
+        model = (resource && resource.class) || relation.klass
+
+        unless resource
           # Build association without trying to save the new record
           resource = case association
           when ActiveRecord::Associations::HasOneThroughAssociation

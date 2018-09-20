@@ -50,8 +50,12 @@ module Para
       def store_attribute_mapping_for(attribute_name, input_options, &block)
         return unless options[:track_attribute_mappings]
 
-        input = find_input(attribute_name, input_options, &block)
-        type = input.class.name.demodulize.underscore.gsub(/_input\z/, '')
+        type = if input_options[:as]
+          input_options[:as]
+        else
+          input = find_input(attribute_name, input_options, &block)
+          input.class.name.demodulize.underscore.gsub(/_input\z/, '')
+        end
 
         @attributes_mappings[attribute_name] = type
       end

@@ -9,8 +9,8 @@ module Para
       def parse_input(params, resource)
         if (nested_attributes = params[nested_attributes_key])
           nested_attributes.each do |index, attributes|
-            mappings = nested_model_mappings(attributes)
             nested_resource = fetch_or_build_nested_resource_for(resource, index, attributes)
+            mappings = nested_model_mappings(attributes, nested_resource)
 
             mappings.fields.each do |field|
               field.parse_input(attributes, nested_resource)
