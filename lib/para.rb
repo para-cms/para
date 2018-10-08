@@ -33,6 +33,7 @@ require 'vertebra'
 require 'rails/routing_mapper'
 require 'rails/relation_length_validator'
 
+require 'para/log_config'
 require 'para/postgres_extensions_checker'
 
 module Para

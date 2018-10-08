@@ -5,9 +5,14 @@ module Para
 
     def draw(&block)
       return unless components_installed?
-      eager_load_components!
-      instance_eval(&block)
-      build
+      Para::LogConfig.with_log_level(:fatal) do
+        log_level = Rails.logger.level
+        Rails.logger.level = :fatal
+
+        eager_load_components!
+        instance_eval(&block)
+        build
+      end
     end
 
     def section(*args, &block)
