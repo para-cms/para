@@ -7,6 +7,7 @@ module Para
 
       def perform(file, options = {})
         @file = file
+        options.reverse_merge!(extension: file.attachment_ext)
         @sheet = Roo::Spreadsheet.open(file.attachment_path, options)
 
         ActiveRecord::Base.transaction do

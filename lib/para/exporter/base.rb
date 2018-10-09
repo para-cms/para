@@ -11,7 +11,20 @@ module Para
         # Render file and store it in a Library::File object, allowing us
         # to retrieve that file easily from the job and subsequent requests
         #
-        file = Para::Library::File.create!(attachment: render)
+        file = Para::Library::File.new
+
+        if file.respond_to?(:attachment?)
+          file.attachment = render
+        else
+          file.attachment.attach(
+            io: render,
+            filename: file_name,
+            content_type: mime_type
+          )
+        end
+
+        file.save!
+
         store(:file_gid, file.to_global_id)
       end
 
