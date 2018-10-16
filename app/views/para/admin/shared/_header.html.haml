@@ -6,13 +6,13 @@
     %span.icon-bar
     %span.icon-bar
 
+  = render_breadcrumbs
+
   %ul.nav.navbar-nav.pull-right
     %li
       = link_to root_path, target: "_blank", class: 'hint--bottom-left btn-home btn-shadow', aria: { label: t('para.admin.back_to_app') } do
         %i.fa.fa-home
-        
+
     %li
       = link_to destroy_admin_user_session_path, method: :delete, class: 'hint--bottom-left btn-power-off btn-shadow', aria: { label: t('para.admin.sign_out') } do
         %i.fa.fa-sign-out
-
-  = render_breadcrumbs
