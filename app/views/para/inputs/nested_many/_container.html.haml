@@ -5,7 +5,7 @@
     = form.reorder_anchor
 
     %h3.panel-title
-      = link_to "##{ form.nested_resource_dom_id }", class: 'collapsed', data: { toggle: 'collapse', :'open-on-insert' => true } do
+      = link_to "##{ form.nested_resource_dom_id }", class: "nested-input-title collapsed#{ (' has-error' if form.object.errors.any?) }", data: { toggle: 'collapse', :'open-on-insert' => true } do
         = form.nested_resource_name
         %i.fa.fa-angle-up
 
