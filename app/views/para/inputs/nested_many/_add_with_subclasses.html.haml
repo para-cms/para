@@ -5,5 +5,5 @@
   %ul.dropdown-menu
     - subclasses.each do |submodel|
       %li
-        = link_to_add_association form, attribute_name, wrap_object: proc { submodel.new }, partial: find_partial_for(submodel, 'nested_many/container', partial_dir: 'inputs'), form_name: 'form', class: 'dropdown-link', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { model: submodel, nested_locals: nested_locals, inset: inset, render_partial: false } } do
+        = link_to_add_association form, attribute_name, wrap_object: proc { submodel.new }, partial: find_partial_for(submodel, 'nested_many/container', partial_dir: 'inputs'), form_name: 'form', class: 'dropdown-link', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, orderable: orderable, locals: { model: submodel, nested_locals: nested_locals, inset: inset, render_partial: render_partial, remote_partial_params: remote_partial_params } } do
           = submodel.model_name.human

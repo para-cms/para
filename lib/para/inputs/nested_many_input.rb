@@ -32,7 +32,8 @@ module Para
               inset: inset?,
               add_button_label: add_button_label,
               add_button_class: add_button_class,
-              render_partial: render_partial?
+              render_partial: render_partial?,
+              remote_partial_params: remote_partial_params
             }
           )
         end
@@ -81,6 +82,12 @@ module Para
 
       def render_partial?
         options[:render_partial] || object.errors.any? || (object.persisted? && inset?)
+      end
+
+      def remote_partial_params
+        @remote_partial_params ||= options.fetch(:remote_partial_params, {}).merge(
+          namespace: :nested_form
+        )
       end
     end
   end

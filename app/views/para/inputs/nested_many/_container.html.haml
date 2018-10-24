@@ -11,7 +11,7 @@
 
     = form.remove_association_button
 
-  .panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id, class: ('in' if inset && form.object.persisted?), data: { rendered: render_partial, render_path: @component.path(namespace: :nested_form), id: form.object.id, :"object-name" => form.object_name, :"model-name" => model.name } }
+  .panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id, class: ('in' if inset && form.object.persisted?), data: { rendered: render_partial, render_path: @component.path(remote_partial_params), id: form.object.id, :"object-name" => form.object_name, :"model-name" => model.name } }
     .panel-body{ data: { :"nested-form-container" => true } }
       - if render_partial
         = render partial: find_partial_for(model, :fields), locals: { form: form }.merge(nested_locals)
