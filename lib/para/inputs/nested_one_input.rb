@@ -32,9 +32,16 @@ module Para
             model: model,
             resource: resource,
             attribute_name: attribute_name,
-            nested_locals: locals
+            nested_locals: locals,
+            collapsible: collapsible
           }
         )
+      end
+
+      private
+
+      def collapsible
+        options.fetch(:collapsible, false)
       end
     end
   end
