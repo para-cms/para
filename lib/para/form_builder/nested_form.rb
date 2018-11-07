@@ -14,10 +14,13 @@ module Para
       def nested_resource_name
         @nested_resource_name ||= begin
           name_method = Para.config.resource_name_methods.find do |method_name|
-            object.respond_to?(method_name)
+            object.respond_to?(method_name) && object.try(method_name).present?
           end
 
-          (name_method && object.try(name_method).presence) || default_resource_name
+          name = (name_method && object.send(name_method)) || default_resource_name
+          name = name.to_s.gsub(/(<\/p>|<br\s*\/?>)/, " ")
+
+          template.sanitize(name, tags: [])
         end
       end
 
