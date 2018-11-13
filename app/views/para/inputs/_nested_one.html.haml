@@ -1,6 +1,6 @@
 .nested-one-field
   = form.simple_fields_for attribute_name, resource, nested_attribute_name: attribute_name do |nested_form|
-    - if collapsible
+    - if defined?(collapsible) && collapsible
       .panel.panel-default.form-fields
         .panel-heading
           %h3.panel-title
