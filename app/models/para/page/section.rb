@@ -3,7 +3,7 @@ module Para
     class Section < ActiveRecord::Base
       self.table_name = 'para_page_sections'
 
-      acts_as_orderable
+      acts_as_orderable parent: :page, as: :sections
 
       page_relation_options = { polymorphic: true }
 
