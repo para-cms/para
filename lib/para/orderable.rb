@@ -37,7 +37,7 @@ module Para
 
     def orderable_scope
       if (parent = _orderable_options[:parent]) && (as = _orderable_options[:as])
-        try(parent).try(as).try(:ordered) || []
+        try(parent).try(as).try(:ordered) || self.class.none
       else
         self.class.unscoped.ordered
       end
