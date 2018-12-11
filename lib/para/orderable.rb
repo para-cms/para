@@ -15,7 +15,7 @@ module Para
     def orderable_assign_position
       return if attribute_present?(:position)
 
-      last_resource = orderabe_scope
+      last_resource = orderable_scope
         .where.not(position: nil)
         .select(:position)
         .first
