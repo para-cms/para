@@ -39,7 +39,7 @@ module Para
         if through_reflection && through_reflection.klass.orderable?
           assign_ordered_through_reflection_ids(through_reflection, resource, ids)
         else
-          resource.assign_attributes(plural_foreign_key => ids)
+          resource.send(:"#{plural_foreign_key}=", ids)
         end
       end
 
