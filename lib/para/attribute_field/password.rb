@@ -13,7 +13,7 @@ module Para
       end
 
       def parse_input(params, resource)
-        params[name] = params[name].presence
+        params[name] = params[name].presence if resource.respond_to?(:"#{name}=")
       end
     end
   end
