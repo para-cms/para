@@ -3,7 +3,7 @@
     %span.handle
       %i.sort-dots
     %span.node-name
-      = root.name
+      = resource_name(root)
 
     .pull-right
       = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-icon-primary btn-shadow btn-sm hint--left", :'aria-label' => ::I18n.t('para.shared.edit') do
