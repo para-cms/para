@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'roo-xls'
   s.add_dependency 'spreadsheet'
   s.add_dependency 'activejob-status'
-  s.add_dependency 'closure_tree', '~> 6.2'
+  s.add_dependency 'closure_tree', '~> 7.0'
   s.add_dependency 'friendly_id', '~> 5.1'
 
   s.add_dependency 'bootstrap-sass', '~> 3.3.0'
