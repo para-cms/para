@@ -9,7 +9,7 @@ module Para
 
       rescue_from Exception, with: :rescue_exception
 
-      before_perform :store_job_type
+      before_enqueue :store_job_type
 
       protected
 
