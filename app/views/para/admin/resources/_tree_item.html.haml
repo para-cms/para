@@ -4,13 +4,13 @@
       %i.sort-dots
     %span.node-name
       = resource_name(root)
+    
+    - buttons = Para::Markup::ResourcesButtons.new(@component, self)
+    - actions = Para::Markup::ResourcesTable.default_actions
 
     .pull-right
-      = link_to @component.relation_path(root, action: :edit, return_to: request.fullpath), class: "btn btn-icon-primary btn-shadow btn-sm hint--left", :'aria-label' => ::I18n.t('para.shared.edit') do
-        %i.fa.fa-pencil
-
-      = link_to @component.relation_path(root), method: :delete, data: { confirm: ::I18n.t('para.list.delete_confirmation') }, class: 'btn btn-icon-danger btn-shadow btn-sm hint--left', :'aria-label' => ::I18n.t('para.shared.destroy') do
-        %i.fa.fa-times
+      - actions.each do |action|
+        = buttons.send(:"#{action}_button", root)
 
     .clearfix
   %ul.tree

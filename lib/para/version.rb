@@ -1,3 +1,3 @@
 module Para
-  VERSION = '0.7.4.p1'
+  VERSION = '0.8.0'
 end

@@ -1,4 +1,4 @@
-= resources_table(model: model, component: component) do |table|
+= resources_table(component: component, model: model) do |table|
   = table.header do
     <%- attributes.each do |field| -%>
     = table.header_for(:<%= field.name %>)

@@ -4,8 +4,8 @@ module Para
       Para::Markup::Alert.new(self).container(message, options, &block)
     end
 
-    def resources_table(options = {}, &block)
-      Para::Markup::ResourcesTable.new(self).container(options, &block)
+    def resources_table(component:, **options, &block)
+      Para::Markup::ResourcesTable.new(component, self).container(options, &block)
     end
 
     def panel(options = {}, &block)

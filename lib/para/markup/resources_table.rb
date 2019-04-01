@@ -4,11 +4,15 @@ module Para
       class_attribute :default_actions
       self.default_actions = [:edit, :clone, :delete]
 
-      attr_reader :model, :component, :orderable, :actions
+      attr_reader :component, :model, :orderable, :actions
+      
+      def initialize(component, view)
+        @component = component
+        super(view)
+      end
 
       def container(options = {}, &block)
         @model = options.delete(:model)
-        @component = options.delete(:component)
 
         if !options.key?(:orderable) || options.delete(:orderable)
           @orderable = model.orderable?
@@ -131,59 +135,12 @@ module Para
       end
 
       def actions_cell(resource)
+        buttons = ResourcesButtons.new(component, view)
+
         content_tag(:td, class: 'table-row-actions') do
           actions.map do |type|
-            send(:"#{ type }_button", resource)
+            buttons.send(:"#{ type }_button", resource)
           end.compact.join.html_safe
-        end
-      end
-
-      def clone_button(resource)
-        return unless resource.class.cloneable?
-
-        path = component.relation_path(
-          resource, action: :clone, return_to: view.request.fullpath
-        )
-
-        options = {
-          method: :post,
-          class: 'btn btn-sm btn-icon-info btn-shadow hint--left',
-          aria: {
-            label: ::I18n.t('para.shared.copy')
-          }
-        }
-
-        view.link_to(path, options) do
-          content_tag(:i, '', class: 'fa fa-copy')
-        end
-      end
-
-      def edit_button(resource)
-        path = component.relation_path(
-          resource, action: :edit, return_to: view.request.fullpath
-        )
-
-        view.link_to(path, class: 'btn btn-sm btn-icon-primary btn-shadow hint--left', aria: { label: ::I18n.t('para.shared.edit') }) do
-          content_tag(:i, '', class: 'fa fa-pencil')
-        end
-      end
-
-      def delete_button(resource)
-        path = component.relation_path(resource, return_to: view.request.fullpath)
-
-        options = {
-          method: :delete,
-          data: {
-            confirm: ::I18n.t('para.list.delete_confirmation')
-          },
-          class: 'btn btn-sm btn-icon-danger btn-shadow hint--left',
-          aria: {
-            label: ::I18n.t('para.shared.destroy')
-          }
-        }
-
-        view.link_to(path, options) do
-          content_tag(:i, '', class: 'fa fa-times')
         end
       end
 
