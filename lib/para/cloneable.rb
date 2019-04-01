@@ -1,9 +1,15 @@
 module Para
   module Cloneable
     extend ActiveSupport::Concern
+    extend ActiveSupport::Autoload
 
     included do
       class_attribute :cloneable_options
+    end
+
+    eager_autoload do
+      autoload :IncludeTreeBuilder
+      autoload :AttachmentsCloner
     end
 
     # Wraps the deep_cloneable gem #deep_clone method to allow using the
@@ -11,10 +17,14 @@ module Para
     # macro.
     #
     def deep_clone!(options = {})
-      options = options.reverse_merge(cloneable_options)
+      processed_options = Para::Cloneable::IncludeTreeBuilder.new(self, cloneable_options).build
+      options = options.reverse_merge(processed_options)
       callback = build_clone_callback(options.delete(:prepare))
-
-      deep_clone(options, &callback)
+      
+      deep_clone(options) do |original, clone|
+        Para::Cloneable::AttachmentsCloner.new(original, clone).clone!
+        callback&.call(original, clone)
+      end
     end
 
     private
@@ -48,6 +58,10 @@ module Para
         @cloneable = true
 
         options = args.extract_options!
+
+        # Allow nested STI resources to define their own relations to clone even
+        # if other sibling models don't define those relations
+        options[:skip_missing_associations] = true
 
         self.cloneable_options = options.reverse_merge({
           include: args

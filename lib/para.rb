@@ -52,6 +52,7 @@ module Para
     autoload :Cache
     autoload :Logging
     autoload :IframeTransport
+    autoload :ActiveStorageDownloader
   end
 
   def self.config(&block)
