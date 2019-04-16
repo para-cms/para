@@ -8,13 +8,18 @@ module Para
         find_path([:admin, self, namespace].compact, options)
       end
 
-      def relation_path(controller_or_resource, options = {})
+      def relation_path(controller_or_resource, *nested_resources, **options)
+        nested = nested_resources.any?
+
         if controller_or_resource.is_a?(Hash)
           options = controller_or_resource
           controller_or_resource = nil
         end
 
-        components = [:admin, self, controller_or_resource].compact
+        controller_or_resource = nil if controller_or_resource.is_a?(ActiveRecord::Base)
+
+        options[:action] = action_option_for(options, nested: nested)
+        components = [:admin, self, controller_or_resource, *nested_resources].compact
 
         find_path(components, options)
       end
@@ -41,6 +46,14 @@ module Para
         polymorphic_path(path, options)
       rescue => exception
         exception
+      end
+
+      def action_option_for(options, nested: false)
+        if !nested && options[:action].try(:to_sym) == :show
+          nil
+        else
+          options[:action]
+        end
       end
     end
   end
