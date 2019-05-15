@@ -1,0 +1,10 @@
+.add-button.nested-one-inset-add-button.dropdown
+  %button.btn.btn-shadow.dropdown-toggle{ class: add_button_class, type: 'button', data: { toggle: 'dropdown' } }
+    = add_button_label
+    %i.fa.fa-angle-down
+
+  %ul.dropdown-menu
+    - subclasses.each do |submodel|
+      %li
+        = link_to_add_association form, attribute_name, wrap_object: proc { submodel.new }, partial: find_partial_for(submodel, 'nested_one/container', partial_dir: 'inputs'), form_name: 'form', class: 'dropdown-link', data: { :'association-insertion-node' => "##{ dom_identifier }", :'association-insertion-method' => 'append' }, render_options: { nested_attribute_name: attribute_name, locals: { form: form, model: submodel, subclass: subclass, nested_locals: nested_locals } } do
+          = submodel.model_name.human

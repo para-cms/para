@@ -1,14 +1,12 @@
 .nested-one-field
   = form.simple_fields_for attribute_name, resource, nested_attribute_name: attribute_name do |nested_form|
     - if defined?(collapsible) && collapsible
-      .panel.panel-default.form-fields
-        .panel-heading
-          %h3.panel-title
-            = link_to "##{ nested_form.nested_resource_dom_id }", class: "nested-input-title collapsed#{ (' has-error' if nested_form.object.errors.any?) }", data: { toggle: 'collapse', :'open-on-insert' => true } do
-              = nested_form.nested_resource_name
-              %i.fa.fa-angle-up
+      - if resource
+        .nested-one-container{ id: dom_identifier }
+          = render partial: find_partial_for(model, 'nested_one/container', partial_dir: 'inputs'), locals: { nested_form: nested_form, form: form, model: nested_form.object.class, subclass: subclass, nested_locals: nested_locals }
 
-        .panel-body.panel-collapse.form-inputs.collapse{ id: nested_form.nested_resource_dom_id }
-          = render partial: find_partial_for(model, :fields), locals: { form: nested_form, parent: form.object }.merge(nested_locals)
     - else
       = render partial: find_partial_for(model, :fields), locals: { form: nested_form, parent: form.object }.merge(nested_locals)
+
+  - if defined?(subclass) && subclass
+    = render partial: 'para/inputs/nested_one/add_with_subclasses', locals: { form: form, model: model, dom_identifier: dom_identifier, nested_locals: nested_locals, attribute_name: attribute_name, subclasses: subclasses, add_button_label: add_button_label, add_button_class: add_button_class, subclass: subclass }

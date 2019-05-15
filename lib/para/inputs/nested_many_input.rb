@@ -29,9 +29,9 @@ module Para
               nested_locals: locals,
               subclass: subclass,
               subclasses: subclasses,
-              inset: inset?,
               add_button_label: add_button_label,
               add_button_class: add_button_class,
+              inset: inset?,
               render_partial: render_partial?,
               remote_partial_params: remote_partial_params
             }
@@ -47,39 +47,10 @@ module Para
         @model ||= parent_model.reflect_on_association(attribute_name).klass
       end
 
-      def dom_identifier
-        @dom_identifier ||= begin
-          name = attribute_name
-          id = @builder.object.id || "_new_#{ parent_nested_field&.attribute_name }_"
-          time = (Time.now.to_f * 1000).to_i
-          random = (rand * 1000).to_i
-          [name, id, time, random].join('-')
-        end
-      end
-
-      def subclass
-        @subclass ||= options.fetch(:subclass, subclasses.presence)
-      end
-
-      def subclasses
-        options.fetch(
-          :subclasses,
-          (model.try(:descendants) || []).sort_by { |m| m.model_name.human }
-        )
-      end
-
       def inset?
         options.fetch(:inset, false)
       end
-
-      def add_button_label
-        options.fetch(:add_button_label) { I18n.t('para.form.nested.add') }
-      end
-
-      def add_button_class
-        options.fetch(:add_button_class) { 'btn-primary' }
-      end
-
+      
       def render_partial?
         options[:render_partial] || object.errors.any? || (object.persisted? && inset?)
       end

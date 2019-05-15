@@ -1,0 +1,9 @@
+.panel.panel-default.form-fields
+  .panel-heading
+    %h3.panel-title
+      = link_to "##{ form.nested_resource_dom_id }", class: "nested-input-title collapsed#{ (' has-error' if form.object.errors.any?) }", data: { toggle: 'collapse', :'open-on-insert' => true } do
+        = form.nested_resource_name
+        %i.fa.fa-angle-up
+
+  .panel-body.panel-collapse.form-inputs.collapse{ id: form.nested_resource_dom_id }
+    = render partial: find_partial_for(model, :fields), locals: { form: form, parent: form.object }.merge(nested_locals)

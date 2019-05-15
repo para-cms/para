@@ -1,6 +1,8 @@
 module Para
   module Inputs
     class NestedOneInput < NestedBaseInput
+      attr_reader :model
+      
       def input(wrapper_options = nil)
         input_html_options[:class] << "nested-one"
 
@@ -9,7 +11,7 @@ module Para
         relation = parent_model.reflect_on_association(attribute_name)
 
         resource = object.send(attribute_name)
-        model = (resource && resource.class) || relation.klass
+        @model = (resource && resource.class) || relation.klass
 
         unless resource
           # Build association without trying to save the new record
@@ -33,7 +35,12 @@ module Para
             resource: resource,
             attribute_name: attribute_name,
             nested_locals: locals,
-            collapsible: collapsible
+            collapsible: collapsible || subclass,
+            dom_identifier: dom_identifier,
+            subclass: subclass,
+            subclasses: subclasses,
+            add_button_label: add_button_label,
+            add_button_class: add_button_class
           }
         )
       end
