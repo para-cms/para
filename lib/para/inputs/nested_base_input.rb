@@ -20,10 +20,7 @@ module Para
       end
 
       def subclasses
-        options.fetch(
-          :subclasses,
-          (model.try(:descendants) || []).sort_by { |m| m.model_name.human }
-        )
+        options.fetch(:subclasses, [])
       end
       
       def add_button_label
