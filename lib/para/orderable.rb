@@ -6,7 +6,7 @@ module Para
       scope :ordered, -> { order("#{ table_name }.position ASC") }
 
       before_create :orderable_assign_position
-      after_commit  :reprocess_ordering
+      after_commit  :reprocess_ordering, on: :create
       after_destroy :reprocess_ordering
     end
 
