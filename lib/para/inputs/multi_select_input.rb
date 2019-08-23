@@ -11,7 +11,7 @@ module Para
         input_html_options[:class] << "multi-select"
 
         # Load existing resources
-        resources = object.send(attribute_name)
+        resources = input_html_options[:value] || object.send(attribute_name)
         # Order them if the list should be orderable
         resources = resources.sort_by(&method(:resource_position)) if orderable?
 
