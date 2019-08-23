@@ -18,5 +18,10 @@ module Para
         end
       end.sort_by(&:name)
     end
+
+    def show_component?(component)
+      config = Para.components.component_configuration_for(component.identifier)
+      !config.shown_if || instance_exec(&config.shown_if)
+    end
   end
 end

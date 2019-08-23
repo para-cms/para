@@ -14,7 +14,7 @@
 
           %ul.component-section-list-items.collapse.in{ id: "collapse-section-#{index}" }
             - component_section.components.each do |component|
-              - if can? :manage, component
+              - if can?(:manage, component) && show_component?(component)
                 %li.component-item{ class: (@component == component) && 'active' }
                   = link_to component.name, component.path
 

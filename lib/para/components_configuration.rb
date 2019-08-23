@@ -47,6 +47,10 @@ module Para
       end
     end
 
+    def component_configuration_for(identifier)
+      sections.map(&:components).flatten.find { |c| c.identifier.to_s == identifier.to_s }
+    end
+
     private
 
     def build
@@ -145,12 +149,13 @@ module Para
     end
 
     class Component
-      attr_accessor :identifier, :type, :options, :model
+      attr_accessor :identifier, :type, :shown_if, :options, :model
 
-      def initialize(identifier, type_identifier, options = {})
+      def initialize(identifier, type_identifier, shown_if: nil, **options)
         self.identifier = identifier.to_s
         self.type = Para::Component.registered_components[type_identifier]
         self.options = options
+        self.shown_if = shown_if
 
         unless type
           raise UndefinedComponentTypeError.new(
