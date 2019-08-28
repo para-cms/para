@@ -26,6 +26,9 @@ module Para
         file.save!
 
         store(:file_gid, file.to_global_id)
+
+        # Ensure that `.perform_now` returns the exporter
+        self
       end
 
       def file

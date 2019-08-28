@@ -26,6 +26,9 @@ module Para
         end
 
         save_errors!
+
+        # Ensure that `.perform_now` returns the importer
+        self
       end
 
       protected
