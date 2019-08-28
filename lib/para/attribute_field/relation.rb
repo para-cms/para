@@ -43,8 +43,12 @@ module Para
       end
 
       # Takes an array of ids and a block. Check for each id if model exists
-      # and create one if not. E.g: [12, "foo"] will try to create a model with
-      # 'foo'
+      # and create one if not.
+      #
+      # Example : [12, "foo"] will try to create a model with
+      #           'foo' as a name, title or any other attribute referenced in
+      #           the `Para.config.resource_name_methods` configuration param.
+      #
       def on_the_fly_creation ids, &block
         Array.wrap(ids).each do |id|
           if !reflection.klass.exists?(id: id)
@@ -56,7 +60,14 @@ module Para
               if resource.respond_to?(setter_name)
                 resource.send(setter_name, id)
 
-                if resource.save
+                # This check avoids multiple creation of the same resource with
+                # a given attribute value and ensure all resources from the form
+                # that reference that new resource name are associated to the
+                # same parent resource.
+                if (existing_resource = reflection.klass.find_by(method_name => id))
+                  block.call(existing_resource, id)
+                  break
+                elsif resource.save
                   block.call(resource, id)
                   break
                 end
