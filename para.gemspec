@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form_extension', '>= 1.4.5'
   s.add_dependency 'active_decorator', '~> 1.0'
   s.add_dependency 'cocoon'
-  s.add_dependency 'paperclip', '~> 4.2'
+  s.add_dependency 'paperclip', '>= 4.2', '< 7.0'
   s.add_dependency 'cancancan', '~> 3.0'
   s.add_dependency 'kaminari'
   s.add_dependency 'ransack'
