@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'closure_tree', '~> 7.0'
   s.add_dependency 'friendly_id', '~> 5.1'
 
-  s.add_dependency 'bootstrap-sass', '~> 3.3.0'
+  s.add_dependency 'bootstrap-sass', '>= 3.3', '< 3.5'
   s.add_dependency 'font-awesome-rails', '~> 4.7.0'
   s.add_dependency 'haml-rails'
   s.add_dependency 'sass-rails'
