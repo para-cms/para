@@ -2,14 +2,14 @@ module Para
   module Markup
     class ResourcesButtons < Para::Markup::Component
       attr_reader :component
-      
+
       def initialize(component, view)
         @component = component
         super(view)
       end
 
       def clone_button(resource)
-        return unless resource.class.cloneable?
+        return unless resource.class.cloneable? && view.can?(:clone, resource)
 
         path = component.relation_path(
           resource, action: :clone, return_to: view.request.fullpath
@@ -29,6 +29,8 @@ module Para
       end
 
       def edit_button(resource)
+        return unless view.can?(:edit, resource)
+
         path = component.relation_path(
           resource, action: :edit, return_to: view.request.fullpath
         )
@@ -39,6 +41,8 @@ module Para
       end
 
       def delete_button(resource)
+        return unless view.can?(:delete, resource)
+
         path = component.relation_path(resource, return_to: view.request.fullpath)
 
         options = {

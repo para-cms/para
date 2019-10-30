@@ -48,6 +48,8 @@ module Para
     end
 
     def add_button_for(component, relation, model)
+      return unless can?(:create, model)
+
       partial_name = if component.subclassable?
         :subclassable_add_button
       else

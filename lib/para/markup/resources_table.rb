@@ -5,7 +5,7 @@ module Para
       self.default_actions = [:edit, :clone, :delete]
 
       attr_reader :component, :model, :orderable, :actions
-      
+
       def initialize(component, view)
         @component = component
         super(view)
@@ -93,7 +93,7 @@ module Para
 
         content_tag(:th, options) do
           if (sort = options.delete(:sort))
-              view.sort_link(search, *sort, label, hide_indicator: true)
+            view.sort_link(search, *sort, label, hide_indicator: true)
           elsif searchable?(field_name)
             view.sort_link(search, field_name, label, hide_indicator: true)
           else

@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'active_decorator', '~> 1.0'
   s.add_dependency 'cocoon'
   s.add_dependency 'paperclip', '~> 4.2'
-  s.add_dependency 'cancancan', '~> 1.9'
+  s.add_dependency 'cancancan', '~> 3.0'
   s.add_dependency 'kaminari'
   s.add_dependency 'ransack'
   s.add_dependency 'deep_cloneable', '>= 2.2.1'

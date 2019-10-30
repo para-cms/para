@@ -27,7 +27,9 @@ module Para
       end
 
       def actions_buttons_for(options)
-        names = [:submit, :submit_and_edit, :submit_and_add_another, :cancel]
+        names = [:submit, :submit_and_edit]
+        names << :submit_and_add_another if template.can?(:create, object.class)
+        names << :cancel
 
         names.select! { |name| Array.wrap(options[:only]).include?(name) } if options[:only]
         names.reject! { |name| Array.wrap(options[:except]).include?(name) } if options[:except]
