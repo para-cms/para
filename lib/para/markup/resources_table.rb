@@ -6,8 +6,9 @@ module Para
 
       attr_reader :component, :model, :orderable, :actions
 
-      def initialize(component, view)
+      def initialize(component, view, options={})
         @component = component
+        @actions = options[:actions] ||= actions
         super(view)
       end
 
@@ -48,7 +49,7 @@ module Para
         # Append cells
         cells << capture { block.call }
         # Append actions empty cell
-        cells << content_tag(:th, '', class: 'table-row-actions') if actions
+        cells << content_tag(:th, '', class: 'table-row-actions') if @actions
 
         # Output full header
         content_tag(:thead) do
@@ -72,7 +73,7 @@ module Para
         # Add data cells
         cells << capture { block.call(resource) }
         # Add actions links to the last cell
-        cells << actions_cell(resource) if actions
+        cells << actions_cell(resource) if @actions
 
         cells.join("\n").html_safe
       end
