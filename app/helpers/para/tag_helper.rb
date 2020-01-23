@@ -21,7 +21,7 @@ module Para
       allow_adding_resource = options.fetch(:addable, true)
 
       partial = :list
-      partial = :tree if model.respond_to? :roots
+      partial = :tree if model.respond_to?(:roots) && can?(:tree, model)
 
       render(
         partial: find_partial_for(relation, partial),
