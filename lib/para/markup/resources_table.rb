@@ -15,7 +15,7 @@ module Para
         @model = options.delete(:model)
 
         if !options.key?(:orderable) || options.delete(:orderable)
-          @orderable = model.orderable?
+          @orderable = model.orderable? && view.can?(:order, model)
         end
 
         @actions = build_actions(options.delete(:actions))
