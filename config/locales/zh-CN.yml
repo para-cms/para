@@ -1,0 +1,106 @@
+zh-CN:
+  para:
+    flash:
+      shared:
+        create:
+          success: "%{model} 已创建"
+          error: "无法创建 %{model}"
+        update:
+          success: "已更新 %{model}"
+          error: "无法更新 %{model}"
+        destroy:
+          success: "已删除 %{model}"
+          error: "无法删除 %{model}"
+
+    admin:
+      title: "管理员"
+      toggle_navigation: "打开导航"
+      back_to_app: "返回应用程序"
+      sign_out: "注销"
+
+    confirmation:
+      shared:
+        destroy: '你确定要删除 %{model} ?'
+
+    component:
+      create: "创建一个组件"
+      add: "添加一个组件"
+      none_created: "现在没有创建任何组件 ..."
+      crud:
+        name: "资源列表"
+      singleton_resource:
+        name: "资源表单"
+
+    dashboard:
+      title: "面板"
+
+    component_section:
+      add: "添加组件模块"
+      edit: '编辑模块'
+      destroy: '删除模块'
+      actions: "操作"
+
+    form:
+      shared:
+        new:
+          title: "新建 %{model}"
+      nested:
+        name: "名字"
+        add: "添加"
+        remove: "删除"
+        new: "新建"
+
+    list:
+      search_title: "搜索"
+      delete_confirmation: "你确定要删除这个条目？"
+      no_results: "未找到结果，请更改查询条件"
+      empty: "列表为空"
+
+    export:
+      name: "导出 %{name}"
+      as: "格式 (.%{extension})"
+
+    import:
+      name: 导入
+      select: "选择文件"
+      change: "改变文件"
+      placeholder: 文件格式 ( .csv .xlsx )
+
+    shared:
+      save: "保存"
+      cancel: "取消"
+      add: "创建"
+      search: "搜索"
+      save_and_edit: "保存和编辑"
+      save_and_add_another_button: "保存并创建下一个"
+
+    types:
+      boolean:
+        "true": "是"
+        "false": "否"
+
+  admin:
+    breadcrumbs:
+      home: "面板"
+
+  activerecord:
+    errors:
+      relation_length_is_smaller: "至少包含 %{minimum} 个元素"
+      relation_length_is_greater: "最多包含 %{minimum} 个元素"
+    models:
+      para/component/base:
+        one: "组件"
+        other: "组件"
+      para/component/crud:
+        one: "资源列表"
+        other: "资源列表"
+      para/component/singleton_resource:
+        one: "资源表单"
+        other: "资源表单"
+    attributes:
+      para/component/base:
+        name: "标题"
+        type: "类型"
+        model_type: "资源"
+        namespaced: "只列出组件的资源"
+
